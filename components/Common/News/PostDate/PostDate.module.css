@@ -1,0 +1,15 @@
+.date {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 34px;
+    color: #A5A5A5;
+    display: block;
+    margin-top: 1rem;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 468px) {
+    .date {
+        font-size: 17px;
+    }
+}

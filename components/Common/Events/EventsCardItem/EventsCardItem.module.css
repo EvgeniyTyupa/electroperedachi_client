@@ -1,0 +1,107 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    position: relative;
+    width: 100%;
+    border: 1px solid transparent;
+    transition-duration: .5s;
+}
+.main:hover {
+    box-shadow: 0px 0px 100px rgba(68, 26, 189, 0.5);
+    transform: scale(1.03);
+}
+.imageContainer {
+    width: 100%;
+    height: 260px;
+    position: relative;
+}
+.info {
+    background-color: white;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.mainInfo {
+    display: flex;
+    gap: 20px;
+}
+.date {
+    width: 70px;
+    color: #A5A5A5;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+.titleAndLineup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.titleAndLineup h5 {
+    color: #2200F5;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+.lineup {
+    color: black;
+    font-size: 16px;
+}
+.infoLocation {
+    display: flex;
+    flex-direction: column;
+}
+.infoField {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.infoField svg {
+    color: #2200F5;
+    font-size: 22px;
+}
+.infoField address {
+    color: #A5A5A5;
+    font-style: normal;
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        max-width: 48%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .innerDivider {
+        display: none;
+    }
+    .infoLocation {
+        margin-top: 15px;
+    }
+    .main {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #C4C4C4;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .main:hover {
+        box-shadow: none;
+        transform: none;
+    }
+    .lineup {
+        font-size: 15px;
+    }
+    .info {
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .mainInfo {
+        flex-direction: column;
+        gap: 10px
+    }
+    .date {
+        width: 100%;
+        font-size: 17px;
+    }
+}

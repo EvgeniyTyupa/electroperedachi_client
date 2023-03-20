@@ -1,0 +1,66 @@
+.shareBut {
+    padding: 1rem !important;
+    border: 1px solid var(--main-orange) !important;
+    border-radius: 0 !important;
+    width: 150px !important;
+    min-width: none !important;
+    display: flex !important;
+    gap: 1rem !important;
+    background-color: transparent !important;
+    color: black !important;
+    font-family: 'Helvetica' !important;
+}
+.shareBut:hover {
+    background-color: var(--main-orange) !important;
+    color: white !important;
+}
+.shareBut svg {
+    font-size: 16px;
+}
+.shareButSocial {
+    width: fit-content;
+}
+.shareButSocial button {
+    width: fit-content !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black !important;
+}
+.overflow {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Helvetica' !important;
+    z-index: 99999 !important;
+}
+.modal {
+    width: 30%;
+    background-color: white;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    box-shadow: 0 0 10px -3px var(--main-orange);
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.closeButt {
+    margin-left: auto;
+    color: gray !important;
+}
+.content {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}

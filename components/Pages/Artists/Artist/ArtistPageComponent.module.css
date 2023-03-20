@@ -1,0 +1,115 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+.container {
+    flex-direction: column !important;
+}
+.container h2 {
+    text-align: center;
+}
+.container h2::first-letter {
+    text-transform: capitalize;
+}
+.mainInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    margin-top: 70px;
+}
+.avatarContainer {
+    width: 40%;
+    position: relative;
+    min-height: 500px;
+}
+.avatarContainer img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.bio {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+.links {
+    display: flex;
+    margin-top: auto;
+    gap: 2rem;
+}
+.links a {
+    font-weight: 100;
+}
+.links a:hover {
+    text-decoration: underline;
+}
+.soundcloudMusic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 110px;
+}
+.soundcloudMusic div {
+    width: 100%;
+}
+.youtube {
+    width: 100%;
+    margin-top: 110px;
+    margin-bottom: 180px;
+}
+.youtube iframe {
+    width: 100%;
+    height: 80vh;
+    border: none;
+}
+
+@media screen and (max-width: 1170px) {
+    .mainInfo {
+        margin-top: 45px;
+    }
+    .main {
+        margin-top: 45px;
+    }
+    .mainInfo {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .avatarContainer {
+        width: 100%;
+    }
+    .bio {
+        width: 100%;
+    }
+    .links {
+        margin-top: 2rem;
+        justify-content: center
+    }
+    .soundcloudMusic {
+        flex-direction: column;
+        margin-top: 45px;
+    }
+    .youtube {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .youtube iframe {
+        height: 220px;
+    }
+    .avatarContainer {
+        min-height: 300px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .links {
+        flex-wrap: wrap;
+    }
+}

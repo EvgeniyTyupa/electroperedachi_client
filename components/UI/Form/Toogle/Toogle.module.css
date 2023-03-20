@@ -1,0 +1,54 @@
+.main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 25px;
+}
+.switch input {
+    padding: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 85, 0, .3);
+    border-radius: 14px;
+    transition-duration: .3s;
+    border: 2px solid var(--main-orange-hover);
+}
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 21px;
+    width: 21px;
+    bottom: 0px;
+    left: 0px;
+    background-color: white;
+    border-radius: 50%;
+    transition-duration: .3s;
+}
+input:checked + .slider {
+    background-color: var(--main-orange);
+    border-color: var(--main-orange-hover);
+}
+input:checked + .slider::before {
+    transform: translateX(21px);
+}
+.toogleLabel {
+    color: black;
+    font-size: 12px;
+    cursor: pointer;
+    width: calc(100% - 62px);
+}

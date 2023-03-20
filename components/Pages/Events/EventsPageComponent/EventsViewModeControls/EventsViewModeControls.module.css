@@ -1,0 +1,40 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+.filters {
+    width: fit-content;
+}
+.viewControls {
+    display: flex;
+    gap: 1rem;
+}
+.viewBut {
+    background-color: white !important;
+    color: var(--main-orange) !important;
+    opacity: 0.7;
+}
+.selected {
+    color: white !important;
+    background-color: var(--main-orange) !important;
+    opacity: 1;
+}
+.filters > div {
+    width: 150px !important;
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    .filters {
+        width: 100%;
+    }
+    .filters div {
+        width: 100% !important;
+    }
+}

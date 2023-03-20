@@ -1,0 +1,10 @@
+.main {
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+}

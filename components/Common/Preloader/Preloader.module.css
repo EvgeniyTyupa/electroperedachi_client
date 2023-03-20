@@ -1,0 +1,52 @@
+.img {
+    width: 150px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .img {
+        -webkit-animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
+        animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+      -webkit-transform: rotate(0deg) scale(.8);
+              transform: rotate(0deg) scale(.8);
+    }
+    50% {
+        -webkit-transform: rotate(180deg) scale(1.1);
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      -webkit-transform: rotate(360deg) scale(0.8);
+              transform: rotate(360deg) scale(0.8);
+    }
+}
+
+/* @keyframes App-logo-spin {
+    from {
+      -webkit-transform: translateY(0) scale(.8);
+              transform: translateY(0) scale(.8);
+    }
+    50% {
+        -webkit-transform: translateY(10px) scale(1.1);
+        transform: translateY(10px) scale(1.1);
+    }
+    100% {
+      -webkit-transform: translateY(0) scale(0.8);
+              transform: translateY(0) scale(0.8);
+    }
+} */
+
+@keyframes App-logo-opacity {
+    from {
+        opacity: .1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .1;
+    }
+}

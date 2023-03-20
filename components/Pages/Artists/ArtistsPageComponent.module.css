@@ -1,0 +1,45 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+.container {
+    flex-direction: column !important;
+}
+.welcome {
+    font-family: 'NeueMachina';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 29px;
+    margin-top: 28px;
+}
+.residents {
+    margin-top: 60px;
+}
+.invited {
+    width: 100%;
+    background-color: white;
+    margin-top: 128px;
+    padding-top: 2rem;
+    padding-bottom: 110px;
+}
+
+@media screen and (max-width: 1170px) {
+    .main {
+        margin-top: 45px;
+    }
+    .welcome {
+        font-size: 20px;
+    }
+    .invited {
+        margin-top: 45px;
+        padding-bottom: 45px;
+        padding-top: 0;
+    }
+    .residents {
+        margin-top: 45px;
+    }
+}

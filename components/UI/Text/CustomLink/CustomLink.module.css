@@ -1,0 +1,11 @@
+.link {
+    font-size: 18px;
+    transition-duration: .3s;
+    font-weight: 300;
+}
+.link:hover {
+    color: var(--main-orange-hover) !important;
+}
+.active {
+    color: var(--main-orange) !important;
+}

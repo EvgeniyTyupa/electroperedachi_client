@@ -1,0 +1,41 @@
+.h1 {
+    font-family: 'NeueMachina';
+    font-size: 70px;
+}
+.h2 {
+    font-family: 'NeueMachina';
+    font-size: 58px;
+}
+.h3 {
+    font-family: 'NeueMachina';
+    font-size: 35px;
+}
+.h4 {
+    font-family: 'NeueMachina';
+    font-size: 28px;
+}
+.h5 {
+    font-family: 'NeueMachina';
+    font-size: 18px;
+}
+
+@media screen and (max-width: 468px) {
+    .h2 {
+        font-size: 40px;
+    }
+    .h3 {
+        font-size: 27px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .h4 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .h3 {
+        font-size: 24px;
+    }
+}

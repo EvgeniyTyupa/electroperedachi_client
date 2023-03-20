@@ -1,0 +1,21 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+.main h3 {
+    color: var(--main-orange) !important;
+}
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 70px 5%;
+}
+
+@media screen and (max-width: 1170px) {
+    .wrapper {
+        justify-content: center;
+    }
+}

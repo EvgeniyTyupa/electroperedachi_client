@@ -1,0 +1,60 @@
+.main {
+    /* width: 100%; */
+    /* transform: scale(0.5); */
+    position: absolute;
+    /* width: 60vw; */
+    margin: auto;
+    right: 0;
+    left: 0px;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main path {
+  /* transition-duration: .5s; */
+  transition: stroke .1s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .main {
+      -webkit-animation: App-logo-spin infinite 60s linear, App-logo-opacity infinite 10s linear;
+      animation: App-logo-spin infinite 60s linear, App-logo-opacity infinite 10s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg) scale(.5);
+            transform: rotate(0deg) scale(.5);
+  }
+  50% {
+      -webkit-transform: rotate(180deg) scale(0.7);
+      transform: rotate(180deg) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(.5);
+            transform: rotate(360deg) scale(.5);
+  }
+}
+
+@keyframes App-logo-opacity {
+  from {
+      opacity: .5;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: .5;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .main {
+    left: -100%;
+  }
+}

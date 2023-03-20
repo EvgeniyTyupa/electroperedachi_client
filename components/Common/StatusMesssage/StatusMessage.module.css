@@ -1,0 +1,13 @@
+.main {
+    position: fixed;
+    z-index: 21;
+    right: 2rem;
+    width: fit-content !important;
+    border-radius: 12px !important;
+    /* color: white !important; */
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: bottom 300ms cubic-bezier(0, 0, 1, 1) 0ms !important
+}

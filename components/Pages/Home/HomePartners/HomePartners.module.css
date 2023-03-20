@@ -1,0 +1,24 @@
+.main {
+    flex-direction: column;
+    width: 100%;
+}
+.wrapper {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 68px;
+}
+.wrapper img {
+    transition-duration: .3s;
+}
+.wrapper img:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 468px) {
+    .wrapper {
+        justify-content: center;
+        gap: 2rem;
+    }
+}

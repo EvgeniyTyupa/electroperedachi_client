@@ -1,0 +1,66 @@
+.main {
+    background: rgba(255, 255, 255, 0.01);
+    /* background-blend-mode: overlay; */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 70px 75px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+.textBlock {
+    margin-top: 14px;
+}
+.textBlock a {
+    color: var(--main-orange);
+}
+.textBlock a:hover {
+    text-decoration: underline;
+}
+.text {
+    line-height: 22px;
+}
+.underlined {
+    text-decoration: underline;
+}
+.redirectBut {
+    width: 140px !important;
+    height: 140px !important;
+    font-size: 17px !important;
+}
+.redirectBut svg {
+    position: relative;
+    top: 8px;
+    transition-duration: .3s;
+}
+
+@media screen and (max-width: 862px) {
+    .textBlock {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 658px) {
+    .info {
+        width: 100%;
+        text-align: center;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 2rem;
+    }
+}

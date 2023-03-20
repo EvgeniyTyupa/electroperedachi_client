@@ -1,0 +1,135 @@
+{
+    "navbar.main": "Home",
+    "navbar.about": "About us",
+    "navbar.artists": "Artists",
+    "navbar.events": "Events",
+    "navbar.news": "News",
+    "navbar.contacts": "Contacts",
+
+    "footer.terms": "Terms of use",
+    "footer.privacy": "Privacy policy",
+
+    "title.freedom": "Freedom",
+    "title.equality": "Equality",
+    "title.techno": "Techno",
+
+    "title.upcoming.title": "Upcoming Event",
+
+    "button.viewmore": "View more",
+    "button.submitOffer": "Submit Offer",
+    "button.submitEvent": "Submit Event",
+    "button.getMaterials": "Get Materials",
+    "button.readMore": "Read More",
+    "button.showArtists": "Show Artists",
+    "button.buyTicket": "Buy Ticket",
+
+    "shareBut.button": "Share",
+    "shareBut.titleModal": "Share in social media",
+    "shareBut.shareWith": "Share with",
+
+    "form.error.required": "Required Field!",
+    "form.error.invalid_email": "Invalid Email!",
+    "form.error.invalid_phone": "Invalid Phone number!",
+    
+    "news.title": "News",
+    "news.description": "electroperedachi news",
+    "news.viewMore": "View more news",
+
+    "events.title": "Events",
+    "events.viewMore": "View more events",
+    "events.allYears": "All years",
+    "events.empty": "No events in that time period.",
+    
+    "statistic.title": "Statistic",
+    "statistic.years": "years",
+    "statistic.events": "events",
+    "statistic.listenings": "listenings on",
+
+    "partnership.title": "Partnership",
+
+    "partnership.mergin.title": "Brands mergin",
+    "partnership.mergin.text": "If your brand shares the freedom, equality, and love ideology, our fates are already bound, so let`s merge at last! Whether your product relates to non/alcoholic drinking, fashion or other high/low-demand niches - it`s time to work together.  For mutual PR, production or decorative requisites, and any other investment we offer allocating your brand production on events,  offline selling and online advertising.",
+
+    "partnership.joinArt.title": "Want to join in Art exhibition?",
+    "partnership.joinArt.text": "We`re hosting a specific place at the event called",
+    "partnership.joinArt.text2": "Art environment",
+    "partnership.joinArt.text3": "where folks can entertain and engage with. Whether it photography gallery or a woodworking piece,",
+    "partnership.joinArt.text4": "you have the opportunity to kick off your project!",
+    "partnership.joinArt.text5": "For some particular cases, you`d have an option to sell it.",
+
+    "partnership.lighting.title": "Lighting is your duty?",
+    "partnership.lighting.text": "We aim to impress our audience... aren`t you? As the value of amazing lighting is quite clear for end visitors, we are constantly evolving in this dimension. Apart from internal specialists, we are looking for organizations that may offer unforgettable emotions to our audience.",
+
+    "partnership.promouter.title": "Are you a promoter?",
+    "partnership.promouter.text": "We are open to any kind of proposition from promo or event organizations, that meets our mission and would like to share it with us. We used to work flexibly, yet strictly on a win-win strategy.",
+
+    "partnership.materials.title": "Electroperedachi Promo Materials",
+    "partnership.materials.text": "Let everyone know we make history. By the link you`ll find the",
+    "partnership.materials.text2": "Brandbook",
+    "partnership.materials.text3": "with all the necessary materials you may need, for promotion purposes. It consists banners, logo in different formats and sizes, fonts, colors details and so on. Use it to mention our partnership.",
+
+    "partners.title": "Partners",
+
+    "bookYourArtist": "Book your Artist",
+    "bookYourArtist.showArtists": "Show artists",
+
+    "about.title": "Our team",
+    "about.subtitle": "Who are",
+    "about.text": "This is a music project that organizes events at unique venues.",
+    "about.goal.title": "Our goal",
+    "about.goal.text": "to represent and spread the concept of technoculture, performing under the name electroperedachi. We understand what the horizon should be, so we treat every party seriously and creatively.",
+    "about.mission.title": "Our mission",
+    "about.mission.text": "gather an unforgettable audience of different, unique and at the same time people with a similar worldview. The sum of raised hands, smiles, an amazing view and quality music is the formula for a successful event.",
+    "about.model.title": "Our business model",
+    "about.model.text": "for partnership and cooperation - based on win/win. «Satisfying everyone» - no other option",
+    "about.getDjsBetter": "Get to know our DJs better",
+
+    "artists.title": "Artists",
+    "artists.welcome": "Welcome to the place where talents shine. Read, listen and book residents! We offer you to meet closer our label residents and invited artists that performed at events.",
+
+    "booking.title": "Booking request",
+    "booking.artist": "Artist",
+    "booking.event_date": "Event Date*",
+    "booking.fee": "Artist Fee / Offer",
+    "booking.buyer_pay": "Buyer pays on top booking fee, travel, hotel, grounds, rider",
+    "booking.name": "Your Name*",
+    "booking.email": "Your Email*",
+    "booking.phone": "Phone*",
+    "booking.organisation": "Company / Organisation*",
+    "booking.venue.name": "Venue Name*",
+    "booking.venue.country": "Venue Country*",
+    "booking.venue.city": "Venue City*",
+    "booking.submit": "Submit",
+
+    "contacts.title": "Contacts",
+    "contacts.text1": "Contact us",
+    "contacts.text2": "We are always open to new partners to work for the same mission.",
+    "contacts.text3": "If you are a company, booking or management agency, artists, festival, organization or individual with an amazing idea, feel free to get in touch.",
+
+    "cooperate.title": "Fill out the form for cooperate",
+    "cooperate.name": "Contact Person Name",
+    "cooperate.placeholderMessage": "How you would serve us? Share your proposition.",
+
+    "event.upcoming": "Upcoming Event",
+    "event.date": "DATE",
+    "event.place": "PLACE",
+    "event.about": "About Event",
+    "event.ticketRules": "After payment, the ticket will be sent to your email specified when filling out the form.\n\nPlease note: for a person who has not reached the age of majority, the ticket loses its importance. If you have any questions or problems with purchasing/receiving a ticket/money - please contact us. All details on the contact page. We do not refund money due to a change in the visitor's decision, only if changes are made by the organizer.",
+    "event.price": "Price",
+    "event.currency": "uah",
+    "event.tickets": "Tickets:",
+    "event.form.title": "Ticket Details",
+    "event.form.name": "Name",
+    "event.form.phone": "Phone",
+    "event.form.confirm_text": "I agree to the terms of use and privacy policy",
+    "event.how_it_was.video": "HOW IT WAS. AFTERMOVIE",
+    "event.how_it_was.photos": "HOW IT WAS. PHOTOS",
+
+    "notfound.text1": "Hey folks, seems you're lost, aren`t you? Tickets for this event are extremely rare, thus - none are available right now. Yet don't worry, there's always a chance you can be one of the lucky individuals to attend this party.",
+    "notfound.text2": "In the meantime, why not take a look at the list of other events that are available?",
+    "notfound.allEvents": "All Events",
+    "notfound.viewMoreEvents": "View more events",
+
+    "thankyou.title": "Thank you!",
+    "thankyou.text": "Your payment was successfully! See you at the party.\n Have a nice time."
+}

@@ -1,0 +1,91 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: calc(100vh - 117px);
+    max-height: calc(100vh - 117px);
+}
+.lines {
+    position: absolute;
+    /* width: 60vw; */
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 100px;
+    bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.0.5);
+    /* background-blend-mode: overlay; */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 50px 0;
+    z-index: 1;
+    position: relative;
+    transition-duration: .3s;
+}
+.container {
+    flex-direction: column !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .lines {
+        -webkit-animation: App-logo-spin infinite 60s linear, App-logo-opacity infinite 10s linear;
+        animation: App-logo-spin infinite 60s linear, App-logo-opacity infinite 10s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+      -webkit-transform: rotate(0deg) scale(.8);
+              transform: rotate(0deg) scale(.8);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: rotate(180deg) scale(1.1);
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      -webkit-transform: rotate(360deg) scale(0.8);
+              transform: rotate(360deg) scale(0.8);
+    }
+}
+
+@keyframes App-logo-opacity {
+    from {
+        opacity: .5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .5;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        height: calc(100vh - 80px);
+        max-height: calc(100vh - 80px);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding-top: 7rem;
+    }
+}

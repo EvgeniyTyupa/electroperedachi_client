@@ -1,0 +1,43 @@
+.main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+.logo {
+    width: 280px;
+}
+.links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.container {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.burger {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .main {
+        padding: 20px 0;
+    }
+    .links {
+        display: none;
+    }
+    .burger {
+        display: block;
+    }
+    .logo {
+        position: relative;
+        top: 4px;
+        width: 200px;
+    }
+}

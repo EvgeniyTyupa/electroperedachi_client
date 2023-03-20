@@ -1,0 +1,20 @@
+.viewMore {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+.viewMore span {
+    font-size: 18px;
+}
+.viewMore:hover span {
+    text-decoration: underline;
+}
+.viewMore svg {
+    font-size: 24px;
+    color: var(--main-orange);
+    transition-duration: .3s;
+}
+.viewMore:hover svg {
+    transform: translateX(10px) rotate(180deg);
+}

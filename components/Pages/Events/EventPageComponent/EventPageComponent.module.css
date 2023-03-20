@@ -1,0 +1,16 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    width: 100%;
+    flex-direction: column !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 0;
+    }
+}

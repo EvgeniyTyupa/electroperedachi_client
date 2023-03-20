@@ -1,0 +1,59 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 100px 0;
+}
+.main h2 {
+    color: black !important;
+}
+.container {
+    flex-direction: column !important;
+}
+.form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 30%;
+}
+.field {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+.currency > div {
+    width: 120px;
+}
+.submitBut {
+    height: 55px !important;
+    background-color: white !important;
+    border: 1px solid var(--main-orange) !important;
+    border-radius: 0 !important;
+    color: black !important;
+    font-size: 16px !important;
+    font-family: "Helvetica" !important;
+}
+.submitBut:hover {
+    background-color: var(--main-orange) !important;
+    color: white !important;
+}
+
+@media screen and (max-width: 1170px) {
+    .main {
+        padding: 45px 0;
+    }
+    .form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .column {
+        width: 100%;
+    }
+}

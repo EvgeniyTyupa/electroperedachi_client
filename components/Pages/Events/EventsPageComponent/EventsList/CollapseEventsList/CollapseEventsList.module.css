@@ -1,0 +1,97 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.title {
+    display: flex;
+    align-items: center;
+}
+.opnBut {
+    color: #441ABD !important;
+    font-family: "Helvetica" !important;
+    font-size: 20px !important;
+    background-color: transparent !important;
+    margin-left: 30px !important;
+}
+.open {
+    color: #A5A5A5 !important;
+}
+.opnBut svg {
+    font-size: 24px !important;
+    position: relative;
+}
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 58px 48px;
+    padding: 2rem 0;
+    padding-left: 3rem;
+    box-sizing: border-box;
+}
+.point {
+    position: absolute;   
+}
+.circle {
+    background-color: #3B12AF;
+    width: 27px;
+    height: 27px;
+    box-shadow: 0 0 20px -3px #5124D2;
+    border-radius: 50%;
+}
+.line {
+    background: #FFFFFF;
+    z-index: -1;
+    width: 1px;
+    position: absolute;
+    left: 13px;
+    transition-duration: .3s;
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        max-width: 44%;
+    }
+}
+
+@media screen and (max-width: 864px) {
+    .card {
+        max-width: 46%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .card {
+        max-width: 95% !important;
+    }
+    .cardImage {
+        height: 220px !important;
+    }
+    .card div {
+        background-color: transparent;
+    }
+    .card span {
+        color: white !important;
+    }
+    .card h5 {
+        color: var(--main-orange) !important;
+    }
+    .card svg {
+        color: var(--main-orange) !important;
+    }
+    .wrapper {
+        padding-left: 2rem;
+    }
+    .circle {
+        background-color: var(--main-orange);
+        box-shadow: 0 0 20px -3px rgba(255, 85, 0, .3);
+    }
+    .opnBut {
+        color: var(--main-orange) !important;
+    }
+    .open {
+        color: #A5A5A5 !important;
+    }
+}

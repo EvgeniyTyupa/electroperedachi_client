@@ -1,0 +1,66 @@
+.main {
+    flex-direction: column;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    width: 100%;
+    position: relative;
+}
+.book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 48px;
+}
+.teamImage {
+    width: 100%;
+    min-height: 600px;
+    object-fit: cover;
+    object-position: center;
+    top: 80px;
+    z-index: 0;
+}
+.butContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+.redirectBut {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* gap: 0 !important; */
+    width: 163px !important;
+    height: 163px !important;
+    position: relative !important;
+    top: 80px;
+}
+
+.whiteGradient {
+    background: rgba(216, 179, 160, 0.5);
+    filter: blur(400px);
+    width: 1030px;
+    height: 100vh;
+    position: absolute;
+    z-index: 0;
+    right: -70%;
+    top: -10%;
+}
+
+@media screen and (max-width: 1440px) {
+    .teamImage {
+        min-height: 450px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        display: none !important;
+        margin: 0;
+    }
+}

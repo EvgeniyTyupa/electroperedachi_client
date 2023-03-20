@@ -1,0 +1,49 @@
+.main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 40px;
+}
+.moveButt {
+    position: absolute;
+    top: 35%;
+    border: 1px solid var(--main-orange) !important;
+    color: white !important;
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 28px !important;
+    z-index: 2 !important;
+}
+.moveButt:hover {
+    background-color: var(--main-orange) !important;
+}
+.moveButt svg {
+    position: relative;
+    top: 20px;
+}
+.moveLeftButt {
+    left: -55px;
+}
+.moveRightButt {
+    right: -55px
+}
+.slide {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .moveButt {
+        top: -25px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .moveLeftButt {
+        left: -20px;
+    }
+    .moveRightButt {
+        right: -20px;
+    }
+}

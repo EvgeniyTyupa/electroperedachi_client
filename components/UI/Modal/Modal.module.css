@@ -1,0 +1,36 @@
+.overflow {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Helvetica' !important;
+    z-index: 99999 !important;
+}
+.modal {
+    width: 30%;
+    background-color: white;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.closeButt {
+    margin-left: auto;
+    color: gray !important;
+}
+.content {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}

@@ -1,0 +1,26 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+}
+
+@media screen and (max-width: 1240px) {
+    .container {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+}
+
+
+@media screen and (max-width: 468px) {
+    .container {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+}
