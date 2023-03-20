@@ -8,7 +8,7 @@ const nextConfig = {
     defaultLocale: "ua"
   },
   images: {
-    domains: ['localhost']
+    domains: ['localhost', "89.116.236.29"]
   }
 }
 

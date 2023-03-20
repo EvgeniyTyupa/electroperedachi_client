@@ -1,12 +1,17 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { eventApi } from "../../api/api"
+import Preloader from "../../components/Common/Preloader/Preloader"
 import EventPageComponent from "../../components/Pages/Events/EventPageComponent/EventPageComponent"
 
 const EventPage = (props) => {
     const { event } = props
 
-    const { locale } = useRouter()
+    const { locale, isFallback } = useRouter()
+
+    if (isFallback) {
+        return <Preloader/>
+    }
 
     const description =
         locale === "ua" ? event.description : event.description_en
