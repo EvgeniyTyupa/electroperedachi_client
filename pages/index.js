@@ -38,7 +38,7 @@ export async function getStaticProps() {
             events: events,
             partners: partners
         },
-        revalidate: 1800
+        revalidate: 1800,
     }
 }
 
