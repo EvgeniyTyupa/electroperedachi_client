@@ -9,7 +9,7 @@ import UpcomingEventLink from "../../../Common/Events/UpcomingEventLink/Upcoming
 import Aos from "aos"
 import "aos/dist/aos.css"
 
-import home_back_img from "/public/images/home_back.jpg"
+import home_back_img from "/public/images/home_back.webp"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 const UpcomingEventHome = (props) => {

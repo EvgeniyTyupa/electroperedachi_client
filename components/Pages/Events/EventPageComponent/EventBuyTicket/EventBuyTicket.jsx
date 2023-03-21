@@ -12,7 +12,7 @@ import { useState } from "react"
 import { Button } from "@mui/material"
 import EventBuyTicketForm from "./EventBuyTicketForm/EventBuyTicketForm"
 
-import blue_liquid from "/public/images/blue_liquid.jpg"
+import blue_liquid from "/public/images/blue_liquid.webp"
 
 const EventBuyTicket = (props) => {
     const { event } = props

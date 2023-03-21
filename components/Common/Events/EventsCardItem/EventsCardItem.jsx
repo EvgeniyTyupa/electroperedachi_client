@@ -24,9 +24,10 @@ const EventsCardItem = (props) => {
         el.name + (index < item.lineup[0].djs.length - 1 ? ", " : "")
     ))
 
-    const lineup_limit_text = shortText(lineup.join(" "), width > 568 ? 60 : 1000, "...");
-
     const city = locale === "ua" ? item.city : item.city_en
+    
+    const lineup_limit_text = shortText(lineup.join(" "), width > 568 ? 60 : 1000, "...");
+    const address = shortText(`${city}, ${item.venue}`, 35, "...")
 
     return (
         <div className={cx(classes.main, className)}>
@@ -63,7 +64,7 @@ const EventsCardItem = (props) => {
                         <div className={classes.infoLocation}>
                             <div className={classes.infoField}>
                                 <HiLocationMarker/>
-                                <address>{city}, {item.venue}</address>
+                                <address>{address}</address>
                             </div>
                         </div>
                     )}

@@ -4,10 +4,10 @@ import Container from "../../UI/Container/Container"
 import Header from "../../UI/Text/Header/Header"
 import classes from './AboutPageComponent.module.css'
 
-import team_all from "/public/images/team_all.jpg"
+import team_all from "/public/images/team_all.webp"
 import EmployeeList from "./EmployeeList/EmployeeList"
 
-import team from "/public/images/team.jpg"
+import team from "/public/images/team.webp"
 import ExploreButton from "../../UI/Buttons/ExploreButton/ExploreButton"
 
 import Aos from 'aos';

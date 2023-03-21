@@ -4,7 +4,7 @@ import Container from "../../../UI/Container/Container"
 import Header from "../../../UI/Text/Header/Header"
 import classes from "./HomeBookArtist.module.css"
 
-import team from "/public/images/team.jpg"
+import team from "/public/images/team.webp"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
