@@ -27,7 +27,7 @@ export async function getStaticProps() {
             news: news,
             total: total
         },
-        revalidate: 1800,
+        revalidate: 10,
     }
 }
 
