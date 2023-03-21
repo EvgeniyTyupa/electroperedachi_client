@@ -8,7 +8,7 @@ const nextConfig = {
     defaultLocale: "ua"
   },
   images: {
-    domains: ['localhost', "89.116.236.29"]
+    domains: ['localhost', "89.116.236.29", "api.electroperedachi.com"]
   },
   distDir: 'build', 
 }
