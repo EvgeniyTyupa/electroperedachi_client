@@ -2,6 +2,7 @@
     font-size: 18px;
     transition-duration: .3s;
     font-weight: 300;
+    font-family: "NeueMachinaRegular";
 }
 .link:hover {
     color: var(--main-orange-hover) !important;

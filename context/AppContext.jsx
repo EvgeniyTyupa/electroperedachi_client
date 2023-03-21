@@ -25,9 +25,23 @@ export const AppContextProvider = (props) => {
     useEffect(() => {
         const start = () => {
             setIsFetchingContext(true)
+            const tempFix = () => {
+                const allStyleElems = document.querySelectorAll('style[media="x"]');
+                allStyleElems.forEach((elem) => {
+                  elem.removeAttribute("media");
+                });
+              };
+              tempFix();
         }
         const end = () => {
             setIsFetchingContext(false)
+            const tempFix = () => {
+                const allStyleElems = document.querySelectorAll('style[media="x"]');
+                allStyleElems.forEach((elem) => {
+                  elem.removeAttribute("media");
+                });
+              };
+            tempFix();
         }
         Router.events.on("routeChangeStart", start)
         Router.events.on("routeChangeComplete", end)
