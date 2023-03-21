@@ -70,9 +70,9 @@
     line-height: 32px !important;
     background-color: transparent !important;
 }
-.showArtistsBut:hover {
+/* .showArtistsBut:hover {
     background-color: transparent !important;
-}
+} */
 .blueGradient {
     position: absolute;
     background: rgba(59, 18, 175, 0.4);
