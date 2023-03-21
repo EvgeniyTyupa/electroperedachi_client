@@ -26,26 +26,11 @@ const HomePartners = (props) => {
                 <Header type="h2">{intl.formatMessage({ id: "partners.title" })}</Header>
             </div>
             <div className={classes.wrapper} data-aos="fade-up" data-aos-duration="2000">
-                {/* {partners.map(el => (
+                {partners.map(el => (
                     <a key={el.url} href={el.url} target="_blank" rel="noopener noreferrer">
-                        <Image src={el.image} width={100} height={100}/>
+                        <Image src={el.image} width={100} height={100} alt={"partner"}/>
                     </a>
-                ))} */}
-                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
-                    <Image src={partners[0].image} width={100} height={100}/>
-                </a>
-                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
-                    <Image src={partners[0].image} width={100} height={100}/>
-                </a>
-                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
-                    <Image src={partners[0].image} width={100} height={100}/>
-                </a>
-                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
-                    <Image src={partners[0].image} width={100} height={100}/>
-                </a>
-                <a href={partners[0].url} target="_blank" rel="noopener noreferrer">
-                    <Image src={partners[0].image} width={100} height={100}/>
-                </a>
+                ))}
             </div>
         </Container>
     )

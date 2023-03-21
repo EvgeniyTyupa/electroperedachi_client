@@ -7,12 +7,10 @@ import Layout from '../components/UI/Layout/Layout';
 import Head from 'next/head';
 import 'moment/locale/uk'
 import 'moment/locale/en-sg'
-import Preloader from '../components/Common/Preloader/Preloader';
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { AnimatePresence } from 'framer-motion';
-import AnimatedPage from '../components/Common/AnimatedPage/AnimatedPage';
 import ErrorBoundary from '../components/Common/ErrorBoundary';
 import { AppContextProvider } from '../context/AppContext';
 
@@ -35,11 +33,9 @@ export default function App({ Component, pageProps }) {
           </Head>
           <LocalizationProvider dateAdapter={AdapterMoment}>
             <AnimatePresence initial={false} exitBeforeEnter={true}>
-              <AnimatedPage key={pathname}>
-                <ErrorBoundary>
-                  <Component {...pageProps} key={pathname}/>
-                </ErrorBoundary>
-              </AnimatedPage>
+              <ErrorBoundary>
+                <Component {...pageProps} key={pathname}/>
+              </ErrorBoundary>
             </AnimatePresence>
           </LocalizationProvider>
         </Layout>
