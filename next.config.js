@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const removeImports = require("next-remove-imports")()
 
+/** @type {import('next-sitemap').IConfig} */
 const nextConfig = {
+  siteUrl: process.env.HOST || "https://www.electroperedachi.com",
+  generateRobotsTxt: true, 
   reactStrictMode: true,
   i18n: {
     locales: ["en", "ua"],
