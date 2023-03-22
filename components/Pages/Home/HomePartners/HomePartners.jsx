@@ -28,7 +28,7 @@ const HomePartners = (props) => {
             <div className={classes.wrapper} data-aos="fade-up" data-aos-duration="2000">
                 {partners.map(el => (
                     <a key={el.url} href={el.url} target="_blank" rel="noopener noreferrer">
-                        <Image src={el.image} width={100} height={100} alt={"partner"}/>
+                        <img src={el.image} alt={`${el.name} partner`}/>
                     </a>
                 ))}
             </div>

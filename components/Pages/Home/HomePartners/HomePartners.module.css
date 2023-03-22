@@ -6,11 +6,14 @@
     margin-top: 50px;
     width: 100%;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 68px;
 }
 .wrapper img {
     transition-duration: .3s;
+    max-width: 85px;
+    height: auto;
 }
 .wrapper img:hover {
     transform: scale(1.05);
