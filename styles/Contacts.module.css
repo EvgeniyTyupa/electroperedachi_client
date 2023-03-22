@@ -33,13 +33,18 @@
     position: absolute;
     z-index: 0;
     max-width: 100vw;
-    bottom: -50%;
+    bottom: -40%;
     overflow: hidden;
+    transform: scale(1.6);
 }
 
 @media screen and (max-width:1440px) {
     .main {
         padding-top: 70px;
+    }
+    .lines {
+        transform: scale(1);
+        bottom: -50%;
     }
 }
 
@@ -66,5 +71,9 @@
     .textBlock {
         margin-top: 45px;
         font-size: 18px;
+    }
+    .main {
+        min-height: unset;
+        height: fit-content;
     }
 }

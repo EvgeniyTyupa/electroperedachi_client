@@ -37,6 +37,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-intl": "^6.2.5",
     "react-lines-ellipsis": "^0.15.3",
+    "soundcloud-scraper": "^5.0.3",
     "tss-react": "^4.5.2"
   },
   "devDependencies": {

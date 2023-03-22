@@ -72,7 +72,6 @@ const UpcomingEventHome = (props) => {
             }, 2200)
             return () => clearInterval(interval)
         } else {
-            console.log(mousePos, isHover)
             viewerRef.current.style.transform =
                 "translate(" + (mousePos.x - 200) + "px," + (mousePos.y - 200) + "px)"
             viewerRef.current.style.backgroundPosition =

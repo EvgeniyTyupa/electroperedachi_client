@@ -8,13 +8,13 @@ import HomePartnership from "./HomePartnership/HomePartnership"
 import HomePartners from "./HomePartners/HomePartners"
 
 const HomePageComponent = (props) => {
-    const { upcomingEvent, news, events, partners } = props
+    const { upcomingEvent, news, events, partners, listeningsCount } = props
 
     return (
         <div className={classes.main}>
             <UpcomingEventHome event={upcomingEvent}/>
             <HomeNewsSection news={news}/>
-            <OrganisationStatistic/>
+            <OrganisationStatistic listeningsCount={listeningsCount}/>
             <HomeEventsSection events={events}/>
             <HomeBookArtist/>
             <HomePartnership/>

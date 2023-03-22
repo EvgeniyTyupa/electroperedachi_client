@@ -6,8 +6,11 @@ import CountUp from 'react-countup';
 import moment from 'moment'
 import { cx } from '../../../../utils/classnames';
 import useWindowDimensions from '../../../../hooks/useWindowDimension';
+import { nFormatter } from '../../../../utils/parseNumber';
 
 const OrganisationStatistic = (props) => {
+    const { listeningsCount } = props
+
     const intl = useIntl()
 
     const birthdate = moment("11/16/2016")
@@ -53,14 +56,15 @@ const OrganisationStatistic = (props) => {
                         {intl.formatMessage({ id: "statistic.listenings" })}&nbsp;
                         <a href="https://soundcloud.com/electroperedachi" target="_blank" rel="noopener noreferrer">SoundCloud</a>
                     </p>
-                    <CountUp
-                        end={63400}
+                    <p className={classes.number}>{nFormatter(listeningsCount + 20000)}</p>
+                    {/* <CountUp
+                        end={}
                         duration={3}
                         useEasing
                         enableScrollSpy
                         scrollSpyOnce
                         className={classes.number}
-                    />
+                    /> */}
                 </div>
             </div>
         </Container>

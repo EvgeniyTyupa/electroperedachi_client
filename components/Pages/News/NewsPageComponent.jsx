@@ -59,7 +59,6 @@ const NewsPageComponent = (props) => {
                     </div>
                 </InfiniteScroll>
             </Container>
-            {/* <div className={classes.whiteGradient}/> */}
             <div className={classes.lines}>
                 <Dna/>
             </div>
