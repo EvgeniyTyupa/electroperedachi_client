@@ -48,7 +48,7 @@ const EmployeeCard = (props) => {
       {item.role === "invited" && (
         <a
           href={item.links.facebook || item.links.insta || item.links.soundcloud}
-          className={classes.main}
+          className={cx(classes.main, classes.invited)}
           target="_blank"
           rel="noopener noreferrer"
         >

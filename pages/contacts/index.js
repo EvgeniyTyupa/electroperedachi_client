@@ -9,33 +9,10 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import ContactDna from "../../components/UI/Animation/Contact/ContactDna"
 import Head from "next/head"
+import HomePartnership from "../../components/Pages/Home/HomePartnership/HomePartnership"
 
 const ContactPage = () => {
     const intl = useIntl()
-
-    const variants = {
-        in: {
-            opacity: 0,
-            transition: {
-              duration: 2,
-              ease: 'easeInOut'
-            }
-        },
-        inactive: {
-            opacity: 1,
-            transition: {
-              duration: 2,
-              ease: 'easeInOut'
-            },
-        },
-        out: {
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-              ease: 'easeInOut'
-            }
-        }
-    }
 
     useEffect(() => {
         Aos.init({duration: 1000})
@@ -64,6 +41,7 @@ const ContactPage = () => {
                     <ContactDna/>
                 </div>
             </div>
+            <HomePartnership/>
         </>
     )
 }

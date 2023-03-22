@@ -94,6 +94,7 @@
         backdrop-filter: blur(0px);
         width: 70%;
         padding: 0;
+        justify-content: flex-start;
     }
     .block {
         /* background: rgba(255, 255, 255, 0.0.5); */

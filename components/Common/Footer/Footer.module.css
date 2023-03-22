@@ -25,17 +25,17 @@
 }
 .social a {
     border-radius: 50%;
-    background-color: #CBCBCB;
+    background-color: #5445ad;
     width: 30px;
     height: 30px;
-    color: #1A1A1A;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     transition-duration: .3s;
 }
 .social a:hover {
-    background-color: var(--main-orange-hover);
+    background-color: var(--main-orange);
 }
 .social svg {
     font-size: 20px;
@@ -48,6 +48,7 @@
 .mini a {
     font-weight: 100;
     font-size: 12px;
+    font-family: "NeueMachinaLight";
 }
 .mini a:hover {
     text-decoration: underline;

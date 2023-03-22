@@ -12,6 +12,7 @@ import { useState } from "react"
 import ActionButton from "../../../UI/Buttons/ActionButton/ActionButton"
 import { useRouter } from "next/router"
 import { routes } from "../../../../utils/routes"
+import AboutLines from "../../../UI/Animation/About/AboutLines"
 
 const HomeNewsSection = (props) => {
     const { news } = props
@@ -37,18 +38,23 @@ const HomeNewsSection = (props) => {
     }, [width])
 
     return (
-        <Container className={classes.main}>
-            <div className={classes.header} data-aos={width > 468 ? "fade-down" : "fade-up"} data-aos-duration="2000">
-                <Header type="h2">{intl.formatMessage({ id: "news.title" })}</Header>
-                <NavigateButton text={intl.formatMessage({ id: "news.viewMore" })} href="/news"/>
+        <div className={classes.container}>
+            <Container className={classes.main}>
+                <div className={classes.header} data-aos={width > 468 ? "fade-down" : "fade-up"} data-aos-duration="2000">
+                    <Header type="h2">{intl.formatMessage({ id: "news.title" })}</Header>
+                    <NavigateButton text={intl.formatMessage({ id: "news.viewMore" })} href="/news"/>
+                </div>
+                <div className={classes.newsWrapper} data-aos="fade-up" data-aos-duration="2000">
+                    {news.slice(-viewCardCount, 3).map(el => (
+                        <NewsCardItem item={el} key={el._id}/>
+                    ))}
+                </div>
+                <ActionButton className={classes.navigateBut} onClick={onViewMoreClick}>{intl.formatMessage({ id: "news.viewMore" })}</ActionButton>
+            </Container>
+            <div className={classes.lines}>
+                <AboutLines />
             </div>
-            <div className={classes.newsWrapper} data-aos="fade-up" data-aos-duration="2000">
-                {news.slice(-viewCardCount, 3).map(el => (
-                    <NewsCardItem item={el} key={el._id}/>
-                ))}
-            </div>
-            <ActionButton className={classes.navigateBut} onClick={onViewMoreClick}>{intl.formatMessage({ id: "news.viewMore" })}</ActionButton>
-        </Container>
+        </div>
     )
 }
 

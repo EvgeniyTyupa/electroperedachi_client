@@ -11,6 +11,7 @@ import "aos/dist/aos.css"
 
 import home_back_img from "/public/images/home_back.webp"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
+import { useState } from "react"
 
 const UpcomingEventHome = (props) => {
     const { event } = props
@@ -18,9 +19,17 @@ const UpcomingEventHome = (props) => {
     const viewerRef = useRef(null)
     const sceneRef = useRef(null)
 
+    const [isHover, setIsHover] = useState(false)
+
+    const [mousePos, setMousePos] = useState({})
+
     const { width } = useWindowDimensions()
 
     const intl = useIntl()
+
+    const handleHover = () => {
+        setIsHover(!isHover)
+    }
 
     function randomIntFromInterval(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -31,40 +40,64 @@ const UpcomingEventHome = (props) => {
     }, [])
 
     useEffect(() => {
-        let halfViewer = viewerRef.current.offsetWidth / 2
-        function getCoOrdinates() {
-            let x = null
-            if (width > 458) {
-                x =
-                window.screen.width -
-                randomIntFromInterval(1, 7) * 200 -
-                halfViewer
-            } else {
-                x =
-                window.screen.width -
-                randomIntFromInterval(0, 2) * 200 -
-                halfViewer
+        if (!isHover) {
+            let halfViewer = viewerRef.current.offsetWidth / 2
+            function getCoOrdinates() {
+                let x = null
+                if (width > 458) {
+                    x =
+                        window.screen.width -
+                        randomIntFromInterval(1, 7) * 200 -
+                        halfViewer
+                } else {
+                    x =
+                        window.screen.width -
+                        randomIntFromInterval(0, 2) * 200 -
+                        halfViewer
+                }
+
+                var y =
+                    window.screen.height -
+                    80 -
+                    randomIntFromInterval(1, 4) * 200 -
+                    halfViewer
+                viewerRef.current.style.transform =
+                    "translate(" + x + "px," + y + "px)"
+                viewerRef.current.style.backgroundPosition =
+                    -x + "px" + " " + -y + "px"
             }
 
-            var y =
-                window.screen.height -
-                80 -
-                randomIntFromInterval(1, 4) * 200 -
-                halfViewer
+            const interval = setInterval(() => {
+                getCoOrdinates()
+            }, 2200)
+            return () => clearInterval(interval)
+        } else {
+            console.log(mousePos, isHover)
             viewerRef.current.style.transform =
-                "translate(" + x + "px," + y + "px)"
+                "translate(" + (mousePos.x - 200) + "px," + (mousePos.y - 200) + "px)"
             viewerRef.current.style.backgroundPosition =
-                -x + "px" + " " + -y + "px"
+                -(mousePos.x - 200) + "px" + " " + -(mousePos.y - 200) + "px"
+        }
+    }, [viewerRef, viewerRef.current, sceneRef, sceneRef.current, isHover, mousePos])
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            setMousePos({ x: event.clientX, y: event.clientY })
         }
 
-        const interval = setInterval(() => {
-            getCoOrdinates()
-        }, 2200)
-        return () => clearInterval(interval)
-    }, [viewerRef, viewerRef.current, sceneRef, sceneRef.current])
+        window.addEventListener("mousemove", handleMouseMove)
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove)
+        }
+    }, [])
 
     return (
-        <div className={classes.main}>
+        <div
+            className={classes.main}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+        >
             <div class={classes.wrap}>
                 <div
                     className={classes.scene}

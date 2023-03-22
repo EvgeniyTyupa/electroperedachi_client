@@ -6,7 +6,6 @@ import OrganisationStatistic from "./OrganisationStatistic/OrganisationStatistic
 import HomeBookArtist from "./HomeBookArtist/HomeBookArtist"
 import HomePartnership from "./HomePartnership/HomePartnership"
 import HomePartners from "./HomePartners/HomePartners"
-import Dna from "../../UI/Animation/Dna/Dna"
 
 const HomePageComponent = (props) => {
     const { upcomingEvent, news, events, partners } = props

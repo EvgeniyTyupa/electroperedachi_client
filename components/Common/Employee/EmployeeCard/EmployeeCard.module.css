@@ -7,12 +7,14 @@
     width: 350px;
 }
 .main img {
-    transition-duration: .3s;
-    border: 1px solid transparent;
     object-fit: cover;
+    transition-duration: .3s;
 }
-.main img:hover {
-    border: 1px solid var(--main-orange);
+.main:hover img {
+    box-shadow: 0px 0px 50px rgba(68, 26, 189, 0.5);
+}
+.invited:hover img  {
+    box-shadow: 0px 0px 50px rgba(255, 85, 0, .3);
 }
 .imageContainer {
     width: 100%;

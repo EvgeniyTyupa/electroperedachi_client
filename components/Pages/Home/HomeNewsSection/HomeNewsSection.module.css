@@ -1,8 +1,16 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 .main {
     flex-direction: column;
     margin-top: 90px;
     margin-bottom: 90px;
     width: 100%;
+    z-index: 2;
 }
 .header {
     display: flex;
@@ -20,6 +28,26 @@
 }
 .navigateBut {
     display: none !important;
+}
+
+.lines {
+    position: absolute;
+    width: 100%;
+    bottom: -75%;
+    z-index: 0;
+    opacity: .5;
+    transform: rotate(-0deg) translateX(-0%);
+}
+
+@media screen and (max-width: 1440px) {
+    .lines {
+        position: absolute;
+        width: 100%;
+        bottom: -90%;
+        z-index: 0;
+        opacity: .5;
+        transform: rotate(-27deg) translateX(-10%);
+    }
 }
 
 @media screen and (max-width: 568px) {
