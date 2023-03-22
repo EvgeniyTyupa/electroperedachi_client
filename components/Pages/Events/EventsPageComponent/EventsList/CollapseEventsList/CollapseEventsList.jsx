@@ -79,9 +79,6 @@ const CollapseEventsList = (props) => {
             </div>
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
                 <div className={classes.wrapper}>
-                    <EventsCardItem item={events[0]} key={events[0]._id} className={classes.card} classImageName={classes.cardImage}/>   
-                    <EventsCardItem item={events[0]} key={events[0]._id} className={classes.card} classImageName={classes.cardImage}/>   
-                    {/* <EventsCardItem item={events[0]} key={events[0]._id} />    */}
                     {events.map((el) => (
                         <EventsCardItem item={el} key={el._id} className={classes.card} classImageName={classes.cardImage}/>
                     ))}
