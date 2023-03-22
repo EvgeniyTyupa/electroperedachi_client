@@ -7,8 +7,8 @@
     margin-top: 40px;
 }
 .moveButt {
-    position: absolute;
-    top: 35%;
+    position: absolute !important;
+    top: 35% !important;
     border: 1px solid var(--main-orange) !important;
     color: white !important;
     width: 100px !important;
@@ -24,10 +24,10 @@
     top: 20px;
 }
 .moveLeftButt {
-    left: -55px;
+    left: -55px !important;
 }
 .moveRightButt {
-    right: -55px
+    right: -55px !important
 }
 .slide {
     width: 100%;
@@ -35,15 +35,15 @@
 
 @media screen and (max-width: 800px) {
     .moveButt {
-        top: -25px;
+        top: -25px !important;
     }
 }
 
 @media screen and (max-width: 568px) {
     .moveLeftButt {
-        left: -20px;
+        left: -20px !important;
     }
     .moveRightButt {
-        right: -20px;
+        right: -20px !important;
     }
 }
