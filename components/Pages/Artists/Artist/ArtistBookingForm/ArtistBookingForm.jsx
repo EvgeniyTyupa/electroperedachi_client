@@ -40,10 +40,10 @@ const ArtistBookingForm = () => {
         try {
             setIsFetchingContext(true)
             await bookingApi.sendToTelegramMessage(data)
-            setServerResponse("Booking Request successfully sended!")
+            setServerResponse(intl.formatMessage({ id: "booking.success" }))
             reset({})
         } catch (err) {
-            setServerError("Server Error!")
+            setServerError(intl.formatMessage({ id: "coop.error" }))
         } finally {
             setIsFetchingContext(false)
         }

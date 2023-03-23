@@ -102,6 +102,7 @@
     "booking.venue.country": "Країна місця проведення*",
     "booking.venue.city": "Місто проведення*",
     "booking.submit": "Надіслати",
+    "booking.success": "Дякуємо! Запит на бронювання успішно відправлено!",
 
     "contacts.title": "Контакти",
     "contacts.text1": "Зв'яжіться з нами",

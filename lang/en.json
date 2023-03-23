@@ -100,6 +100,7 @@
     "booking.venue.country": "Venue Country*",
     "booking.venue.city": "Venue City*",
     "booking.submit": "Submit",
+    "booking.success": "Thank you! Booking Request successfully sended!",
 
     "contacts.title": "Contacts",
     "contacts.text1": "Contact us",
