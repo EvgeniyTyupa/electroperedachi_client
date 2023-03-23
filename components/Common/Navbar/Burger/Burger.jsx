@@ -47,6 +47,7 @@ const Burger = () => {
                 <div className={classes.links}>
                     {links.map(el => (
                         <CustomLink
+                            onClick={() => setIsOpenBurger(false)}
                             key={el.href}
                             href={el.href}
                             text={el.text}

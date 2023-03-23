@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }) {
             <meta name='description' content='Ukrainian electronic music label' />
             <meta name='viewport' content='initial-scale=1.0, width=device-width' />
             <meta property="og:image" content={poster_img.src}/>
+            <script id="help-ukraine-win" async="true" src="https://helpukrainewinwidget.org/cdn/widget.js" data-type="two" data-position="bottom-left"></script>
           </Head>
           <LocalizationProvider dateAdapter={AdapterMoment}>
             <AnimatePresence initial={false} exitBeforeEnter={true}>

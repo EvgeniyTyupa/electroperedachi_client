@@ -3,23 +3,41 @@ import { Controller, useForm } from "react-hook-form"
 import CustomInput from "../../../UI/Form/CustomInput"
 import { useIntl } from "react-intl"
 import ActionButton from "../../../UI/Buttons/ActionButton/ActionButton"
+import { useAppContext } from "../../../../context/AppContext"
+import { contactApi } from "../../../../api/api"
+import { useRouter } from "next/router"
 
-const CooperateForm = (props) => {
-    const { theme } = props
-
+const CooperateForm = () => {
     const { control, handleSubmit, reset } = useForm()
+
+    const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
     const intl = useIntl()
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const { asPath } = useRouter()
+
+    const onSubmit = async (data) => {
+        try {
+            const splitedPath = asPath.split("/")
+            const subject = splitedPath[splitedPath.length - 1]
+            data.subject = subject
+
+            setIsFetchingContext(true)
+            await contactApi.sendCoopOffer(data)
+            setServerResponse(intl.formatMessage({ id: "coop.done" }))
+            reset({})
+        } catch (err) {
+            setServerError(intl.formatMessage({ id: "coop.error" }))
+        } finally {
+            setIsFetchingContext(false)
+        }
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={classes.main}>
             <div className={classes.fields}>
                 <Controller
-                    name="contact_person_name"
+                    name="name"
                     control={control}
                     defaultValue=""
                     rules={{ required: intl.formatMessage({ id: "form.error.required" }) }}

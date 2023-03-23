@@ -1,8 +1,6 @@
 .main {
-    /* width: 100%; */
-    /* transform: scale(0.5); */
+    /* max-height: 100vh; */
     position: absolute;
-    /* width: 60vw; */
     margin: auto;
     right: 0;
     left: 0px;
@@ -32,8 +30,8 @@
             transform: rotate(0deg) scale(.5);
   }
   50% {
-      -webkit-transform: rotate(180deg) scale(0.7);
-      transform: rotate(180deg) scale(1);
+      -webkit-transform: rotate(180deg) scale(.6);
+      transform: rotate(180deg) scale(.6);
   }
   100% {
     -webkit-transform: rotate(360deg) scale(.5);

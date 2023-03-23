@@ -60,3 +60,10 @@
         justify-content: center;
     }
 }
+
+@media screen and (max-width: 350px) {
+    .mini {
+        align-items: center;
+        text-align: center;
+    }
+}

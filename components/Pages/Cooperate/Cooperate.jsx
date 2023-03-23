@@ -11,13 +11,15 @@ const Cooperate = (props) => {
     const intl = useIntl()
 
     return (
-        <div className={classes.main}>
-            <CircleLinesGradient/>
-            <div className={classes.formBlock}>
-                <Container className={classes.container}>
-                    <Header type="h3">{intl.formatMessage({ id: "cooperate.title" })}</Header>
-                    <CooperateForm theme={theme}/>
-                </Container>
+        <div className={classes.container}>
+            <div className={classes.main}>
+                <CircleLinesGradient/>
+                <div className={classes.formBlock}>
+                    <Container className={classes.container}>
+                        <Header type="h3">{intl.formatMessage({ id: "cooperate.title" })}</Header>
+                        <CooperateForm theme={theme}/>
+                    </Container>
+                </div>
             </div>
         </div>
     )

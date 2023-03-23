@@ -1,12 +1,15 @@
+.container {
+    width: 100%;
+    height: fit-content;
+}
 .main {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - 117px); 
     position: relative;
-    height: calc(100vh - 117px);
-    max-height: calc(100vh - 117px);
 }
 .lines {
     position: absolute;
@@ -87,5 +90,6 @@
 @media screen and (max-width: 350px) {
     .main {
         padding-top: 7rem;
+        margin-bottom: 4rem;
     }
 }
