@@ -25,6 +25,13 @@
 
 @media screen and (max-width: 468px) {
     .container {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container {
         padding: 0 1rem;
         box-sizing: border-box;
     }

@@ -44,11 +44,14 @@
 }
 
 @media screen and (max-width: 568px) {
+    .main {
+        margin-top: 20px;
+    }
     .container {
         padding: 0 !important;
     }
     .header {
-        padding: 0 1rem !important;
+        padding: 0 2rem !important;
         box-sizing: border-box;
     }
 }

@@ -21,7 +21,10 @@
 
 @media screen and (max-width: 468px) {
     .wrapper {
-        justify-content: center;
+        justify-content: flex-start;
         gap: 2rem;
+    }
+    .wrapper img {
+        max-width: 4rem;
     }
 }

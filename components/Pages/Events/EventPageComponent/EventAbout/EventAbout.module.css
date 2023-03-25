@@ -30,12 +30,18 @@
 
 @media screen and (max-width: 568px) {
     .main {
-        padding: 0 1rem;
+        padding: 0 2rem;
         margin-top: 90px;
         gap: 45px;
     }
     .textBlock {
         margin-bottom: 45px;
         gap: 45px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding: 0 1rem;
     }
 }

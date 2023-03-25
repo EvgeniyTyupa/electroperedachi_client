@@ -15,8 +15,11 @@
 }
 
 @media screen and (max-width: 1000px) {
+    .root {
+        z-index: 199999999 !important;
+    }
     .select {
-        display: none;
+        display: none !important;
     }
     .buttons {
         display: flex;

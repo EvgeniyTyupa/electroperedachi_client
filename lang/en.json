@@ -87,6 +87,10 @@
     "artists.title": "Artists",
     "artists.welcome": "Welcome to the place where talents shine. Read, listen and book residents! We offer you to meet closer our label residents and invited artists that performed at events.",
 
+    "artist.tab1": "Bio",
+    "artist.tab2": "Music",
+    "artist.tab3": "Video",
+
     "booking.title": "Booking request",
     "booking.artist": "Artist",
     "booking.event_date": "Event Date*",

@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 568px) {
     .main {
-        padding: 0 1rem;
+        padding: 0 2rem;
         margin-top: 45px;
     }
     .main h5 {
@@ -36,5 +36,11 @@
     }
     .wrapper {
         margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding: 0 1rem;
     }
 }

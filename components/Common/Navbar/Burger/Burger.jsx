@@ -35,6 +35,7 @@ const Burger = () => {
                 open={isOpenBurger}
                 onClose={handleOpen}
                 classes={{ root: classes.root, paper: classes.paper }}
+                sx={{ zIndex: 199999999 }}
             >
                 <div className={classes.header}>
                     <IconButton
@@ -55,7 +56,7 @@ const Burger = () => {
                         />
                     ))}
                 </div>
-                <LanguageSelector/>
+                <LanguageSelector handleOpen={handleOpen}/>
             </Drawer>
         </div>
     )

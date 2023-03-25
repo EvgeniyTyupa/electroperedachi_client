@@ -39,7 +39,9 @@ const languageSelectorStyles = {
     }
 }
 
-const LanguageSelector = () => {
+const LanguageSelector = (props) => {
+    const { handleOpen } = props
+
     const { locales, locale } = useRouter()
     const router = useRouter()
 
@@ -65,10 +67,10 @@ const LanguageSelector = () => {
                 ))}
             </TextField>
             <div className={classes.buttons}>
-                <Button>
+                <Button onClick={handleOpen}>
                     <Link href={{ href: router.pathname, query: {...router.query} }} locale={"en"} className={cx(classes.langLink, locale === "en" ? classes.active : undefined)}>EN</Link>
                 </Button>
-                <Button>
+                <Button onClick={handleOpen}>
                     <Link href={{ href: router.pathname, query: {...router.query} }} locale={"ua"} className={cx(classes.langLink, locale === "ua" ? classes.active : undefined)}>UA</Link>
                 </Button>
             </div>

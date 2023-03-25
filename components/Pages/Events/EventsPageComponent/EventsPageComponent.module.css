@@ -21,11 +21,14 @@
 }
 
 @media screen and (max-width: 568px) {
+    .main {
+        padding-top: 20px;
+    }
     .container {
         padding: 0;
     }
     .main h2 {
-        padding: 0 1rem;
+        padding: 0 2rem;
         box-sizing: border-box;
     }
 }
