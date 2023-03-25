@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 468px) {
     .main {
-        padding: 0 1rem;
+        padding: 0 2rem;
         margin-top: 60px;
     }
     .main iframe {
@@ -51,5 +51,12 @@
     }
     .photosSection {
         margin-top: 45px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding: 0 1rem;
+        margin-top: 60px;
     }
 }
