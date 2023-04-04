@@ -71,7 +71,7 @@ export default function App({ Component, pageProps }) {
                                 property="og:image"
                                 content={poster_img.src}
                             />
-                            <Script
+                            <script
                                 id="help-ukraine-win"
                                 async="true"
                                 src="https://helpukrainewinwidget.org/cdn/widget.js"
