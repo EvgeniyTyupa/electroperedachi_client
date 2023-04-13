@@ -36,9 +36,9 @@
     font-size: 17px !important;
 }
 .redirectBut svg {
-    position: relative;
-    top: 8px;
-    transition-duration: .3s;
+    position: relative !important;
+    top: 8px !important; 
+    transition-duration: .3s !important;
 }
 
 @media screen and (max-width: 862px) {

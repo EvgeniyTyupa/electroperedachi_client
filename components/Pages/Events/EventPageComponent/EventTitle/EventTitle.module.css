@@ -31,7 +31,6 @@
     top: 4px;
 }
 .info {
-    /* background: rgba(255, 255, 255, .1); */
     background-blend-mode: overlay;
     backdrop-filter: blur(50px);
     border-radius: 25px;
@@ -116,20 +115,23 @@
         padding: 0 1rem;
         padding-top: 90px;
     }
-    .info {
-        bottom: -10%;
+    .removeBlur {
+        background-blend-mode: overlay;
+        display: flex;
         flex-direction: column;
+        justify-content: space-between;
         background-color: transparent;
-        backdrop-filter: blur(0px);
         padding: 0;
         gap: 2rem;
         position: relative;
         width: 80%;
+        bottom: -50px;
     }
     .infoBlock {
         /* background: rgba(255, 255, 255, .1); */
         background-blend-mode: overlay;
         backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
         border-radius: 25px;
         padding: 40px 60px;
         box-sizing: border-box;
@@ -173,9 +175,8 @@
     .infoBlock {
         padding: 2rem 2rem;
     }
-    .info {
+    .removeBlur {
         width: 90%;
-        bottom: -5%;
         gap: 1rem;
     }
     .miniTitle {
@@ -239,6 +240,11 @@
 }
 
 @media screen and (max-width: 375px) {
+    .buy span {
+        font-size: 22px;
+        left: 1rem;
+        top: 43%;
+    }
     .buy button {
         margin-left: auto !important;
         width: 75px !important;

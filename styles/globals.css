@@ -122,6 +122,33 @@ body {
   font-family: 'Helvetica';
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-orange);
+  border-radius: 8px;
+}
+
+/* For other browsers */
+body {
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--main-orange);
+  border-radius: 8px;
+}
+
 body {
   color: white;
   background: #1A1A1A;

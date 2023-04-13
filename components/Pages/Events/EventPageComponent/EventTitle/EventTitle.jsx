@@ -10,11 +10,14 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import Header from "../../../../UI/Text/Header/Header"
 import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
+import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 
 const EventTitle = (props) => {
     const { event, isEnd, price, scrollToPayment } = props
 
     const { locale } = useRouter()
+
+    const { width } = useWindowDimensions()
 
     const intl = useIntl()
 
@@ -50,7 +53,7 @@ const EventTitle = (props) => {
                     <Header type="h2">{event.title}</Header>
                 </div>
                 <div
-                    className={classes.info}
+                    className={cx(width < 1024 ? classes.removeBlur : classes.info)}
                     data-aos="fade-down"
                     data-aos-duration="2000"
                 >

@@ -153,7 +153,7 @@ const PeaksFooter = (props) => {
     return (
         <svg
             width={1920}
-            height={width > 1024 ? 300 : ((width <= 1024 && width > 568) ? 200 : 100)}
+            height={width > 1024 ? 300 : ((width <= 1024 && width > 568) ? 200 : 300)}
             xmlns="http://www.w3.org/2000/svg"
             id="polyline"
             {...props}
