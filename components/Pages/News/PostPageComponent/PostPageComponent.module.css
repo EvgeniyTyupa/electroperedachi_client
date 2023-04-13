@@ -48,10 +48,17 @@
     justify-content: flex-end;
 }
 .imageContainer {
-    width: 709px;
+    width: 55%;
     height: 428px;
     position: relative;
     margin-bottom: 2rem;
+}
+.shareButMobile {
+    display: none;
+}
+.textBlock {
+    max-width: 55%;
+    width: 100%;
 }
 
 @media screen and (max-width: 1170px) {
@@ -71,6 +78,9 @@
     }
     .imageContainer {
         width: 100%;
+    }
+    .textBlock {
+        max-width: 100%;
     }
     .postImage {
         max-width: 100%;
@@ -102,6 +112,17 @@
         height: fit-content;
         min-height: 300px;
         margin-bottom: 1rem;
+    }
+    .shareButMobile {
+        display: block;
+        margin: 1rem 0;
+        margin-bottom: 1.5rem;
+    }
+    .shareButMobile button {
+        width: 100% !important;
+    }
+    .shareBut {
+        display: none;
     }
 }
 

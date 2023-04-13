@@ -2,8 +2,23 @@
     width: 150px;
 }
 
+.mainMini {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.imgMini {
+    width: 75px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .img {
+        -webkit-animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
+        animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
+    }
+    .imgMini {
         -webkit-animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
         animation: App-logo-spin infinite 2s linear, App-logo-opacity infinite 1s linear;
     }

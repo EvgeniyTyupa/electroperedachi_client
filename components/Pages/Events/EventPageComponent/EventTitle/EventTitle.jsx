@@ -9,9 +9,10 @@ import { useEffect } from "react"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import Header from "../../../../UI/Text/Header/Header"
+import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 
 const EventTitle = (props) => {
-    const { event, isEnd } = props
+    const { event, isEnd, price, scrollToPayment } = props
 
     const { locale } = useRouter()
 
@@ -77,6 +78,22 @@ const EventTitle = (props) => {
                             <p className={classes.important}>
                                 {event.venue}, {city}
                             </p>
+                        </div>
+                    </div>
+                    <div className={classes.infoBlock}>
+                        <h5 className={classes.miniTitle}>
+                            {intl.formatMessage({ id: "event.price" })}
+                        </h5>
+                        <div className={classes.infoData}>
+                            <p className={classes.important}>
+                                {price} {intl.formatMessage({ id: "event.currency" })}
+                            </p>
+                        </div>
+                    </div>
+                    <div className={cx(classes.infoBlock, classes.buy)}>
+                        <div className={classes.buyContainer}>
+                            <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>
+                            <ExploreButton text={intl.formatMessage({ id: "event.buyTicket" })} onClick={scrollToPayment}/>
                         </div>
                     </div>
                 </div>

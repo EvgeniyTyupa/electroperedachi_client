@@ -12,6 +12,7 @@ import "aos/dist/aos.css"
 import home_back_img from "/public/images/home_back.webp"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { useState } from "react"
+import { cx } from "../../../../utils/classnames"
 
 const UpcomingEventHome = (props) => {
     const { event } = props
@@ -26,10 +27,6 @@ const UpcomingEventHome = (props) => {
     const { width } = useWindowDimensions()
 
     const intl = useIntl()
-
-    const handleHover = () => {
-        setIsHover(!isHover)
-    }
 
     function randomIntFromInterval(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -73,9 +70,9 @@ const UpcomingEventHome = (props) => {
             return () => clearInterval(interval)
         } else {
             viewerRef.current.style.transform =
-                "translate(" + (mousePos.x - 200) + "px," + (mousePos.y - 200) + "px)"
+                "translate(" + (mousePos.x - 200) + "px," + (mousePos.y - 300) + "px)"
             viewerRef.current.style.backgroundPosition =
-                -(mousePos.x - 200) + "px" + " " + -(mousePos.y - 200) + "px"
+                -(mousePos.x - 200) + "px" + " " + -(mousePos.y - 300) + "px"
         }
     }, [viewerRef, viewerRef.current, sceneRef, sceneRef.current, isHover, mousePos])
 
@@ -106,7 +103,7 @@ const UpcomingEventHome = (props) => {
                     }}
                 ></div>
                 <div
-                    className={classes.viewer}
+                    className={cx(classes.viewer, isHover ? classes.hover : undefined)}
                     ref={viewerRef}
                     style={{
                         background: `url(${home_back_img.src})`

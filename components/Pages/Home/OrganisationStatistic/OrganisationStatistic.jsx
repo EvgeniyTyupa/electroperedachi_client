@@ -6,7 +6,7 @@ import CountUp from 'react-countup';
 import moment from 'moment'
 import { cx } from '../../../../utils/classnames';
 import useWindowDimensions from '../../../../hooks/useWindowDimension';
-import { nFormatter } from '../../../../utils/parseNumber';
+import { nFormatter, parseNumber } from '../../../../utils/parseNumber';
 
 const OrganisationStatistic = (props) => {
     const { listeningsCount } = props
@@ -25,7 +25,6 @@ const OrganisationStatistic = (props) => {
             <div data-aos={width > 468 ? "fade-down" : "fade-up"} data-aos-duration="2000">
                 <Header type="h2">{intl.formatMessage({ id: "statistic.title" })}</Header>
             </div>
-            <div className={classes.blueGradient}/>
             <div className={classes.wrapper} data-aos="fade-up" data-aos-duration="2000">
                 <div className={classes.stat}>
                     <p className={classes.label}>{intl.formatMessage({ id: "statistic.years" })}</p>
@@ -56,7 +55,13 @@ const OrganisationStatistic = (props) => {
                         {intl.formatMessage({ id: "statistic.listenings" })}&nbsp;
                         <a href="https://soundcloud.com/electroperedachi" target="_blank" rel="noopener noreferrer">SoundCloud</a>
                     </p>
-                    <p className={classes.number}>{nFormatter(listeningsCount + 20000)}</p>
+                    <p className={classes.number}>
+                        {listeningsCount + 20000 > 100000 ? (
+                            nFormatter(listeningsCount + 20000)
+                        ) : (
+                            parseNumber(listeningsCount + 20000)
+                        )}
+                    </p>
                     {/* <CountUp
                         end={}
                         duration={3}

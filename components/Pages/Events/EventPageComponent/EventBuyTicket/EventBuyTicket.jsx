@@ -15,9 +15,8 @@ import EventBuyTicketForm from "./EventBuyTicketForm/EventBuyTicketForm"
 import blue_liquid from "/public/images/blue_liquid.webp"
 
 const EventBuyTicket = (props) => {
-    const { event } = props
+    const { event, price, paymentBlockRef } = props
 
-    const [price, setPrice] = useState(0)
     const [count, setCount] = useState(1)
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -34,16 +33,6 @@ const EventBuyTicket = (props) => {
     }
 
     useEffect(() => {
-        let now = moment()
-
-        event.pricing.forEach((el) => {
-            if (now >= moment(el.start) && now <= moment(el.end)) {
-                setPrice(el.price)
-            }
-        })
-    }, [])
-
-    useEffect(() => {
         setTotalPrice(price * count)
     }, [count, price])
 
@@ -52,7 +41,7 @@ const EventBuyTicket = (props) => {
     }, [])
 
     return (
-        <div className={classes.main}>
+        <div className={classes.main} ref={paymentBlockRef}>
             <Container className={classes.container}>
                 <div className={classes.left} data-aos="fade-down" data-aos-duration="2000">
                     <h3>electroperedachi</h3>

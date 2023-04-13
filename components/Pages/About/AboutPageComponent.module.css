@@ -4,12 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 70px
 }
 .aboutUsContainerImage {
     width: 714px;
     height: 489px;
     position: relative;
+    top: -50px;
 }
 .ourTeam {
     flex-direction: column;
@@ -42,7 +43,14 @@
 .about {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 1rem;
+}
+.ourTeamInfo p {
+    font-weight: 300;
+    line-height: 28px;
+}
+.ourTeamInfo strong {
+    color: var(--main-orange);
 }
 .orangeLines {
     width: 100%;
@@ -93,9 +101,15 @@
     z-index: 0;
 }
 
+@media screen and (max-width: 1170px) {
+    .main {
+        margin-top: 45px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .ourTeamInfoBlock {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .ourTeamInfo {
         width: 100%;
@@ -127,6 +141,13 @@
 }
 
 @media screen and (max-width: 568px) {
+    .aboutUsContainerImage {
+        height: 238px;
+        top: -20px;
+    }
+    .main {
+        margin-top: 20px;
+    }
     .employees {
         margin-top: 0;
     }

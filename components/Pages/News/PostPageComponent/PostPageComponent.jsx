@@ -32,6 +32,7 @@ const PostPageComponent = (props) => {
                 <div className={classes.imageContainer}>
                     <Image src={post.image} alt={title} fill className={classes.postImage}/>
                 </div>
+                <ShareButton className={classes.shareButMobile}/>
                 {text && <div className={classes.textBlock}>
                     <EditerMarkdown
                         source={text}

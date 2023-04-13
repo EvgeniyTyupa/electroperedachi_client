@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 568px) {
     .content {
-       padding: 0 1rem;
+       padding: 0 2rem;
        box-sizing: border-box;
     }
     .main {
@@ -94,5 +94,11 @@
     }
     .text {
         font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .content {
+        padding: 0 1rem;
     }
 }

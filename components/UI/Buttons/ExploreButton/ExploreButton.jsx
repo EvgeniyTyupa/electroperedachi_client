@@ -8,15 +8,27 @@ const ExploreButton = (props) => {
     const { className, onClick, text, href = "" } = props
 
     return (
-        <Link href={href}>
-            <Button
-                className={cx(classes.button, className)}
-                onClick={onClick}
-            >
-                {text && <p>{text}</p>}
-                <RiArrowRightLine/>
-            </Button>
-        </Link>
+        <>
+            {href ? (
+                <Link href={href}>
+                    <Button
+                        className={cx(classes.button, className)}
+                        onClick={onClick}
+                    >
+                        {text && <p>{text}</p>}
+                        <RiArrowRightLine />
+                    </Button>
+                </Link>
+            ) : (
+                <Button
+                    className={cx(classes.button, className)}
+                    onClick={onClick}
+                >
+                    {text && <p>{text}</p>}
+                    <RiArrowRightLine />
+                </Button>
+            )}
+        </>
     )
 }
 

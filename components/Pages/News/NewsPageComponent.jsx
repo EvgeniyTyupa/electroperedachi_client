@@ -13,6 +13,7 @@ import { useIntl } from "react-intl"
 import Dna from "../../UI/Animation/Dna/Dna"
 import { useState } from "react"
 import { newsApi } from "../../../api/api"
+import PreloaderMini from "../../Common/Preloader/PreloaderMini"
 
 const NewsPageComponent = (props) => {
     const { news, total } = props
@@ -48,7 +49,8 @@ const NewsPageComponent = (props) => {
                     dataLength={totalNews.length}
                     hasMore={total > totalNews.length}
                     next={fetchMore}
-                    loader={<></>}
+                    loader={<PreloaderMini/>}
+                    className={classes.infinity}
                 >
                     <div className={classes.wrapper} data-aos="fade-up" data-aos-duration="2000">
                         {totalNews.map((el, index) => (

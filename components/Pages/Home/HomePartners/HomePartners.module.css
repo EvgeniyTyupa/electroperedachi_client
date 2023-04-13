@@ -22,9 +22,24 @@
 @media screen and (max-width: 468px) {
     .wrapper {
         justify-content: flex-start;
-        gap: 2rem;
+        gap: 1rem;
+    }
+    .wrapper a {
+        width: 21%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .wrapper img {
         max-width: 4rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .wrapper img {
+        max-width: 3rem;
+    }
+    .wrapper a {
+        width: 20%;
     }
 }

@@ -47,8 +47,8 @@
 }
 .mini a {
     font-weight: 100;
-    font-size: 12px;
-    font-family: "NeueMachinaLight";
+    font-size: 14px;
+    font-family: "NeueMachinaLight" !important;
 }
 .mini a:hover {
     text-decoration: underline;
@@ -58,6 +58,17 @@
     .links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
     }
 }
 

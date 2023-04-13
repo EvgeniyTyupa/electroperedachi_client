@@ -44,6 +44,8 @@
     "statistic.years": "years",
     "statistic.events": "events",
     "statistic.listenings": "listenings on",
+    "statistic.members": "members",
+    "statistic.residents": "musician residents",
 
     "partnership.title": "Partnership",
 
@@ -73,7 +75,8 @@
     "bookYourArtist": "Book your Artist",
     "bookYourArtist.showArtists": "Show artists",
 
-    "about.title": "Our team",
+    "about.title": "Who we are?",
+    "about.whoWeAre": "Our team",
     "about.subtitle": "Who are",
     "about.text": "This is a music project that organizes events at unique venues.",
     "about.goal.title": "Our goal",
@@ -122,6 +125,7 @@
     "event.ticketRules": "After payment, the ticket will be sent to your email specified when filling out the form.\n\nPlease note: for a person who has not reached the age of majority, the ticket loses its importance. If you have any questions or problems with purchasing/receiving a ticket/money - please contact us. All details on the contact page. We do not refund money due to a change in the visitor's decision, only if changes are made by the organizer.",
     "event.price": "Price",
     "event.currency": "uah",
+    "event.buyTicket": "Buy the\nticket",
     "event.tickets": "Tickets:",
     "event.form.title": "Ticket Details",
     "event.form.name": "Name",
@@ -130,6 +134,7 @@
     "event.how_it_was.video": "HOW IT WAS. AFTERMOVIE",
     "event.how_it_was.photos": "HOW IT WAS. PHOTOS",
 
+    "notfound.title": "Page not found",
     "notfound.text1": "Hey folks, seems you're lost, aren`t you? Tickets for this event are extremely rare, thus - none are available right now. Yet don't worry, there's always a chance you can be one of the lucky individuals to attend this party.",
     "notfound.text2": "In the meantime, why not take a look at the list of other events that are available?",
     "notfound.allEvents": "All Events",

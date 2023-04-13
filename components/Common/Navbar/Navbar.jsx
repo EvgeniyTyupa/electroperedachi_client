@@ -15,7 +15,7 @@ const Navbar = () => {
     const links = useNavLinks()
 
     return (
-        <header className={classes.main}>
+        <header className={cx(classes.main, router.pathname === "/" ? classes.transparent : undefined)}>
             <Container className={classes.container}>
                 <Link href={routes.home}>
                     <img src={logo.src} alt="logo" className={classes.logo}/>

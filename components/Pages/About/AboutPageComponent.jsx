@@ -15,12 +15,14 @@ import "aos/dist/aos.css"
 import { useEffect } from "react"
 import { routes } from "../../../utils/routes"
 import { cx } from "../../../utils/classnames"
-import AboutLines from "../../UI/Animation/About/AboutLines"
+import EmployeeStatistic from "./EmployeeStatistic/EmployeeStatistic"
 
 const AboutPageComponent = (props) => {
     const { employees } = props
 
     const intl = useIntl()
+
+    const our_employees = employees.filter(el => el.role !== "invited")
 
     useEffect(() => {
         Aos.init({ duration: 1000 })
@@ -41,11 +43,7 @@ const AboutPageComponent = (props) => {
                         data-aos="fade-up"
                         data-aos-duration="2000"
                     >
-                        <h3>
-                            {intl.formatMessage({ id: "about.subtitle" })}{" "}
-                            <strong>electroperedachi</strong>?
-                        </h3>
-                        <p>{intl.formatMessage({ id: "about.text" })}</p>
+                        <p><strong>electroperedachi</strong> - {intl.formatMessage({ id: "about.text" })}</p>
                         <div className={classes.about}>
                             <p>
                                 <strong>
@@ -87,9 +85,9 @@ const AboutPageComponent = (props) => {
                     </div>
                 </div>
             </Container>
-            <AboutLines />
+            <EmployeeStatistic employees={our_employees}/>
             <Container className={classes.employees}>
-                <EmployeeList employees={employees.filter(el => el.role !== "invited")}/>
+                <EmployeeList employees={our_employees}/>
                 <div className={classes.getDjsBetterContainer}>
                     <Header type="h2">
                         {intl.formatMessage({ id: "about.getDjsBetter" })}

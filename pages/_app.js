@@ -25,6 +25,25 @@ const messages = { en, ua }
 export default function App({ Component, pageProps }) {
     const { locale, pathname, events } = useRouter()
 
+
+    const isBottom = (el) => {
+        return el.getBoundingClientRect().bottom <= window.innerHeight;
+    }
+
+    const trackScrolling = () => {
+        const wrappedElement = document.getElementById('body');
+        const uaWidgetDivs = document.getElementsByClassName("huww-widget huww-widget-bottom-left");
+        if (isBottom(wrappedElement)) {
+            for (let el of uaWidgetDivs) {
+                el.style.display = "none"
+            }
+        } else {
+            for (let el of uaWidgetDivs) {
+                el.style.display = "block"
+            }
+        }
+    };
+
     useEffect(() => {
         const handleRouteChange = (url) => {
             gtag.pageview(url)
@@ -34,6 +53,13 @@ export default function App({ Component, pageProps }) {
             events.off("routeChangeComplete", handleRouteChange)
         }
     }, [events])
+
+    useEffect(() => {
+        document.addEventListener('scroll', trackScrolling);
+        return () => {
+            document.removeEventListener('scroll', trackScrolling);
+        }
+    }, [])
 
     return (
         <>
@@ -85,7 +111,9 @@ export default function App({ Component, pageProps }) {
                                 exitBeforeEnter={true}
                             >
                                 <ErrorBoundary>
-                                    <Component {...pageProps} key={pathname} />
+                                    <div id="body">
+                                        <Component {...pageProps} key={pathname} />
+                                    </div>
                                 </ErrorBoundary>
                             </AnimatePresence>
                         </LocalizationProvider>

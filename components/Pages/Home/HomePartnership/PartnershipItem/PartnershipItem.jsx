@@ -21,7 +21,7 @@ const PartnershipItem = (props) => {
         } else if (texts.length > 3 && index === 3) {
             return <span key={el} className={cx(classes.text, classes.underlined)}>{el}</span>
         } else {
-            return <span key={el} className={classes.text}>&nbsp;{el}&nbsp;</span>
+            return <span key={el} className={classes.text}>{index !== 0 && <>&nbsp;</>}{el}&nbsp;</span>
         }
     })
 

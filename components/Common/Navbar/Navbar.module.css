@@ -35,6 +35,10 @@
     .burger {
         display: block;
     }
+    .transparent {
+        background-color: transparent;
+        position: absolute;
+    }
     .logo {
         position: relative;
         top: 4px;
