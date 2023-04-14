@@ -70,6 +70,9 @@ const EventBuyTicketForm = (props) => {
                 fontSize: "14px"
             }
         },
+        "& .MuiInputLabel-root.Mui-focused": {
+            color: "black"
+        },
         "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "black"
         },

@@ -1,4 +1,3 @@
-
 import Container from "../../../UI/Container/Container"
 import EventAbout from "./EventAbout/EventAbout"
 import EventBuyTicket from "./EventBuyTicket/EventBuyTicket"
@@ -22,7 +21,7 @@ const EventPageComponent = (props) => {
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
-     }
+    }
 
     useEffect(() => {
         let now = moment()
@@ -37,12 +36,23 @@ const EventPageComponent = (props) => {
     return (
         <div className={classes.main}>
             <Container className={classes.container}>
-                <EventTitle event={event} isEnd={isEnd} price={price} scrollToPayment={scrollToPayment}/>
-                <EventLineUp lineup={event.lineup}/>
-                {!isEnd && <EventAbout event={event}/>}
-                {isEnd && <EventHowItWas event={event}/>}
+                <EventTitle
+                    event={event}
+                    isEnd={isEnd}
+                    price={price}
+                    scrollToPayment={scrollToPayment}
+                />
+                <EventLineUp lineup={event.lineup} />
+                {!isEnd && <EventAbout event={event} />}
+                {isEnd && <EventHowItWas event={event} />}
             </Container>
-            {!isEnd && <EventBuyTicket event={event} price={price} paymentBlockRef={paymentBlockRef}/>}
+            {!isEnd && (
+                <EventBuyTicket
+                    event={event}
+                    price={price}
+                    paymentBlockRef={paymentBlockRef}
+                />
+            )}
         </div>
     )
 }

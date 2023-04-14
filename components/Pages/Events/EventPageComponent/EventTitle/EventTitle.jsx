@@ -57,7 +57,7 @@ const EventTitle = (props) => {
                     data-aos="fade-down"
                     data-aos-duration="2000"
                 >
-                    <div className={cx(classes.infoBlock, classes.date)}>
+                    <div className={cx(classes.infoBlock, classes.date, isEnd ? classes.endEvent : undefined)}>
                         <h5 className={classes.miniTitle}>
                             {intl.formatMessage({ id: "event.date" })}
                         </h5>
@@ -73,7 +73,7 @@ const EventTitle = (props) => {
                             )}
                         </div>
                     </div>
-                    <div className={cx(classes.infoBlock, classes.place)}>
+                    <div className={cx(classes.infoBlock, classes.place, isEnd ? classes.endEvent : undefined)}>
                         <h5 className={classes.miniTitle}>
                             {intl.formatMessage({ id: "event.place" })}
                         </h5>
@@ -83,22 +83,26 @@ const EventTitle = (props) => {
                             </p>
                         </div>
                     </div>
-                    <div className={classes.infoBlock}>
-                        <h5 className={classes.miniTitle}>
-                            {intl.formatMessage({ id: "event.price" })}
-                        </h5>
-                        <div className={classes.infoData}>
-                            <p className={classes.important}>
-                                {price} {intl.formatMessage({ id: "event.currency" })}
-                            </p>
+                    {!isEnd && (
+                        <div className={classes.infoBlock}>
+                            <h5 className={classes.miniTitle}>
+                                {intl.formatMessage({ id: "event.price" })}
+                            </h5>
+                            <div className={classes.infoData}>
+                                <p className={classes.important}>
+                                    {price} {intl.formatMessage({ id: "event.currency" })}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className={cx(classes.infoBlock, classes.buy)}>
-                        <div className={classes.buyContainer}>
-                            <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>
-                            <ExploreButton text={intl.formatMessage({ id: "event.buyTicket" })} onClick={scrollToPayment}/>
+                    )}
+                    {!isEnd && (
+                        <div className={cx(classes.infoBlock, classes.buy)}>
+                            <div className={classes.buyContainer}>
+                                <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>
+                                <ExploreButton text={intl.formatMessage({ id: "event.buyTicket" })} onClick={scrollToPayment}/>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>

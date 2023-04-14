@@ -104,6 +104,13 @@
     top: 5px !important;
     white-space: pre-wrap !important;
 }
+.endEvent {
+    width: 50%;
+    text-align: right;
+}
+.date {
+    text-align: left;
+}
 
 @media screen and (max-width: 1024px) {
     .body {
@@ -165,6 +172,10 @@
     .buy button svg {
         font-size: 32px !important;
         top: 2px !important;
+    }
+    .endEvent {
+        width: 100%;
+        text-align: left;
     }
 }
 
