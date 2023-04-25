@@ -9,10 +9,8 @@
     flex-direction: column !important;
 }
 .welcome {
-    font-family: 'NeueMachinaRegular';
     font-style: normal;
     font-weight: 400;
-    font-size: 22px;
     line-height: 29px;
     margin-top: 28px;
 }

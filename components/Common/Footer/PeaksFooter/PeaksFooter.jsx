@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import anime from "animejs"
 import { useRouter } from "next/router"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
+import classes from "./PeaksFooter.module.css"
 
 const PeaksFooter = (props) => {
     const router = useRouter()
@@ -156,6 +157,7 @@ const PeaksFooter = (props) => {
             height={width > 1024 ? 300 : ((width <= 1024 && width > 568) ? 200 : 300)}
             xmlns="http://www.w3.org/2000/svg"
             id="polyline"
+            className={classes.main}
             {...props}
         >
             <path

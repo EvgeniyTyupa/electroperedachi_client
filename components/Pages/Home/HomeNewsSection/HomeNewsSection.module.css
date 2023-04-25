@@ -36,7 +36,13 @@
     bottom: -75%;
     z-index: 0;
     opacity: .5;
-    transform: rotate(-0deg) translateX(-0%);
+    transform: rotate(-0deg) translateX(-0%) scale(2);
+}
+
+@media screen and (max-width: 1920px) {
+    .lines {
+        transform: rotate(-0deg) translateX(-0%) scale(1);
+    }
 }
 
 @media screen and (max-width: 1440px) {

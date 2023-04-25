@@ -10,6 +10,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 
 import home_back_img from "/public/images/home_back.webp"
+import home_back_img_mobile from "/public/images/crowd.webp"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { useState } from "react"
 import { cx } from "../../../../utils/classnames"
@@ -99,14 +100,14 @@ const UpcomingEventHome = (props) => {
                     className={classes.scene}
                     ref={sceneRef}
                     style={{
-                        background: `url(${home_back_img.src})`
+                        background: width > 468 ? `url(${home_back_img.src})` : `url(${home_back_img_mobile.src})`
                     }}
                 ></div>
                 <div
                     className={cx(classes.viewer, isHover ? classes.hover : undefined)}
                     ref={viewerRef}
                     style={{
-                        background: `url(${home_back_img.src})`
+                        background: width > 468 ? `url(${home_back_img.src})` : `url(${home_back_img_mobile.src})`
                     }}
                 ></div>
             </div>

@@ -1,8 +1,8 @@
 import axios from "axios"
 import moment from "moment"
 
-// export const baseURL = "http://localhost:3002/api"
-export const baseURL = "https://api.electroperedachi.com/api"
+export const baseURL = "http://localhost:3002/api"
+// export const baseURL = "https://api.electroperedachi.com/api"
 
 const tgToken = "5778874040:AAG1rLGahhRsFoQc7iondvqYbMzUZUBFTiY"
 const chatId = "-880574164"
