@@ -43,7 +43,7 @@
 }
 .text {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 25px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -58,6 +58,9 @@
 }
 
 @media screen and (max-width: 1440px) {
+    .text {
+        font-size: 16px;
+    }
     .imageContainer {
         height: 260px;
     }

@@ -62,14 +62,6 @@ const OrganisationStatistic = (props) => {
                             parseNumber(listeningsCount + 20000)
                         )}
                     </p>
-                    {/* <CountUp
-                        end={}
-                        duration={3}
-                        useEasing
-                        enableScrollSpy
-                        scrollSpyOnce
-                        className={classes.number}
-                    /> */}
                 </div>
             </div>
         </Container>

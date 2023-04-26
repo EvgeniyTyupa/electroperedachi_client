@@ -25,7 +25,7 @@ const UpcomingEventLink = (props) => {
                 data-aos="fade-down"
                 data-aos-duration="2000"
             >
-                <Header type="h4">
+                <Header type="h3">
                     {type === "upcoming"
                         ? intl.formatMessage({ id: "title.upcoming.title" })
                         : intl.formatMessage({ id: "notfound.allEvents" })}

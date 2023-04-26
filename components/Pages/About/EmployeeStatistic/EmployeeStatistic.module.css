@@ -39,7 +39,7 @@
     font-weight: bold;
 }
 .number {
-    font-size: 92px;
+    font-size: 115px;
     color: white;
     font-family: 'NeueMachina' !important;
     font-weight: 800;
@@ -53,20 +53,19 @@
 .statList {
     width: fit-content
 }
-.blueGradient {
-    background: rgba(59, 18, 175, 0.5);
-    filter: blur(400px);
-    width: 756px;
-    height: 663px;
-    position: absolute;
-    z-index: -1;
-    right: -50%;
-    top: -50%;
-}
 
 @media screen and (max-width: 1920px) {
+    .number {
+        font-size: 100px;
+    }
     .lines {
         transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .number {
+        font-size: 92px;
     }
 }
 

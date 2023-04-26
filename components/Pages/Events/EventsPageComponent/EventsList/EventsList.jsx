@@ -131,7 +131,7 @@ const EventsList = (props) => {
                 )
             })}
             {sortedEvents.length === 0 && (
-                <Header type="h5">{intl.formatMessage({ id: "events.empty" })}</Header>
+                <p>{intl.formatMessage({ id: "events.empty" })}</p>
             )}
         </div>
     )

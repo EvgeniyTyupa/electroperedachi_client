@@ -110,9 +110,6 @@
     .viewer {
         display: none; 
     }
-    .title {
-        font-size: 60px !important;
-    }
     .infoContainer {
         flex-direction: column;
         justify-content: center;
@@ -144,7 +141,6 @@
         align-self: flex-start;
     }
     .title {
-        font-size: 60px !important;
         text-align: left;
     }
     .infoContainer > div + div {
@@ -158,17 +154,5 @@
 @media screen and (max-width: 568px) {
     .slogan {
         margin-top: 3rem;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .title {
-        font-size: 55px !important;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .title {
-        font-size: 45px !important;
     }
 }

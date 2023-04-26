@@ -19,16 +19,16 @@ const PartnershipItem = (props) => {
                 <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer">{el}</a>
             )
         } else if (texts.length > 3 && index === 3) {
-            return <span key={el} className={cx(classes.text, classes.underlined)}>{el}</span>
+            return <p key={el} className={cx(classes.text, classes.underlined)}>{el}</p>
         } else {
-            return <span key={el} className={classes.text}>{index !== 0 && <>&nbsp;</>}{el}&nbsp;</span>
+            return <p key={el} className={classes.text}>{index !== 0 && <>&nbsp;</>}{el}&nbsp;</p>
         }
     })
 
     return (
         <div className={classes.main}>
             <div className={classes.info}>
-                <Header type="h3">{item.title}</Header>
+                <Header type="h4">{item.title}</Header>
                 <div className={classes.textBlock}>
                     {textHtml}
                 </div>
