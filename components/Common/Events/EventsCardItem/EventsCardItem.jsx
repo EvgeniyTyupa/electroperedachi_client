@@ -8,9 +8,17 @@ import { Divider } from '@mui/material';
 import { HiLocationMarker } from 'react-icons/hi'
 import { cx } from '../../../../utils/classnames';
 import useWindowDimensions from '../../../../hooks/useWindowDimension';
+import LinesEllipsis from 'react-lines-ellipsis';
+import { useRef } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const EventsCardItem = (props) => {
     const { item, className, classImageName } = props
+
+    const titleRef = useRef(null)
+
+    const [titleLinesCount, setTitleLinesCount] = useState(1)
 
     const { locale } = useRouter()
 
@@ -26,8 +34,27 @@ const EventsCardItem = (props) => {
 
     const city = locale === "ua" ? item.city : item.city_en
     
-    const lineup_limit_text = shortText(lineup.join(" "), width > 568 ? 60 : 1000, "...");
-    const address = shortText(`${city}, ${item.venue}`, 35, "...")
+    const lineup_limit_text = shortText(lineup.join(" "), width > 1440 ? 120 : (width > 1000 && width <= 1440) ? 60 : 1000, "...");
+    const address = shortText(`${city}${item.venue ? `, ${item.venue}` : ""}`, 35, "...")
+
+    const calculateMaxLines = () => {
+        if (titleLinesCount === 1) {
+            return 2
+        } else if (titleLinesCount === 2) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+
+    useEffect(() => {
+        if (titleRef && titleRef.current) {
+            let lineHeight = Number(window.getComputedStyle(titleRef.current).lineHeight.split("px")[0])
+            console.log(titleRef.current.clientHeight, lineHeight, Number(window.getComputedStyle(titleRef.current).lineHeight.split("px")[0]))
+            let lineCount = titleRef.current.clientHeight / lineHeight
+            setTitleLinesCount(lineCount)
+        }
+    }, [titleRef, titleRef.current])
 
     return (
         <div className={cx(classes.main, className)}>
@@ -47,10 +74,15 @@ const EventsCardItem = (props) => {
                             <p>{date}</p>
                         </div>
                         <div className={classes.titleAndLineup}>
-                            <h5>{item.title}</h5>
-                            <div className={classes.lineup}>
-                                <span>{lineup_limit_text}</span>
-                            </div>
+                            <h5 ref={titleRef}>{item.title}</h5>
+                            <LinesEllipsis
+                                text={lineup.join(" ")}
+                                maxLine={width > 568 ? calculateMaxLines() : 6}
+                                ellipsis="..."
+                                trimRight
+                                basedOn="words"
+                                className={classes.lineup}
+                            />
                         </div>
                     </div>
                     <Divider className={classes.innerDivider} sx={{

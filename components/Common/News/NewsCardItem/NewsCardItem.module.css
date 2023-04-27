@@ -34,7 +34,7 @@
     font-weight: 700;
     font-size: 35px;
     line-height: 40px;
-    color: var(--main-orange);
+    color: var(--main-orange) !important;
     margin: 0.5rem 0;
     margin-bottom: 0.5rem
 }

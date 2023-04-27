@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { useIntl } from "react-intl"
-import Header from "../../../../UI/Text/Header/Header"
 import CollapseEventsList from "./CollapseEventsList/CollapseEventsList"
 import classes from "./EventsList.module.css"
 
@@ -115,10 +114,10 @@ const EventsList = (props) => {
                 })
             })
 
-            fin_res.push(el.reverse())
+            fin_res.push(el)
         })
 
-        setSortedEvents(fin_res.reverse())
+        setSortedEvents(fin_res)
     }, [filteredEvents])
 
     return (

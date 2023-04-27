@@ -57,7 +57,13 @@
         display: block !important;
         color: black !important;
         width: fit-content !important;
-        font-size: 14px !important;
+        font-size: 18px !important;
+        padding: 12px 32px !important;
     }
 }
 
+@media screen and (max-width: 350px) {
+    .navigateBut {
+        font-size: 16px !important;
+    }
+}

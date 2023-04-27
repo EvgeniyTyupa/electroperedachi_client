@@ -19,7 +19,7 @@ const EventLineUp = (props) => {
                 {lineup.map((el, index) => (
                     <EventStageLineUp
                         lineup={el.djs}
-                        key={el.djs[index].name}
+                        key={el.djs[0].name}
                         stageNumber={index + 1}
                     />
                 ))}

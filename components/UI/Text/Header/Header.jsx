@@ -3,7 +3,7 @@ import { cx } from "../../../../utils/classnames"
 import classes from './Header.module.css'
 
 const Header = (props) => {
-    const { children, className, color = "white", type } = props
+    const { children, className, color = "white", type, titleRef } = props
 
     return (
         <Fragment>
@@ -11,6 +11,7 @@ const Header = (props) => {
                 <h1
                     className={cx(classes.h1, className)}
                     style={{ color: color }}
+                    ref={titleRef}
                 >
                     {children}
                 </h1>
@@ -19,6 +20,7 @@ const Header = (props) => {
                 <h2 
                     className={cx(classes.h2, className)}
                     style={{ color: color }}
+                    ref={titleRef}
                 >
                     {children}
                 </h2>
@@ -27,6 +29,7 @@ const Header = (props) => {
                 <h3 
                     className={cx(classes.h3, className)}
                     style={{ color: color }}
+                    ref={titleRef}
                 >
                     {children}
                 </h3>
@@ -35,6 +38,7 @@ const Header = (props) => {
                 <h4 
                     className={cx(classes.h4, className)}
                     style={{ color: color }}
+                    ref={titleRef}
                 >
                     {children}
                 </h4>
@@ -43,6 +47,7 @@ const Header = (props) => {
                 <h5
                     className={cx(classes.h5, className)}
                     style={{ color: color }}
+                    ref={titleRef}
                 >
                     {children}
                 </h5>

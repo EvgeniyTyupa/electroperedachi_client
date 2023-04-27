@@ -30,9 +30,6 @@
 .textBlock a:hover {
     text-decoration: underline;
 }
-.text {
-    line-height: 22px;
-}
 .underlined {
     text-decoration: underline;
 }

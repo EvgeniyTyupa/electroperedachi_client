@@ -79,7 +79,7 @@ const EventTitle = (props) => {
                         </h5>
                         <div className={classes.infoData}>
                             <p className={classes.important}>
-                                {event.venue}, {city}
+                                {event.venue ? (`${event.venue},`) : ""} {city}
                             </p>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
-.main {
-    transform: scale(1.4);
+@media screen and (max-width: 2200px) {
+    .main {
+        transform: scale(1);
+    }
 }
 
 @media screen and (max-width: 1920px) {

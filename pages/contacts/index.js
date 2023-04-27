@@ -3,7 +3,6 @@ import { useIntl } from "react-intl"
 import Container from "../../components/UI/Container/Container"
 import Header from "../../components/UI/Text/Header/Header"
 import classes from '../../styles/Contacts.module.css'
-import { motion } from "framer-motion"
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';

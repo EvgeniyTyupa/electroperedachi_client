@@ -181,16 +181,19 @@ h1, h2, h3, h4, h5, h6, p {
 
 p {
   font-size: 20px;
+  line-height: 28px;
 }
 
 @media screen and (max-width: 1440px) {
   p {
     font-size: 18px;
+    line-height: 28px;
   }
 }
 
 @media screen and (max-width: 440px) {
   p {
     font-size: 17px;
+    line-height: 24px;
   }
 }

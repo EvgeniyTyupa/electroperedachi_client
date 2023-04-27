@@ -49,10 +49,10 @@
     .lines {
         position: absolute;
         width: 100%;
-        bottom: -90%;
+        bottom: -80%;
         z-index: 0;
         opacity: .5;
-        transform: rotate(-27deg) translateX(-10%);
+        transform: translateX(-10%);
     }
 }
 
@@ -79,12 +79,15 @@
         display: block !important;
         margin-top: 4rem !important;
         width: fit-content !important;
-        font-size: 14px !important;
+        font-size: 18px !important;
     }
 }
 
 @media screen and (max-width: 350px) {
     .header {
         padding: 0 1rem;
+    }
+    .navigateBut {
+        font-size: 14px !important;
     }
 }

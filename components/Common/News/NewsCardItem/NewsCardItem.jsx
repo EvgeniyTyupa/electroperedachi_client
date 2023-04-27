@@ -6,6 +6,7 @@ import Link from "next/link"
 import LinesEllipsis from "react-lines-ellipsis"
 import PostDate from "../PostDate/PostDate"
 import { cx } from "../../../../utils/classnames"
+import Header from "../../../UI/Text/Header/Header"
 
 const NewsCardItem = (props) => {
     const { item, className } = props
@@ -59,9 +60,9 @@ const NewsCardItem = (props) => {
             <div className={classes.content}>
                 <PostDate date={item.created_at} />
                 <Link href={`/news/${item.code}`}>
-                    <h4 className={classes.title} ref={titleRef}>
+                    <Header type="h4" className={classes.title} titleRef={titleRef}>
                         {title}
-                    </h4>
+                    </Header>
                 </Link>
                 <LinesEllipsis
                     text={description.trim()}

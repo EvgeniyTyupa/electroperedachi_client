@@ -33,6 +33,7 @@
     color: white;
     font-family: 'NeueMachina' !important;
     font-weight: 800;
+    line-height: normal !important;
 }
 .circle {
     width: 22px;

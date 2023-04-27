@@ -11,3 +11,9 @@
 .main:hover {
     box-shadow: 0 0 20px -3px var(--main-orange) !important;
 }
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding: 12px 32px !important;
+    }
+}

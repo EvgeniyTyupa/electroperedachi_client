@@ -12,7 +12,7 @@ const EventsPage = (props) => {
         <>
             <Head>
                 <title>{intl.formatMessage({ id: "events.title" })} | electroperedachi</title>
-                {/* <meta name="description" content={intl.formatMessage({ id: "news.description" })} key="desc" /> */}
+                <meta name="description" content={"events"} key="desc" />
             </Head>
             <EventsPageComponent
                 events={events}
@@ -30,7 +30,8 @@ export async function getStaticProps() {
         props: {
             upcomingEvents,
             events
-        }
+        },
+        revalidate: 10
     }
 }
 

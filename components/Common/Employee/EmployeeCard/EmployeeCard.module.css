@@ -40,6 +40,8 @@
 .readMoreBut {
     font-size: 14px !important;
     line-height: 16px !important;
+    width: 130px !important;
+    height: 130px !important;
 }
 .readMoreBut svg {
     font-size: 24px !important;
@@ -103,6 +105,15 @@
 @media screen and (max-width: 568px) {
     .imageContainer {
         height: 220px;
+    }
+    .readMoreBut {
+        width: 100px !important;
+        height: 100px !important;
+        font-size: 16px !important;
+        display: none !important;
+    }
+    .readMoreBut p {
+        font-size: 14px !important;
     }
 }
 

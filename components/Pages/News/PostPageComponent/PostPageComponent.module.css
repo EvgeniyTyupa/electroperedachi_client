@@ -19,6 +19,7 @@
     color: var(--main-orange);
     width: fit-content;
     margin-bottom: 45px;
+    text-transform: uppercase;
 }
 .title::first-letter {
     text-transform: capitalize;

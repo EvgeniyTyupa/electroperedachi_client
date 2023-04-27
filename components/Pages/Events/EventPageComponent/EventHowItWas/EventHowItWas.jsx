@@ -20,7 +20,7 @@ const EventHowItWas = (props) => {
 
     return (
         <div className={classes.main}>
-            {event.how_it_was.video && (
+            {(event.how_it_was && event.how_it_was.video) && (
                 <div
                     className={classes.videoSection}
                     data-aos="fade-down"
@@ -34,7 +34,7 @@ const EventHowItWas = (props) => {
                     </div>
                 </div>
             )}
-            {event.how_it_was.photos && (
+            {event.how_it_was.photos.length > 0 && (
                 <div
                     className={classes.photosSection}
                     data-aos="fade-down"

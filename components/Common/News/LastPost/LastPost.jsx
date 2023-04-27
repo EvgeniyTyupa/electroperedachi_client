@@ -9,6 +9,7 @@ import { routes } from "../../../../utils/routes"
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import Header from "../../../UI/Text/Header/Header"
 
 const LastPost = (props) => {
     const { post } = props
@@ -35,7 +36,7 @@ const LastPost = (props) => {
             </div>
             <div className={classes.info}>
                 <PostDate date={post.created_at}/>
-                <h2 className={classes.title}>{title}</h2>
+                <Header type="h2" className={classes.title}>{title}</Header>
                 <p>{description.trim()}</p>
             </div>
         </div>

@@ -33,19 +33,24 @@
     text-transform: uppercase;
     font-size: 26px;
 }
+.date p {
+    font-size: 26px !important;
+    line-height: normal !important;
+}
 .titleAndLineup {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 .titleAndLineup h5 {
-    color: #441ABD;
+    color: #441ABD !important;
     text-transform: uppercase;
     font-size: 26px;
+    line-height: 26px;
 }
 .lineup {
     color: black;
-    font-size: 16px;
+    font-size: 18px;
 }
 .infoLocation {
     display: flex;
@@ -63,6 +68,12 @@
 .infoField address {
     color: #A5A5A5;
     font-style: normal;
+}
+
+@media screen and (max-width: 1440px) {
+    .lineup {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -103,6 +114,6 @@
     }
     .date {
         width: 100%;
-        font-size: 17px;
+        font-size: 17px !important;
     }
 }
