@@ -57,7 +57,8 @@ export async function getStaticProps(context) {
     return {
         props: {
             artist: employee
-        }
+        },
+        revalidate: 10
     }
 }
 

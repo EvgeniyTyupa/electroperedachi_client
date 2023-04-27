@@ -26,7 +26,7 @@ export async function getStaticProps() {
         props: {
             employees: employees
         },
-        revalidate: 1800
+        revalidate: 10
     }
 }
 
