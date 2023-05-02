@@ -20,7 +20,7 @@ function NewsPage(props) {
 }
 
 export async function getStaticProps() {
-    const { news, total } = await newsApi.getNews(1, 18)
+    const { news, total } = await newsApi.getNews(1, 18, "desc")
 
     return {
         props: {

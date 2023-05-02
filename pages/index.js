@@ -30,7 +30,7 @@ function HomePage(props) {
 export async function getStaticProps() {
     const { upcomingEvents } = await eventApi.getUpcomingEvents()
     const { events } = await eventApi.getEvents(1, 3)
-    const { news } = await newsApi.getNews(1, 3)
+    const { news } = await newsApi.getNews(1, 3, "desc")
     const { partners } = await partnersApi.getPartners(1, 1000)
 
     const client = new SoundCloud.Client();

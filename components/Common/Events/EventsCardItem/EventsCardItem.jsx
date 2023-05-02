@@ -50,7 +50,6 @@ const EventsCardItem = (props) => {
     useEffect(() => {
         if (titleRef && titleRef.current) {
             let lineHeight = Number(window.getComputedStyle(titleRef.current).lineHeight.split("px")[0])
-            console.log(titleRef.current.clientHeight, lineHeight, Number(window.getComputedStyle(titleRef.current).lineHeight.split("px")[0]))
             let lineCount = titleRef.current.clientHeight / lineHeight
             setTitleLinesCount(lineCount)
         }

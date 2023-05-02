@@ -29,9 +29,9 @@ export const eventApi = {
 }
 
 export const newsApi = {
-    getNews(pageNumber, pageSize) {
+    getNews(pageNumber, pageSize, from) {
         return instance
-            .get(`/news?limit=${pageSize}&count=${pageNumber}`)
+            .get(`/news?limit=${pageSize}&count=${pageNumber}&${from ? `from=${from}` : ""}`)
             .then((response) => response.data)
     },
     getPost(code) {

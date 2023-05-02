@@ -6,6 +6,7 @@ import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
+import RedirectToAlbum from "./RedirectToAlbum/RedirectToAlbum"
 
 const EventHowItWas = (props) => {
     const { event } = props
@@ -20,7 +21,7 @@ const EventHowItWas = (props) => {
 
     return (
         <div className={classes.main}>
-            {(event.how_it_was && event.how_it_was.video) && (
+            {event.how_it_was && event.how_it_was.video && (
                 <div
                     className={classes.videoSection}
                     data-aos="fade-down"
@@ -34,7 +35,8 @@ const EventHowItWas = (props) => {
                     </div>
                 </div>
             )}
-            {event.how_it_was.photos.length > 0 && (
+            {(event.how_it_was.photos.length > 0 ||
+                event.how_it_was.fullAlbumPhotosUrl) && (
                 <div
                     className={classes.photosSection}
                     data-aos="fade-down"
@@ -53,6 +55,9 @@ const EventHowItWas = (props) => {
                             ))}
                         </Masonry>
                     </div>
+                    {event.how_it_was.fullAlbumPhotosUrl && (
+                        <RedirectToAlbum albumUrl={event.how_it_was.fullAlbumPhotosUrl}/>
+                    )}
                 </div>
             )}
         </div>

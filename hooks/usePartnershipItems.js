@@ -13,10 +13,6 @@ const usePartnershipItems = () => {
         {
             title: intl.formatMessage({ id: "partnership.joinArt.title" }),
             text: intl.formatMessage({ id: "partnership.joinArt.text" }),
-            text2: intl.formatMessage({ id: "partnership.joinArt.text2" }),
-            text3: intl.formatMessage({ id: "partnership.joinArt.text3" }),
-            text4: intl.formatMessage({ id: "partnership.joinArt.text4" }),
-            text5: intl.formatMessage({ id: "partnership.joinArt.text5" }),
             redirectButtText: intl.formatMessage({ id: "button.submitOffer" }),
             code: "art-exhibition",
             url: "https://google.com"
@@ -34,10 +30,14 @@ const usePartnershipItems = () => {
             code: "promoter"
         },
         {
+            title: intl.formatMessage({ id: "partnership.dj.title" }),
+            text: intl.formatMessage({ id: "partnership.dj.text" }),
+            redirectButtText: intl.formatMessage({ id: "button.sendMusicProposal" }),
+            code: "djs"
+        },
+        {
             title: intl.formatMessage({ id: "partnership.materials.title" }),
             text: intl.formatMessage({ id: "partnership.materials.text" }),
-            text2: intl.formatMessage({ id: "partnership.materials.text2" }),
-            text3: intl.formatMessage({ id: "partnership.materials.text3" }),
             redirectButtText: intl.formatMessage({ id: "button.getMaterials" }),
             code: "materials",
             url: "https://google.com"

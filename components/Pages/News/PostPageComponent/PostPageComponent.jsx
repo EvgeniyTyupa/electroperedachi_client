@@ -44,14 +44,18 @@ const PostPageComponent = (props) => {
                     />
                 </div>}
                 <div className={classes.embed}>
-                    <EditerMarkdown
-                        source={post.embedLink}
-                        style={{
-                            background: 'transparent', 
-                            color: "black", 
-                            fontFamily: "Helvetica",
-                        }}
-                    />
+                    {post.embedLink.includes("youtube.com/embed") ? (
+                        <iframe src={post.embedLink}/>
+                    ) : (
+                        <EditerMarkdown
+                            source={post.embedLink}
+                            style={{
+                                background: 'transparent', 
+                                color: "black", 
+                                fontFamily: "Helvetica",
+                            }}
+                        />
+                    )}
                 </div>
                 <ShareButton className={classes.shareBut}/>
             </Container>

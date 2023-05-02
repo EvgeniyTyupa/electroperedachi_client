@@ -122,10 +122,10 @@ const EventsList = (props) => {
 
     return (
         <div className={classes.main}>
-            {sortedEvents.map(el => {
+            {sortedEvents.map((el, index) => {
                 return (
                     el.map(month => (
-                        <CollapseEventsList events={month} key={month[0]._id}/>
+                        <CollapseEventsList defaultOpen={index === 0} events={month} key={month[0]._id}/>
                     ))
                 )
             })}

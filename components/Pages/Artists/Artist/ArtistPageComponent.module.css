@@ -25,7 +25,7 @@
 .avatarContainer {
     width: 40%;
     position: relative;
-    min-height: 500px;
+    min-height: 680px;
 }
 .avatarContainer img {
     width: 100%;
@@ -59,7 +59,7 @@
 }
 .links {
     display: flex;
-    margin-top: auto;
+    margin-top: 2rem;
     gap: 2rem;
 }
 .links a {
@@ -109,7 +109,6 @@
         flex-direction: column-reverse;
     }
     .links {
-        /* margin-top: 1rem; */
         margin-bottom: 2rem;
         justify-content: center
     }
@@ -142,6 +141,12 @@
     .mainInfo {
         margin-top: 20px;
     }
+    .links {
+        margin-top: 0;
+    }
+    .bio {
+        margin-top: 1rem;
+    }
 }
 
 @media screen and (max-width: 468px) {
@@ -149,7 +154,7 @@
         height: 220px;
     }
     .avatarContainer {
-        min-height: 300px;
+        min-height: 400px;
     }
 }
 
@@ -158,6 +163,6 @@
         flex-wrap: wrap;
     }
     .links a {
-        font-size: 12px;
+        font-size: 14px;
     }
 }

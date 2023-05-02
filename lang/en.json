@@ -22,6 +22,8 @@
     "button.readMore": "Read More",
     "button.showArtists": "Show Artists",
     "button.buyTicket": "Buy Ticket",
+    "button.sendMusicProposal": "Submit Music",
+    "button.album": "Go to album",
 
     "shareBut.button": "Share",
     "shareBut.titleModal": "Share in social media",
@@ -50,25 +52,22 @@
     "partnership.title": "Partnership",
 
     "partnership.mergin.title": "Brands mergin",
-    "partnership.mergin.text": "If your brand shares the freedom, equality, and love ideology, our fates are already bound, so let`s merge at last! Whether your product relates to non/alcoholic drinking, fashion or other high/low-demand niches - it`s time to work together.  For mutual PR, production or decorative requisites, and any other investment we offer allocating your brand production on events,  offline selling and online advertising.",
+    "partnership.mergin.text": "If your brand shares the freedom, equality, and love ideology, our fates are already bound, so let's merge at last! Whether your product relates to non/alcoholic drinking, fashion or other high/low-demand niches - its time to work together. For mutual PR, production or decorative requisites, and any other investment we offer to allocate your brand production on events, offline selling and online advertising.",
 
-    "partnership.joinArt.title": "Want to join in Art exhibition?",
-    "partnership.joinArt.text": "We`re hosting a specific place at the event called",
-    "partnership.joinArt.text2": "Art environment",
-    "partnership.joinArt.text3": "where folks can entertain and engage with. Whether it photography gallery or a woodworking piece,",
-    "partnership.joinArt.text4": "you have the opportunity to kick off your project!",
-    "partnership.joinArt.text5": "For some particular cases, you`d have an option to sell it.",
+    "partnership.joinArt.title": "Want to join an art exhibition?",
+    "partnership.joinArt.text": "Would you like to participate in an art exhibition? We are hosting a special section of the event called the Art Environment, where people can enjoy and interact with various art pieces. Whether it's a photography gallery or a woodworking creation, you have the opportunity to showcase your work! In some cases, you may even have the option to sell your artwork.",
 
-    "partnership.lighting.title": "Lighting is your duty?",
-    "partnership.lighting.text": "We aim to impress our audience... aren`t you? As the value of amazing lighting is quite clear for end visitors, we are constantly evolving in this dimension. Apart from internal specialists, we are looking for organizations that may offer unforgettable emotions to our audience.",
+    "partnership.lighting.title": "Are you responsible for lighting?",
+    "partnership.lighting.text": "We strive to impress our audience… so you too? As the importance of fantastic lighting is evident to our event-goers, we are always seeking to improve in this area. In addition to our in-house experts, we are also interested in partnering with organizations that can provide unforgettable emotional experiences for our audience.",
 
     "partnership.promouter.title": "Are you a promoter?",
-    "partnership.promouter.text": "We are open to any kind of proposition from promo or event organizations, that meets our mission and would like to share it with us. We used to work flexibly, yet strictly on a win-win strategy.",
+    "partnership.promouter.text": "We welcome proposals from promotion and event organizations that align with our mission and are interested in collaborating with us. We operate with flexibility but adhere strictly to a win-win strategy.",
 
     "partnership.materials.title": "Electroperedachi Promo Materials",
-    "partnership.materials.text": "Let everyone know we make history. By the link you`ll find the",
-    "partnership.materials.text2": "Brandbook",
-    "partnership.materials.text3": "with all the necessary materials you may need, for promotion purposes. It consists banners, logo in different formats and sizes, fonts, colors details and so on. Use it to mention our partnership.",
+    "partnership.materials.text": "Let everyone know we make history, together! You can find our brand book at the link provided, which includes all the necessary materials for promotional purposes. These materials include banners, logos in different formats and sizes, fonts, colour details, usage guidelines, and more. Please use these materials wisely to reference our partnership.",
+
+    "partnership.dj.title": "Attention DJs!",
+    "partnership.dj.text": "Are you looking for the opportunity to showcase your immersive music-playing skills and show us your artist's magic? We want to hear from you! Submit your proposition, and after reviewing your application, we will let you know which event and when we will invite you to be part of our lineup. Don't miss out on this chance to take your music to the next level!",
 
     "partners.title": "Partners",
 
@@ -78,17 +77,17 @@
     "about.title": "Who are we?",
     "about.whoWeAre": "Our team",
     "about.subtitle": "Who are",
-    "about.text": "This is a music project that organizes events at unique venues.",
+    "about.text": "is a light-acoustic installation. Our activity includes several processes, including the organisation of unique events in unforgettable locations and the creation of a corresponding atmosphere. Although we have our own residents, we invite other artists to almost every event, so we will gladly consider your proposals to join future events or book electroperedachi residents. The requirements for performing at our event are compliance with the organization's ideology and the highest DJ skills. Regarding various collaborations and partnerships, especially promoter proposals, B2B advertising, or placing a cultural product in the art space, we invite you to the Contacts section. Let's create, to get goosebumps upon the result, together!",
     "about.goal.title": "Our goal",
-    "about.goal.text": "to represent and spread the concept of technoculture, performing under the name electroperedachi. We understand what the horizon should be, so we treat every party seriously and creatively.",
+    "about.goal.text": "is to embody and promote the concept of techno culture, performing under the name electroperedachi. We never lose sight of the big picture and take each party seriously, approaching them with creativity and passion.",
     "about.mission.title": "Our mission",
-    "about.mission.text": "gather an unforgettable audience of different, unique and at the same time people with a similar worldview. The sum of raised hands, smiles, an amazing view and quality music is the formula for a successful event.",
+    "about.mission.text": "is to bring together an unforgettable audience of diverse, unique individuals who share a common worldview. The combination of raised hands, smiles, breathtaking landscapes, and quality music is the formula for a successful event.",
     "about.model.title": "Our business model",
-    "about.model.text": "for partnership and cooperation - based on win/win. «Satisfying everyone» - no other option",
+    "about.model.text": "for partnership and cooperation - is based on win/win. «Satisfying everyone» - no other option",
     "about.getDjsBetter": "Get to know our DJs better",
 
     "artists.title": "Artists",
-    "artists.welcome": "Welcome to the place where talents shine. Read, listen and book residents! We offer you to meet closer our label residents and invited artists that performed at events.",
+    "artists.welcome": "Step into a world where creativity knows no bounds. Here, talent reigns supreme, and our mission is to showcase the best of the best. Meet our label residents and invited artists, each one carefully curated for their unique sound and skill. From electrifying performances to soulful melodies, our artists are sure to captivate and inspire. So come on in, read their stories, listen to their music, and book them for your next event. Let's make magic together!",
 
     "artist.tab1": "Bio",
     "artist.tab2": "Music",
@@ -111,8 +110,10 @@
 
     "contacts.title": "Contacts",
     "contacts.text1": "Contact us",
-    "contacts.text2": "We are always open to new partners to work for the same mission.",
-    "contacts.text3": "If you are a company, booking or management agency, artists, festival, organization or individual with an amazing idea, feel free to get in touch.",
+    "contacts.text2": "We are always open to new partners to work towards a common mission.",
+    "contacts.text3": "Whether you are a company, booking or management agency, artist, festival, organization or individual with an amazing idea, feel free to reach out.",
+    "contacts.text4": "Also, we invite you to familiarize yourself with possible",
+    "contacts.text5": "partnership schemes.",
 
     "cooperate.title": "Fill out the form for cooperate",
     "cooperate.name": "Contact Person Name",
@@ -133,6 +134,7 @@
     "event.form.confirm_text": "I agree to the terms of use and privacy policy",
     "event.how_it_was.video": "HOW IT WAS. AFTERMOVIE",
     "event.how_it_was.photos": "HOW IT WAS. PHOTOS",
+    "event.how_it_was.fullAlbumTitle": "We invite you to watch full album",
 
     "notfound.title": "Page not found",
     "notfound.text1": "Hey folks, seems you're lost, aren`t you? Tickets for this event are extremely rare, thus - none are available right now. Yet don't worry, there's always a chance you can be one of the lucky individuals to attend this party.",

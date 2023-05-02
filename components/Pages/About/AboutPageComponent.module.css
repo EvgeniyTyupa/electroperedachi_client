@@ -40,6 +40,10 @@
 .ourTeamInfo h3 strong {
     color: var(--main-orange);
 }
+.ourTeamInfo a {
+    /* color: var(--main-orange); */
+    text-decoration: underline;
+}
 .about {
     display: flex;
     flex-direction: column;

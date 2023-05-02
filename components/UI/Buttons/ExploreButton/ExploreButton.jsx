@@ -5,12 +5,12 @@ import { RiArrowRightLine } from "react-icons/ri"
 import Link from "next/link"
 
 const ExploreButton = (props) => {
-    const { className, onClick, text, href = "" } = props
+    const { className, onClick, text, href = "", target = "_selp" } = props
 
     return (
         <>
             {href ? (
-                <Link href={href}>
+                <Link href={href} target={target}>
                     <Button
                         className={cx(classes.button, className)}
                         onClick={onClick}

@@ -29,6 +29,12 @@
 .textBlock a:hover {
     text-decoration: underline;
 }
+.anchorButt {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+}
 .lines {
     position: absolute;
     z-index: 0;

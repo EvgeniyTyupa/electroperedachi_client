@@ -1,0 +1,88 @@
+
+
+.main {
+    background: rgba(255, 255, 255, 0.01);
+    /* background-blend-mode: overlay; */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 70px 75px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 100px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+.textBlock {
+    margin-top: 14px;
+}
+.textBlock p {
+    display: inline;
+}
+.textBlock a {
+    color: var(--main-orange);
+    font-size: 20px;
+}
+.textBlock a:hover {
+    text-decoration: underline;
+}
+.underlined {
+    text-decoration: underline;
+}
+.redirectBut {
+    width: 140px !important;
+    height: 140px !important;
+    font-size: 17px !important;
+}
+.redirectBut svg {
+    position: relative !important;
+    top: 8px !important; 
+    transition-duration: .3s !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .textBlock a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 862px) {
+    .textBlock {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 658px) {
+    .info {
+        width: 100%;
+        text-align: center;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .main {
+        margin-top: 45px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .textBlock a {
+        font-size: 17px;
+    }
+}

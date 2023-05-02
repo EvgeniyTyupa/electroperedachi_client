@@ -9,15 +9,21 @@ import 'aos/dist/aos.css';
 import ContactDna from "../../components/UI/Animation/Contact/ContactDna"
 import Head from "next/head"
 import HomePartnership from "../../components/Pages/Home/HomePartnership/HomePartnership"
+import { useRef } from "react"
 
 const ContactPage = () => {
     const intl = useIntl()
+
+    const partnershipRef = useRef(null)
+
+    const onParnterMoreClick = () => {
+        partnershipRef.current.scrollIntoView()
+    }
 
     useEffect(() => {
         Aos.init({duration: 1000})
     }, [])
     
-
     return (
         <>
             <Head>
@@ -34,13 +40,16 @@ const ContactPage = () => {
                         <p>{intl.formatMessage({ id: "contacts.text2" })}</p>
                         <p>{intl.formatMessage({ id: "contacts.text3" })}</p>
                         <a href="mailto:electroperedachi@gmail.com">electroperedachi@gmail.com</a>
+                        <p>{intl.formatMessage({ id: "contacts.text4" })} <span onClick={onParnterMoreClick} className={classes.anchorButt}>{intl.formatMessage({ id: "contacts.text5" })}</span></p>
                     </div>
                 </Container>
                 <div className={classes.lines}>
                     <ContactDna/>
                 </div>
             </div>
-            <HomePartnership/>
+            <div ref={partnershipRef}>
+                <HomePartnership/>
+            </div>
         </>
     )
 }

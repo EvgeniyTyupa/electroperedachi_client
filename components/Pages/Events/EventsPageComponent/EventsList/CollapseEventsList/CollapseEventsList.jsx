@@ -11,7 +11,7 @@ import { useRef } from "react"
 import { useEffect } from "react"
 
 const CollapseEventsList = (props) => {
-    const { events } = props
+    const { events, defaultOpen } = props
 
     const { locale } = useRouter()
 
@@ -19,7 +19,7 @@ const CollapseEventsList = (props) => {
 
     const containerRef = useRef(null)
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(defaultOpen ? defaultOpen : false)
 
     const handleOpen = () => {
         setIsOpen(!isOpen)
