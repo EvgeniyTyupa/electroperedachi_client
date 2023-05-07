@@ -1,21 +1,16 @@
 import Head from "next/head"
-import { useRouter } from "next/router"
 import { employeeApi } from "../../api/api"
 import ArtistPageComponent from "../../components/Pages/Artists/Artist/ArtistPageComponent"
 
 const ArtistPage = (props) => {
     const { artist } = props
 
-    const { locale } = useRouter()
-
-    const description =
-        locale === "ua" ? artist.bio : artist.bio_en
-
     return (
         <>
             <Head>
                 <title>{artist.name} | electroperedachi</title>
-                <meta name="description" content={description}/>
+                <meta name="description" lang="ua" content={artist.bio}/>
+                <meta name="description" lang="en" content={artist.bio_en}/>
                 <met name="keywords" content={`electroperedachi, ${artist.keywords}`}/>
                 <meta property="og:image" content={artist.photos[0]}/>
             </Head>

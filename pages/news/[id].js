@@ -9,13 +9,13 @@ const PostPage = (props) => {
     const { locale } = useRouter()
 
     let title = locale === "ua" ? post.title : post.title_en
-    let description = locale === "ua" ? post.description : post.description_en
 
     return (
         <>
             <Head>
                 <title>{title} | electroperedachi</title>
-                <meta name="description" content={description} key="desc" />
+                <meta name="description" lang="ua" content={post.description} key="desc" />
+                <meta name="description" lang="en" content={post.description_en} key="desc" />
                 <met name="keywords" content={`electroperedachi, ${post.keywords}`}/>
                 <meta property="og:image" content={post.image} />
             </Head>

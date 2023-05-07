@@ -7,20 +7,18 @@ import EventPageComponent from "../../components/Pages/Events/EventPageComponent
 const EventPage = (props) => {
     const { event } = props
 
-    const { locale, isFallback } = useRouter()
+    const { isFallback } = useRouter()
 
     if (isFallback) {
         return <Preloader/>
     }
 
-    const description =
-        locale === "ua" ? event.description : event.description_en
-
     return (
         <>
             <Head>
                 <title>{event.title} | electroperedachi</title>
-                <meta name="description" content={description}/>
+                <meta name="description" lang="ua" content={event.description}/>
+                <meta name="description" lang="en" content={event.description_en}/>
                 <met name="keywords" content={`electroperedachi, ${event.keywords}`}/>
                 <meta property="og:image" content={event.poster.image}/>
             </Head>
