@@ -49,7 +49,7 @@ const EventBuyTicket = (props) => {
                         {moment(event.date).format("DD.MM.YY")}
                     </p>
                     <Image
-                        src={event.image_on_ticket_form ?? blue_liquid}
+                        src={event.image_on_ticket_form ? event.image_on_ticket_form : blue_liquid.src}
                         alt={event.title}
                         fill
                         className={classes.liquid}

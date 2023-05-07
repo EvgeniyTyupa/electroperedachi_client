@@ -24,8 +24,6 @@ const HomePartnership = () => {
 
     return (
         <div className={classes.container}>
-            {/* <div className={classes.whiteGradient}/> */}
-            {/* <div className={classes.blueGradient}/> */}
             <Container className={classes.main}>
                 <div data-aos={width > 468 ? "fade-down" : "fade-up"} data-aos-duration="2000">
                     <Header type="h2">{intl.formatMessage({ id: "partnership.title" })}</Header>

@@ -64,9 +64,6 @@
 .payment_sources img + img{
     margin-left: 35px;
 }
-.adornment{
-    
-}
 .confirm{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -80,6 +77,10 @@
 }
 .confirm svg{
     color: black;
+}
+.rulesLink {
+    text-decoration: underline;
+    cursor: pointer;
 }
 .phoneInput input{
     position: relative !important;

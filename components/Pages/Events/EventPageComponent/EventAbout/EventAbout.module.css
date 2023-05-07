@@ -9,10 +9,33 @@
     display: flex;
     justify-content: space-between;
     gap: 105px;
-    margin-bottom: 180px;
 }
 .markdown {
     width: 50%;
+}
+.buyTicket {
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.01);
+    /* background-blend-mode: overlay; */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 70px 75px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 45px;
+}
+.redirectBut {
+    width: 140px !important;
+    height: 140px !important;
+    font-size: 17px !important;
+}
+.redirectBut svg {
+    position: relative !important;
+    top: 8px !important; 
+    transition-duration: .3s !important;
 }
 
 @media screen and (max-width: 1024px) {
@@ -28,6 +51,16 @@
     }
 }
 
+@media screen and (max-width: 658px) {
+    .buyTicket {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        text-align: center;
+    }
+}
+
 @media screen and (max-width: 568px) {
     .main {
         padding: 0 2rem;
@@ -35,8 +68,15 @@
         gap: 45px;
     }
     .textBlock {
-        margin-bottom: 45px;
         gap: 45px;
+    }
+    .redirectBut {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    .redirectBut p {
+        position: relative !important;
+        top: 5px !important;
     }
 }
 

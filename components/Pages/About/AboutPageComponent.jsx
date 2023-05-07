@@ -28,8 +28,6 @@ const AboutPageComponent = (props) => {
         Aos.init({ duration: 1000 })
     }, [])
 
-    console.log(intl.locale)
-
     return (
         <div className={classes.main}>
             <div className={classes.whiteGradient} />
@@ -45,7 +43,7 @@ const AboutPageComponent = (props) => {
                         data-aos="fade-up"
                         data-aos-duration="2000"
                     >
-                        <p><strong>electroperedachi</strong> - {intl.formatMessage({ id: "about.text" })} {intl.locale === "ua" && <a href="/" target={"_blank"}>{intl.formatMessage({ id: "about.text2" })}</a>}</p>
+                        <p><strong>electroperedachi</strong> - {intl.formatMessage({ id: "about.text" })} {intl.locale === "ua" && <a download href="/of_manifest.pdf" target={"_blank"}>{intl.formatMessage({ id: "about.text2" })}</a>}</p>
                         <div className={classes.about}>
                             <p>
                                 <strong>

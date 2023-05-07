@@ -69,66 +69,64 @@ const EventsList = (props) => {
             })
         })
 
-        const fin_res = []
+        console.log(newSorted, "asd")
 
-        // getting count of array length with month in year
-        newSorted.forEach((el) => {
-            const uniqueEventsByMonth = []
+        // const fin_res = []
 
-            el.forEach((event) => {
-                let isUniqMonth = true
-                uniqueEventsByMonth.forEach((unique_event) => {
-                    if (
-                        new Date(event.date).getMonth() ===
-                        new Date(unique_event.date).getMonth()
-                    ) {
-                        isUniqMonth = false
-                    }
-                })
-                if (isUniqMonth) {
-                    uniqueEventsByMonth.push(event)
-                }
-            })
+        // // getting count of array length with month in year
+        // newSorted.forEach((el) => {
+        //     const uniqueEventsByMonth = []
 
-            el = []
+        //     el.forEach((event) => {
+        //         let isUniqMonth = true
+        //         uniqueEventsByMonth.forEach((unique_event) => {
+        //             if (
+        //                 new Date(event.date).getMonth() ===
+        //                 new Date(unique_event.date).getMonth()
+        //             ) {
+        //                 isUniqMonth = false
+        //             }
+        //         })
+        //         if (isUniqMonth) {
+        //             uniqueEventsByMonth.push(event)
+        //         }
+        //     })
 
-            // getting array of arrays with unique events by month in year
-            uniqueEventsByMonth.forEach((event) => {
-                el.push([event])
-            })
+        //     el = []
 
-            // push to inner array other events from full list with same month
-            el.forEach((i_arr) => {
-                i_arr.forEach((i_ev) => {
-                    newFiltered.forEach((event) => {
-                        if (
-                            new Date(i_ev.date).getMonth() ===
-                                new Date(event.date).getMonth() &&
-                            new Date(i_ev.date).getFullYear() ===
-                                new Date(event.date).getFullYear() &&
-                            event._id !== i_ev._id
-                        ) {
-                            i_arr.push(event)
-                        }
-                    })
-                })
-            })
+        //     // getting array of arrays with unique events by month in year
+        //     uniqueEventsByMonth.forEach((event) => {
+        //         el.push([event])
+        //     })
 
-            fin_res.push(el)
-        })
+        //     // push to inner array other events from full list with same month
+        //     el.forEach((i_arr) => {
+        //         i_arr.forEach((i_ev) => {
+        //             newFiltered.forEach((event) => {
+        //                 if (
+        //                     new Date(i_ev.date).getMonth() ===
+        //                         new Date(event.date).getMonth() &&
+        //                     new Date(i_ev.date).getFullYear() ===
+        //                         new Date(event.date).getFullYear() &&
+        //                     event._id !== i_ev._id
+        //                 ) {
+        //                     i_arr.push(event)
+        //                 }
+        //             })
+        //         })
+        //     })
 
-        setSortedEvents(fin_res)
+        //     fin_res.push(el)
+        // })
+
+        setSortedEvents(newSorted)
     }, [filteredEvents])
 
     return (
         <div className={classes.main}>
-            {sortedEvents.map((el, index) => {
-                return (
-                    el.map(month => (
-                        <CollapseEventsList defaultOpen={index === 0} events={month} key={month[0]._id}/>
-                    ))
-                )
-            })}
+            {sortedEvents.map((el, index) => (
+                <CollapseEventsList defaultOpen={index === 0} events={el} key={el[0]._id}/>
+            ))}
             {sortedEvents.length === 0 && (
                 <p>{intl.formatMessage({ id: "events.empty" })}</p>
             )}

@@ -39,7 +39,7 @@ const EventBuyTicketForm = (props) => {
             setServerError("Server Error, try again")
         }
         setIsFetchingContext(false)
-        
+
         reset({
             email: "",
             phone: ""
@@ -187,6 +187,28 @@ const EventBuyTicketForm = (props) => {
                 />
             </div>
 
+            <div className={cx(classes.field, classes.confirm)}>
+                <FormControlLabel
+                    sx={{
+                        fontFamily: "Helvetica"
+                    }}
+                    control={<Checkbox required={true} onChange={() => ""} />}
+                    label={
+                        <>
+                            {intl.formatMessage({
+                                id: "event.form.confirm_rules"
+                            })}
+                            &nbsp;
+                            <a className={classes.rulesLink} download href="/Terms_and_rules_at_electroperedachi_events.pdf">
+
+                                {intl.formatMessage({
+                                    id: "event.form.confirm_rules_link"
+                                })}
+                            </a>
+                        </>
+                    }
+                />
+            </div>
             <div className={classes.form_footer}>
                 <Button type={"submit"} className={classes.buyBut}>
                     {intl.formatMessage({ id: "button.buyTicket" })}

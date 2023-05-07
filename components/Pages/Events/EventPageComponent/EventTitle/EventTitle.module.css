@@ -290,4 +290,7 @@
         left: 1rem;
         top: 43%;
     }
+    .removeBlur {
+        width: 100%;
+    }
 }

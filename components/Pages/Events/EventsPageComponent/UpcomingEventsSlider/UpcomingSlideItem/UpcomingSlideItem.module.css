@@ -39,21 +39,27 @@
     font-size: 26px;
     font-weight: 700;
 }
-.titleBlock {
+.titleContainer {
     max-width: 55%;
     width: fit-content;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin: auto;
+}
+.titleBlock {
     /* background: rgba(255, 255, 255, 0.0.5); */
     background-blend-mode: overlay;
     backdrop-filter: blur(50px);
     height: fit-content;
-    margin: auto;
     padding: 2rem;
     box-sizing: border-box;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 .titleBlock h4 {
     z-index: 1;
@@ -75,6 +81,42 @@
     justify-content: center;
     text-transform: uppercase;
 }
+.buyContainer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+.buy {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+.buy span {
+    display: block;
+    z-index: 1;
+    font-family: "NeueMachina";
+    font-size: 24px;
+}
+.buy button {
+    width: 120px !important;
+    height: 120px !important;
+}
+.buy button svg {
+    top: 8px !important;
+    font-size: 26px !important;
+}
+.buy button p {
+    position: relative !important;
+    top: 5px !important;
+    white-space: pre-wrap !important;
+    font-size: 16px !important;
+}
+.buyMobile {
+    display: none !important;
+}
 
 @media screen and (max-width: 1440px) {
     .main {
@@ -85,7 +127,7 @@
 @media screen and (max-width: 1000px) {
     .main {
         flex-direction: column-reverse;
-        min-height: 80vh;
+        min-height: 100vh;
         height: fit-content;
         align-items: center;
         padding-top: 4rem;
@@ -104,6 +146,7 @@
         padding: 2rem;
         box-sizing: border-box;
         border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, .2)
     }
     .titleBlock {
         background: transparent;
@@ -115,17 +158,44 @@
     .titleBlock {
         text-align: center;
     }
+    .buy {
+        display: none;
+    }
+    .buyMobile {
+        display: flex !important;
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+    }
+    .buy button p {
+        display: none !important;
+    }
+    .buyMobile span {
+        display: block;
+        position: relative;
+        z-index: 1;
+        font-family: "NeueMachina";
+        font-size: 28px;
+        left: 1.5rem;
+        text-transform: inherit !important;
+    }
+    .buy button svg {
+        font-size: 32px !important;
+        top: 2px !important;
+    }
 }
 
 @media screen and (max-width: 568px) {
     .main {
-        max-height: 80vh;
+        min-height: 100vh;
         position: relative;
         padding-top: 0;
     }
     .info {
         position: absolute;
-        width: 80%;
+        width: 90%;
         bottom: -12rem;
         gap: 1rem;
     }
@@ -147,6 +217,41 @@
     .block {
         gap: 8px;
     }
+    .buyContainer {
+        justify-content: space-between;
+        width: 100%;
+        left: 0;
+        position: relative;
+    }
+    .buy {
+        padding: 1rem ;
+    }
+    .buy span {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        font-family: "NeueMachina";
+        font-size: 24px;
+        left: 1rem;
+        top: 43%
+    }
+    .buy button {
+        margin-left: auto !important;
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .buy button svg {
+        font-size: 32px !important;
+        top: 2px !important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .buy span {
+        font-size: 24px;
+        left: 1rem;
+        top: 43%;
+    }
 }
 
 
@@ -159,5 +264,39 @@
     }
     .title h2 {
         font-size: 40px;
+    }
+    .buy button {
+        margin-left: auto !important;
+        width: 85px !important;
+        height: 85px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .buy span {
+        font-size: 22px;
+        left: 1rem;
+        top: 43%;
+    }
+    .buy button {
+        margin-left: auto !important;
+        width: 75px !important;
+        height: 75px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .buy button {
+        margin-left: auto !important;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .buy button svg {
+        font-size: 26px !important;
+    }
+    .buy span {
+        font-size: 17px;
+        left: 1rem;
+        top: 43%;
     }
 }

@@ -74,6 +74,10 @@
     color: #A5A5A5;
     text-transform: uppercase;
 }
+.specInv {
+    font-weight: 100;
+    margin-top: -10px;
+}
 
 @media screen and (max-width: 1440px) {
     .main {

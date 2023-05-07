@@ -58,6 +58,7 @@ const EmployeeCard = (props) => {
           <p className={classes.name}>
             {viewType === "artists" ? item.name : item.real_name}
           </p>
+          <span className={cx(classes.spec, classes.specInv)}>{item.spec}</span>
         </a>
       )}
 

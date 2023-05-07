@@ -4,6 +4,9 @@
     flex-direction: column;
     margin-top: 170px
 }
+.withVideo {
+    margin-top: 100px;
+}
 .main h5 {
     font-weight: 300;
     font-size: 22px;
@@ -30,6 +33,9 @@
     .main {
         padding: 0 2rem;
         margin-top: 75px;
+    }
+    .withVideo {
+        margin-top: 50px;
     }
     .main h5 {
         font-size: 15px;

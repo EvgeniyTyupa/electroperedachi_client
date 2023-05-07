@@ -5,6 +5,7 @@
     align-items: center;
     background-color: white;
     position: relative;
+    margin-top: 180px;
 }
 .container {
     position: relative;
@@ -113,6 +114,12 @@
     }
     .right {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        margin-top: 45px;
     }
 }
 

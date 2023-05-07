@@ -1,0 +1,91 @@
+
+
+.main {
+    background: rgba(255, 255, 255, 0.01);
+    /* background-blend-mode: overlay; */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+    padding: 70px 75px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+}
+.textBlock {
+    white-space: pre-wrap;
+    color: white;
+    margin-top: 14px;
+}
+.textBlock p {
+    color: white;
+}
+.textBlock a {
+    color: var(--main-orange);
+    font-size: 20px;
+}
+.textBlock a:hover {
+    text-decoration: underline;
+}
+.underlined {
+    text-decoration: underline;
+}
+.redirectBut {
+    width: 140px !important;
+    height: 140px !important;
+    font-size: 17px !important;
+}
+.redirectBut svg {
+    position: relative !important;
+    top: 25px !important; 
+    transition-duration: .3s !important;
+    transform: rotate(90deg) !important;
+}
+.redirectBut svg:hover {
+    transform: unset
+}
+.expanded svg {
+    transform: rotate(-90deg) !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .textBlock a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 862px) {
+}
+
+@media screen and (max-width: 658px) {
+    .info {
+        width: 100%;
+        text-align: center;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 2rem;
+    }
+    .redirectBut {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .textBlock a {
+        font-size: 17px;
+    }
+}

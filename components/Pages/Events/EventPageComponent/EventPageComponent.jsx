@@ -10,6 +10,9 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { useRef } from "react"
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
 const EventPageComponent = (props) => {
     const { event } = props
 
@@ -31,6 +34,8 @@ const EventPageComponent = (props) => {
                 setPrice(el.price)
             }
         })
+
+        Aos.init({duration: 1000})
     }, [])
 
     return (
@@ -42,8 +47,11 @@ const EventPageComponent = (props) => {
                     price={price}
                     scrollToPayment={scrollToPayment}
                 />
-                <EventLineUp lineup={event.lineup} />
-                {!isEnd && <EventAbout event={event} />}
+                {event.poster.video && (
+                    <iframe src={event.poster.video} className={classes.video} data-aos="fade-down" data-aos-duration="2000"/>
+                )}
+                <EventLineUp event={event} />
+                {!isEnd && <EventAbout event={event} scrollToPayment={scrollToPayment}/>}
                 {isEnd && <EventHowItWas event={event} />}
             </Container>
             {!isEnd && (

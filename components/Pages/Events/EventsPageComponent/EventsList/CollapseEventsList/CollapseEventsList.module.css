@@ -72,10 +72,10 @@
     .card div {
         background-color: transparent;
     }
-    .card span {
+    .card div {
         color: white !important;
     }
-    .card h5 {
+    .card div h5 {
         color: var(--main-orange) !important;
     }
     .card svg {

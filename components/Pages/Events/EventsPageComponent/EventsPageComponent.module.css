@@ -32,3 +32,9 @@
         box-sizing: border-box;
     }
 }
+
+@media screen and (max-width: 350px) {
+    .main h2 {
+        padding: 0 1rem;
+    }
+}

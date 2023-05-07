@@ -1,7 +1,5 @@
 import { Button } from "@mui/material"
-import { useRouter } from "next/router"
 import classes from "./CollapseEventsList.module.css"
-import moment from "moment"
 import { RiArrowRightLine } from "react-icons/ri"
 import { Collapse } from "@mui/material"
 import { useState } from "react"
@@ -13,8 +11,6 @@ import { useEffect } from "react"
 const CollapseEventsList = (props) => {
     const { events, defaultOpen } = props
 
-    const { locale } = useRouter()
-
     const [lineHeight, setLineHeight] = useState(20)
 
     const containerRef = useRef(null)
@@ -24,11 +20,6 @@ const CollapseEventsList = (props) => {
     const handleOpen = () => {
         setIsOpen(!isOpen)
     }
-
-    const month =
-        locale === "ua"
-            ? moment(events[0].date).locale("uk").format("MMM")
-            : moment(events[0].date).locale("en").format("MMM")
 
     useEffect(() => {
         if (isOpen) {
@@ -58,9 +49,7 @@ const CollapseEventsList = (props) => {
                         isOpen ? classes.open : undefined
                     )}
                 >
-                    <span>
-                        {month} {new Date(events[0].date).getFullYear()}
-                    </span>
+                    <span>{new Date(events[0].date).getFullYear()}</span>
                     <span
                         style={{
                             display: "block",
