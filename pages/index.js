@@ -15,6 +15,8 @@ function HomePage(props) {
                     content={"Ukrainian electronic music label"}
                     key="desc"
                 />
+                <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label`}/>
+                <meta property="og:image" content="/poster.jpeg" />
             </Head>
             <HomePageComponent
                 upcomingEvent={upcomingEvent}

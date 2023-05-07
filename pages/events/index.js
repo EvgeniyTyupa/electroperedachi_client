@@ -13,6 +13,8 @@ const EventsPage = (props) => {
             <Head>
                 <title>{intl.formatMessage({ id: "events.title" })} | electroperedachi</title>
                 <meta name="description" content={"events"} key="desc" />
+                <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, events`}/>
+                <meta property="og:image" content="/poster.jpeg" />
             </Head>
             <EventsPageComponent
                 events={events}

@@ -13,6 +13,8 @@ function NewsPage(props) {
             <Head>
                 <title>{intl.formatMessage({ id: "news.title" })} | electroperedachi</title>
                 <meta name="description" content={intl.formatMessage({ id: "news.description" })} key="desc" />
+                <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, news`}/>
+                <meta property="og:image" content="/poster.jpeg" />
             </Head>
             <NewsPageComponent news={news} total={total}/>
         </>

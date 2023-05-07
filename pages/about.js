@@ -17,6 +17,8 @@ function AboutPage(props) {
                     content={intl.formatMessage({ id: "about.text" })}
                     key="desc"
                 />
+                <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, team, about us`}/>
+                <meta property="og:image" content="/poster.jpeg" />
             </Head>
             <AboutPageComponent employees={employees}/>
         </>

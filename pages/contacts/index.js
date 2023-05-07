@@ -29,6 +29,8 @@ const ContactPage = () => {
             <Head>
                 <title>{intl.formatMessage({ id: "contacts.title" })} | electroperedachi</title>
                 <meta name="description" content={`${intl.formatMessage({ id: "contacts.text1" })} ${intl.formatMessage({ id: "contacts.text2" })} ${intl.formatMessage({ id: "contacts.text3" })}`}/>
+                <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, contacts`}/>
+                <meta property="og:image" content="/poster.jpeg" />
             </Head>
             <div className={classes.main}>
                 <Container className={classes.container}>
