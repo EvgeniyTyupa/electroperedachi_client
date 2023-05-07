@@ -35,8 +35,8 @@ const EventHowItWas = (props) => {
                     </div>
                 </div>
             )}
-            {(event.how_it_was.photos.length > 0 ||
-                event.how_it_was.fullAlbumPhotosUrl) && (
+            {((event.how_it_was && event.how_it_was.photos.length) > 0 ||
+                (event.how_it_was && event.how_it_was.fullAlbumPhotosUrl)) && (
                 <div
                     className={classes.photosSection}
                     data-aos="fade-down"

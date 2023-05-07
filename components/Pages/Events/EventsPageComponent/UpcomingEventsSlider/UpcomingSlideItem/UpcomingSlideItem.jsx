@@ -84,7 +84,7 @@ const UpcomingSlideItem = (props) => {
                     <div className={cx(classes.titleBlock, classes.buy)}>
                         <div className={classes.buyContainer}>
                             <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>
-                            <ExploreButton text={intl.formatMessage({ id: "event.buyTicket" })} onClick={onClickBuyTicket}/>
+                            <ExploreButton/>
                         </div>
                     </div>
                 </div>

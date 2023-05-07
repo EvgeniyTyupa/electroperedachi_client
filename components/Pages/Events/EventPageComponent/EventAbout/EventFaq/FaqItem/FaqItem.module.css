@@ -65,11 +65,11 @@
 @media screen and (max-width: 658px) {
     .info {
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
     .main {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
         gap: 2rem;
     }
 }
