@@ -7,6 +7,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
 import RedirectToAlbum from "./RedirectToAlbum/RedirectToAlbum"
+import { isValidYoutubeLink } from "../../../../../utils/isValidYoutubeLink"
 
 const EventHowItWas = (props) => {
     const { event } = props
@@ -21,7 +22,7 @@ const EventHowItWas = (props) => {
 
     return (
         <div className={classes.main}>
-            {event.how_it_was && event.how_it_was.video && (
+            {(event.how_it_was && isValidYoutubeLink(event.how_it_was.video)) && (
                 <div
                     className={classes.videoSection}
                     data-aos="fade-down"

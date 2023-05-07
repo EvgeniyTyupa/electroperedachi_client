@@ -12,6 +12,7 @@ import { useRef } from "react"
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
 
 const EventPageComponent = (props) => {
     const { event } = props
@@ -47,7 +48,7 @@ const EventPageComponent = (props) => {
                     price={price}
                     scrollToPayment={scrollToPayment}
                 />
-                {event.poster.video && (
+                {isValidYoutubeLink(event.poster.video) && (
                     <iframe src={event.poster.video} className={classes.video} data-aos="fade-down" data-aos-duration="2000"/>
                 )}
                 <EventLineUp event={event} />

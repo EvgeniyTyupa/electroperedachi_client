@@ -5,6 +5,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 import { cx } from "../../../../../utils/classnames";
+import { isValidYoutubeLink } from "../../../../../utils/isValidYoutubeLink";
 
 const EventLineUp = (props) => {
     const { event } = props
@@ -14,7 +15,7 @@ const EventLineUp = (props) => {
     }, [])
 
     return (
-        <div className={cx(classes.main, event.poster.video ? classes.withVideo : "")} data-aos="fade-down" data-aos-duration="2000">
+        <div className={cx(classes.main, isValidYoutubeLink(event.poster.video) ? classes.withVideo : "")} data-aos="fade-down" data-aos-duration="2000">
             <h5>LINE UP</h5>
             <div className={classes.wrapper}>
                 {event.lineup.map((el, index) => (
