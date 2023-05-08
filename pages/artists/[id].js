@@ -11,7 +11,7 @@ const ArtistPage = (props) => {
                 <title>{artist.name} | electroperedachi</title>
                 <meta name="description" lang="ua" content={artist.bio}/>
                 <meta name="description" lang="en" content={artist.bio_en}/>
-                <met name="keywords" content={`electroperedachi, ${artist.keywords}`}/>
+                <meta name="keywords" content={`electroperedachi, ${artist.keywords}`}/>
                 <meta property="og:image" content={artist.photos[0]}/>
             </Head>
             <ArtistPageComponent artist={artist} />

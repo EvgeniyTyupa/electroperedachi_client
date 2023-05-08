@@ -16,7 +16,7 @@ const PostPage = (props) => {
                 <title>{title} | electroperedachi</title>
                 <meta name="description" lang="ua" content={post.description} key="desc" />
                 <meta name="description" lang="en" content={post.description_en} key="desc" />
-                <met name="keywords" content={`electroperedachi, ${post.keywords}`}/>
+                <meta name="keywords" content={`electroperedachi, ${post.keywords}`}/>
                 <meta property="og:image" content={post.image} />
             </Head>
             <PostPageComponent post={post} />
