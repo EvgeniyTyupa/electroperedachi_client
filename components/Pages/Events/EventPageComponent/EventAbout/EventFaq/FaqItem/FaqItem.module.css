@@ -22,7 +22,7 @@
     color: white;
     margin-top: 14px;
 }
-.textBlock p {
+.textBlock p, .textBlock li, .textBlock span {
     color: white;
 }
 .textBlock a {
