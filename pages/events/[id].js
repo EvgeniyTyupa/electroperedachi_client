@@ -19,7 +19,7 @@ const EventPage = (props) => {
                 <title>{event.title} | electroperedachi</title>
                 <meta name="description" lang="ua" content={event.description}/>
                 <meta name="description" lang="en" content={event.description_en}/>
-                <met name="keywords" content={`electroperedachi, ${event.keywords}`}/>
+                <met name="keywords" content={`electroperedachi`}/>
                 <meta property="og:image" content={event.poster.image}/>
             </Head>
             <EventPageComponent event={event} />
