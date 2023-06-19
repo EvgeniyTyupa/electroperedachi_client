@@ -33,9 +33,9 @@ const UpcomingEventLink = (props) => {
                 <div className={classes.eventInfo}>
                     {type === "upcoming" ? (
                         <p>
-                            {event.title} /{" "}
-                            {moment(event.date).format("DD.MM.YYYY")} /{" "}
-                            {event.address}
+                            {event?.title} /{" "}
+                            {moment(event?.date).format("DD.MM.YYYY")} /{" "}
+                            {event?.address}
                         </p>
                     ) : (
                         <p>
@@ -50,7 +50,7 @@ const UpcomingEventLink = (props) => {
                 <ExploreButton
                     href={
                         type === "upcoming"
-                            ? `${routes.events}/${event.title_code}`
+                            ? `${routes.events}/${event?.title_code}`
                             : `${routes.events}`
                     }
                     className={classes.redirectBut}
