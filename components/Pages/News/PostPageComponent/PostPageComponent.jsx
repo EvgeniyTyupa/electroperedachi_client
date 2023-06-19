@@ -13,7 +13,7 @@ const EditerMarkdown = dynamic(
       import("@uiw/react-md-editor").then((mod) => {
         return mod.default.Markdown;
       }),
-    { ssr: false }
+    { ssr: false, linkify: false }
 );
 
 const PostPageComponent = (props) => {
@@ -23,7 +23,7 @@ const PostPageComponent = (props) => {
 
     const title = locale === "ua" ? post.title : post.title_en
     const text = locale === "ua" ? post.text : post.text_en
-    
+
     return (
         <div className={classes.main}>
             <img src={default_post_img.src} alt="electroperedachi" className={classes.defaultImg}/>
@@ -36,10 +36,15 @@ const PostPageComponent = (props) => {
                 {text && <div className={classes.textBlock}>
                     <EditerMarkdown
                         source={text}
+                        previewOptions={{
+                            linkify: false
+                        }}
+                        disableGFM={true}
                         style={{
                             background: 'transparent', 
                             color: "black", 
                             fontFamily: "Helvetica",
+                            whiteSpace: 'pre-wrap'
                         }}
                     />
                 </div>}
@@ -49,6 +54,9 @@ const PostPageComponent = (props) => {
                     ) : (
                         <EditerMarkdown
                             source={post.embedLink}
+                            previewOptions={{
+                                linkify: false
+                            }}
                             style={{
                                 background: 'transparent', 
                                 color: "black", 

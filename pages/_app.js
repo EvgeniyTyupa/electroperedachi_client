@@ -15,8 +15,6 @@ import ErrorBoundary from "../components/Common/ErrorBoundary"
 import { AppContextProvider } from "../context/AppContext"
 import Script from "next/script"
 
-import poster_img from "/public/poster.jpeg"
-
 import * as gtag from "../utils/gtag"
 import { useEffect } from "react"
 
@@ -95,7 +93,7 @@ export default function App({ Component, pageProps }) {
                             />
                             <meta
                                 property="og:image"
-                                content={poster_img.src}
+                                content={"/poster.jpeg"}
                             />
                             <script
                                 id="help-ukraine-win"

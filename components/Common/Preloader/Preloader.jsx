@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Preloader.module.css'
 import Overflow from '../../UI/Overflow/Overflow'
-import preloader from "/public/images/preloader_e.png"
+import preloader from "/public/images/100x100.svg"
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';

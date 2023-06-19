@@ -64,6 +64,26 @@
     max-width: 55%;
     width: 100%;
 }
+.textBlock img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+.textBlock li {
+    display: flex;
+    align-items: center;
+}
+.textBlock li p {
+    font-size: inherit;
+}
+.textBlock li::before {
+    content: "•";
+    padding-right: 15px;
+}
+.textBlock a {
+    color: var(--main-orange);
+    text-decoration: underline;
+}
 
 @media screen and (max-width: 1170px) {
     .main {

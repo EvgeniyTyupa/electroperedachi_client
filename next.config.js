@@ -12,6 +12,20 @@ const nextConfig = {
     domains: ['localhost', "89.116.236.29", "api.electroperedachi.com"]
   },
   distDir: 'build', 
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(mp4|webm)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          publicPath: '/_next',
+          name: 'static/videos/[name].[hash].[ext]',
+        },
+      },
+    });
+
+    return config;
+  },
 }
 
 module.exports = removeImports({
