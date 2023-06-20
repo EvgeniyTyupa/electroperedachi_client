@@ -7,6 +7,7 @@ import LinesEllipsis from "react-lines-ellipsis"
 import PostDate from "../PostDate/PostDate"
 import { cx } from "../../../../utils/classnames"
 import Header from "../../../UI/Text/Header/Header"
+import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 const NewsCardItem = (props) => {
     const { item, className } = props
@@ -14,7 +15,11 @@ const NewsCardItem = (props) => {
 
     const titleRef = useRef(null)
 
+    const maxLines = 2
+
     const [titleLinesCount, setTitleLinesCount] = useState(1)
+
+    const { width } = useWindowDimensions()
 
     const calculateMaxLines = () => {
         if (titleLinesCount === 1) {
@@ -31,6 +36,22 @@ const NewsCardItem = (props) => {
     let title = locale === "ua" ? item.title : item.title_en
 
     let description = locale === "ua" ? item.description : item.description_en
+
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) {
+          return text;
+        }
+      
+        return text.substring(0, maxLength) + '...';
+    }
+
+    useEffect(() => {
+        const container = titleRef.current;
+        const lineHeight = parseFloat(getComputedStyle(container).lineHeight);
+
+        const maxHeight = lineHeight * maxLines;
+        container.style.maxHeight = `${maxHeight}px`;
+    }, [maxLines]);
 
     useEffect(() => {
         if (titleRef && titleRef.current) {
@@ -61,7 +82,10 @@ const NewsCardItem = (props) => {
                 <PostDate date={item.created_at} />
                 <Link href={`/news/${item.code}`}>
                     <Header type="h4" className={classes.title} titleRef={titleRef}>
-                        {title}
+                        {truncateText(title, (
+                            width < 1920 && width > 1540 ? 45 :
+                            width < 1540 && width > 1280 ? 29 : 25
+                        ))}
                     </Header>
                 </Link>
                 <LinesEllipsis

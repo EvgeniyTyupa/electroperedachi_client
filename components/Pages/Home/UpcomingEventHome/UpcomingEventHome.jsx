@@ -11,6 +11,7 @@ import "aos/dist/aos.css"
 
 import home_back_img from "/public/images/home_back.webp"
 import home_back_img_mobile from "/public/images/crowd.webp"
+
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { useState } from "react"
 import { cx } from "../../../../utils/classnames"
