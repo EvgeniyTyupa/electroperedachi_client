@@ -70,14 +70,14 @@
     object-fit: cover;
 }
 .textBlock li {
-    display: flex;
+    /* display: flex; */
     align-items: center;
 }
 .textBlock li p {
     font-size: inherit;
 }
 .textBlock li::before {
-    content: "•";
+    /* content: "•"; */
     padding-right: 15px;
 }
 .textBlock a {
