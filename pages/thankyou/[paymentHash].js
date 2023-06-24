@@ -25,7 +25,7 @@ const ThankyouPage = (props) => {
             router.push("/")
         } else if (message === "Ok") {
             setIsFetchingContext(true)
-            const decoded = JSON.parse(atob(aymentHash))
+            const decoded = JSON.parse(atob(paymentHash))
             const { userId, count, promo, eventId } = decoded
             eventApi.createTicket(userId, count, promo, eventId)
             .then(() => setIsFetchingContext(false))
