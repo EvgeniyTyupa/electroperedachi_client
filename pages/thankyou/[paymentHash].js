@@ -26,8 +26,8 @@ const ThankyouPage = (props) => {
         } else if (message === "Ok") {
             setIsFetchingContext(true)
             const decoded = JSON.parse(atob(paymentHash))
-            const { userId, count, promo, eventId } = decoded
-            eventApi.createTicket(userId, count, promo, eventId)
+            const { userId, count, promo, event_id } = decoded
+            eventApi.createTicket(userId, count, promo, event_id)
             .then(() => setIsFetchingContext(false))
             .catch(() => setIsFetchingContext(false))
         }
