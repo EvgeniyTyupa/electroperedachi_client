@@ -30,8 +30,8 @@ export const eventApi = {
         return instance.post(`/user/checkPaymentHash`, { paymentHash })
         .then(response => response.data)
     },
-    createTicket(userId, count, promo, eventId) {
-        return instance.post('/ticket', { userId, count, promo, eventId })
+    createTicket(userId, count, promo, eventId, totalPrice) {
+        return instance.post('/ticket', { userId, count, promo, eventId, totalPrice })
         .then(response => response.data)
     }
 }
