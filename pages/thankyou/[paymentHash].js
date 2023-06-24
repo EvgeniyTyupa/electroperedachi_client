@@ -10,6 +10,8 @@ import { useRouter } from "next/router"
 import { eventApi } from "../../api/api"
 import { useAppContext } from "../../context/AppContext"
 
+import atob from "atob"
+
 const ThankyouPage = (props) => {
     const { paymentHash, message } = props
 
@@ -23,7 +25,7 @@ const ThankyouPage = (props) => {
             router.push("/")
         } else if (message === "Ok") {
             setIsFetchingContext(true)
-            const decoded = JSON.parse(paymentHash)
+            const decoded = JSON.parse(atob(aymentHash))
             const { userId, count, promo, eventId } = decoded
             eventApi.createTicket(userId, count, promo, eventId)
             .then(() => setIsFetchingContext(false))
