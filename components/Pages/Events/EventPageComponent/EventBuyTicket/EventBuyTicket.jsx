@@ -85,7 +85,7 @@ const EventBuyTicket = (props) => {
                             </Button>
                         </div>
                     </div>
-                    <EventBuyTicketForm totalPrice={totalPrice} count={count} />
+                    <EventBuyTicketForm totalPrice={totalPrice} count={count} event={event}/>
                 </div>
             </Container>
         </div>

@@ -5,9 +5,31 @@ import classes from "../../styles/Thankyou.module.css"
 
 import thankyou_img from "/public/images/thankyou.svg"
 import { AiFillCheckCircle } from "react-icons/ai"
+import { useEffect } from "react"
+import { useRouter } from "next/router"
+import { eventApi } from "../../api/api"
+import { useAppContext } from "../../context/AppContext"
 
-const ThankyouPage = () => {
+const ThankyouPage = (props) => {
+    const { paymentHash, message } = props
+
     const intl = useIntl()
+    const router = useRouter()
+
+    const { setIsFetchingContext } = useAppContext()
+    
+    useEffect(() => {
+        if (!paymentHash || message === "Not found") {
+            router.push("/")
+        } else if (message === "Ok") {
+            setIsFetchingContext(true)
+            const decoded = JSON.parse(paymentHash)
+            const { userId, count, promo, eventId } = decoded
+            eventApi.createTicket(userId, count, promo, eventId)
+            .then(() => setIsFetchingContext(false))
+            .catch(() => setIsFetchingContext(false))
+        }
+    }, [paymentHash, message])
 
     return (
         <>
@@ -25,6 +47,21 @@ const ThankyouPage = () => {
             </div>
         </>
     )
+}
+
+export const getServerSideProps = async ({ params, res }) => {
+    const { paymentHash } = params
+
+    const response = await eventApi.checkPaymentHash(paymentHash)
+    
+    res.setHeader('X-Robots-Tag', 'noindex')
+    
+    return {
+        props: {
+            paymentHash,
+            message: response.message
+        }
+    }
 }
 
 export default ThankyouPage

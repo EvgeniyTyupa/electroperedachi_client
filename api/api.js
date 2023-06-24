@@ -25,6 +25,14 @@ export const eventApi = {
     },
     getEvent(code) {
         return instance.get(`/events/${code}`).then((response) => response.data)
+    },
+    checkPaymentHash(paymentHash) {
+        return instance.post(`/user/checkPaymentHash`, { paymentHash })
+        .then(response => response.data)
+    },
+    createTicket(userId, count, promo, eventId) {
+        return instance.post('/ticket', { userId, count, promo, eventId })
+        .then(response => response.data)
     }
 }
 
@@ -106,15 +114,15 @@ export const bookingApi = {
 }
 
 export const userApi = {
-    add(email, phoneNumber, totalPrice, count, partyName, promo) {
+    add(email, phoneNumber, totalPrice, count, promo, eventId) {
         return instance
             .post("/user", {
                 email,
                 phoneNumber,
                 totalPrice,
                 count,
-                partyName,
-                promo
+                promo,
+                eventId
             })
             .then((response) => response.data)
     }

@@ -16,7 +16,7 @@ import { userApi } from "../../../../../../api/api"
 import { useAppContext } from "../../../../../../context/AppContext"
 
 const EventBuyTicketForm = (props) => {
-    const { totalPrice, count } = props
+    const { totalPrice, count, event } = props
 
     const { setIsFetchingContext, setServerError } = useAppContext()
 
@@ -32,7 +32,8 @@ const EventBuyTicketForm = (props) => {
                 data.phone,
                 totalPrice,
                 count,
-                "electroperedachi"
+                "",
+                event._id
             )
             window.location.replace(response.url)
         } catch (err) {
