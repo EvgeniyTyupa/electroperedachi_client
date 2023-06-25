@@ -3,7 +3,7 @@ import { cx } from "../../../../utils/classnames"
 import classes from './ActionButton.module.css'
 
 const ActionButton = (props) => {
-    const { children, onClick, className, color = "white", type = "button" } = props
+    const { children, onClick, className, color = "white", type = "button", disabled = false } = props
 
     return (
         <Button
@@ -11,6 +11,7 @@ const ActionButton = (props) => {
             type={type}
             className={cx(classes.main, className)}
             sx={{ color: color }}
+            disabled={disabled}
         >
             {children}
         </Button>

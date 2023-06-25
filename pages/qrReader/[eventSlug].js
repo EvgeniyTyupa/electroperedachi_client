@@ -23,6 +23,7 @@ const QRCodeReader = (props) => {
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
+        setIsScanning(true);
     }
 
     useEffect(() => {
@@ -52,9 +53,7 @@ const QRCodeReader = (props) => {
     }, [])
 
     const processFrame = async () => {
-        if (!isScanning) {
-            setIsScanning(true);
-
+        if (isScanning) {
             const video = videoRef.current
             const canvas = document.createElement("canvas")
             const context = canvas.getContext("2d")
@@ -71,6 +70,7 @@ const QRCodeReader = (props) => {
     
             if (code) {
                 setIsFetchingContext(true)
+                setIsScanning(false);
     
                 const { _id, userId, eventId } = JSON.parse(code.data)
     
@@ -91,10 +91,8 @@ const QRCodeReader = (props) => {
                 setIsFetchingContext(false)
 
                 setTimeout(() => {
-                    setIsScanning(false);
+                    setIsScanning(true);
                 }, 2000);
-            } else {
-                setIsScanning(false)
             }
         }
         requestAnimationFrame(processFrame)
@@ -117,8 +115,9 @@ const QRCodeReader = (props) => {
                                 <img src={capturedImage} className={classes.previewStyle}/>
                                 <ActionButton
                                     onClick={handleReset}
+                                    disabled={isScanning}
                                 >
-                                    {isScanning ? "Loading..." : "Submit new QR code"}
+                                    {!isScanning ? "Wait..." : "Submit new QR code"}
                                 </ActionButton>
                             </>
                         )}
