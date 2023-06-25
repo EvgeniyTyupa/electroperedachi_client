@@ -92,9 +92,8 @@ const QRCodeReader = (props) => {
 
                 setIsFetchingContext(false)
             }
-    
-            requestAnimationFrame(processFrame)
         }
+        requestAnimationFrame(processFrame)
     }
 
     useEffect(() => {
