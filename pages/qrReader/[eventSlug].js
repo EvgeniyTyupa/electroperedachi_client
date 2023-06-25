@@ -46,42 +46,44 @@ const QRCodeReader = (props) => {
     }, [])
 
     const processFrame = async () => {
-        const video = videoRef.current
-        const canvas = document.createElement("canvas")
-        const context = canvas.getContext("2d")
-
-        context.drawImage(video, 0, 0, canvas.width, canvas.height)
-
-        const imageData = context.getImageData(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        )
-        const code = jsQR(imageData.data, imageData.width, imageData.height)
-
-        if (code) {
-            setIsFetchingContext(true)
-
-            const { _id, userId, eventId } = JSON.parse(code.data)
-
-            const image = new Image()
-            image.src = canvas.toDataURL()
-            setCapturedImage(image.src)
-
-            const res = await eventApi.scanTicket(
-                _id,
-                userId,
-                eventId,
-                currentEvent._id
+        if (!capturedImage) {
+            const video = videoRef.current
+            const canvas = document.createElement("canvas")
+            const context = canvas.getContext("2d")
+    
+            context.drawImage(video, 0, 0, canvas.width, canvas.height)
+    
+            const imageData = context.getImageData(
+                0,
+                0,
+                canvas.width,
+                canvas.height
             )
-
-            setResult(res)
-
-            setIsFetchingContext(false)
+            const code = jsQR(imageData.data, imageData.width, imageData.height)
+    
+            if (code) {
+                setIsFetchingContext(true)
+    
+                const { _id, userId, eventId } = JSON.parse(code.data)
+    
+                const image = new Image()
+                image.src = canvas.toDataURL()
+                setCapturedImage(image.src)
+    
+                const res = await eventApi.scanTicket(
+                    _id,
+                    userId,
+                    eventId,
+                    currentEvent._id
+                )
+    
+                setResult(res)
+    
+                setIsFetchingContext(false)
+            }
+    
+            requestAnimationFrame(processFrame)
         }
-
-        requestAnimationFrame(processFrame)
     }
 
     useEffect(() => {
