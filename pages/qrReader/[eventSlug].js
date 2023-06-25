@@ -16,7 +16,7 @@ const QRCodeReader = (props) => {
 
     const [result, setResult] = useState("")
     const [capturedImage, setCapturedImage] = useState(null)
-    const [isScanning, setIsScanning] = useState(false);
+    const [isScanning, setIsScanning] = useState(true);
 
     const videoRef = useRef(null)
 
