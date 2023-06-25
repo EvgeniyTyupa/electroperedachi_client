@@ -24,6 +24,7 @@ const QRCodeReader = (props) => {
         setResult("")
         setCapturedImage(null)
         setLatestScanResult(null);
+        startCamera()
     }
 
     useEffect(() => {
@@ -88,7 +89,13 @@ const QRCodeReader = (props) => {
                     currentEvent._id
                 )
     
+                
                 setResult(res)
+                if (videoRef.current.srcObject) {
+                    videoRef.current.srcObject.getTracks().forEach((track) => {
+                        track.stop()
+                    })
+                }
                 setIsFetchingContext(false)
             }
             requestAnimationFrame(processFrame)
@@ -96,7 +103,6 @@ const QRCodeReader = (props) => {
     }
 
     useEffect(() => {
-        alert("ALO")
         requestAnimationFrame(processFrame)
     }, [])
 
