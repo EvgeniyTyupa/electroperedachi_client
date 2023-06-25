@@ -28,7 +28,7 @@
 
 
 .previewStyle, .previewStyle svg {
-    width: 22rem !important;
+    width: 22rem;
 }
 .emptyPreview {
     width: 22rem;
@@ -80,36 +80,46 @@
 }
 
 @media screen and (max-width: 968px) {
-    .qrReader{
-        padding: 20px;
+    .qrReader {
+        height: 90vh;
+        margin-top: 0rem;
+        justify-content: center;
+    }
+    .container{
+        height: 100%;
+        padding: 1rem;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .previewStyle {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .emptyPreview {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+    .qrOutput {
+        width: 100%;
+        margin-left: 0;
+        /* text-align: center; */
+    }
+    .outputContainer {
+        width: 100%;
+    }
+    .noData {
+        text-align: center !important;
     }
 }
 
 @media only screen and (max-width: 568px) {
     .qrReader{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1rem;
         justify-items: center;
         overflow-y: scroll;
         max-height: 100%;
     }
-    .qrBox{
-        width: 80%;
-        align-items: center;
-    }
-    .outputContainer{
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 375px) {
-    .qrReader{
-        padding: 10px;
-        box-sizing: border-box;
-    }
-    .previewStyle, .previewStyle svg {
-        width: 18rem !important;
-    }    
 }
