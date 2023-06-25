@@ -1,8 +1,8 @@
 import axios from "axios"
 import moment from "moment"
 
-// export const baseURL = "http://localhost:3002/api"
-export const baseURL = "https://api.electroperedachi.com/api"
+export const baseURL = "http://localhost:3002/api"
+// export const baseURL = "https://api.electroperedachi.com/api"
 
 const tgToken = "5778874040:AAG1rLGahhRsFoQc7iondvqYbMzUZUBFTiY"
 const chatId = "-880574164"
@@ -33,6 +33,19 @@ export const eventApi = {
     createTicket(userId, count, promo, eventId, totalPrice) {
         return instance.post('/ticket', { userId, count, promo, eventId, totalPrice })
         .then(response => response.data)
+    },
+    scanTicket(ticketId, userId, eventId) {
+        return instance.post(`/ticket/scan`, { ticketId, userId, eventId })
+        .then(response => response.data)
+        .then()
+        .catch(function(err){
+            console.log(err)
+            const data = {
+                status: "bad",
+                message: "Ticket not found!"
+            }
+            return err
+        })
     }
 }
 
