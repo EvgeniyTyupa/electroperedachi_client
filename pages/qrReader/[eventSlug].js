@@ -7,6 +7,7 @@ import { useRef } from "react"
 import ActionButton from "../../components/UI/Buttons/ActionButton/ActionButton"
 import Head from "next/head"
 import { useAppContext } from "../../context/AppContext"
+import { useEffect } from "react"
 
 const QRCodeReader = (props) => {
     const { currentEvent } = props
@@ -14,67 +15,77 @@ const QRCodeReader = (props) => {
     const { setIsFetchingContext } = useAppContext()
 
     const [result, setResult] = useState("")
-    const [imageSource, setImageSource] = useState("")
+    const [capturedImage, setCapturedImage] = useState(null)
 
-    const inputRef = useRef(null)
+    const videoRef = useRef(null)
 
-    const handleImageUpload = async (event) => {
-        const file = event.target.files[0]
-        const reader = new FileReader()
+    useEffect(() => {
+        const constraints = { video: { facingMode: "environment" } }
 
-        reader.onloadend = () => {
-            const image = new Image()
-            setImageSource(reader.result)
-
-            image.onload = async () => {
-                const canvas = document.createElement("canvas")
-                canvas.width = image.width
-                canvas.height = image.height
-                const context = canvas.getContext("2d")
-                context.drawImage(image, 0, 0)
-                const imageData = context.getImageData(
-                    0,
-                    0,
-                    canvas.width,
-                    canvas.height
+        const startCamera = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(
+                    constraints
                 )
-                const code = jsQR(
-                    imageData.data,
-                    imageData.width,
-                    imageData.height
-                )
-
-                if (code) {
-                    setIsFetchingContext(true)
-                    
-                    const { _id, userId, eventId } = JSON.parse(code.data)
-                    const res = await eventApi.scanTicket(_id, userId, eventId, currentEvent._id)
-
-                    setResult(res)
-
-                    setIsFetchingContext(false)
-                } else {
-                    setResult({
-                        status: "bad",
-                        message: "QR not found"
-                    })
-                }
+                videoRef.current.srcObject = stream
+            } catch (error) {
+                console.error("Error accessing camera:", error)
             }
-            image.src = reader.result
         }
 
-        if (file) {
-            reader.readAsDataURL(file)
+        startCamera()
+
+        return () => {
+            // Stop the camera when the component unmounts
+            if (videoRef.current.srcObject) {
+                videoRef.current.srcObject.getTracks().forEach((track) => {
+                    track.stop()
+                })
+            }
         }
+    }, [])
+
+    const processFrame = async () => {
+        const video = videoRef.current
+        const canvas = document.createElement("canvas")
+        const context = canvas.getContext("2d")
+
+        context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+        const imageData = context.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        )
+        const code = jsQR(imageData.data, imageData.width, imageData.height)
+
+        if (code) {
+            setIsFetchingContext(true)
+
+            const { _id, userId, eventId } = JSON.parse(code.data)
+            const res = await eventApi.scanTicket(
+                _id,
+                userId,
+                eventId,
+                currentEvent._id
+            )
+
+            setResult(res)
+
+            const image = new Image()
+            image.src = canvas.toDataURL()
+            setCapturedImage(image.src)
+
+            setIsFetchingContext(false)
+        }
+
+        requestAnimationFrame(processFrame)
     }
 
-    const handleClick = () => {
-        setImageSource('');
-        if (inputRef.current) {
-            inputRef.current.value = null;
-        }
-        inputRef.current.click()
-    }
+    useEffect(() => {
+        requestAnimationFrame(processFrame)
+    }, [])
 
     return (
         <>
@@ -84,27 +95,25 @@ const QRCodeReader = (props) => {
             <div className={classes.qrReader}>
                 <Container className={classes.container}>
                     <div className={classes.qrBox}>
-                        {imageSource ? (
-                            <img
-                                src={imageSource}
-                                className={classes.previewStyle}
-                            />
-                        ) : (
-                            <div className={classes.emptyPreview} />
+                        {capturedImage && (
+                            <>
+                                <img src={capturedImage} className={classes.previewStyle}/>
+                                <ActionButton
+                                    onClick={() => setCapturedImage(null)}
+                                >
+                                    Submit new QR code
+                                </ActionButton>
+                            </>
                         )}
-                        <div className={classes.butContainer}>
-                            <input
-                                type="file"
-                                capture="camera"
-                                accept="image/*"
-                                hidden
-                                ref={inputRef}
-                                onChange={handleImageUpload}
-                            />
-                            <ActionButton onClick={handleClick} className={classes.submitQRBut}>
-                                Submit QR code
-                            </ActionButton>
-                        </div>
+                        <video
+                            ref={videoRef}
+                            autoPlay
+                            playsInline
+                            muted
+                            style={{
+                                display: capturedImage ? "none" : "block"
+                            }}
+                        />
                     </div>
                     <div className={classes.qrOutput}>
                         {result ? (
@@ -129,7 +138,9 @@ const QRCodeReader = (props) => {
                                         }
                                     >
                                         {" "}
-                                        {result.status === "good" ? "good" : "bad"}
+                                        {result.status === "good"
+                                            ? "good"
+                                            : "bad"}
                                     </span>
                                 </p>
                                 <p>
@@ -137,7 +148,9 @@ const QRCodeReader = (props) => {
                                 </p>
                             </div>
                         ) : (
-                            <p className={classes.noData}>No data submited yet</p>
+                            <p className={classes.noData}>
+                                No data submited yet
+                            </p>
                         )}
                     </div>
                 </Container>
@@ -176,7 +189,7 @@ export async function getStaticProps(context) {
             notFound: true
         }
     }
-    
+
     return {
         props: {
             currentEvent: event
