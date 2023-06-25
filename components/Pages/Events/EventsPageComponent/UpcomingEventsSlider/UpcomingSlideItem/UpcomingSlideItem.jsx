@@ -18,6 +18,7 @@ const UpcomingSlideItem = (props) => {
     const { item } = props
 
     const [price, setPrice] = useState(0)
+    const [isShowBuy, setIsShowBuy] = useState(false)
 
     const { locale } = useRouter()
     const router = useRouter()
@@ -38,6 +39,7 @@ const UpcomingSlideItem = (props) => {
         item.pricing.forEach((el) => {
             if (now >= moment(el.start) && now <= moment(el.end)) {
                 setPrice(el.price)
+                setIsShowBuy(true)
             }
         })
     }, [])
@@ -63,10 +65,12 @@ const UpcomingSlideItem = (props) => {
                         <p style={{ textTransform: "capitalize" }}>{dayOfWeek}, {moment(item.date).format("DD.MM.YYYY")}</p>
                         <label>{item.start} : {item.end}</label>
                     </div>
-                    <div className={classes.block} data-aos="fade-left" data-aos-duration="2000">
-                        <span>{intl.formatMessage({ id: "event.price" })}</span>
-                        <p>{price} {intl.formatMessage({ id: "event.currency" })}.</p>
-                    </div>
+                    {isShowBuy && (
+                        <div className={classes.block} data-aos="fade-left" data-aos-duration="2000">
+                            <span>{intl.formatMessage({ id: "event.price" })}</span>
+                            <p>{price} {intl.formatMessage({ id: "event.currency" })}.</p>
+                        </div>
+                    )}
                     <div className={cx(classes.block, classes.buy, classes.buyMobile)}>
                         <div className={classes.buyContainer}>
                             <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>

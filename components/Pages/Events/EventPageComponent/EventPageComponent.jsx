@@ -18,6 +18,7 @@ const EventPageComponent = (props) => {
     const { event } = props
 
     const [price, setPrice] = useState(0)
+    const [isShowBuy, setIsShowBuy] = useState(false)
 
     const paymentBlockRef = useRef(null)
 
@@ -33,6 +34,7 @@ const EventPageComponent = (props) => {
         event.pricing.forEach((el) => {
             if (now >= moment(el.start) && now <= moment(el.end)) {
                 setPrice(el.price)
+                setIsShowBuy(true)
             }
         })
 
@@ -47,6 +49,7 @@ const EventPageComponent = (props) => {
                     isEnd={isEnd}
                     price={price}
                     scrollToPayment={scrollToPayment}
+                    isShowBuy={isShowBuy}
                 />
                 {isValidYoutubeLink(event.poster.video) && (
                     <iframe src={event.poster.video} className={classes.video} data-aos="fade-down" data-aos-duration="2000"/>
@@ -55,7 +58,7 @@ const EventPageComponent = (props) => {
                 {!isEnd && <EventAbout event={event} scrollToPayment={scrollToPayment}/>}
                 {isEnd && <EventHowItWas event={event} />}
             </Container>
-            {!isEnd && (
+            {(!isEnd && isShowBuy) && (
                 <EventBuyTicket
                     event={event}
                     price={price}

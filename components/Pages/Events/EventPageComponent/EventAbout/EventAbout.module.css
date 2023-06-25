@@ -13,6 +13,9 @@
 .markdown {
     width: 50%;
 }
+.full {
+    width: 100%;
+}
 .buyTicket {
     z-index: 1;
     background: rgba(255, 255, 255, 0.01);

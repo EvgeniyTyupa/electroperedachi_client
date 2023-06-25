@@ -9,6 +9,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
 import EventFaq from "./EventFaq/EventFaq"
+import { cx } from "../../../../../utils/classnames"
 
 const EditerMarkdown = dynamic(
     () =>
@@ -45,7 +46,7 @@ const EventAbout = (props) => {
             <div className={classes.textBlock}>
                 <EditerMarkdown
                     source={description}
-                    className={classes.markdown}
+                    className={cx(classes.markdown, !main_keys ? classes.full : "" )}
                     style={{
                         background: "transparent",
                         color: "white",
@@ -53,16 +54,18 @@ const EventAbout = (props) => {
                         whiteSpace: "pre-wrap"
                     }}
                 />
-                <EditerMarkdown
-                    source={main_keys}
-                    className={classes.markdown}
-                    style={{
-                        background: "transparent",
-                        color: "white",
-                        fontFamily: "Helvetica",
-                        whiteSpace: "pre-wrap"
-                    }}
-                />
+                {main_keys && (
+                    <EditerMarkdown
+                        source={main_keys}
+                        className={classes.markdown}
+                        style={{
+                            background: "transparent",
+                            color: "white",
+                            fontFamily: "Helvetica",
+                            whiteSpace: "pre-wrap"
+                        }}
+                    />
+                )}
             </div>
             {event.faq && event.faq.length > 0 && (
                 <>

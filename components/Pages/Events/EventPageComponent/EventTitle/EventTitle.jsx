@@ -13,7 +13,7 @@ import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 
 const EventTitle = (props) => {
-    const { event, isEnd, price, scrollToPayment } = props
+    const { event, isEnd, price, scrollToPayment, isShowBuy } = props
 
     const { locale } = useRouter()
 
@@ -79,11 +79,11 @@ const EventTitle = (props) => {
                         </h5>
                         <div className={classes.infoData}>
                             <p className={classes.important}>
-                                {event.venue ? (`${event.venue},`) : ""} {city}
+                                {event.venue ? (`${event.venue.trim()},`) : ""} {city}
                             </p>
                         </div>
                     </div>
-                    {!isEnd && (
+                    {(!isEnd && isShowBuy) && (
                         <div className={classes.infoBlock}>
                             <h5 className={classes.miniTitle}>
                                 {intl.formatMessage({ id: "event.price" })}
@@ -95,7 +95,7 @@ const EventTitle = (props) => {
                             </div>
                         </div>
                     )}
-                    {!isEnd && (
+                    {(!isEnd && isShowBuy) && (
                         <div className={cx(classes.infoBlock, classes.buy)}>
                             <div className={classes.buyContainer}>
                                 <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>

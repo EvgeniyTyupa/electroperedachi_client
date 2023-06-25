@@ -182,9 +182,30 @@ const EventBuyTicketForm = (props) => {
                         fontFamily: "Helvetica"
                     }}
                     control={<Checkbox required={true} onChange={() => ""} />}
-                    label={intl.formatMessage({
-                        id: "event.form.confirm_text"
-                    })}
+                    label={
+                        <>
+                            {intl.formatMessage({
+                                id: "event.form.confirm_text"
+                            })}
+                            &nbsp;
+                            <a className={classes.rulesLink} target="_blank" href="/tandc.pdf">
+
+                                {intl.formatMessage({
+                                    id: "event.form.confirm_text1"
+                                })}
+                            </a>
+                            &nbsp;
+                            {intl.formatMessage({
+                                id: "event.form.confirm_text2"
+                            })}
+                            &nbsp;
+                            <a className={classes.rulesLink} target="_blank" href="/data_protection.pdf">
+                                {intl.formatMessage({
+                                    id: "event.form.confirm_text1"
+                                })}
+                            </a>
+                        </>
+                    }
                 />
             </div>
 
@@ -200,7 +221,7 @@ const EventBuyTicketForm = (props) => {
                                 id: "event.form.confirm_rules"
                             })}
                             &nbsp;
-                            <a className={classes.rulesLink} download href="/Terms_and_rules_at_electroperedachi_events.pdf">
+                            <a className={classes.rulesLink} target="_blank" href="/Terms_and_rules_at_electroperedachi_events.pdf">
 
                                 {intl.formatMessage({
                                     id: "event.form.confirm_rules_link"
