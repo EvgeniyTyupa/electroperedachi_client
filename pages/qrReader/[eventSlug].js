@@ -19,6 +19,11 @@ const QRCodeReader = (props) => {
 
     const videoRef = useRef(null)
 
+    const handleReset = () => {
+        setResult("")
+        setCapturedImage(null)
+    }
+
     useEffect(() => {
         const constraints = { video: { facingMode: "environment" } }
 
@@ -102,7 +107,7 @@ const QRCodeReader = (props) => {
                             <>
                                 <img src={capturedImage} className={classes.previewStyle}/>
                                 <ActionButton
-                                    onClick={() => setCapturedImage(null)}
+                                    onClick={handleReset}
                                 >
                                     Submit new QR code
                                 </ActionButton>
