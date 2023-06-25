@@ -115,7 +115,7 @@ const QRCodeReader = (props) => {
                                 <img src={capturedImage} className={classes.previewStyle}/>
                                 <ActionButton
                                     onClick={handleReset}
-                                    disabled={isScanning}
+                                    disabled={!isScanning}
                                 >
                                     {!isScanning ? "Wait..." : "Submit new QR code"}
                                 </ActionButton>
