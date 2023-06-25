@@ -113,7 +113,7 @@ const QRCodeReader = (props) => {
 
     const processFrame = async () => {
         const video = videoRef.current
-        const canvas = canvasRef.current
+        const canvas = document.createElement("canvas")
         const context = canvas.getContext("2d")
 
         context.drawImage(video, 0, 0, canvas.width, canvas.height)
@@ -140,11 +140,6 @@ const QRCodeReader = (props) => {
             setResult(res)
 
             setIsFetchingContext(false)
-        } else {
-            setResult({
-                status: "bad",
-                message: "QR not found"
-            })
         }
 
         requestAnimationFrame(processFrame)
@@ -163,7 +158,7 @@ const QRCodeReader = (props) => {
                 <Container className={classes.container}>
                     <div className={classes.qrBox}>
                         <video ref={videoRef} autoPlay playsInline muted />
-                        <canvas ref={canvasRef} />
+                        {/* <canvas ref={canvasRef} /> */}
                     </div>
                     <div className={classes.qrOutput}>
                         {result ? (

@@ -9,6 +9,11 @@
     justify-content: center;
     margin-top: 7rem;
 }
+.qrReader video, .qrReader canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1.5;
+}
 .container {
     display: flex;
     justify-content: center;
