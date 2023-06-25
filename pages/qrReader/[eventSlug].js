@@ -16,14 +16,14 @@ const QRCodeReader = (props) => {
 
     const [result, setResult] = useState("")
     const [capturedImage, setCapturedImage] = useState(null)
-    const [isScanning, setIsScanning] = useState(true);
+    const [latestScanResult, setLatestScanResult] = useState(null);
 
     const videoRef = useRef(null)
 
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
-        setIsScanning(true);
+        setLatestScanResult(null);
     }
 
     useEffect(() => {
@@ -53,9 +53,6 @@ const QRCodeReader = (props) => {
     }, [])
 
     const processFrame = async () => {
-        if (!isScanning) {
-            return;
-        }
         const video = videoRef.current
         const canvas = document.createElement("canvas")
         const context = canvas.getContext("2d")
@@ -70,9 +67,10 @@ const QRCodeReader = (props) => {
         )
         const code = jsQR(imageData.data, imageData.width, imageData.height)
 
-        if (code) {
+        if (code && latestScanResult !== code.data) {
+            // alert(latestScanResult, code.data)
+            setLatestScanResult(code.data);
             setIsFetchingContext(true)
-            setIsScanning(false);
 
             const { _id, userId, eventId } = JSON.parse(code.data)
 
@@ -91,10 +89,6 @@ const QRCodeReader = (props) => {
 
             setResult(res)
             setIsFetchingContext(false)
-
-            setTimeout(() => {
-                setIsScanning(true);
-            }, 2000);
         }
         requestAnimationFrame(processFrame)
     }
@@ -116,9 +110,8 @@ const QRCodeReader = (props) => {
                                 <img src={capturedImage} className={classes.previewStyle}/>
                                 <ActionButton
                                     onClick={handleReset}
-                                    disabled={!isScanning}
                                 >
-                                    {!isScanning ? "Wait..." : "Submit new QR code"}
+                                    Submit new QR code
                                 </ActionButton>
                             </>
                         )}
