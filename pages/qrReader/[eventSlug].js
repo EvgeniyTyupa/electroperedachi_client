@@ -16,12 +16,14 @@ const QRCodeReader = (props) => {
 
     const [result, setResult] = useState("")
     const [capturedImage, setCapturedImage] = useState(null)
+    const [isTicketScanned, setIsTicketScanned] = useState(false)
 
     const videoRef = useRef(null)
 
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
+        setIsTicketScanned(false)
     }
 
     useEffect(() => {
@@ -51,7 +53,7 @@ const QRCodeReader = (props) => {
     }, [])
 
     const processFrame = async () => {
-        if (!capturedImage) {
+        if (!capturedImage && !isTicketScanned) {
             const video = videoRef.current
             const canvas = document.createElement("canvas")
             const context = canvas.getContext("2d")
@@ -74,6 +76,8 @@ const QRCodeReader = (props) => {
                 const image = new Image()
                 image.src = canvas.toDataURL()
                 setCapturedImage(image.src)
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
     
                 const res = await eventApi.scanTicket(
                     _id,
@@ -84,6 +88,8 @@ const QRCodeReader = (props) => {
     
                 setResult(res)
     
+                setIsTicketScanned(true)
+
                 setIsFetchingContext(false)
             }
     
