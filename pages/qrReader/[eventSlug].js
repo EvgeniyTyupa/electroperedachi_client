@@ -16,14 +16,14 @@ const QRCodeReader = (props) => {
 
     const [result, setResult] = useState("")
     const [capturedImage, setCapturedImage] = useState(null)
-    const [isTicketScanned, setIsTicketScanned] = useState(false)
+    const [isQRCodeDetected, setIsQRCodeDetected] = useState(false);
 
     const videoRef = useRef(null)
 
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
-        setIsTicketScanned(false)
+        setIsQRCodeDetected(false);
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const QRCodeReader = (props) => {
     }, [])
 
     const processFrame = async () => {
-        if (!capturedImage && !isTicketScanned) {
+        if (!isQRCodeDetected) {
             const video = videoRef.current
             const canvas = document.createElement("canvas")
             const context = canvas.getContext("2d")
@@ -87,10 +87,13 @@ const QRCodeReader = (props) => {
                 )
     
                 setResult(res)
-    
-                setIsTicketScanned(true)
-
+                setIsQRCodeDetected(true);
                 setIsFetchingContext(false)
+
+                setTimeout(() => {
+                    setIsQRCodeDetected(false);
+                }, 1000)
+
             }
         }
         requestAnimationFrame(processFrame)
