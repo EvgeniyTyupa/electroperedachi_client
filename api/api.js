@@ -34,17 +34,15 @@ export const eventApi = {
         return instance.post('/ticket', { userId, count, promo, eventId, totalPrice })
         .then(response => response.data)
     },
-    scanTicket(ticketId, userId, eventId) {
-        return instance.post(`/ticket/scan`, { ticketId, userId, eventId })
+    scanTicket(ticketId, userId, eventId, currentEventId) {
+        return instance.post(`/ticket/scan`, { ticketId, userId, eventId, currentEventId })
         .then(response => response.data)
-        .then()
         .catch(function(err){
-            console.log(err)
             const data = {
                 status: "bad",
-                message: "Ticket not found!"
+                message: err.response.data.message
             }
-            return err
+            return data
         })
     }
 }
