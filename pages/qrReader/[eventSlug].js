@@ -64,6 +64,11 @@ const QRCodeReader = (props) => {
             setIsFetchingContext(true)
 
             const { _id, userId, eventId } = JSON.parse(code.data)
+
+            const image = new Image()
+            image.src = canvas.toDataURL()
+            setCapturedImage(image.src)
+
             const res = await eventApi.scanTicket(
                 _id,
                 userId,
@@ -72,10 +77,6 @@ const QRCodeReader = (props) => {
             )
 
             setResult(res)
-
-            const image = new Image()
-            image.src = canvas.toDataURL()
-            setCapturedImage(image.src)
 
             setIsFetchingContext(false)
         }
