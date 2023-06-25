@@ -23,7 +23,6 @@ const QRCodeReader = (props) => {
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
-        setIsScanning(false);
     }
 
     useEffect(() => {
@@ -119,7 +118,7 @@ const QRCodeReader = (props) => {
                                 <ActionButton
                                     onClick={handleReset}
                                 >
-                                    Submit new QR code
+                                    {isScanning ? "Loading..." : "Submit new QR code"}
                                 </ActionButton>
                             </>
                         )}
