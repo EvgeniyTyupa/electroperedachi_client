@@ -20,6 +20,19 @@ const QRCodeReader = (props) => {
 
     const videoRef = useRef(null)
 
+    const constraints = { video: { facingMode: "environment" } }
+
+    const startCamera = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(
+                constraints
+            )
+            videoRef.current.srcObject = stream
+        } catch (error) {
+            console.error("Error accessing camera:", error)
+        }
+    }
+
     const handleReset = () => {
         setResult("")
         setCapturedImage(null)
@@ -28,19 +41,6 @@ const QRCodeReader = (props) => {
     }
 
     useEffect(() => {
-        const constraints = { video: { facingMode: "environment" } }
-
-        const startCamera = async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia(
-                    constraints
-                )
-                videoRef.current.srcObject = stream
-            } catch (error) {
-                console.error("Error accessing camera:", error)
-            }
-        }
-
         startCamera()
 
         return () => {
