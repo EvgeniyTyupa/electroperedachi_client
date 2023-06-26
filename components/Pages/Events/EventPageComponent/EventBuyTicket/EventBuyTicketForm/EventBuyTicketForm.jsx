@@ -14,6 +14,7 @@ import {
 } from "@mui/material"
 import { userApi } from "../../../../../../api/api"
 import { useAppContext } from "../../../../../../context/AppContext"
+import { logEvent } from "../../../../../../utils/gtag"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event } = props
@@ -35,6 +36,7 @@ const EventBuyTicketForm = (props) => {
                 "",
                 event._id
             )
+            logEvent('Purchase', 'Buy Ticket', event.title, totalPrice)
             window.location.replace(response.url)
         } catch (err) {
             setServerError("Server Error, try again")

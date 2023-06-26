@@ -16,8 +16,7 @@ import { AppContextProvider } from "../context/AppContext"
 import Script from "next/script"
 
 import poster_img from "/public/poster.jpeg"
-
-import * as gtag from "../utils/gtag"
+import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
 
 const messages = { en, ua }
@@ -45,8 +44,8 @@ export default function App({ Component, pageProps }) {
     };
 
     useEffect(() => {
-        const handleRouteChange = (url) => {
-            gtag.pageview(url)
+        const handleRouteChange = () => {
+            logPageView()
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
@@ -61,25 +60,13 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
+    useEffect(() => {
+        initGA()
+        logPageView()
+    }, [])
+
     return (
         <>
-            <Script
-                strategy="afterInteractive"
-                src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-            />
-            <Script
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                    __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gtag.GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `
-                }}
-            />
             <IntlProvider locale={locale} messages={messages[locale]}>
                 <AppContextProvider>
                     <Layout>
