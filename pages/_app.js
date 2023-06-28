@@ -13,9 +13,8 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment"
 import { AnimatePresence } from "framer-motion"
 import ErrorBoundary from "../components/Common/ErrorBoundary"
 import { AppContextProvider } from "../context/AppContext"
-import Script from "next/script"
 
-import poster_img from "/public/poster.jpeg"
+import poster_img from "/public/poster.jpg"
 import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
 

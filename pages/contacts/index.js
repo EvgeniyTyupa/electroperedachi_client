@@ -11,7 +11,9 @@ import Head from "next/head"
 import HomePartnership from "../../components/Pages/Home/HomePartnership/HomePartnership"
 import { useRef } from "react"
 
-const ContactPage = () => {
+const ContactPage = (props) => {
+    const { script } = props
+
     const intl = useIntl()
 
     const partnershipRef = useRef(null)
@@ -30,7 +32,11 @@ const ContactPage = () => {
                 <title>{intl.formatMessage({ id: "contacts.title" })} | electroperedachi</title>
                 <meta name="description" content={`${intl.formatMessage({ id: "contacts.text1" })} ${intl.formatMessage({ id: "contacts.text2" })} ${intl.formatMessage({ id: "contacts.text3" })}`}/>
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, contacts`}/>
-                <meta property="og:image" content="/poster.jpeg" />
+                <meta property="og:image" content="/poster.jpg" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: script }}
+                />
             </Head>
             <div className={classes.main}>
                 <Container className={classes.container}>
@@ -57,3 +63,35 @@ const ContactPage = () => {
 }
 
 export default ContactPage
+
+export async function getStaticProps(context) {
+    const locale = context.locale;
+
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "electroperedachi",
+        "description": locale === "ua" ? "Контакти" : "Contacts",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "UA"
+        },
+        "email": "electroperedachi@gmail.com",
+        "url": "https://electroperedachi.com",
+        sameAs: [
+            "https://www.facebook.com/electroperedachi",
+            "https://www.instagram.com/electroperedachi",
+            "https://soundcloud.com/electroperedachi",
+            "https://www.youtube.com/@electroperedachi",
+            "https://t.me/electroperedachi_team"
+        ]
+    }
+
+    const script = `${JSON.stringify(schema)}`
+
+    return {
+        props: {
+          script
+        }
+    }
+}

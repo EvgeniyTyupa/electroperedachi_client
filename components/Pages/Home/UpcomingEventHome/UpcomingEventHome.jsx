@@ -96,7 +96,7 @@ const UpcomingEventHome = (props) => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
-            <div class={classes.wrap}>
+            <div className={classes.wrap}>
                 <div
                     className={classes.scene}
                     ref={sceneRef}
