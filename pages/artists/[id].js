@@ -65,7 +65,11 @@ export async function getStaticProps(context) {
         name: employee.name,
         description: locale === "ua" ? employee.bio : employee.bio_en,
         url: `https://electroperedachi.com/artists/${employee.name_code}`,
-        sameAs: employee.links.map(link => link),
+        sameAs: [
+            employee.links.facebook,
+            employee.links.insta,
+            employee.links.soundcloud,
+        ],
         image: {
             "@type": "ImageObject",
             url: employee.photos[0]
