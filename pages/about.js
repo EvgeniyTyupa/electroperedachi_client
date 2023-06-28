@@ -18,7 +18,7 @@ function AboutPage(props) {
                     key="desc"
                 />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, team, about us`}/>
-                <meta property="og:image" content="/poster.jpeg" />
+                <meta property="og:image" content="/poster.jpg" />
             </Head>
             <AboutPageComponent employees={employees}/>
         </>
