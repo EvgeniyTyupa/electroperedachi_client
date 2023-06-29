@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /_next/static/
+Disallow: /data_protection.pdf
+Disallow: /tandc.pdf
+Disallow: /of_manifest.pdf
+Disallow: /qrReader/
+Disallow: /public/
+Disallow: /api/
+Disallow: /cdn/
+
+Sitemap: https://electroperedachi.com/sitemap.xml

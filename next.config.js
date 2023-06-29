@@ -11,7 +11,28 @@ const nextConfig = {
   images: {
     domains: ['localhost', "89.116.236.29", "api.electroperedachi.com"]
   },
-  distDir: 'build', 
+  distDir: 'build',
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap.xml'
+      }
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain'
+          }
+        ]
+      }
+    ]
+  }
 }
 
 module.exports = removeImports({
