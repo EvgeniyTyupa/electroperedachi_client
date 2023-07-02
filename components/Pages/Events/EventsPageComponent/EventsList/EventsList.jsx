@@ -69,8 +69,6 @@ const EventsList = (props) => {
             })
         })
 
-        console.log(newSorted, "asd")
-
         // const fin_res = []
 
         // // getting count of array length with month in year

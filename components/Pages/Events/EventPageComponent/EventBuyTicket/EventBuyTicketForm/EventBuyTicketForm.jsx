@@ -36,7 +36,19 @@ const EventBuyTicketForm = (props) => {
                 "",
                 event._id
             )
+            
             logEvent('Purchase', 'Buy Ticket', event.title, totalPrice)
+            
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                ReactPixel.init('573414703062456')
+                ReactPixel.track('Purchase', {
+                    value: totalPrice,
+                    currency: "UAH"
+                })
+            })
+
             window.location.replace(response.url)
         } catch (err) {
             setServerError("Server Error, try again")
@@ -48,6 +60,7 @@ const EventBuyTicketForm = (props) => {
             phone: ""
         })
     }
+
 
     const material = {
         width: "100%",
