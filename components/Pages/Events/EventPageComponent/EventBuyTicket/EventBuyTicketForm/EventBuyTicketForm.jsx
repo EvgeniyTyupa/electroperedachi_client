@@ -43,10 +43,10 @@ const EventBuyTicketForm = (props) => {
             .then(module => module.default)
             .then(ReactPixel => {
                 ReactPixel.init('573414703062456')
-                ReactPixel.track('Purchase', {
+                ReactPixel.track('InitiateCheckout', {
                     value: totalPrice,
-                    currency: "UAH"
-                })
+                    currency: "UAH",
+                });
             })
 
             window.location.replace(response.url)

@@ -30,6 +30,16 @@ const ThankyouPage = (props) => {
             eventApi.createTicket(userId, count, promo, event_id, total_price)
             .then(() => setIsFetchingContext(false))
             .catch(() => setIsFetchingContext(false))
+
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                ReactPixel.init('573414703062456')
+                ReactPixel.track('Purchase', {
+                    value: total_price,
+                    currency: "UAH"
+                })
+            })
         }
     }, [paymentHash, message])
 

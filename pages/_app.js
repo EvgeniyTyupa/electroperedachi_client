@@ -45,7 +45,6 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         const handleRouteChange = () => {
             logPageView()
-            // fbPageView()
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
