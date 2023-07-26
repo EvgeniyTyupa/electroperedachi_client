@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { employeeApi } from "../../api/api"
 import ArtistPageComponent from "../../components/Pages/Artists/Artist/ArtistPageComponent"
+import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 
 const ArtistPage = (props) => {
     const { artist, script } = props
@@ -9,8 +10,8 @@ const ArtistPage = (props) => {
         <>
             <Head>
                 <title>{artist.name} | electroperedachi</title>
-                <meta name="description" lang="ua" content={artist.bio} />
-                <meta name="description" lang="en" content={artist.bio_en} />
+                <meta name="description" lang="ua" content={removeHtmlAndMarkdown(artist.bio)} />
+                <meta name="description" lang="en" content={removeHtmlAndMarkdown(artist.bio_en)} />
                 <meta
                     name="keywords"
                     content={`electroperedachi, ${artist.keywords}`}
@@ -59,11 +60,15 @@ export async function getStaticProps(context) {
         }
     }
 
+    const bio = locale === "ua" ? employee.bio : employee.bio_en
+
+    const formattedBio = removeHtmlAndMarkdown(bio)
+
     const artistSchema = {
         "@context": "https://schema.org",
         "@type": "Person",
         name: employee.name,
-        description: locale === "ua" ? employee.bio : employee.bio_en,
+        description: formattedBio,
         url: `https://electroperedachi.com/artists/${employee.name_code}`,
         sameAs: [
             employee.links.facebook,

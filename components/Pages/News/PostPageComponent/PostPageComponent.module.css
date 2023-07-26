@@ -84,6 +84,9 @@
     color: var(--main-orange);
     text-decoration: underline;
 }
+.textBlock h1 a, .textBlock h2 a, .textBlock h3 a, .textBlock h4 a, .textBlock h5 a {
+    display: none;
+}
 
 @media screen and (max-width: 1170px) {
     .main {

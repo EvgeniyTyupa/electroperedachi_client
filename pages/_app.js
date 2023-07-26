@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }) {
                             <title>electroperedachi</title>
                             <meta
                                 name="description"
-                                content="Ukrainian electronic music label"
+                                content="Ukranian Techno Movement | Music Label | Freedom. Equality. Techno. | Join us raver!"
                             />
                             <meta
                                 name="viewport"
