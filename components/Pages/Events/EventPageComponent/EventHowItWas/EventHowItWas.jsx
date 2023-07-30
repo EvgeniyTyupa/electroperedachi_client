@@ -50,6 +50,7 @@ const EventHowItWas = (props) => {
                         <Masonry columns={width > 568 ? 3 : 2} spacing={2}>
                             {event.how_it_was.photos.map((el) => (
                                 <img
+                                    key={el}
                                     src={el}
                                     alt={`electroperedachi ${event.title} photo`}
                                 />

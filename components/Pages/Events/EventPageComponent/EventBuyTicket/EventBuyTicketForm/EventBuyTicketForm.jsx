@@ -15,11 +15,15 @@ import {
 import { userApi } from "../../../../../../api/api"
 import { useAppContext } from "../../../../../../context/AppContext"
 import { logEvent } from "../../../../../../utils/gtag"
+import { useRouter } from "next/router"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event } = props
 
     const { setIsFetchingContext, setServerError } = useAppContext()
+
+    const router = useRouter();
+    const { query } = router;
 
     const { control, handleSubmit, reset } = useForm()
 
@@ -33,7 +37,7 @@ const EventBuyTicketForm = (props) => {
                 data.phone,
                 totalPrice,
                 count,
-                "",
+                query.promo || "",
                 event._id
             )
             
