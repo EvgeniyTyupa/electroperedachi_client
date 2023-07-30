@@ -46,7 +46,7 @@ const ThankyouPage = (props) => {
     return (
         <>
             <Head>
-                <title>{intl.formatMessage({ id: "thankyou.title" })} | electroperedachi</title>
+                <title>{intl.formatMessage({ id: "thankyou.title" })}</title>
             </Head>
             <div className={classes.main}>
                 <Container className={classes.container}>

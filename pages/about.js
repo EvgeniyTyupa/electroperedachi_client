@@ -11,7 +11,7 @@ function AboutPage(props) {
     return (
         <>
             <Head>
-                <title>{intl.formatMessage({ id: "about.title" })} | electroperedachi</title>
+                <title>{intl.formatMessage({ id: "about.title" })}</title>
                 <meta
                     name="description"
                     content={intl.formatMessage({ id: "about.text" })}
@@ -19,6 +19,11 @@ function AboutPage(props) {
                 />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, team, about us`}/>
                 <meta property="og:image" content="/poster.jpg" />
+                <link
+                    rel="canonical"
+                    href="https://electroperedachi.com/about"
+                    key="canonical"
+                />
             </Head>
             <AboutPageComponent employees={employees}/>
         </>

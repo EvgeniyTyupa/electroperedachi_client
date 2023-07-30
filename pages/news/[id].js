@@ -1,36 +1,41 @@
 import { newsApi } from "../../api/api"
 import Head from "next/head"
 import PostPageComponent from "../../components/Pages/News/PostPageComponent/PostPageComponent"
-import { useRouter } from "next/router"
 
 const PostPage = (props) => {
-    const { post, script } = props
+    const { post, script, lang } = props
 
-    const { locale } = useRouter()
-
-    let title = locale === "ua" ? post.title : post.title_en
+    let title = lang === "ua" ? post.title : post.title_en
 
     return (
         <>
             <Head>
-                <title>{title} | electroperedachi</title>
-                <meta
-                    name="description"
-                    lang="ua"
-                    content={post.description}
-                    key="desc"
-                />
-                <meta
-                    name="description"
-                    lang="en"
-                    content={post.description_en}
-                    key="desc"
-                />
+                <title>{title}</title>
+                {lang === "ua" ? (
+                    <meta
+                        name="description"
+                        lang="ua"
+                        content={post.description}
+                        key="desc"
+                    />
+                ) : (
+                    <meta
+                        name="description"
+                        lang="en"
+                        content={post.description_en}
+                        key="desc"
+                    />
+                )}
                 <meta
                     name="keywords"
                     content={`electroperedachi, ${post.keywords}`}
                 />
                 <meta property="og:image" content={post.image} />
+                <link
+                    rel="canonical"
+                    href={`https://electroperedachi.com/news/${post.code}`}
+                    key="canonical"
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: script }}
@@ -79,12 +84,13 @@ export async function getStaticProps(context) {
         description: locale === "ua" ? post.description : post.description_en,
         datePublished: post.created_at,
         author: {
-            "@type": "Person",
-            name: "electroperedachi"
+            "@type": "Organization",
+            "name": "electroperedachi",
+            "url": "https://electroperedachi.com"
         },
         image: {
             "@type": "ImageObject",
-            url: post.image
+            "url": post.image
         }
     }
 
@@ -93,7 +99,8 @@ export async function getStaticProps(context) {
     return {
         props: {
             post: post,
-            script: script
+            script: script,
+            lang: locale
         },
         revalidate: 10
     }

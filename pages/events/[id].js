@@ -6,7 +6,7 @@ import EventPageComponent from "../../components/Pages/Events/EventPageComponent
 import moment from "moment"
 
 const EventPage = (props) => {
-    const { event, script } = props
+    const { event, script, lang } = props
 
     const { isFallback } = useRouter()
 
@@ -17,11 +17,19 @@ const EventPage = (props) => {
     return (
         <>
             <Head>
-                <title>{event.title} | electroperedachi</title>
-                <meta name="description" lang="ua" content={event.description}/>
-                <meta name="description" lang="en" content={event.description_en}/>
-                <meta name="keywords" content={`electroperedachi, ${event.keywords}`}/>
+                <title>{event.title || "Event"}</title>
+                {lang === "ua" ? (
+                    <meta name="description" lang="ua" content={event.description}/>
+                ) : (
+                    <meta name="description" lang="en" content={event.description_en}/>
+                )}
+                <meta name="keywords" content={`electroperedachi, events, події, вечірка, party, rave, ${event.keywords}`}/>
                 <meta property="og:image" content={event.poster.image}/>
+                <link
+                    rel="canonical"
+                    href={`https://electroperedachi.com/events/${event.title_code}`}
+                    key="canonical"
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: script }}
@@ -76,10 +84,23 @@ export async function getStaticProps(context) {
         }
     })
 
+    const lineup = []
+
+    event.lineup.forEach(stage => {
+        stage.djs.forEach(dj => {
+            lineup.push({
+                "@type": "Person",
+                "name": dj.name
+            })
+        })
+    })
+
     const event_json_info = {
         "@context": "https://schema.org",
         "@type": "Event",
         "name": event.title,
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
         "startDate": event.date,
         "endDate": nextDay.toISOString(),
         "location": {
@@ -100,8 +121,15 @@ export async function getStaticProps(context) {
             "price": currentPrice,
             "priceCurrency": "UAH",
             "availability": "https://schema.org/InStock",
+            "validFrom": event.pricing[0].start
         },
-        "inLanguage": locale
+        "inLanguage": locale,
+        "organizer": {
+            "@type": "Organization",
+            "name": "electroperedachi",
+            "url": "https://electroperedachi.com"
+        },
+        "performer": lineup
     }
 
     const script = `${JSON.stringify(event_json_info)}`;
@@ -109,7 +137,8 @@ export async function getStaticProps(context) {
     return {
         props: {
             event: event,
-            script
+            script,
+            lang: locale
         },
         revalidate: 10
     }

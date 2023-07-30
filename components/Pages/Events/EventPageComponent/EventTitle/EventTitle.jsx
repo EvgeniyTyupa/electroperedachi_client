@@ -78,9 +78,11 @@ const EventTitle = (props) => {
                             {intl.formatMessage({ id: "event.place" })}
                         </h5>
                         <div className={classes.infoData}>
-                            <p className={classes.important}>
-                                {event.venue ? (`${event.venue.trim()},`) : ""} {city}
-                            </p>
+                            <a rel="noopener noreferrer" href={`https://www.google.com/maps/search/${encodeURIComponent(`${event.venue ? (`${event.venue.trim()},`) : ""} ${city}`)}`} target={"_blank"}>
+                                <p className={classes.important}>
+                                    {event.venue ? (`${event.venue.trim()},`) : ""} {city}
+                                </p>
+                            </a>
                         </div>
                     </div>
                     {(!isEnd && isShowBuy) && (

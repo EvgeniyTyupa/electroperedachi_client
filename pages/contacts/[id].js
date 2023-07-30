@@ -10,8 +10,13 @@ const CooperatePage = (props) => {
     return (
         <>
             <Head>
-                <title>{intl.formatMessage({ id: "cooperate.title" })} | electroperedachi</title>
+                <title>{intl.formatMessage({ id: "cooperate.title" })}</title>
                 <meta name="description" content={`${intl.formatMessage({ id: "contacts.text1" })} ${intl.formatMessage({ id: "contacts.text2" })} ${intl.formatMessage({ id: "contacts.text3" })}`}/>
+                <link
+                    rel="canonical"
+                    href={`https://electroperedachi.com/contacts/${id}`}
+                    key="canonical"
+                />
             </Head>
             <Cooperate theme={id}/>
         </>

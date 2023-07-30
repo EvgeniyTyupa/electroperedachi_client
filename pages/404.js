@@ -11,7 +11,7 @@ function NotFoundPage(props) {
     return (
         <>
             <Head>
-                <title>{intl.formatMessage({ id: "notfound.title" })} | electroperedachi</title>
+                <title>{intl.formatMessage({ id: "notfound.title" })}</title>
                 <meta
                     name="description"
                     content={intl.formatMessage({ id: "notfound.text1" })}

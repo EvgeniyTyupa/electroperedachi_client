@@ -4,19 +4,27 @@ import ArtistPageComponent from "../../components/Pages/Artists/Artist/ArtistPag
 import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 
 const ArtistPage = (props) => {
-    const { artist, script } = props
+    const { artist, script, lang } = props
 
     return (
         <>
             <Head>
-                <title>{artist.name} | electroperedachi</title>
-                <meta name="description" lang="ua" content={removeHtmlAndMarkdown(artist.bio)} />
-                <meta name="description" lang="en" content={removeHtmlAndMarkdown(artist.bio_en)} />
+                <title>{artist.name}</title>
+                {lang === "ua" ? (
+                    <meta name="description" lang="ua" content={removeHtmlAndMarkdown(artist.bio)} />
+                ) : (
+                    <meta name="description" lang="en" content={removeHtmlAndMarkdown(artist.bio_en)} />
+                )}
                 <meta
                     name="keywords"
                     content={`electroperedachi, ${artist.keywords}`}
                 />
                 <meta property="og:image" content={artist.photos[0]} />
+                <link
+                    rel="canonical"
+                    href={`https://electroperedachi.com/artists/${artist.name_code}`}
+                    key="canonical"
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: script }}
@@ -97,7 +105,8 @@ export async function getStaticProps(context) {
     return {
         props: {
             artist: employee,
-            script
+            script,
+            lang: locale
         },
         revalidate: 10
     }

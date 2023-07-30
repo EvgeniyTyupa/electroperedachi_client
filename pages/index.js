@@ -20,6 +20,11 @@ function HomePage(props) {
                     content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label`}
                 />
                 <meta property="og:image" content="/poster.jpg" />
+                <link
+                    rel="canonical"
+                    href="https://electroperedachi.com"
+                    key="canonical"
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: script }}

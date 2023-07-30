@@ -11,10 +11,15 @@ function NewsPage(props) {
     return (
         <>
             <Head>
-                <title>{intl.formatMessage({ id: "news.title" })} | electroperedachi</title>
+                <title>{intl.formatMessage({ id: "news.title" })}</title>
                 <meta name="description" content={intl.formatMessage({ id: "news.description" })} key="desc" />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, news`}/>
                 <meta property="og:image" content="/poster.jpg" />
+                <link
+                    rel="canonical"
+                    href="https://electroperedachi.com/news"
+                    key="canonical"
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: script }}
@@ -32,11 +37,20 @@ export async function getStaticProps(context) {
 
     const postSchemas = news.map((post) => {
         const schema = {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": locale === "ua" ? post.title : post.title_en,
-          "description": locale === "ua" ? post.description : post.description_en,
-          "datePublished": post.created_at,
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": locale === "ua" ? post.title : post.title_en,
+            "description": locale === "ua" ? post.description : post.description_en,
+            "datePublished": post.created_at,
+            author: {
+                "@type": "Organization",
+                "name": "electroperedachi",
+                "url": "https://electroperedachi.com"
+            },
+            image: {
+                "@type": "ImageObject",
+                "url": post.image
+            }
         };
     
         return schema;
