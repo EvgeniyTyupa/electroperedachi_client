@@ -70,8 +70,6 @@ export async function getStaticProps(context) {
         eventsLineups.push(djs)
     })
 
-    console.log(eventsLineups, eventsPricing)
-
     const events_json_info = {
         "@context": "https://schema.org",
         "@type": "ItemList",
