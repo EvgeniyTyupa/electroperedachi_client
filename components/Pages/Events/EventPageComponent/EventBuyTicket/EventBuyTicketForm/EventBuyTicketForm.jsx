@@ -5,6 +5,7 @@ import { cx } from "../../../../../../utils/classnames"
 
 import visa from "/public/images/visa.png"
 import mastercard from "/public/images/mastercard.png"
+import preloader from "/public/images/mini_preloader.svg"
 import {
     TextField,
     InputAdornment,
@@ -12,22 +13,34 @@ import {
     Checkbox,
     Button
 } from "@mui/material"
-import { userApi } from "../../../../../../api/api"
+import { eventApi, userApi } from "../../../../../../api/api"
 import { useAppContext } from "../../../../../../context/AppContext"
 import { logEvent } from "../../../../../../utils/gtag"
 import { useRouter } from "next/router"
+import moment from "moment"
+import { useState } from "react"
 
 const EventBuyTicketForm = (props) => {
-    const { totalPrice, count, event } = props
+    const { totalPrice, count, event, setPrice, price } = props
 
-    const { setIsFetchingContext, setServerError } = useAppContext()
+    const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
-    const router = useRouter();
-    const { query } = router;
+    const [isLoadingPromocode, setIsLoadingPromocode] = useState(false)
+    const [checkPromocodeError, setCheckPromocodeError] = useState(false)
+    const [isAppliedPromo, setIsAppliedPromo] = useState(false)
 
-    const { control, handleSubmit, reset } = useForm()
+    const router = useRouter()
+    const { query } = router
+
+    const { control, handleSubmit, reset, getValues } = useForm()
 
     const intl = useIntl()
+
+    const isHaveActualPromocode =
+        event && event.promocode_id
+            ? moment() >= moment(event.promocode_id.start) &&
+              moment() <= moment(event.promocode_id.end)
+            : false
 
     const onSubmit = async (data) => {
         setIsFetchingContext(true)
@@ -38,20 +51,21 @@ const EventBuyTicketForm = (props) => {
                 totalPrice,
                 count,
                 query.promo || "",
-                event._id
+                event._id,
+                isAppliedPromo ? data.promocode : ""
             )
-            
-            logEvent('Purchase', 'Buy Ticket', event.title, totalPrice)
-            
-            import('react-facebook-pixel')
-            .then(module => module.default)
-            .then(ReactPixel => {
-                ReactPixel.init('573414703062456')
-                ReactPixel.track('InitiateCheckout', {
-                    value: totalPrice,
-                    currency: "UAH",
-                });
-            })
+
+            logEvent("Purchase", "Buy Ticket", event.title, totalPrice)
+
+            import("react-facebook-pixel")
+                .then((module) => module.default)
+                .then((ReactPixel) => {
+                    ReactPixel.init("573414703062456")
+                    ReactPixel.track("InitiateCheckout", {
+                        value: totalPrice,
+                        currency: "UAH"
+                    })
+                })
 
             window.location.replace(response.url)
         } catch (err) {
@@ -65,6 +79,27 @@ const EventBuyTicketForm = (props) => {
         })
     }
 
+    const checkPromocode = async () => {
+        if (getValues().promocode) {
+            setIsLoadingPromocode(true)
+            const response = await eventApi.checkPromocode(
+                getValues().promocode,
+                event._id
+            )
+
+            if (response !== "not valid") {
+                setCheckPromocodeError(false)
+                setServerResponse("OK")
+                const discount = (price / 100) * Number(event.promocode_id.discount)
+                const newPrice = price - discount
+                setPrice(Math.ceil(newPrice))
+                setIsAppliedPromo(true)
+            } else {
+                setCheckPromocodeError(true)
+            }
+            setIsLoadingPromocode(false)
+        }
+    }
 
     const material = {
         width: "100%",
@@ -195,6 +230,50 @@ const EventBuyTicketForm = (props) => {
                     )}
                 />
             </div>
+            {(isHaveActualPromocode && !isAppliedPromo) && (
+                <div className={classes.field}>
+                    <Controller
+                        name="promocode"
+                        control={control}
+                        defaultValue=""
+                        render={({
+                            field: { onChange, value }
+                        }) => (
+                            <TextField
+                                error={checkPromocodeError}
+                                helperText={checkPromocodeError ? intl.formatMessage({ id: "form.error.promocode" }) : null}
+                                sx={{
+                                    ...material,
+                                    "& .MuiInputBase-root": {
+                                        paddingRight: 0
+                                    }
+                                }}
+                                label={intl.formatMessage({ id: "event.form.promocode" })}
+                                variant="outlined"
+                                onChange={onChange}
+                                value={value}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position='end'>
+                                            <Button
+                                                className={classes.promoBut}
+                                                onClick={checkPromocode}
+                                                disabled={isLoadingPromocode}
+                                            >
+                                                {isLoadingPromocode ? (
+                                                    <img src={preloader.src} alt="preloader" className={classes.miniPreloader}/>
+                                                ) : (
+                                                    intl.formatMessage({ id: "button.promocode" })
+                                                )}
+                                            </Button>
+                                        </InputAdornment>
+                                    )
+                                }}
+                            />
+                        )}
+                    />
+                </div>
+            )}
             <div className={cx(classes.field, classes.confirm)}>
                 <FormControlLabel
                     sx={{
@@ -207,8 +286,11 @@ const EventBuyTicketForm = (props) => {
                                 id: "event.form.confirm_text"
                             })}
                             &nbsp;
-                            <a className={classes.rulesLink} target="_blank" href="/tandc.pdf">
-
+                            <a
+                                className={classes.rulesLink}
+                                target="_blank"
+                                href="/tandc.pdf"
+                            >
                                 {intl.formatMessage({
                                     id: "event.form.confirm_text1"
                                 })}
@@ -218,7 +300,11 @@ const EventBuyTicketForm = (props) => {
                                 id: "event.form.confirm_text2"
                             })}
                             &nbsp;
-                            <a className={classes.rulesLink} target="_blank" href="/data_protection.pdf">
+                            <a
+                                className={classes.rulesLink}
+                                target="_blank"
+                                href="/data_protection.pdf"
+                            >
                                 {intl.formatMessage({
                                     id: "event.form.confirm_text1"
                                 })}
@@ -227,7 +313,6 @@ const EventBuyTicketForm = (props) => {
                     }
                 />
             </div>
-
             <div className={cx(classes.field, classes.confirm)}>
                 <FormControlLabel
                     sx={{
@@ -240,8 +325,11 @@ const EventBuyTicketForm = (props) => {
                                 id: "event.form.confirm_rules"
                             })}
                             &nbsp;
-                            <a className={classes.rulesLink} target="_blank" href="/Terms_and_rules_at_electroperedachi_events.pdf">
-
+                            <a
+                                className={classes.rulesLink}
+                                target="_blank"
+                                href="/Terms_and_rules_at_electroperedachi_events.pdf"
+                            >
                                 {intl.formatMessage({
                                     id: "event.form.confirm_rules_link"
                                 })}

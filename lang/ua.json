@@ -24,6 +24,7 @@
     "button.buyTicket": "Придбати квиток",
     "button.sendMusicProposal": "Надіслати Музику",
     "button.album": "До альбому",
+    "button.promocode": "Застосувати",
 
     "shareBut.button": "Поділитись",
     "shareBut.titleModal": "Поділіться в соціальних мережах",
@@ -32,6 +33,7 @@
     "form.error.required": "Обов'язкове поле!",
     "form.error.invalid_email": "Недійсна електронна адреса!",
     "form.error.invalid_phone": "Недійсний номер телефона!",
+    "form.error.promocode": "Промокод не є дійсним.",
 
     "news.title": "Новини",
     "news.description": "Новини electroperedachi",
@@ -142,6 +144,7 @@
     "event.form.confirm_text3": "політикою конфіденційності",
     "event.form.confirm_rules": "Я погоджуюсь з",
     "event.form.confirm_rules_link": "умовами та правилами перебування на заходах",
+    "event.form.promocode": "Промокод",
     "event.readyBuy": "Отже, ви готові придбати квиток?",
 
     "notfound.title": "Сторінка не знайдена",

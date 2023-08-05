@@ -62,6 +62,7 @@ const EventPageComponent = (props) => {
                 <EventBuyTicket
                     event={event}
                     price={price}
+                    setPrice={setPrice}
                     paymentBlockRef={paymentBlockRef}
                 />
             )}

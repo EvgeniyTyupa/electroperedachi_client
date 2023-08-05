@@ -24,6 +24,7 @@
     "button.buyTicket": "Buy Ticket",
     "button.sendMusicProposal": "Submit Music",
     "button.album": "Go to album",
+    "button.promocode": "Apply",
 
     "shareBut.button": "Share",
     "shareBut.titleModal": "Share in social media",
@@ -32,6 +33,7 @@
     "form.error.required": "Required Field!",
     "form.error.invalid_email": "Invalid Email!",
     "form.error.invalid_phone": "Invalid Phone number!",
+    "form.error.promocode": "Invalid promocode.",
     
     "news.title": "News",
     "news.description": "electroperedachi news",
@@ -135,6 +137,7 @@
     "event.form.confirm_text1": "Terms of Use",
     "event.form.confirm_text2": "and",
     "event.form.confirm_text3": "Privacy Policy",
+    "event.form.promocode": "Promocode",
     "event.how_it_was.video": "HOW IT WAS. AFTERMOVIE",
     "event.how_it_was.photos": "HOW IT WAS. PHOTOS",
     "event.how_it_was.fullAlbumTitle": "We invite you to watch full album",

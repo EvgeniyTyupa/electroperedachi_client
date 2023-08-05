@@ -94,6 +94,24 @@
     border-radius: 0 !important;
     padding: 1rem 2rem !important;
 }
+.buyBut:hover {
+    background-color: var(--main-orange) !important;
+    color: white !important;
+}
+.promoBut {
+    color: #000000 !important;
+    font-family: "Helvetica" !important;
+    background-color: transparent !important;
+    font-size: 12px !important;
+    height: 56px !important;
+    border-top-right-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+    padding-right: 1.3rem !important;
+    padding-left: 1.3rem !important;
+}
+.miniPreloader {
+    width: 30px;
+}
 
 @media screen and (max-width: 1440px) {
     .phoneInput input{

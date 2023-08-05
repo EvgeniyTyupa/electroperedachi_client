@@ -30,8 +30,8 @@ export const eventApi = {
         return instance.post(`/user/checkPaymentHash`, { paymentHash })
         .then(response => response.data)
     },
-    createTicket(userId, count, promo, eventId, totalPrice) {
-        return instance.post('/ticket', { userId, count, promo, eventId, totalPrice })
+    createTicket(userId, count, promo, eventId, totalPrice, promocode) {
+        return instance.post('/ticket', { userId, count, promo, eventId, totalPrice, promocode })
         .then(response => response.data)
     },
     scanTicket(ticketId, userId, eventId, currentEventId) {
@@ -43,6 +43,13 @@ export const eventApi = {
                 message: err.response.data.message
             }
             return data
+        })
+    },
+    checkPromocode(promocode, event_id) {
+        return instance.get(`/promocode/validation?promocode=${promocode}&event_id=${event_id}`)
+        .then(response => response.data)
+        .catch(function(err) {
+            return "not valid"
         })
     }
 }
@@ -125,15 +132,16 @@ export const bookingApi = {
 }
 
 export const userApi = {
-    add(email, phoneNumber, totalPrice, count, promo, eventId) {
+    add(email, phoneNumber, totalPrice, count, promouter, eventId, promocode) {
         return instance
             .post("/user", {
                 email,
                 phoneNumber,
                 totalPrice,
                 count,
-                promo,
-                eventId
+                promouter,
+                eventId,
+                promocode
             })
             .then((response) => response.data)
     }
