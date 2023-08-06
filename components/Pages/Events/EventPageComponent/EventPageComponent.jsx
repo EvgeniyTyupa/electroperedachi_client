@@ -22,7 +22,7 @@ const EventPageComponent = (props) => {
 
     const paymentBlockRef = useRef(null)
 
-    const isEnd = event ? moment() > moment(event.date) : true
+    const isEnd = event ? moment().startOf("day") > moment(event.date) : true
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()

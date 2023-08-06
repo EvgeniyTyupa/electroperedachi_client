@@ -19,6 +19,7 @@ import { logEvent } from "../../../../../../utils/gtag"
 import { useRouter } from "next/router"
 import moment from "moment"
 import { useState } from "react"
+import { useEffect } from "react"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event, setPrice, price } = props
@@ -29,18 +30,14 @@ const EventBuyTicketForm = (props) => {
     const [checkPromocodeError, setCheckPromocodeError] = useState(false)
     const [isAppliedPromo, setIsAppliedPromo] = useState(false)
 
+    const [isHaveActualPromocode, setIsHaveActualPromocode] = useState(false)
+
     const router = useRouter()
     const { query } = router
 
     const { control, handleSubmit, reset, getValues } = useForm()
 
     const intl = useIntl()
-
-    const isHaveActualPromocode =
-        event && event.promocode_id
-            ? moment() >= moment(event.promocode_id.start) &&
-              moment() <= moment(event.promocode_id.end)
-            : false
 
     const onSubmit = async (data) => {
         setIsFetchingContext(true)
@@ -90,7 +87,7 @@ const EventBuyTicketForm = (props) => {
             if (response !== "not valid") {
                 setCheckPromocodeError(false)
                 setServerResponse("OK")
-                const discount = (price / 100) * Number(event.promocode_id.discount)
+                const discount = (price / 100) * Number(response.promocode.discount)
                 const newPrice = price - discount
                 setPrice(Math.ceil(newPrice))
                 setIsAppliedPromo(true)
@@ -100,6 +97,17 @@ const EventBuyTicketForm = (props) => {
             setIsLoadingPromocode(false)
         }
     }
+
+    useEffect(() => {
+        console.log(event)
+        if (event && event.promocodes.length > 0) {
+            event.promocodes.forEach(el => {
+                if (moment() >= moment(el.start) && moment() <= moment(el.end)) {
+                    setIsHaveActualPromocode(true)
+                }
+            })
+        }
+    }, [event])
 
     const material = {
         width: "100%",
