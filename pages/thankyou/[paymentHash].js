@@ -43,7 +43,7 @@ const ThankyouPage = (props) => {
                 })
             })
 
-            await eventApi.saveDataToGoogleSheet({
+            eventApi.saveDataToGoogleSheet({
                 date: moment().format('DD/MM/YYYY HH:mm'),
                 email: email,
                 phone: phone,
