@@ -6,6 +6,9 @@
     padding: 0 5rem;
     box-sizing: border-box;
 }
+.disablePadding {
+    padding: 0
+}
 .container {
     width: 100%;
     max-width: var(--max-width);
@@ -20,6 +23,9 @@
         padding: 0 2rem;
         box-sizing: border-box;
     }
+    .disablePadding .container {
+        padding: 0
+    }
 }
 
 
@@ -28,11 +34,17 @@
         padding: 0 2rem;
         box-sizing: border-box;
     }
+    .disablePadding .container {
+        padding: 0
+    }
 }
 
 @media screen and (max-width: 350px) {
     .container {
         padding: 0 1rem;
         box-sizing: border-box;
+    }
+    .disablePadding .container {
+        padding: 0
     }
 }

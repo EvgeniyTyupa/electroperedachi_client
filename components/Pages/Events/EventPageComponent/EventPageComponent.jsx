@@ -10,19 +10,25 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { useRef } from "react"
 
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import Aos from "aos"
+import "aos/dist/aos.css"
 import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
+import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 const EventPageComponent = (props) => {
-    const { event } = props
+    const { event, randomPhotos } = props
 
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
 
+    const videoRef = useRef(null)
+    const [isPlayVideo, setIsPlayVideo] = useState(false)
+
     const paymentBlockRef = useRef(null)
 
     const isEnd = event ? moment().startOf("day") > moment(event.date) : true
+
+    const { width } = useWindowDimensions()
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
@@ -38,8 +44,26 @@ const EventPageComponent = (props) => {
             }
         })
 
-        Aos.init({duration: 1000})
+        Aos.init({ duration: 1000 })
     }, [])
+
+    useEffect(() => {
+        if (videoRef && videoRef.current) {
+            const handleScroll = () => {
+                const triggerElement = videoRef.current
+                const triggerPosition = triggerElement.getBoundingClientRect()
+
+                if (triggerPosition.y <= width > 548 ? 0 : 348) {
+                    setIsPlayVideo(true)
+                }
+            }
+    
+            window.addEventListener("scroll", handleScroll)
+            return () => {
+                window.removeEventListener("scroll", handleScroll)
+            }
+        }
+    }, [videoRef])
 
     return (
         <div className={classes.main}>
@@ -52,13 +76,32 @@ const EventPageComponent = (props) => {
                     isShowBuy={isShowBuy}
                 />
                 {isValidYoutubeLink(event.poster.video) && (
-                    <iframe src={event.poster.video} className={classes.video} data-aos="fade-down" data-aos-duration="2000"/>
+                    <iframe
+                        src={`${event.poster.video}?autoplay=${
+                            isPlayVideo ? 1 : 0
+                        }&mute=1`}
+                        ref={videoRef}
+                        className={classes.video}
+                        data-aos="fade-down"
+                        data-aos-duration="2000"
+                    />
                 )}
-                <EventLineUp event={event} />
-                {!isEnd && <EventAbout event={event} scrollToPayment={scrollToPayment}/>}
-                {isEnd && <EventHowItWas event={event} />}
+                {!isEnd && (
+                    <EventAbout
+                        event={event}
+                        scrollToPayment={scrollToPayment}
+                        randomPhotos={randomPhotos}
+                    />
+                )}
+                
+                {isEnd && (
+                    <>
+                        <EventLineUp event={event}/>
+                        <EventHowItWas event={event} />
+                    </>
+                )}
             </Container>
-            {(!isEnd && isShowBuy) && (
+            {!isEnd && isShowBuy && (
                 <EventBuyTicket
                     event={event}
                     price={price}

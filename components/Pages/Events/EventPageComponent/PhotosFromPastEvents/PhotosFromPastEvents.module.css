@@ -1,0 +1,20 @@
+.photosSection {
+    margin-top: 100px;
+}
+.photosSection h5 {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 25px;
+    margin-bottom: 1rem;
+}
+.photos img {
+    transition-duration: .3s;
+}
+.photos img:hover {
+    transform: scale(1.02);
+}
+@media screen and (max-width: 468px) {
+    .photosSection {
+        margin-top: 45px;
+    }
+}

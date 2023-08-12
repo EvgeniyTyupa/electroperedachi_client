@@ -34,6 +34,7 @@
     width: 140px !important;
     height: 140px !important;
     font-size: 17px !important;
+    animation: shadowAnimation 1s infinite !important; 
 }
 .redirectBut svg {
     position: relative !important;
@@ -86,5 +87,14 @@
 @media screen and (max-width: 350px) {
     .main {
         padding: 0 1rem;
+    }
+}
+
+@keyframes shadowAnimation {
+    0%, 100% {
+        box-shadow: 0 0 20px -3px rgba(255, 85, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px -3px rgba(255, 85, 0, 1);
     }
 }

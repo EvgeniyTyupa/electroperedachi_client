@@ -35,6 +35,8 @@ const EventBuyTicketForm = (props) => {
     const router = useRouter()
     const { query } = router
 
+    const currentURL = router.asPath;
+
     const { control, handleSubmit, reset, getValues } = useForm()
 
     const intl = useIntl()
@@ -63,6 +65,14 @@ const EventBuyTicketForm = (props) => {
                         currency: "UAH"
                     })
                 })
+
+            await eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: data.email,
+                phone: data.phone,
+                totalPrice: "",
+                userURL: currentURL
+            }, 1)
 
             window.location.replace(response.url)
         } catch (err) {
@@ -99,7 +109,6 @@ const EventBuyTicketForm = (props) => {
     }
 
     useEffect(() => {
-        console.log(event)
         if (event && event.promocodes.length > 0) {
             event.promocodes.forEach(el => {
                 if (moment() >= moment(el.start) && moment() <= moment(el.end)) {

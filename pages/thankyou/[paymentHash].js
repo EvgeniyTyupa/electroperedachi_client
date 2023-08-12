@@ -12,6 +12,8 @@ import { useAppContext } from "../../context/AppContext"
 
 import atob from "atob"
 
+import moment from "moment"
+
 const ThankyouPage = (props) => {
     const { paymentHash, message } = props
 
@@ -26,7 +28,7 @@ const ThankyouPage = (props) => {
         } else if (message === "Ok") {
             setIsFetchingContext(true)
             const decoded = JSON.parse(atob(paymentHash))
-            const { userId, count, promo, event_id, total_price, promocode } = decoded
+            const { userId, count, promo, event_id, total_price, promocode, email, phone } = decoded
             eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
             .then(() => setIsFetchingContext(false))
             .catch(() => setIsFetchingContext(false))
@@ -40,6 +42,14 @@ const ThankyouPage = (props) => {
                     currency: "UAH"
                 })
             })
+
+            await eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: email,
+                phone: phone,
+                totalPrice: total_price,
+                userURL: ""
+            }, 2)
         }
     }, [paymentHash, message])
 

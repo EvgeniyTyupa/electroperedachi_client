@@ -6,7 +6,7 @@ import EventPageComponent from "../../components/Pages/Events/EventPageComponent
 import moment from "moment"
 
 const EventPage = (props) => {
-    const { event, script, lang } = props
+    const { event, script, lang, randomPhotos } = props
 
     const { isFallback } = useRouter()
 
@@ -35,7 +35,7 @@ const EventPage = (props) => {
                     dangerouslySetInnerHTML={{ __html: script }}
                 />
             </Head>
-            <EventPageComponent event={event} />
+            <EventPageComponent event={event} randomPhotos={randomPhotos}/>
         </>
     )
 }
@@ -64,6 +64,7 @@ export async function getStaticProps(context) {
     const locale = context.locale;
 
     const { event } = await eventApi.getEvent(context.params.id)
+    const { photos } = await eventApi.getRandomPhotos()
 
     if (!event) {
         return {
@@ -138,7 +139,8 @@ export async function getStaticProps(context) {
         props: {
             event: event,
             script,
-            lang: locale
+            lang: locale,
+            randomPhotos: photos
         },
         revalidate: 10
     }

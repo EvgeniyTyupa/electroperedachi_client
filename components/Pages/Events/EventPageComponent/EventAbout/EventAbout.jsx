@@ -10,6 +10,9 @@ import "aos/dist/aos.css"
 import { useEffect } from "react"
 import EventFaq from "./EventFaq/EventFaq"
 import { cx } from "../../../../../utils/classnames"
+import PhotosFromPastEvents from "../PhotosFromPastEvents/PhotosFromPastEvents"
+import HomePartners from "../../../Home/HomePartners/HomePartners"
+import EventLineUp from "../EventLineUp/EventLineUp"
 
 const EditerMarkdown = dynamic(
     () =>
@@ -20,7 +23,7 @@ const EditerMarkdown = dynamic(
 )
 
 const EventAbout = (props) => {
-    const { event, scrollToPayment } = props
+    const { event, scrollToPayment, randomPhotos } = props
 
     const { locale } = useRouter()
     const intl = useIntl()
@@ -67,26 +70,29 @@ const EventAbout = (props) => {
                     />
                 )}
             </div>
+            <PhotosFromPastEvents photos={randomPhotos}/>
+            <div
+                className={classes.buyTicket}
+                data-aos="fade-down"
+                data-aos-duration="2000"
+            >
+                <Header type="h4">
+                    {intl.formatMessage({ id: "event.readyBuy" })}
+                </Header>
+                <ExploreButton
+                    onClick={scrollToPayment}
+                    className={classes.redirectBut}
+                    text={intl.formatMessage({
+                        id: "button.buyTicket"
+                    })}
+                />
+            </div>
+            <EventLineUp event={event} disableMargin={true}/>
+            {event.partners?.length > 0 && (
+                <HomePartners partners={event.partners} disablePadding={true} />
+            )}
             {event.faq && event.faq.length > 0 && (
-                <>
-                    <div
-                        className={classes.buyTicket}
-                        data-aos="fade-down"
-                        data-aos-duration="2000"
-                    >
-                        <Header type="h4">
-                            {intl.formatMessage({ id: "event.readyBuy" })}
-                        </Header>
-                        <ExploreButton
-                            onClick={scrollToPayment}
-                            className={classes.redirectBut}
-                            text={intl.formatMessage({
-                                id: "button.buyTicket"
-                            })}
-                        />
-                    </div>
-                    <EventFaq event={event} />
-                </>
+                <EventFaq event={event} />
             )}
         </div>
     )

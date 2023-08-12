@@ -9,7 +9,7 @@ import { useEffect } from "react"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 const HomePartners = (props) => {
-    const { partners } = props
+    const { partners, disablePadding = false } = props
 
     const intl = useIntl()
 
@@ -20,7 +20,7 @@ const HomePartners = (props) => {
     }, [])
 
     return (
-        <Container className={classes.main}>
+        <Container className={classes.main} disablePadding={disablePadding}>
             <div
                 data-aos={width > 468 ? "fade-down" : "fade-up"}
                 data-aos-duration="2000"

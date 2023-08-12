@@ -27,37 +27,76 @@ export const eventApi = {
         return instance.get(`/events/${code}`).then((response) => response.data)
     },
     checkPaymentHash(paymentHash) {
-        return instance.post(`/user/checkPaymentHash`, { paymentHash })
-        .then(response => response.data)
+        return instance
+            .post(`/user/checkPaymentHash`, { paymentHash })
+            .then((response) => response.data)
     },
     createTicket(userId, count, promo, eventId, totalPrice, promocode) {
-        return instance.post('/ticket', { userId, count, promo, eventId, totalPrice, promocode })
-        .then(response => response.data)
+        return instance
+            .post("/ticket", {
+                userId,
+                count,
+                promo,
+                eventId,
+                totalPrice,
+                promocode
+            })
+            .then((response) => response.data)
     },
     scanTicket(ticketId, userId, eventId, currentEventId) {
-        return instance.post(`/ticket/scan`, { ticketId, userId, eventId, currentEventId })
-        .then(response => response.data)
-        .catch(function(err){
-            const data = {
-                status: "bad",
-                message: err.response.data.message
-            }
-            return data
-        })
+        return instance
+            .post(`/ticket/scan`, { ticketId, userId, eventId, currentEventId })
+            .then((response) => response.data)
+            .catch(function (err) {
+                const data = {
+                    status: "bad",
+                    message: err.response.data.message
+                }
+                return data
+            })
     },
     checkPromocode(promocode, event_id) {
-        return instance.get(`/promocode/validation?promocode=${promocode}&event_id=${event_id}`)
-        .then(response => response.data)
-        .catch(function(err) {
-            return "not valid"
-        })
+        return instance
+            .get(
+                `/promocode/validation?promocode=${promocode}&event_id=${event_id}`
+            )
+            .then((response) => response.data)
+            .catch(function (err) {
+                return "not valid"
+            })
+    },
+    getRandomPhotos() {
+        return instance
+            .get(`/events/get/randomPhotos`)
+            .then((response) => response.data)
+    },
+    saveDataToGoogleSheet(formData, sheetNumber) {
+        const googleTableURL = `https://v1.nocodeapi.com/electroperedachi/google_sheets/OksFLSIjVQXHDvOV?tabId=sheet${sheetNumber}`
+
+        let date = formData.date
+        let phone = formData.phone
+        let email = formData.email
+        let totalPrice = formData.totalPrice
+        let url = formData.userURL
+
+        return axios
+            .post(googleTableURL, JSON.stringify([[date, email, phone, totalPrice, url]]), {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((response) => response.data)
     }
 }
 
 export const newsApi = {
     getNews(pageNumber, pageSize, from) {
         return instance
-            .get(`/news?limit=${pageSize}&count=${pageNumber}&${from ? `from=${from}` : ""}`)
+            .get(
+                `/news?limit=${pageSize}&count=${pageNumber}&${
+                    from ? `from=${from}` : ""
+                }`
+            )
             .then((response) => response.data)
     },
     getPost(code) {
@@ -149,7 +188,8 @@ export const userApi = {
 
 export const contactApi = {
     sendCoopOffer(data) {
-        return instance.post("/common/coop_offer", data)
-        .then(response => response.data)
+        return instance
+            .post("/common/coop_offer", data)
+            .then((response) => response.data)
     }
 }

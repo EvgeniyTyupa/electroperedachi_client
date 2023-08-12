@@ -42,7 +42,7 @@ const EventTitle = (props) => {
             >
                 {!isEnd && (
                     <h4 data-aos="fade-down" data-aos-duration="2000">
-                        {intl.formatMessage({ id: "event.upcoming" })}
+                        {intl.formatMessage({ id: "event.hook" })}
                     </h4>
                 )}
                 <div
@@ -101,7 +101,11 @@ const EventTitle = (props) => {
                         <div className={cx(classes.infoBlock, classes.buy)}>
                             <div className={classes.buyContainer}>
                                 <span>{intl.formatMessage({ id: "event.buyTicket" })}</span>
-                                <ExploreButton text={intl.formatMessage({ id: "event.buyTicket" })} onClick={scrollToPayment}/>
+                                <ExploreButton
+                                    text={intl.formatMessage({ id: "event.buyTicket" })}
+                                    onClick={scrollToPayment}
+                                    className={classes.animatedBut}
+                                />
                             </div>
                         </div>
                     )}

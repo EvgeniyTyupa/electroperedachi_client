@@ -120,6 +120,9 @@
 .date {
     text-align: left;
 }
+.animatedBut {
+    animation: shadowAnimation 1s infinite !important; 
+}
 
 @media screen and (max-width: 1280px) {
     .info {
@@ -295,5 +298,15 @@
     }
     .removeBlur {
         width: 100%;
+    }
+}
+
+
+@keyframes shadowAnimation {
+    0%, 100% {
+        box-shadow: 0 0 20px -3px rgba(255, 85, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px -3px rgba(255, 85, 0, 1);
     }
 }

@@ -8,6 +8,7 @@ import "aos/dist/aos.css"
 import { useEffect } from "react"
 import RedirectToAlbum from "./RedirectToAlbum/RedirectToAlbum"
 import { isValidYoutubeLink } from "../../../../../utils/isValidYoutubeLink"
+import Image from "next/image"
 
 const EventHowItWas = (props) => {
     const { event } = props
@@ -48,12 +49,16 @@ const EventHowItWas = (props) => {
                     </h5>
                     <div className={classes.photos}>
                         <Masonry columns={width > 568 ? 3 : 2} spacing={2}>
-                            {event.how_it_was.photos.map((el) => (
-                                <img
-                                    key={el}
-                                    src={el}
-                                    alt={`electroperedachi ${event.title} photo`}
-                                />
+                            {event.how_it_was.photos.map(el => (
+                                <div key={el}>
+                                    <Image
+                                        src={el}
+                                        alt={`electroperedachi ${event.title} photo`}
+                                        layout="responsive"
+                                        width={300}
+                                        height={200}
+                                    />
+                                </div>
                             ))}
                         </Masonry>
                     </div>
