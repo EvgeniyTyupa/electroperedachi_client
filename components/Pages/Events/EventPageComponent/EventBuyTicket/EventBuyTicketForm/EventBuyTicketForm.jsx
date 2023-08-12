@@ -22,7 +22,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 
 const EventBuyTicketForm = (props) => {
-    const { totalPrice, count, event, setPrice, price } = props
+    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } = props
 
     const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
@@ -47,21 +47,21 @@ const EventBuyTicketForm = (props) => {
             const response = await userApi.add(
                 data.email,
                 data.phone,
-                totalPrice,
+                isAppliedPromo ? totalPriceDiscount : totalPrice,
                 count,
                 query.promo || "",
                 event._id,
                 isAppliedPromo ? data.promocode : ""
             )
 
-            logEvent("Purchase", "Buy Ticket", event.title, totalPrice)
+            logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
 
             import("react-facebook-pixel")
                 .then((module) => module.default)
                 .then((ReactPixel) => {
                     ReactPixel.init("573414703062456")
                     ReactPixel.track("InitiateCheckout", {
-                        value: totalPrice,
+                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
                         currency: "UAH"
                     })
                 })
@@ -96,10 +96,9 @@ const EventBuyTicketForm = (props) => {
 
             if (response !== "not valid") {
                 setCheckPromocodeError(false)
-                setServerResponse("OK")
+                setServerResponse("Promocode applied!")
                 const discount = (price / 100) * Number(response.promocode.discount)
-                const newPrice = price - discount
-                setPrice(Math.ceil(newPrice))
+                setDiscount(discount)
                 setIsAppliedPromo(true)
             } else {
                 setCheckPromocodeError(true)

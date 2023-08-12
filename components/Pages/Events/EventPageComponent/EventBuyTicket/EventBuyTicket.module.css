@@ -69,6 +69,9 @@
     line-height: 29px;
     color: #000000;
 }
+.price br {
+    display: none;
+}
 .ticketsBlock {
     display: flex;
     align-items: center;
@@ -104,6 +107,10 @@
     width: 30px;
     text-align: center;
 }
+.oldPrice {
+    text-decoration: line-through;
+    font-weight: 300;
+}
 
 @media screen and (max-width: 968px) {
     .container {
@@ -118,6 +125,9 @@
 }
 
 @media screen and (max-width: 568px) {
+    .price br {
+        display: block;
+    }
     .main {
         margin-top: 45px;
     }
@@ -151,6 +161,9 @@
         flex-direction: column-reverse;
         align-items: flex-start;
         gap: 1rem;
+    }
+    .price br {
+        display: none;
     }
     .left h3 {
         font-size: 20px;

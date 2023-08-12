@@ -15,10 +15,14 @@ import EventBuyTicketForm from "./EventBuyTicketForm/EventBuyTicketForm"
 import blue_liquid from "/public/images/blue_liquid.webp"
 
 const EventBuyTicket = (props) => {
-    const { event, price, setPrice, paymentBlockRef } = props
+    const { event, price, paymentBlockRef } = props
 
     const [count, setCount] = useState(1)
     const [totalPrice, setTotalPrice] = useState(0)
+
+    const [totalPriceDiscount, setTotalPriceDiscount] = useState(0)
+
+    const [discount, setDiscount] = useState(0)
 
     const intl = useIntl()
 
@@ -35,6 +39,11 @@ const EventBuyTicket = (props) => {
     useEffect(() => {
         setTotalPrice(price * count)
     }, [count, price])
+
+    useEffect(() => {
+        const newPrice = price - discount
+        setTotalPriceDiscount(Math.ceil(newPrice) * count)
+    }, [count, discount, price])
 
     useEffect(() => {
         Aos.init({ duration: 1000 })
@@ -74,8 +83,12 @@ const EventBuyTicket = (props) => {
                     </p>
                     <div className={classes.ticketsBlock}>
                         <p className={classes.price}>
-                            {intl.formatMessage({ id: "event.price" })}{" "}
-                            {totalPrice}{" "}
+                            {intl.formatMessage({ id: "event.price" })}
+                            &nbsp;
+                            <span className={totalPriceDiscount !== totalPrice ? classes.oldPrice : ""}>{totalPrice}</span>
+                            &nbsp;
+                            <br/>
+                            {totalPriceDiscount != totalPrice && <span className={classes.discountPrice}>{totalPriceDiscount}{" "}</span>}
                             {intl.formatMessage({ id: "event.currency" })}.
                         </p>
                         <div className={classes.ticketsCount}>
@@ -101,8 +114,9 @@ const EventBuyTicket = (props) => {
                         totalPrice={totalPrice}
                         count={count}
                         event={event}
-                        setPrice={setPrice}
                         price={price}
+                        setDiscount={setDiscount}
+                        totalPriceDiscount={totalPriceDiscount}
                     />
                 </div>
             </Container>
