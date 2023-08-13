@@ -32,7 +32,7 @@ const ContactPage = (props) => {
                 <title>{intl.formatMessage({ id: "contacts.title" })}</title>
                 <meta name="description" content={`${intl.formatMessage({ id: "contacts.text1" })} ${intl.formatMessage({ id: "contacts.text2" })} ${intl.formatMessage({ id: "contacts.text3" })}`}/>
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, contacts`}/>
-                <meta property="og:image" content="/poster.jpg" />
+                <meta property="og:image" content="/crowd.webp" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com/contacts"

@@ -7,5 +7,6 @@ Disallow: /qrReader/
 Disallow: /public/
 Disallow: /api/
 Disallow: /cdn/
+Dissalow: /events/test
 
 Sitemap: https://electroperedachi.com/sitemap.xml

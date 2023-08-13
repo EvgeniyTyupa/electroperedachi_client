@@ -14,7 +14,7 @@ function ArtistsPage(props) {
                 <title>{intl.formatMessage({ id: "artists.title" })}</title>
                 <meta name="description" content={intl.formatMessage({ id: "artists.welcome" })}/>
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, artists, residents`}/>
-                <meta property="og:image" content="/poster.jpg" />
+                <meta property="og:image" content="/team.webp" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com/artists"
