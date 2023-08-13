@@ -131,6 +131,9 @@
     .main {
         margin-top: 45px;
     }
+    .left {
+        min-height: unset;
+    }
 }
 
 @media screen and (max-width: 468px) {
