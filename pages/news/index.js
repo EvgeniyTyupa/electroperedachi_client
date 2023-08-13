@@ -14,7 +14,7 @@ function NewsPage(props) {
                 <title>{intl.formatMessage({ id: "news.title" })}</title>
                 <meta name="description" content={intl.formatMessage({ id: "news.description" })} key="desc" />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, news`}/>
-                <meta property="og:image" content="crowd.webp" />
+                <meta property="og:image" content="/crowd.webp" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com/news"
