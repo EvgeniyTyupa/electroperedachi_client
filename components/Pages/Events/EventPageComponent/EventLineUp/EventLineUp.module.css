@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 568px) {
     .main {
-        padding: 0 2rem;
+        padding: 0 0rem;
         margin-top: 75px;
     }
     .withVideo {
@@ -51,6 +51,6 @@
 
 @media screen and (max-width: 350px) {
     .main {
-        padding: 0 1rem;
+        padding: 0 0rem;
     }
 }

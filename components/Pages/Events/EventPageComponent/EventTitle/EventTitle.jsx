@@ -29,7 +29,11 @@ const EventTitle = (props) => {
     const city = locale === "ua" ? event.city : event.city_en
 
     useEffect(() => {
-        Aos.init({ duration: 1000 })
+        Aos.init({ 
+            duration: 1000,
+            offset: 200, // Set offset value
+            anchorPlacement: 'top-center', // Set anchor placement
+        })
     }, [])
 
     return (
