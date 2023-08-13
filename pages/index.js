@@ -19,7 +19,7 @@ function HomePage(props) {
                     name="keywords"
                     content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label`}
                 />
-                <meta property="og:image" content="/crowd.webp" />
+                <meta property="og:image" content="crowd.webp" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com"

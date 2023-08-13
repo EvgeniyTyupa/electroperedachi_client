@@ -22,7 +22,7 @@ const EventsPage = (props) => {
                     key="desc" 
                 />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, events`}/>
-                <meta property="og:image" content="/poster.jpg" />
+                <meta property="og:image" content="crowd.webp" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com/events"
