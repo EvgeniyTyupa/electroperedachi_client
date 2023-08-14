@@ -4,6 +4,7 @@ import { eventApi } from "../../api/api"
 import Preloader from "../../components/Common/Preloader/Preloader"
 import EventPageComponent from "../../components/Pages/Events/EventPageComponent/EventPageComponent"
 import moment from "moment"
+import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 
 const EventPage = (props) => {
     const { event, script, lang, randomPhotos } = props
@@ -19,9 +20,9 @@ const EventPage = (props) => {
             <Head>
                 <title>{event.title || "Event"}</title>
                 {lang === "ua" ? (
-                    <meta name="description" lang="ua" content={event.description}/>
+                    <meta name="description" lang="ua" content={removeHtmlAndMarkdown(event.description)}/>
                 ) : (
-                    <meta name="description" lang="en" content={event.description_en}/>
+                    <meta name="description" lang="en" content={removeHtmlAndMarkdown(event.description_en)}/>
                 )}
                 <meta name="keywords" content={`electroperedachi, events, події, вечірка, party, rave, ${event.keywords}`}/>
                 <meta property="og:image" content={event.poster.image}/>

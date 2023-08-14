@@ -28,8 +28,9 @@ const EventAbout = (props) => {
     const { locale } = useRouter()
     const intl = useIntl()
 
+    
     const description =
-        locale === "ua" ? event.description : event.description_en
+    locale === "ua" ? event.description : event.description_en
 
     const main_keys = locale === "ua" ? event.main_keys : event.main_keys_en
 
