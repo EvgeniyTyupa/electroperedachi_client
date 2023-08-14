@@ -116,7 +116,7 @@ export async function getStaticProps(context) {
             }
         },
         "image": event.poster.image,
-        "description": locale === "ua" ? event.description : event.description_en,
+        "description": locale === "ua" ? removeHtmlAndMarkdown(event.description) : removeHtmlAndMarkdown(event.description_en),
         "offers": {
             "@type": "Offer",
             "url": `https://electroperedachi.com/events/${event.title_code}`,
