@@ -19,6 +19,8 @@ function AboutPage(props) {
                 />
                 <meta name="keywords" content={`electroperedachi, techno, rave, ukraine, music, techno music, dj, label, team, about us`}/>
                 <meta property="og:image" content="/team_all.webp" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 <link
                     rel="canonical"
                     href="https://electroperedachi.com/about"
