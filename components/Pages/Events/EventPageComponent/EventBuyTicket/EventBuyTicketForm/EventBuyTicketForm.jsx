@@ -47,7 +47,7 @@ const EventBuyTicketForm = (props) => {
             const response = await userApi.add(
                 data.email,
                 data.phone,
-                isAppliedPromo ? totalPriceDiscount : totalPrice,
+                (isAppliedPromo || event.is_multi_buy) ? totalPriceDiscount : totalPrice,
                 count,
                 query.promo || "",
                 event._id,
@@ -246,7 +246,7 @@ const EventBuyTicketForm = (props) => {
                     )}
                 />
             </div>
-            {(isHaveActualPromocode && !isAppliedPromo) && (
+            {(!event.is_multi_buy && isHaveActualPromocode && !isAppliedPromo) && (
                 <div className={classes.field}>
                     <Controller
                         name="promocode"

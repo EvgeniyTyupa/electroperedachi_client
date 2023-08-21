@@ -41,9 +41,34 @@ const EventBuyTicket = (props) => {
     }, [count, price])
 
     useEffect(() => {
-        const newPrice = price - discount
-        setTotalPriceDiscount(Math.ceil(newPrice) * count)
-    }, [count, discount, price])
+        if (!event.is_multi_buy) {
+            const newPrice = price - discount
+            setTotalPriceDiscount(Math.ceil(newPrice) * count)
+        } else {
+            let newDiscountPercents = 0
+            switch(count) {
+                case 1: {
+                    newDiscountPercents = 0
+                    break
+                }
+                case 2: {
+                    newDiscountPercents = 10
+                    break
+                }
+                case 3: {
+                    newDiscountPercents = 15
+                    break
+                }
+                default: {
+                    newDiscountPercents = 20
+                    break
+                }
+            }
+            const newDiscount = (price * count) / 100 * newDiscountPercents
+            setTotalPriceDiscount(Math.ceil(price * count - newDiscount))
+        }
+    }, [count, discount, price, event])
+
 
     useEffect(() => {
         Aos.init({ duration: 1000 })
