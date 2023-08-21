@@ -171,14 +171,14 @@ export const bookingApi = {
 }
 
 export const userApi = {
-    add(email, phoneNumber, totalPrice, count, promouter, eventId, promocode) {
+    add(email, phoneNumber, totalPrice, count, promo, eventId, promocode) {
         return instance
             .post("/user", {
                 email,
                 phoneNumber,
                 totalPrice,
                 count,
-                promouter,
+                promo,
                 eventId,
                 promocode
             })
