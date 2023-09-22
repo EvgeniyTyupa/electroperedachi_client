@@ -1,0 +1,145 @@
+.main {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.main { 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    color: white !important;
+}
+.title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 29px;
+    margin-bottom: 1rem;
+}
+
+.field{
+    margin-bottom: 20px;
+}
+.form_footer{
+    margin-top: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    justify-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.form_footer button {
+    background-color: #FCBE1E;
+}
+
+.payment_sources{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
+}
+
+.payment_sources img{
+    width: 55px
+}
+.payment_sources img + img{
+    margin-left: 35px;
+}
+.confirm{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.confirm span{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: white;
+}
+.confirm svg{
+    color: #C4C4C4;
+}
+.rulesLink {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.phoneInput input{
+    position: relative !important;
+    top: 0
+}
+.buyBut {
+    font-family: "ArialCurvie" !important;
+    font-size: 20px !important;
+    text-transform: initial !important;
+    color: white !important;
+    background-color: #c9070062 !important;
+    border-radius: 0 !important;
+    border: 1px solid #920000 !important;
+    padding: 14px 22px !important;
+    width: fit-content !important;
+}
+.buyBut:hover {
+    box-shadow: 0px 0px 20px -3px red;
+}
+.promoBut {
+    color: white !important;
+    font-family: "Helvetica" !important;
+    background-color: transparent !important;
+    font-size: 12px !important;
+    height: 56px !important;
+    padding-right: 1.3rem !important;
+    padding-left: 1.3rem !important;
+}
+.miniPreloader {
+    width: 30px;
+}
+.adornment {
+    color: white !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .phoneInput input{
+        top: -1px
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .confirm{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .form_footer{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .payment_sources{
+        margin-top: 15px;
+    }
+    .mobileBut{
+        width: 100% !important;
+    }
+    .buyBut {
+        width: 100% !important;
+    }
+}

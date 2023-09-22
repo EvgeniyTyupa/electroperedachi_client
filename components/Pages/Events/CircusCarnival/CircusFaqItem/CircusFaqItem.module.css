@@ -1,0 +1,91 @@
+.main {
+    /* background-blend-mode: overlay; */
+    padding: 40px 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: "ArialCurvie" !important;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #FF0000;
+}
+.info h4 {
+    font-size: 25px;
+}
+.main button {
+    color: #B7B7B7 !important;
+    font-size: 32px !important;
+}
+.main button svg {
+    transition-duration: .3s;
+}
+.expBut svg {
+    transform: rotate(45deg) !important;
+}
+.textBlock {
+    white-space: pre-wrap;
+    color: white;
+    margin-top: 14px;
+}
+.textBlock p, .textBlock li, .textBlock span {
+    color: white;
+    font-size: 18px;
+}
+.textBlock a {
+    color: var(--main-orange);
+    font-size: 20px;
+}
+.textBlock a:hover {
+    text-decoration: underline;
+}
+.underlined {
+    text-decoration: underline;
+}
+.expanded {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 1440px) {
+    .textBlock a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 862px) {
+}
+
+@media screen and (max-width: 658px) {
+    .info {
+        width: 100%;
+        text-align: left;
+    }
+    .main {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 2rem;
+    }
+    .redirectBut {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .textBlock a {
+        font-size: 17px;
+    }
+}

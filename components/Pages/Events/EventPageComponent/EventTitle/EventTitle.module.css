@@ -253,9 +253,9 @@
     }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 425px) {
     .buy span {
-        font-size: 24px;
+        font-size: 22px;
         left: 1rem;
         top: 43%;
     }
@@ -271,7 +271,7 @@
 
 @media screen and (max-width: 375px) {
     .buy span {
-        font-size: 22px;
+        font-size: 19px;
         left: 1rem;
         top: 43%;
     }

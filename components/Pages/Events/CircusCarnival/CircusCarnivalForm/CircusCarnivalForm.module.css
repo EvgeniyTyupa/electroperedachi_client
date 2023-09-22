@@ -1,0 +1,101 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.formCircle {
+    width: 100vw;
+    height: 150vh;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.356) 0%, transparent 60%);
+    z-index: 1;
+    position: absolute;
+    right: -50vw;
+    bottom: 0;
+}
+.main {
+    width: 100%;
+    padding: 0 125px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 42px;
+    padding-bottom: 20px;
+}
+.left, .poster {
+    width: 50%;
+}
+.poster img {
+    width: 100%;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 27px;
+}
+.header h2 {
+    color: #FF0000;
+    font-size: 50px;
+}
+.infoText {
+    margin-bottom: 1rem;
+}
+
+.rules {
+    white-space: pre-wrap;
+    font-weight: 100;
+    line-height: 25px;
+    margin-top: 30px;
+}
+.price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+}
+.price br {
+    display: none;
+}
+.ticketsBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+.ticketsCount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ticketsCount label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+}
+.countBut {
+    min-width: unset !important;
+    width: 32px;
+    height: 32px;
+    background-color: #C90700 !important;
+    border-radius: 0 !important;
+    color: white !important;
+    font-size: 22px !important;
+}
+.ticketsCount span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    width: 30px;
+    text-align: center;
+}
+.oldPrice {
+    text-decoration: line-through;
+    font-weight: 300;
+}

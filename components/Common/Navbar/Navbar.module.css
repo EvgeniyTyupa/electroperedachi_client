@@ -8,6 +8,10 @@
     position: relative;
     z-index: 1;
 }
+.absolute {
+    position: absolute;
+    /* display: none; */
+}
 .logo {
     width: 280px;
 }
