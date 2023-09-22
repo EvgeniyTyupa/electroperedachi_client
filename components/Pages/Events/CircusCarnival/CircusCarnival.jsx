@@ -16,9 +16,14 @@ import { BsFillSuitDiamondFill, BsFillSuitHeartFill } from "react-icons/bs"
 import CircusFaqItem from "./CircusFaqItem/CircusFaqItem"
 import CircusCarnivalForm from "./CircusCarnivalForm/CircusCarnivalForm"
 
+import useNavLinks from "../../../../hooks/useNavLinks"
+import useSocialLinks from "../../../../hooks/useSocialLinks"
+import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
+
 import home_back_img from "/public/images/circus/home.jpg"
 import cloud_right from "/public/images/circus/cloud_right.png"
 import cloud_left from "/public/images/circus/cloud_left.png"
+import clouds_mobile from "/public/images/circus/clouds_mobile.png"
 import video_bg from "/public/images/circus/video_bg.png"
 import circus_logo from "/public/images/circus/circ_logo.png"
 import stars from "/public/images/circus/stars.svg"
@@ -46,37 +51,31 @@ import show from "/public/images/circus/show.jpg"
 import zombies from "/public/images/circus/zombies.jpg"
 
 import chart from "/public/images/circus/chart.png"
+import chart_mobile from "/public/images/circus/chart_mobile.png"
+
+import lamp from "/public/images/circus/lamp.png"
+import lamp_mobile from "/public/images/circus/light_mobile.png"
 
 const CircusCarnival = (props) => {
     const intl = useIntl()
 
-    const audioRef = useRef(null)
     const videoRef = useRef(null)
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
-
-    const [isMusicPlay, setIsMusicPlay] = useState(false)
-
-    const music = "http://localhost:3002/public/circus_music.mp3"
+    const djsRef = useRef(null)
 
     const [isPlayVideo, setIsPlayVideo] = useState(false)
 
     const { width } = useWindowDimensions()
 
+    const links = useNavLinks()
+    const socialLinks = useSocialLinks()
+
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
     }
 
-    const playMusic = () => {
-        audioRef.current.volume = .5
-        audioRef.current.play()
-    }
-
     const readMoreClick = () => {
-        if (!isMusicPlay) {
-            playMusic()
-            setIsMusicPlay(true)
-        }
         readMoreRef.current.scrollIntoView()
     }
 
@@ -167,11 +166,11 @@ const CircusCarnival = (props) => {
     }
 
     useEffect(() => {
-        Aos.init({ duration: 1000, offset: 170 })
-    }, [])    
+        Aos.init({ duration: 1000, offset: width < 1280 ? 220 : 170 })
+    }, [])
 
     useEffect(() => {
-        if (videoRef && videoRef.current) {
+        if (videoRef && videoRef.current && djsRef && djsRef.current) {
             const handleScroll = () => {
                 const triggerElement = videoRef.current
                 const triggerPosition = triggerElement.getBoundingClientRect()
@@ -179,6 +178,19 @@ const CircusCarnival = (props) => {
                 if (triggerPosition.y <= width > 548 ? 0 : 348) {
                     setIsPlayVideo(true)
                 }
+
+                if (width < 568) {
+                    if (djsRef.current && djsRef.current.children) {
+                        const children = djsRef.current.children;
+    
+                        for (let i = 0; i < children.length; i++) {
+                            if (children[i].getBoundingClientRect().y < 300) {
+                                children[i].children[0].classList.add(classes.djInverMobile); // Replace 'my-class' with your desired class name
+                            }
+                        }
+                    }
+                }
+
             }
 
             window.addEventListener("scroll", handleScroll)
@@ -186,13 +198,10 @@ const CircusCarnival = (props) => {
                 window.removeEventListener("scroll", handleScroll)
             }
         }
-    }, [videoRef])
+    }, [videoRef, djsRef])
 
     return (
         <div className={classes.main}>
-            <audio ref={audioRef} controls>
-                <source src={music} type="audio/mp3" />
-            </audio>
             <div
                 className={classes.home}
                 style={{
@@ -239,6 +248,17 @@ const CircusCarnival = (props) => {
                 >
                     <p>{intl.formatMessage({ id: "circus.cloud2" })}</p>
                 </div>
+            </div>
+            <div 
+                className={classes.cloudsMobile}
+                data-aos="fade-down"
+                data-aos-duration="2000"
+                style={{
+                    backgroundImage: `url(${clouds_mobile.src})`
+                }}
+            >
+                <p>{intl.formatMessage({ id: "circus.cloud1" })}</p>
+                <p>{intl.formatMessage({ id: "circus.cloud2" })}</p>
             </div>
             <div
                 className={classes.video}
@@ -366,7 +386,7 @@ const CircusCarnival = (props) => {
                                 <img src={time.src} alt="time" />
                                 <div className={classes.featuresPointInfo}>
                                     <h4>DURATION</h4>
-                                    <h3>15:30/22:30</h3>
+                                    <h3>15:30 - 22:30</h3>
                                 </div>
                             </div>
                         </div>
@@ -399,14 +419,23 @@ const CircusCarnival = (props) => {
                     <p>{intl.formatMessage({ id: "circus.what3" })}</p>
                 </div>
             </div>
-            <div
-                className={classes.lineup}
-            >
-                <h2 data-aos="fade-down" data-aos-duration="2000">LINE UP</h2>
-                <img src={hand.src} alt="hand" className={classes.handImg} data-aos="fade-up"
-                    data-aos-duration="2000"/>
-                <div className={classes.djs} data-aos="fade-up"
-                data-aos-duration="2000">
+            <div className={classes.lineup}>
+                <h2 data-aos="fade-down" data-aos-duration="2000">
+                    LINE UP
+                </h2>
+                <img
+                    src={hand.src}
+                    alt="hand"
+                    className={classes.handImg}
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                />
+                <div
+                    className={classes.djs}
+                    ref={djsRef}
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                >
                     {djs.map((el, index) => (
                         <div
                             className={classes.dj}
@@ -473,6 +502,14 @@ const CircusCarnival = (props) => {
                                                 <BsFillSuitDiamondFill color="#920000" />
                                             )}
                                         </div>
+                                        <p
+                                            className={cx(
+                                                classes.djName,
+                                                classes.djNameOther
+                                            )}
+                                        >
+                                            {el.name}
+                                        </p>
                                         <div
                                             className={cx(
                                                 classes.djRank,
@@ -537,6 +574,36 @@ const CircusCarnival = (props) => {
                     </div>
                 </div>
             </div>
+            <div className={classes.showMobile}>
+                <div className={classes.showContent}>
+                    <Image src={show.src} alt="show" fill />
+                    <div className={classes.showInfo}>
+                        <p
+                            className={classes.showText1}
+                            data-aos="fade-down"
+                            data-aos-duration="2000"
+                        >
+                            SHOW IS
+                            <br />
+                            WAITING
+                            <br/>
+                            FOR YOU
+                        </p>
+                        <div
+                            className={classes.animatedBut}
+                            data-aos="zoom-in"
+                            data-aos-duration="2000"
+                        >
+                            <Button
+                                className={cx(classes.cta)}
+                                onClick={scrollToPayment}
+                            >
+                                {intl.formatMessage({ id: "circus.buyButt" })}
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className={classes.artists}>
                 <div
                     className={classes.artistsText}
@@ -563,13 +630,20 @@ const CircusCarnival = (props) => {
                     data-aos-duration="2000"
                 />
             </div>
-            <div
-                className={classes.faq}
-                data-aos="fade-down"
-                data-aos-duration="2000"
-            >
+            <div className={classes.faq}>
                 <h2>FAQ</h2>
-                <div className={classes.questions}>
+                <img
+                    src={width > 568 ? lamp.src : lamp_mobile.src}
+                    alt="light"
+                    className={classes.lampImg}
+                    data-aos="fade"
+                    data-aos-duration="2000"
+                />
+                <div
+                    className={classes.questions}
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                >
                     {faq.map((el) => (
                         <CircusFaqItem item={el} />
                     ))}
@@ -584,11 +658,43 @@ const CircusCarnival = (props) => {
                     <h2>PRICE</h2>
                     <p>{intl.formatMessage({ id: "circus.price" })}</p>
                 </div>
-                <img src={chart.src} alt="chart" />
+                <img src={width > 568 ? chart.src : chart_mobile.src} alt="chart" />
             </div>
-            <div data-aos="fade-down" data-aos-duration="2000">
+            <div className={classes.form} data-aos="fade-down" data-aos-duration="2000">
                 <CircusCarnivalForm paymentBlockRef={paymentBlockRef} />
             </div>
+            <footer className={classes.footer}>
+                <div className={classes.links}>
+                    {links.map((el) => (
+                        <CustomLink
+                            key={el.href}
+                            href={el.href}
+                            text={el.text}
+                            className={classes.link}
+                        />
+                    ))}
+                </div>
+                <div className={classes.social}>
+                    {socialLinks.map((el) => (
+                        <a
+                            href={el.url}
+                            key={el.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {el.icon}
+                        </a>
+                    ))}
+                </div>
+                <div className={classes.mini}>
+                    <a download href="/tandc.pdf">
+                        {intl.formatMessage({ id: "footer.terms" })}
+                    </a>
+                    <a download href="/data_protection.pdf">
+                        {intl.formatMessage({ id: "footer.privacy" })}
+                    </a>
+                </div>
+            </footer>
         </div>
     )
 }

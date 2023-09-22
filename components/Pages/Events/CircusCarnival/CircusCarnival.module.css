@@ -34,6 +34,7 @@
     margin-top: auto;
     margin-bottom: 11%;
     z-index: 2;
+    text-align: center;
 }
 .home p {
     font-size: 25px;
@@ -72,6 +73,9 @@
     position: absolute;
     top: 80vh;
     z-index: 2;
+}
+.cloudsMobile {
+    display: none;
 }
 .textCloudBlock {
     position: relative;
@@ -327,6 +331,7 @@
     font-family: "QuentinCaps";
     font-size: 40px;
     font-weight: 100;
+    z-index: 1;
 }
 .djUpper {
     width: 100%;
@@ -347,6 +352,14 @@
 }
 .djNameOther {
     margin-top: auto;
+}
+.djUpper {
+    z-index: 0;
+}
+.djInner .djNameOther {
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: normal;
 }
 
 .djUpper, .djInner {
@@ -370,6 +383,9 @@
     transform: rotateY(180deg);
     box-shadow: 0px 0px 20px -3px #FF0000;
     border-radius: 16px;
+}
+.djInverMobile {
+    transform: rotateY(180deg);
 }
 
 .djInner {
@@ -426,6 +442,9 @@
     align-items: center;
     justify-content: center;
 }
+.showMobile {
+    display: none;
+}
 .showInfo {
     display: flex;
     align-items: center;
@@ -436,12 +455,19 @@
 }
 .showContent {
     width: 100%;
-    height: 632px;
+    height: 682px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.showContent button {
+    background-color: #920000 !important;
+}
+.showContent img {
+    width: 100%;
+    object-fit: cover;
 }
 .showContent p {
     z-index: 2;
@@ -490,6 +516,7 @@
     flex-direction: column;
     gap: 70px;
     margin-top: 200px;
+    position: relative;
 }
 .faq h2 {
     color: #FF0000;
@@ -498,6 +525,16 @@
 .questions {
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+.lampImg {
+    position: absolute;
+    z-index: 0;
+    opacity: 1;
+    width: 100%;
+    object-fit: cover;
+    left: 0;
 }
 
 .price {
@@ -528,6 +565,66 @@
     top: -100px;
 }
 
+.form {
+    margin-top: 40px;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.link {
+    font-family: "ArialCurvie" !important;
+}
+.link:hover {
+    color: #920000 !important;
+}
+.social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 35px;
+}
+.social a {
+    border-radius: 50%;
+    background-color: #920000;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .3s;
+}
+.social a:hover {
+    background-color: red;
+}
+.social svg {
+    font-size: 20px;
+}
+.mini {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+.mini a {
+    font-weight: 100;
+    font-size: 14px;
+    font-family: "ArialCurvie" !important;
+}
+.mini a:hover {
+    text-decoration: underline;
+}
+
 @keyframes shadowAnimation {
     0%, 100% {
         box-shadow: 0px 0px 20px -3px rgba(255, 85, 0, 0);
@@ -544,5 +641,307 @@
     }
     .show {
         background: radial-gradient(circle at center, rgba(255, 0, 0, 0.24) 0%, transparent 56%);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .features, .what, .lineup, .artists, .faq, .priceInfo, .home {
+        padding: 0 60px;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .clouds {
+        flex-direction: column;
+        align-items: center;
+        top: 85vh;
+        display: none;
+    }
+    .cloudsMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+        width: 100%;
+        position: absolute;
+        height: 400px;
+        z-index: 1;
+        top: 80vh;
+    }
+    .cloudsMobile p {
+        max-width: 420px;
+    }
+    .textCloudBlock {
+        width: 100%;
+    }
+    .homeContent {
+        margin-bottom: 30%;
+    }
+    .lights {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .lights p {
+        text-align: center;
+        margin-left: 0;
+        top: -50px;
+    }
+    .featuresContent {
+        flex-direction: column;
+    }
+    .featuresBlock {
+        width: 100%;
+    }
+    .featuresCircle {
+        top: -350px;
+        background: radial-gradient(circle at center, rgba(255, 0, 0, 0.356) 0%, transparent 70%);
+    }
+    .price img {
+        top: -50px;
+    }
+}
+
+@media screen and (max-width: 834px) {
+    .video {
+        padding: 26px 60px;
+    }
+    .videoArea {
+        height: calc(100vh - 500px);
+    }
+    .lights {
+        top: -200px;
+    }
+    .what {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 100px;
+    }
+    .whatBlock {
+        width: 100%;
+        max-width: 100%;
+    }
+    .handImg {
+        display: none;
+    }
+    .show {
+        display: none;
+    }
+    .showMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10rem 0;
+        background: radial-gradient(circle at center, rgba(255, 0, 0, 0.24) 0%, transparent 80%);
+        width: 100%;
+    }
+    .showMobile .showInfo {
+        top: -80px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .showText1, .showText2 {
+        text-align: center;
+    }
+    .artists {
+        flex-direction: column;
+    }
+    .artistsText, .artists img {
+        width: 100%;
+    }
+    .faq {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .features {
+        position: relative;
+        top: -100px;
+    }
+    .featuresCircle {
+        top: -150px;
+    }
+    .what {
+        margin-top: 0;
+    }
+    .lineup {
+        margin-top: 100px;
+    }
+}
+
+
+@media screen and (max-width: 605px) {
+    .footer {
+        z-index: 2;
+        position: relative;
+    }
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main h2 {
+        font-size: 25px;
+    }
+    .features, .what, .lineup, .artists, .faq, .priceInfo, .home {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .home p {
+        font-size: 18px;
+    }
+    .cta {
+        font-size: 16px !important;
+        padding: 10px 16px !important;
+    }
+    .cloudsMobile {
+        background-size: cover;
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .star1, .star4 {
+        width: 43px;
+        height: 46px;
+    }
+    .star2, .star3 {
+        width: 62px;
+        height: 66px;
+    }
+    .star2 {
+        right: -45px;
+        top: -45px;
+    }
+    .star3 {
+        left: -45px;
+        bottom: -45px;
+    }
+    .lightsImg {
+        display: none;
+    }
+    .video {
+        height: 740px;
+        padding: 26px 2rem;
+    }
+    .videoArea {
+        height: 320px;
+    }
+    .circus_logo {
+        position: relative;
+        top: 40px;
+        z-index: 3;
+    }
+    .lights {
+        top: 0;
+        padding: 0 2rem;
+        box-sizing: border-box;
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+    .lights p {
+        top: 0;
+        font-size: 18px;
+    }
+    .features {
+        top: 0;
+        justify-content: center;
+    }
+    .clownFaceImg {
+        width: 100%;
+    }
+    .featuresCircle {
+        top: 170px;
+    }
+    .features h4 {
+        font-size: 20px;
+    }
+    .featurer h3 {
+        font-size: 23px;
+    }
+    .featuresInfo {
+        gap: 2rem;
+    }
+    .lineup {
+        margin-top: 70px;
+    }
+    .djs {
+        margin-top: 40px;
+    }
+    .what {
+        margin-top: 70px;
+    }
+    .showMobile {
+        padding: 4rem 0;
+    }
+    .showContent {
+        height: 550px;
+    }
+    .showContent img {
+        object-fit: cover;
+    }
+    .artistsText p {
+        font-size: 16px;
+    }
+    .price img {
+        top: 0;
+    }
+    .priceInfo p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
+    }
+    .what p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .cta {
+        font-size: 14px !important;
+        padding: 10px 10px !important;
+    }
+    .features h3 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .videoArea {
+        margin-top: 80px;
+    }
+    .circus_logo {
+        top: 110px;
+    }
+    .features, .what, .lineup, .artists, .faq, .priceInfo, .home {
+        padding: 0 1rem;
+    }
+    .mini {
+        align-items: center;
+        text-align: center;
+    }
+    .showContent p {
+        font-size: 45px;
+    }
+    .cta {
+        font-size: 13px !important;
+    }
+    .home p {
+        font-size: 14px;
     }
 }

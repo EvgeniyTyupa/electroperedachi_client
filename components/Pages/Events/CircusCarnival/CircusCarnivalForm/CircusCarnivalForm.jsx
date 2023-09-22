@@ -109,7 +109,14 @@ const CircusCarnivalForm = (props) => {
                             </Button>
                         </div>
                     </div>
-                    <CircusCarnivalBuyForm/>
+                    <CircusCarnivalBuyForm
+                        totalPrice={totalPrice}
+                        count={count}
+                        event={event}
+                        price={price}
+                        setDiscount={setDiscount}
+                        totalPriceDiscount={totalPriceDiscount}
+                    />
                 </div>
                 <div className={classes.poster}>
                     <img src={poster.src} alt="poster"/>

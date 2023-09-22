@@ -32,9 +32,9 @@ const CircusFaqItem = (props) => {
 
     return (
         <div className={classes.main}>
-            <div className={classes.info}>
+            <div className={classes.info} onClick={handleExpandClick}>
                 <h4>{title}</h4>
-                <IconButton onClick={handleExpandClick} className={expanded ? classes.expBut : undefined}>
+                <IconButton className={expanded ? classes.expBut : undefined}>
                     <AiOutlinePlus/>
                 </IconButton>
             </div>

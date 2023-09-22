@@ -4,7 +4,7 @@ import { cx } from '../../../../utils/classnames';
 import classes from './CustomLink.module.css'
 
 const CustomLink = (props) => {
-    const { href, text, onClick } = props
+    const { href, text, onClick, className } = props
 
     const router = useRouter()
 
@@ -12,7 +12,7 @@ const CustomLink = (props) => {
         <Link
             href={href}
             onClick={onClick}
-            className={cx(classes.link, router.pathname == href ? classes.active : "")}
+            className={cx(classes.link, router.pathname == href ? classes.active : "", className)}
         >
             {text}
         </Link>
