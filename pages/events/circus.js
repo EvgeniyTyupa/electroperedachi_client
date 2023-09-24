@@ -7,7 +7,7 @@ import moment from "moment"
 import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 
 const CircusCarnivalEventPage = (props) => {
-    const { event, script, lang, randomPhotos } = props
+    const { event, script, lang } = props
 
     const { isFallback } = useRouter()
 
@@ -36,16 +36,15 @@ const CircusCarnivalEventPage = (props) => {
                     dangerouslySetInnerHTML={{ __html: script }}
                 />
             </Head>
-            <CircusCarnival event={event} randomPhotos={randomPhotos}/>
+            <CircusCarnival event={event}/>
         </>
     )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const locale = context.locale;
 
     const { event } = await eventApi.getEvent("circus")
-    const { photos } = await eventApi.getRandomPhotos()
 
     if (!event) {
         return {
@@ -121,7 +120,6 @@ export async function getStaticProps(context) {
             event: event,
             script,
             lang: locale,
-            randomPhotos: photos
         },
         revalidate: 10
     }

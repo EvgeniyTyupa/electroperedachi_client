@@ -157,5 +157,28 @@
     "thankyou.text": "Tickets were sent to your e-mail! See you at the party.\n Have a nice time.",
 
     "coop.error": "Something went wrong. Please try again.",
-    "coop.done": "Success! We contact you soon."
+    "coop.done": "Success! We contact you soon.",
+
+    "circus.sub": "At Last, the Mystical Circus Chooses a City for Its Extraordinary Show",
+    "circus.readmore": "Unveil the Mystery of the «Carnival of Shadows»",
+    "circus.buyButt": "Buy Tickets",
+    "circus.cloud1": "Once a year, when the moon casts an eerie glow, a mystical circus emerges from the shadows. Yet, this is no ordinary circus",
+    "circus.cloud2": "it's a realm where darkness dances with light. Where the line between both blurs into nonexistence. Welcome to the «Carnival of Shadows»!",
+    "circus.lightsText": "«Carnival of Shadows» is not bound by time or space. It travels the world, seeking a city that craves the extraordinary, a place where souls yearn to escape the mundane",
+    "circus.locationText": "This year, the chosen location for this supernatural spectacle is Kyiv. The National Circus of Ukraine is undergoing a transformation like never before, perhaps never to be repeated, and the residents will bear to witness this!",
+    "circus.locationText2": "In fact, there will be acrobatic performance!",
+    "circus.limit": "The number of tickets is limited -",
+    "circus.limit1_1": "800 people.",
+    "circus.limit2": "Ticket prices depend on the presale stage. Number of stages: IV",
+    "circus.service": "The venue will have a food court, a large bar, a lounge area, and a cloakroom",
+    "circus.dresscode": "Make the beings from other worlds tremble!",
+    "circus.dresscode2": "A costume is not mandatory, but it offers the bonus of receiving a welcome drink!",
+    "circus.what1": "«Carnival of Shadows» transcends the boundaries of time and space, uniting various creatures of night and day in a carnival dance",
+    "circus.what2": "Here, sinister clowns laugh alongside friendly acrobats, and powerful techno melodies harmonize with the aesthetic performance of gymnasts",
+    "circus.what3": "It's a night when everyone can reveal their true essence, freeing themselves from the constraints of the ordinary world",
+    "circus.artists.title": "BACK IN ACTION",
+    "circus.artists.text1": "There are those who sleep for 364 days a year and awaken only when the mystical circus visits this world.",
+    "circus.artists.text2": "On November 4th, a group of clowns, acrobats, gymnasts, and other creatures will once again have the opportunity to amaze with their enigmatic show.",
+    "circus.artists.text3": "With their mystical costumes, tricks, and other tools, the group will enhance the musical story, making this event unforgettable.",
+    "circus.price": "The closer to the date, the more expensive. Don't delay :)"
 }
