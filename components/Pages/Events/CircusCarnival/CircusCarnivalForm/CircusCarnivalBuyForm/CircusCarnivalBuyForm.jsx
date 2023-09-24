@@ -18,7 +18,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useAppContext } from "../../../../../../context/AppContext"
 import { logEvent } from "../../../../../../utils/gtag"
-import { eventApi } from "../../../../../../api/api"
+import { eventApi, userApi } from "../../../../../../api/api"
 import { cx } from "../../../../../../utils/classnames"
 
 const CircusCarnivalBuyForm = (props) => {
@@ -139,10 +139,10 @@ const CircusCarnivalBuyForm = (props) => {
             borderColor: "#C4C4C4"
         },
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#C4C4C4"
+            borderColor: "#920000"
         },
-        "& .MuiOutlinedInput-root.Mui-hovered .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#C4C4C4"
+        "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#920000"
         },
         "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "#C4C4C4"

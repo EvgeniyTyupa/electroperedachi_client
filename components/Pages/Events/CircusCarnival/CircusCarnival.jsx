@@ -6,6 +6,7 @@ import Image from "next/image"
 
 import { useRef, useState, useEffect } from "react"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
+import moment from "moment"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -21,14 +22,14 @@ import useSocialLinks from "../../../../hooks/useSocialLinks"
 import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 
 import home_back_img from "/public/images/circus/home.jpg"
-import cloud_right from "/public/images/circus/cloud_right.png"
-import cloud_left from "/public/images/circus/cloud_left.png"
-import clouds_mobile from "/public/images/circus/clouds_mobile.png"
-import video_bg from "/public/images/circus/video_bg.png"
-import circus_logo from "/public/images/circus/circ_logo.png"
+import cloud_right from "/public/images/circus/cloud_right.webp"
+import cloud_left from "/public/images/circus/cloud_left.webp"
+import clouds_mobile from "/public/images/circus/clouds_mobile.webp"
+import video_bg from "/public/images/circus/video_bg.webp"
+import circus_logo from "/public/images/circus/circ_logo.webp"
 import stars from "/public/images/circus/stars.svg"
-import lights from "/public/images/circus/lights.png"
-import clown_face from "/public/images/circus/clown_face.png"
+import lights from "/public/images/circus/lights.webp"
+import clown_face from "/public/images/circus/clown_face.webp"
 
 import location from "/public/images/circus/location.svg"
 import price from "/public/images/circus/price.svg"
@@ -40,24 +41,30 @@ import what1 from "/public/images/circus/what1.jpg"
 import what2 from "/public/images/circus/what2.jpg"
 import what3 from "/public/images/circus/what3.jpg"
 
-import hand from "/public/images/circus/hand.png"
+import hand from "/public/images/circus/hand.webp"
 
-import card from "/public/images/circus/card.png"
+import card from "/public/images/circus/card.webp"
 
-import nadai from "/public/images/circus/nadai.png"
+import nadai from "/public/images/circus/nadai.webp"
 
 import show from "/public/images/circus/show.jpg"
 
 import zombies from "/public/images/circus/zombies.jpg"
 
-import chart from "/public/images/circus/chart.png"
-import chart_mobile from "/public/images/circus/chart_mobile.png"
+import chart from "/public/images/circus/chart.webp"
+import chart_mobile from "/public/images/circus/chart_mobile.webp"
 
-import lamp from "/public/images/circus/lamp.png"
-import lamp_mobile from "/public/images/circus/light_mobile.png"
+import lamp from "/public/images/circus/lamp.webp"
+import lamp_mobile from "/public/images/circus/light_mobile.webp"
+import shadow from "/public/images/circus/shadow.webp"
 
 const CircusCarnival = (props) => {
+    const { event } = props
+
     const intl = useIntl()
+
+    const [price, setPrice] = useState(0)
+    const [isShowBuy, setIsShowBuy] = useState(false)
 
     const videoRef = useRef(null)
     const paymentBlockRef = useRef(null)
@@ -70,6 +77,8 @@ const CircusCarnival = (props) => {
 
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
+
+    const isEnd = event ? moment().startOf("day") > moment(event.date) : true
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
@@ -128,35 +137,17 @@ const CircusCarnival = (props) => {
             url: "https://soundcloud.com/dj_noff",
             suit: "pika",
             rank: "J"
+        },
+        {
+            name: "Paul Meise",
+            photo: nadai.src,
+            url: "https://soundcloud.com/dj_meise",
+            suit: "krest",
+            rank: "A"
         }
     ]
 
-    const faq = [
-        {
-            title: "faq title UA",
-            title_en: "faq title EN",
-            text: "faq text UA",
-            text: "faq text EN"
-        },
-        {
-            title: "faq title UA",
-            title_en: "faq title EN",
-            text: "faq text UA",
-            text: "faq text EN"
-        },
-        {
-            title: "faq title UA",
-            title_en: "faq title EN",
-            text: "faq text UA",
-            text: "faq text EN"
-        },
-        {
-            title: "faq title UA",
-            title_en: "faq title EN",
-            text: "faq text UA",
-            text: "faq text EN"
-        }
-    ]
+    const faq = event.faq
 
     const onDjClick = (djUrl) => {
         let anchor = document.createElement("a")
@@ -165,8 +156,29 @@ const CircusCarnival = (props) => {
         anchor.click()
     }
 
+    const setCloudsOffset = (width) => {
+        if (width > 1920) {
+            return 300
+        } else if (width <= 1920 && width >= 1280) {
+            return 170
+        } else {
+            return 220
+        }
+    }
+
     useEffect(() => {
-        Aos.init({ duration: 1000, offset: width < 1280 ? 220 : 170 })
+        Aos.init({ duration: 1000, offset: setCloudsOffset(width) })
+    }, [])
+
+    useEffect(() => {
+        let now = moment()
+
+        event.pricing.forEach((el) => {
+            if (now >= moment(el.start) && now <= moment(el.end)) {
+                setPrice(el.price)
+                setIsShowBuy(true)
+            }
+        })
     }, [])
 
     useEffect(() => {
@@ -198,7 +210,7 @@ const CircusCarnival = (props) => {
                 window.removeEventListener("scroll", handleScroll)
             }
         }
-    }, [videoRef, djsRef])
+    }, [videoRef, djsRef, width])
 
     return (
         <div className={classes.main}>
@@ -208,6 +220,7 @@ const CircusCarnival = (props) => {
                     backgroundImage: `url(${home_back_img.src})`
                 }}
             >
+                <h1>Circus<br/>Carnival</h1>
                 <div
                     className={classes.homeContent}
                     data-aos="fade-down"
@@ -331,6 +344,12 @@ const CircusCarnival = (props) => {
                                         {intl.formatMessage({
                                             id: "circus.locationText"
                                         })}
+                                        &nbsp;
+                                        <span>
+                                            {intl.formatMessage({
+                                                id: "circus.locationText2"
+                                            })}
+                                        </span>
                                     </p>
                                 </div>
                             </div>
@@ -345,6 +364,9 @@ const CircusCarnival = (props) => {
                                         {intl.formatMessage({
                                             id: "circus.limit"
                                         })}
+                                        <span>&nbsp;{intl.formatMessage({
+                                            id: "circus.limit1_1"
+                                        })}</span>
                                         <br />
                                         <br />
                                         {intl.formatMessage({
@@ -468,7 +490,27 @@ const CircusCarnival = (props) => {
                                             </p>
                                         </div>
                                     )}
-                                    {index > 0 && (
+                                    {index === djs.length - 1 && (
+                                        <div className={classes.djNameBlock}>
+                                            <p
+                                                className={cx(
+                                                    classes.djName,
+                                                    classes.djNameFirst
+                                                )}
+                                            >
+                                                {el.name.split(" ")[0]}
+                                            </p>
+                                            <p
+                                                className={cx(
+                                                    classes.djName,
+                                                    classes.djNameFirst
+                                                )}
+                                            >
+                                                {el.name.split(" ")[1]}
+                                            </p>
+                                        </div>
+                                    )}
+                                    {(index > 0 && index < djs.length -1) && (
                                         <p
                                             className={cx(
                                                 classes.djName,
@@ -658,11 +700,19 @@ const CircusCarnival = (props) => {
                     <h2>PRICE</h2>
                     <p>{intl.formatMessage({ id: "circus.price" })}</p>
                 </div>
-                <img src={width > 568 ? chart.src : chart_mobile.src} alt="chart" />
+                <img src={width > 568 ? chart.src : chart_mobile.src} alt="chart" className={classes.chart}/>
+                <img src={shadow.src} alt="shadow" className={classes.shadowImg}/>
             </div>
-            <div className={classes.form} data-aos="fade-down" data-aos-duration="2000">
-                <CircusCarnivalForm paymentBlockRef={paymentBlockRef} />
-            </div>
+            {!isEnd && isShowBuy && (
+                <div className={classes.form} data-aos="fade-down" data-aos-duration="2000">
+                    <CircusCarnivalForm
+                        paymentBlockRef={paymentBlockRef}
+                        event={event}
+                        price={price}
+                        setPrice={setPrice}
+                    />
+                </div>
+            )}
             <footer className={classes.footer}>
                 <div className={classes.links}>
                     {links.map((el) => (

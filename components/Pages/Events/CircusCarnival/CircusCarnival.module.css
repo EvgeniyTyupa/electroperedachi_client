@@ -12,7 +12,7 @@
     width: 100%;
     font-family: "ArialCurvie" !important;
     background-color: #1C1C1C;
-    background-image: url("../../../../public/images/circus/noise.png");
+    background-image: url("../../../../public/images/circus/noise.webp");
     background-attachment: fixed;
 }
 .main audio {
@@ -29,6 +29,14 @@
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+}
+.home h1 {
+    font-family: "QuentinCaps";
+    text-align: center;
+    color: #961618;
+    font-size: 56px;
+    font-weight: 100;
+    margin-top: 50px;
 }
 .homeContent {
     margin-top: auto;
@@ -59,6 +67,7 @@
 }
 .cta:hover {
     box-shadow: 0px 0px 20px -3px red;
+    background-color: #920000 !important;
 }
 .animatedBut {
     animation: shadowAnimation 2s ease-in-out infinite; 
@@ -252,7 +261,9 @@
 .locationText {
     margin-top: 24px;
 }
-
+.features span {
+    color: #FF0000;
+}
 .what {
     width: 100%;
     padding: 0 125px;
@@ -417,6 +428,7 @@
 }
 .djRank p {
     font-size: 30px;
+    font-weight: 100;
 }
 .djRank svg {
     font-size: 26px;
@@ -473,6 +485,7 @@
     z-index: 2;
     font-size: 60px;
     line-height: normal;
+    text-shadow: 0px 0px 30px #FB7800
 }
 .showText1 {
     text-align: right;
@@ -527,6 +540,7 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
+    margin-top: 100px;
 }
 .lampImg {
     position: absolute;
@@ -543,12 +557,12 @@
     flex-direction: column;
     position: relative;
     margin-top: 110px;
+    padding: 0 125px;
 }
 .priceInfo {
     display: flex;
     flex-direction: column;
     gap: 7px;
-    padding: 0 125px;
     box-sizing: border-box;
 }
 .priceInfo h2 {
@@ -558,11 +572,17 @@
 .priceInfo p {
     font-size: 18px;
 }
-.price img {
+.chart {
     z-index: 0;
-    width: 100%;
     position: relative;
     top: -100px;
+    z-index: 1;
+}
+.shadowImg {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
 }
 
 .form {
@@ -645,13 +665,16 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .features, .what, .lineup, .artists, .faq, .priceInfo, .home {
+    .features, .what, .lineup, .artists, .faq, .price, .home {
         padding: 0 60px;
         box-sizing: border-box;
     }
 }
 
 @media screen and (max-width: 1170px) {
+    .home h1 {
+        margin-top: 150px;
+    }
     .clouds {
         flex-direction: column;
         align-items: center;
@@ -700,9 +723,6 @@
     .featuresCircle {
         top: -350px;
         background: radial-gradient(circle at center, rgba(255, 0, 0, 0.356) 0%, transparent 70%);
-    }
-    .price img {
-        top: -50px;
     }
 }
 
@@ -788,6 +808,10 @@
 }
 
 @media screen and (max-width: 568px) {
+    .home h1 {
+        margin-top: 90px;
+        font-size: 50px;
+    }
     .main h2 {
         font-size: 25px;
     }
@@ -823,8 +847,14 @@
         left: -45px;
         bottom: -45px;
     }
+    .lights {
+        position: relative;
+    }
     .lightsImg {
-        display: none;
+        /* display: none; */
+        position: absolute;
+        width: 100%;
+        bottom: 120%
     }
     .video {
         height: 740px;
@@ -889,7 +919,14 @@
     .artistsText p {
         font-size: 16px;
     }
-    .price img {
+    .shadowImg {
+        display: none;
+    }
+    .price {
+        padding: 0;
+        margin-bottom: 80px;
+    }
+    .chart {
         top: 0;
     }
     .priceInfo p {
@@ -909,9 +946,19 @@
     .what p {
         font-size: 16px;
     }
+    .questions {
+        margin-top: 20px;
+    }
 }
 
 @media screen and (max-width: 400px) {
+    .lightsImg {
+        bottom: 130%
+    }
+    .home h1 {
+        margin-top: 80px;
+        font-size: 45px;
+    }
     .cta {
         font-size: 14px !important;
         padding: 10px 10px !important;
@@ -922,6 +969,13 @@
 }
 
 @media screen and (max-width: 350px) {
+    .lightsImg {
+        bottom: 110%
+    }
+    .home h1 {
+        margin-top: 70px;
+        font-size: 40px;
+    }
     .videoArea {
         margin-top: 80px;
     }

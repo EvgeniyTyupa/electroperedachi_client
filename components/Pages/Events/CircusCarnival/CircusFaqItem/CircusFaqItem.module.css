@@ -52,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+    align-items: flex-start;
 }
 
 @media screen and (max-width: 1440px) {
@@ -88,7 +89,7 @@
         top: -20px;
     }
     .expanded img {
-        display: none;
+        width: 60px;
     }
     .info h4 {
         font-size: 18px;

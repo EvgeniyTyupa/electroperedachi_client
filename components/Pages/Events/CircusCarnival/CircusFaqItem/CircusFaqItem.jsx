@@ -6,7 +6,7 @@ import { useState } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
 import classes from "./CircusFaqItem.module.css"
 
-import spider from "/public/images/circus/spider.png"
+import spider from "/public/images/circus/spider.webp"
 
 const EditerMarkdown = dynamic(
     () =>
