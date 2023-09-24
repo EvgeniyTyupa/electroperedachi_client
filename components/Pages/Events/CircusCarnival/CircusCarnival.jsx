@@ -21,25 +21,24 @@ import useNavLinks from "../../../../hooks/useNavLinks"
 import useSocialLinks from "../../../../hooks/useSocialLinks"
 import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 
-import home_back_img from "/public/images/circus/home.jpg"
+import home_back_img from "/public/images/circus/home.webp"
 import cloud_right from "/public/images/circus/cloud_right.webp"
 import cloud_left from "/public/images/circus/cloud_left.webp"
 import clouds_mobile from "/public/images/circus/clouds_mobile.webp"
 import video_bg from "/public/images/circus/video_bg.webp"
 import circus_logo from "/public/images/circus/circ_logo.webp"
 import stars from "/public/images/circus/stars.svg"
-import lights from "/public/images/circus/lights.webp"
+import lights from "/public/images/circus/lights.png"
 import clown_face from "/public/images/circus/clown_face.webp"
 
 import location from "/public/images/circus/location.svg"
-import price from "/public/images/circus/price.svg"
 import service from "/public/images/circus/service.svg"
 import dress from "/public/images/circus/dress.svg"
 import time from "/public/images/circus/time.svg"
 
-import what1 from "/public/images/circus/what1.jpg"
-import what2 from "/public/images/circus/what2.jpg"
-import what3 from "/public/images/circus/what3.jpg"
+import what1 from "/public/images/circus/what1.webp"
+import what2 from "/public/images/circus/what2.webp"
+import what3 from "/public/images/circus/what3.webp"
 
 import hand from "/public/images/circus/hand.webp"
 
@@ -47,9 +46,9 @@ import card from "/public/images/circus/card.webp"
 
 import nadai from "/public/images/circus/nadai.webp"
 
-import show from "/public/images/circus/show.jpg"
+import show from "/public/images/circus/show.webp"
 
-import zombies from "/public/images/circus/zombies.jpg"
+import zombies from "/public/images/circus/zombies.webp"
 
 import chart from "/public/images/circus/chart.webp"
 import chart_mobile from "/public/images/circus/chart_mobile.webp"
