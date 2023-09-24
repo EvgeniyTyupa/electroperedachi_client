@@ -28,7 +28,7 @@ import clouds_mobile from "/public/images/circus/clouds_mobile.webp"
 import video_bg from "/public/images/circus/video_bg.webp"
 import circus_logo from "/public/images/circus/circ_logo.webp"
 import stars from "/public/images/circus/stars.svg"
-import lights from "/public/images/circus/lights.png"
+import lights from "/public/images/circus/lights.webp"
 import clown_face from "/public/images/circus/clown_face.webp"
 
 import location from "/public/images/circus/location.svg"
