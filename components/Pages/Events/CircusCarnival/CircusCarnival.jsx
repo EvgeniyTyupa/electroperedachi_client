@@ -33,6 +33,7 @@ import clown_face from "/public/images/circus/clown_face.webp"
 
 import location from "/public/images/circus/location.svg"
 import service from "/public/images/circus/service.svg"
+import priceIcon from "/public/images/circus/price.svg"
 import dress from "/public/images/circus/dress.svg"
 import time from "/public/images/circus/time.svg"
 
@@ -161,7 +162,7 @@ const CircusCarnival = (props) => {
         } else if (width <= 1920 && width >= 1280) {
             return 170
         } else {
-            return 220
+            return 150
         }
     }
 
@@ -355,7 +356,7 @@ const CircusCarnival = (props) => {
                         </div>
                         <div className={classes.featuresBlock}>
                             <div className={classes.featuresPoint}>
-                                <img src={price.src} alt="price" />
+                                <img src={priceIcon.src} alt="price" />
                                 <div className={classes.featuresPointInfo}>
                                     <h4>PRICE</h4>
                                     <h3>600 UAH</h3>
