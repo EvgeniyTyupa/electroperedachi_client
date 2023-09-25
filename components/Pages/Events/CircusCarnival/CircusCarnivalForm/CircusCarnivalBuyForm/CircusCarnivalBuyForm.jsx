@@ -86,7 +86,7 @@ const CircusCarnivalBuyForm = (props) => {
                 1
             )
 
-            // window.location.replace(response.url)
+            window.location.replace(response.url)
         } catch (err) {
             setServerError("Server Error, try again")
         }
