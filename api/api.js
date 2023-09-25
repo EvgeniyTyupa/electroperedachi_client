@@ -71,7 +71,7 @@ export const eventApi = {
             .then((response) => response.data)
     },
     saveDataToGoogleSheet(formData, sheetNumber) {
-        const googleTableURL = `https://v1.nocodeapi.com/electroperedachi/google_sheets/OksFLSIjVQXHDvOV?tabId=sheet${sheetNumber}`
+        const googleTableURL = `https://v1.nocodeapi.com/electroperedachi/google_sheets/pxOPPDtAYgCfKigJ?tabId=sheet${sheetNumber}`
 
         let date = formData.date
         let phone = formData.phone
