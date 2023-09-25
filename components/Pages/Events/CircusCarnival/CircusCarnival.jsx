@@ -173,6 +173,11 @@ const CircusCarnival = (props) => {
         }
     }
 
+    const handleDjHover = () => {
+        const children = djsRef.current.children;
+        children[0].children[0].classList.remove(classes.djInverMobile)
+    }
+
     useEffect(() => {
         Aos.init({ duration: 1000, offset: setCloudsOffset(width) })
     }, [])
@@ -204,10 +209,13 @@ const CircusCarnival = (props) => {
     
                         for (let i = 0; i < children.length; i++) {
                             if (children[i].getBoundingClientRect().y < 300) {
-                                children[i].children[0].classList.add(classes.djInverMobile); // Replace 'my-class' with your desired class name
+                                children[i].children[0].classList.add(classes.djInverMobile);
                             }
                         }
                     }
+                } else {
+                    const children = djsRef.current.children;
+                    children[0].children[0].classList.add(classes.djInverMobile)
                 }
 
             }
@@ -464,6 +472,7 @@ const CircusCarnival = (props) => {
                     ref={djsRef}
                     data-aos="fade-up"
                     data-aos-duration="2000"
+                    onMouseEnter={handleDjHover}
                 >
                     {djs.map((el, index) => (
                         <div
