@@ -374,7 +374,7 @@ const CircusCarnival = (props) => {
                                 <img src={priceIcon.src} alt="price" />
                                 <div className={classes.featuresPointInfo}>
                                     <h4>PRICE</h4>
-                                    <h3>600 UAH</h3>
+                                    <h3>{price} UAH</h3>
                                     <p>
                                         {intl.formatMessage({
                                             id: "circus.limit"
