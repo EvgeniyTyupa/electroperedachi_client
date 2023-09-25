@@ -46,6 +46,13 @@ import hand from "/public/images/circus/hand.webp"
 import card from "/public/images/circus/card.webp"
 
 import nadai from "/public/images/circus/nadai.webp"
+import storm from "/public/images/circus/storm.webp"
+import denali from "/public/images/circus/denali.webp"
+import noff from "/public/images/circus/noff.webp"
+import marteli from "/public/images/circus/marteli.webp"
+import impulse from "/public/images/circus/impulse.webp"
+import paul_meise from "/public/images/circus/paul_meise.webp"
+import staylen from "/public/images/circus/staylen.webp"
 
 import show from "/public/images/circus/show.webp"
 
@@ -91,14 +98,14 @@ const CircusCarnival = (props) => {
     const djs = [
         {
             name: "Sasha Storm",
-            photo: nadai.src,
+            photo: storm.src,
             url: "https://soundcloud.com/sasha_storm_music",
             suit: "heart",
             rank: "A"
         },
         {
             name: "Denali",
-            photo: nadai.src,
+            photo: denali.src,
             url: "https://soundcloud.com/denalidj",
             suit: "krest",
             rank: "Q"
@@ -112,35 +119,35 @@ const CircusCarnival = (props) => {
         },
         {
             name: "Impulse",
-            photo: nadai.src,
+            photo: impulse.src,
             url: "https://soundcloud.com/impulse_techno",
             suit: "buba",
             rank: "J"
         },
         {
             name: "Marteli",
-            photo: nadai.src,
+            photo: marteli.src,
             url: "https://soundcloud.com/marteli-techno",
             suit: "heart",
             rank: "J"
         },
         {
             name: "Staylen",
-            photo: nadai.src,
+            photo: staylen.src,
             url: "https://soundcloud.com/staylen_techno",
             suit: "heart",
             rank: "Q"
         },
         {
             name: "Noff",
-            photo: nadai.src,
+            photo: noff.src,
             url: "https://soundcloud.com/dj_noff",
             suit: "pika",
             rank: "J"
         },
         {
             name: "Paul Meise",
-            photo: nadai.src,
+            photo: paul_meise.src,
             url: "https://soundcloud.com/dj_meise",
             suit: "krest",
             rank: "A"
