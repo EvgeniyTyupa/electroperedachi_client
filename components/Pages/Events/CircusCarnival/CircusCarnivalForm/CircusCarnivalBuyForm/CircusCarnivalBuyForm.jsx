@@ -70,8 +70,8 @@ const CircusCarnivalBuyForm = (props) => {
                 .then((ReactPixel) => {
                     ReactPixel.init("573414703062456")
                     ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
-                        currency: "UAH"
+                        value: isAppliedPromo ? totalPriceDiscount / 37 : totalPrice / 37,
+                        currency: "USD"
                     })
                 })
 
