@@ -38,8 +38,8 @@ const ThankyouPage = (props) => {
             .then(ReactPixel => {
                 ReactPixel.init('573414703062456')
                 ReactPixel.track('Purchase', {
-                    value: total_price,
-                    currency: "UAH"
+                    value: Number(total_price) / 37,
+                    currency: "USD"
                 })
             })
 

@@ -73,6 +73,8 @@ const CircusCarnival = (props) => {
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
 
+    const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
+
     const videoRef = useRef(null)
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
@@ -94,6 +96,15 @@ const CircusCarnival = (props) => {
     const readMoreClick = () => {
         readMoreRef.current.scrollIntoView()
     }
+
+    const handleAddToCartClick = () => {
+        import("react-facebook-pixel")
+        .then((module) => module.default)
+        .then((ReactPixel) => {
+            ReactPixel.init("573414703062456")
+            ReactPixel.track("AddToCart")
+        })
+    };
 
     const djs = [
         {
@@ -218,6 +229,14 @@ const CircusCarnival = (props) => {
                     children[0].children[0].classList.add(classes.djInverMobile)
                 }
 
+                if(paymentBlockRef && paymentBlockRef.current) {
+                    if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
+                        if (!isAddToCartEventSend) {
+                            setIsAddToCartEventSend(true)
+                        }
+                    }
+                }
+
             }
 
             window.addEventListener("scroll", handleScroll)
@@ -225,7 +244,13 @@ const CircusCarnival = (props) => {
                 window.removeEventListener("scroll", handleScroll)
             }
         }
-    }, [videoRef, djsRef, width])
+    }, [videoRef, djsRef, paymentBlockRef, width])
+
+    useEffect(() => {
+        if (isAddToCartEventSend) {
+            handleAddToCartClick()
+        }
+    }, [isAddToCartEventSend])
 
     return (
         <div className={classes.main}>
