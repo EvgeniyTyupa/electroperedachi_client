@@ -64,6 +64,7 @@ import chart_mobile from "/public/images/circus/chart_mobile.webp"
 import lamp from "/public/images/circus/lamp.webp"
 import lamp_mobile from "/public/images/circus/light_mobile.webp"
 import shadow from "/public/images/circus/shadow.webp"
+import Link from "next/link"
 
 const CircusCarnival = (props) => {
     const { event } = props
@@ -778,12 +779,12 @@ const CircusCarnival = (props) => {
                     ))}
                 </div>
                 <div className={classes.mini}>
-                    <a download href="/tandc.pdf">
+                    <Link href="/terms-of-use">
                         {intl.formatMessage({ id: "footer.terms" })}
-                    </a>
-                    <a download href="/data_protection.pdf">
+                    </Link>
+                    <Link href="/privacy-policy">
                         {intl.formatMessage({ id: "footer.privacy" })}
-                    </a>
+                    </Link>
                 </div>
             </footer>
         </div>

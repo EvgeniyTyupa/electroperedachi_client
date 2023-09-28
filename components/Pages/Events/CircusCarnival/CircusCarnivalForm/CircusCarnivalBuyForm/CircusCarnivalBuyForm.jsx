@@ -20,6 +20,7 @@ import { useAppContext } from "../../../../../../context/AppContext"
 import { logEvent } from "../../../../../../utils/gtag"
 import { eventApi, userApi } from "../../../../../../api/api"
 import { cx } from "../../../../../../utils/classnames"
+import Link from "next/link"
 
 const CircusCarnivalBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
@@ -339,29 +340,29 @@ const CircusCarnivalBuyForm = (props) => {
                                 id: "event.form.confirm_text"
                             })}
                             &nbsp;
-                            <a
+                            <Link
                                 className={classes.rulesLink}
                                 target="_blank"
-                                href="/tandc.pdf"
+                                href="/terms-of-use"
                             >
                                 {intl.formatMessage({
                                     id: "event.form.confirm_text1"
                                 })}
-                            </a>
+                            </Link>
                             &nbsp;
                             {intl.formatMessage({
                                 id: "event.form.confirm_text2"
                             })}
                             &nbsp;
-                            <a
+                            <Link
                                 className={classes.rulesLink}
                                 target="_blank"
-                                href="/data_protection.pdf"
+                                href="/privacy-policy"
                             >
                                 {intl.formatMessage({
                                     id: "event.form.confirm_text1"
                                 })}
-                            </a>
+                            </Link>
                         </>
                     }
                 />

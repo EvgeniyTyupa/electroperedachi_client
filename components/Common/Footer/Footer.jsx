@@ -7,6 +7,7 @@ import CustomLink from "../../UI/Text/CustomLink/CustomLink"
 import { useIntl } from "react-intl"
 import PeaksFooter from "./PeaksFooter/PeaksFooter"
 import Container from "../../UI/Container/Container"
+import Link from "next/link"
 
 const Footer = () => {
     const router = useRouter()
@@ -44,12 +45,12 @@ const Footer = () => {
                     ))}
                 </div>
                 <div className={classes.mini}>
-                    <a download href="/tandc.pdf">
+                    <Link href="/terms-of-use">
                         {intl.formatMessage({ id: "footer.terms" })}
-                    </a>
-                    <a download href="/data_protection.pdf">
+                    </Link>
+                    <Link href="/privacy-policy">
                         {intl.formatMessage({ id: "footer.privacy" })}
-                    </a>
+                    </Link>
                 </div>
             </Container>
             <PeaksFooter />
