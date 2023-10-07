@@ -328,7 +328,7 @@ const CircusCarnival = (props) => {
                 <div className={classes.videoArea}>
                     <div className={classes.videoBlock} />
                     <iframe
-                        src={`https://www.youtube.com/embed/S8SFJt_e6UA?si=nsjLb_CeRjCSDb_z?autoplay=${
+                        src={`https://www.youtube.com/embed/HZhsZbYmJCA?si=CwtKoRYOwqsmz3ms?autoplay=${
                             isPlayVideo ? 1 : 0
                         }&mute=1`}
                         frameborder="0"
