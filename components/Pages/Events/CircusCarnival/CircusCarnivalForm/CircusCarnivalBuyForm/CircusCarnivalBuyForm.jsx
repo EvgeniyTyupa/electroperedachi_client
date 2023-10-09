@@ -289,7 +289,8 @@ const CircusCarnivalBuyForm = (props) => {
                                 sx={{
                                     ...material,
                                     "& .MuiInputBase-root": {
-                                        paddingRight: 0
+                                        paddingRight: 0,
+                                        color: "white"
                                     }
                                 }}
                                 label={intl.formatMessage({
