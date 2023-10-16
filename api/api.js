@@ -70,20 +70,11 @@ export const eventApi = {
             .get(`/events/get/randomPhotos`)
             .then((response) => response.data)
     },
-    saveDataToGoogleSheet(formData, sheetNumber) {
-        const googleTableURL = `https://v1.nocodeapi.com/electroperedachi/google_sheets/pxOPPDtAYgCfKigJ?tabId=sheet${sheetNumber}`
-
-        let date = formData.date
-        let phone = formData.phone
-        let email = formData.email
-        let totalPrice = formData.totalPrice
-        let url = formData.userURL
-
-        return axios
-            .post(googleTableURL, JSON.stringify([[date, email, phone, totalPrice, url]]), {
-                headers: {
-                    "Content-Type": "application/json"
-                }
+    saveDataToGoogleSheet(formData, sheetId) {
+        return instance
+            .post('/ticket/gtable', {
+                data: { ...formData },
+                sheetId: sheetId
             })
             .then((response) => response.data)
     }

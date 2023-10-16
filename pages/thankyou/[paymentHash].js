@@ -43,13 +43,13 @@ const ThankyouPage = (props) => {
                 })
             })
 
-            // eventApi.saveDataToGoogleSheet({
-            //     date: moment().format('DD/MM/YYYY HH:mm'),
-            //     email: email,
-            //     phone: phone,
-            //     totalPrice: total_price,
-            //     userURL: ""
-            // }, 2)
+            eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: email,
+                phone: phone,
+                totalPrice: total_price,
+                userURL: ""
+            }, "sheet2")
         }
     }, [paymentHash, message])
 
