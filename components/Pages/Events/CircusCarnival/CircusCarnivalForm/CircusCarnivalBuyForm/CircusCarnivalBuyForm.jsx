@@ -79,7 +79,7 @@ const CircusCarnivalBuyForm = (props) => {
             await eventApi.saveDataToGoogleSheet(
                 {
                     date: moment().format("DD/MM/YYYY HH:mm"),
-                    email: data.email.toLowerString(),
+                    email: data.email.toLowerCase(),
                     phone: data.phone,
                     totalPrice: "",
                     userURL: currentURL
