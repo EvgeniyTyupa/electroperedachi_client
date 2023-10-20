@@ -48,7 +48,7 @@ const CircusCarnivalBuyForm = (props) => {
         setIsFetchingContext(true)
         try {
             const response = await userApi.add(
-                data.email,
+                data.email.toLowerCase(),
                 data.phone,
                 isAppliedPromo || event?.is_multi_buy
                     ? totalPriceDiscount
@@ -79,7 +79,7 @@ const CircusCarnivalBuyForm = (props) => {
             await eventApi.saveDataToGoogleSheet(
                 {
                     date: moment().format("DD/MM/YYYY HH:mm"),
-                    email: data.email,
+                    email: data.email.toLowerString(),
                     phone: data.phone,
                     totalPrice: "",
                     userURL: currentURL
@@ -248,7 +248,7 @@ const CircusCarnivalBuyForm = (props) => {
                             id: "form.error.required"
                         }),
                         pattern: {
-                            value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/,
+                            value: /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/,
                             message: intl.formatMessage({
                                 id: "form.error.invalid_email"
                             })
