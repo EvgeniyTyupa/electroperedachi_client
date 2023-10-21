@@ -449,7 +449,7 @@ const CircusCarnival = (props) => {
                                 <img src={time.src} alt="time" />
                                 <div className={classes.featuresPointInfo}>
                                     <h4>DURATION</h4>
-                                    <h3>15:30 - 22:30</h3>
+                                    <h3>15:30 - 22:00</h3>
                                 </div>
                             </div>
                         </div>
