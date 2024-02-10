@@ -18,14 +18,15 @@ const Navbar = () => {
         <header className={cx(
             classes.main,
             router.pathname === "/" ? classes.transparent : undefined,
-            router.pathname === "/events/circus" ? classes.absolute : undefined
+            router.pathname === "/events/circus" ? classes.absolute : undefined,
+            router.pathname === "/events/cyberpunk" ? classes.absolute : undefined
         )}>
             <Container className={classes.container}>
                 <Link href={routes.home}>
                     <img src={logo.src} alt="logo" className={classes.logo}/>
                 </Link>
                     <nav className={classes.links}>
-                        {router.pathname !== "/events/circus" && (
+                        {(router.pathname !== "/events/circus" && router.pathname !== "/events/cyberpunk") && (
                             links.map(el => (
                                 <CustomLink
                                     key={el.href}

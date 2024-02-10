@@ -31,7 +31,7 @@ const Layout = (props) => {
                 {children}
             </main>
             <StatusMessage />
-            {router.pathname !== "/events/circus" && (
+            {(router.pathname !== "/events/circus" && router.pathname !== "/events/cyberpunk") && (
                 <Footer />
             )}
         </Fragment>

@@ -1,0 +1,136 @@
+.main {
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+    height: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+.leftImgContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.leftImgContainer img {
+    object-fit: contain;
+}
+.blured {
+    background: #df025333;
+    filter: blur(40px);
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    z-index: 0;
+    left: 18%;
+    bottom: 20%;
+    z-index: 0;
+}
+.right {
+    width: 50%;
+}
+.electroperedachi {
+    font-size: 25px;
+    color: #767676;
+    font-weight: bold;
+}
+.titleBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+.title {
+    color: black;
+    text-shadow: #df0253 0px 0 1px;
+    font-size: 60px;
+    z-index: 1;
+    font-family: "Blaster";
+    position: relative;
+}
+.titleAbsolute {
+    position: absolute;
+    z-index: 0;
+    text-shadow: #df025333 0px 0 15px;
+    color: black;
+    font-size: 60px;
+    font-family: "Blaster";
+}
+.rules {
+    white-space: pre-wrap;
+    font-weight: 100;
+    line-height: 25px;
+    margin-top: 30px;
+}
+.price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+}
+.price br {
+    display: none;
+}
+.ticketsBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+.ticketsCount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ticketsCount label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+}
+.countBut {
+    min-width: unset !important;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(223, 2, 82, .2) !important;
+    /* border: 1px solid #df0253 !important; */
+    border-radius: 0 !important;
+    color: white !important;
+    font-size: 22px !important;
+    font-weight: 300 !important;
+    font-family: "Open Sans" !important;
+    clip-path: polygon(
+        0 0, /* top left */
+        100% 0, /* top right */
+        100% 100%, /* bottom right */
+        20% 100%, /* mid bottom before the cut */
+        0 80% /* bottom left cut */
+    ) !important;
+}
+.countButt2 {
+    clip-path: polygon(
+        0 0, /* top left */
+        80% 0, /* top right before the cut */
+        100% 20%, /* just after the cut, lower down */
+        100% 100%, /* bottom right */
+        0 100% /* bottom left */
+    ) !important;
+}
+.ticketsCount span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    width: 30px;
+    text-align: center;
+}
+.oldPrice {
+    text-decoration: line-through;
+    font-weight: 300;
+}
