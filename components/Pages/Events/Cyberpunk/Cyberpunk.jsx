@@ -77,8 +77,10 @@ const Cyberpunk = (props) => {
     const [isShowBuy, setIsShowBuy] = useState(false)
 
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
+    
+    const intl = useIntl()
 
-    const text1 = "Основна мета - знайти спосіб відкрити кейс та трасувати дані на сервер. Є декілька способів відкриття, але найпростіший - знайти колегу для злиття своїх кодів. \n\n У останні секунди звʼязку ми отримали пул з цифрами, думаємо це частина коду. Не зволікай часу, стань частиною плану!"
+    const text1 = intl.formatMessage({ id: "cyberpunk.meta" })
     
     const typingMore1 = useMagicWriter(text1, 40)
 
@@ -89,7 +91,6 @@ const Cyberpunk = (props) => {
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
 
-    const intl = useIntl()
 
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
@@ -99,39 +100,39 @@ const Cyberpunk = (props) => {
     const skins = [
         {
             img: skin1.src,
-            name: "Соломія",
-            role: "Кібер-шпіон",
+            name: intl.formatMessage({ id: "cyberpunk.card1.name" }),
+            role: intl.formatMessage({ id: "cyberpunk.card1.role" }),
             age: 25,
-            zodiac: "Риби",
-            city: "Київ",
-            info: "Ви вже знайомі 4 роки"
+            zodiac: intl.formatMessage({ id: "cyberpunk.card1.zodiac" }),
+            city: intl.formatMessage({ id: "cyberpunk.card1.city" }),
+            info: intl.formatMessage({ id: "cyberpunk.card1.info" })
         },
         {
             img: skin2.src,
-            name: "Вікторія",
-            role: "Кібер-шпіон",
-            age: 22,
-            zodiac: "Лев",
-            city: "Львів",
-            info: "Ви вже знайомі 4 роки"
+            name: intl.formatMessage({ id: "cyberpunk.card2.name" }),
+            role: intl.formatMessage({ id: "cyberpunk.card2.role" }),
+            age: 23,
+            zodiac: intl.formatMessage({ id: "cyberpunk.card2.zodiac" }),
+            city: intl.formatMessage({ id: "cyberpunk.card2.city" }),
+            info: intl.formatMessage({ id: "cyberpunk.card2.info" })
         },
         {
             img: skin3.src,
-            name: "Марія",
-            role: "Кібер-шпіон",
-            age: 26,
-            zodiac: "Скорпіон",
-            city: "Запоріжжя",
-            info: "Ви вже знайомі 4 роки"
+            name: intl.formatMessage({ id: "cyberpunk.card3.name" }),
+            role: intl.formatMessage({ id: "cyberpunk.card3.role" }),
+            age: 28,
+            zodiac: intl.formatMessage({ id: "cyberpunk.card3.zodiac" }),
+            city: intl.formatMessage({ id: "cyberpunk.card3.city" }),
+            info: intl.formatMessage({ id: "cyberpunk.card3.info" })
         },
         {
             img: skin4.src,
-            name: "Роман",
-            role: "Кібер-шпіон",
-            age: 28,
-            zodiac: "Стілець",
-            city: "Київ",
-            info: "Ви вже знайомі 4 роки"
+            name: intl.formatMessage({ id: "cyberpunk.card4.name" }),
+            role: intl.formatMessage({ id: "cyberpunk.card4.role" }),
+            age: 32,
+            zodiac: intl.formatMessage({ id: "cyberpunk.card4.zodiac" }),
+            city: intl.formatMessage({ id: "cyberpunk.card4.city" }),
+            info: intl.formatMessage({ id: "cyberpunk.card4.info" })
         }
     ]
 
@@ -266,13 +267,13 @@ const Cyberpunk = (props) => {
                         data-aos="fade-down"
                         data-aos-duration="2000"
                     >
-                        Е: Твій час прийшов Чумба, ти потрібен для місії
+                        {intl.formatMessage({ id: "cyberpunk.intro" })}
                     </p>
                     <div className={classes.answerBlock} data-aos="fade-up" data-aos-duration="2000">
                         <p className={classes.gameText}>KSID:</p>
                         <div className={classes.answers}>
-                            <button className={classes.gameText} onClick={readMoreClick}>Ознайомитись з досьє завдання</button>
-                            <button className={classes.gameText} onClick={scrollToPayment}>Пропустити та <span>придбати доступ</span> одразу</button>
+                            <button className={classes.gameText} onClick={readMoreClick}>{intl.formatMessage({ id: "cyberpunk.answer1" })}</button>
+                            <button className={classes.gameText} onClick={scrollToPayment}>{intl.formatMessage({ id: "cyberpunk.answer2" })} <span>{intl.formatMessage({ id: "cyberpunk.answer2.1" })}</span> {intl.formatMessage({ id: "cyberpunk.answer2.2" })}</button>
                         </div>
                     </div>
                 </div>
@@ -284,7 +285,7 @@ const Cyberpunk = (props) => {
                         backgroundImage: `url(${ramka1.src})`
                     }}
                 >
-                    <p>Уяви, недалеке майбутньє, світом правлять корпорації, а інформація – найпотужніша валюта. Твоя колега пішла на завдання у корпо, щоб хакнути кейс, що містить важливі дані для створення революційних технологій. Вже 3 день з нею немає звʼязку.</p>
+                    <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
                 </div>
                 <img src={tabl.src} alt="freedom, equality, techno"/>
                 <div className={cx(classes.introInfo, classes.ramka2)}
@@ -292,9 +293,9 @@ const Cyberpunk = (props) => {
                         backgroundImage: `url(${ramka2.src})`
                     }}
                 >
-                    <p>На 9 березня запланована таємна корпоративна асамблея, на 11 поверсі будівлі Gulliver, Creative Quarter у центрі Києва. Вхід - Б. Тобі необхідно  туди потрапити
+                    <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
                     <br/><br/>
-                    Проте тобі обов'язково потрібно замаскуватись під єлітного корпо працівника. У досьє до завдання знайдеш референс.</p>
+                    {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
                 </div>
             </div>
             {/* VIDOS */}
@@ -329,25 +330,25 @@ const Cyberpunk = (props) => {
                         <div className={classes.stepNumberBlock}>
                             <p>01</p>
                         </div>
-                        <p>Ми знайшли спосіб потрапити на асамблею та приготували твій тимчасовий профіль</p>
+                        <p>{intl.formatMessage({ id: "cyberpunk.mission1" })}</p>
                     </div>
                     <div className={cx(classes.step, classes.stepActive)}>
                         <div className={classes.stepNumberBlock}>
                             <p>02</p>
                         </div>
-                        <p>Наступний вихід - твій. Замаскуйся у єлітного корпо працівника та викупи у нетранера доступ до заходу</p>
+                        <p>{intl.formatMessage({ id: "cyberpunk.mission2" })}</p>
                     </div>
                     <div className={cx(classes.step)}>
                         <div className={classes.stepNumberBlock}>
                             <p>03</p>
                         </div>
-                        <p>Пройди повз охорону, та інтегруватись у атмосферу</p>
+                        <p>{intl.formatMessage({ id: "cyberpunk.mission3" })}</p>
                     </div>
                     <div className={cx(classes.step)}>
                         <div className={classes.stepNumberBlock}>
                             <p>04</p>
                         </div>
-                        <p>Зроби трасування даних. Для цього треба знайти колегу, щоб відчинити кейс. Далі, можеш насолоджуватись подією</p>
+                        <p>{intl.formatMessage({ id: "cyberpunk.mission4" })}</p>
                     </div>
                 </div>
                 <img src={hand.src} alt="hand" data-aos="fade-left" data-aos-duration="2000"/>
@@ -355,24 +356,24 @@ const Cyberpunk = (props) => {
             {/* DETAILS */}
             <div className={classes.details}>
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Party Details</h3>
-                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">Е: Інструктаж для 2-ї та 3-ї фази</p>
+                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "cyberpunk.phase" })}</p>
                 <div className={classes.detailsSections} data-aos="fade-down" data-aos-duration="2000">
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
                                 <HiOutlineLocationMarker />
-                                <p>Miсце події</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.place" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
-                            <p className={classes.detailText}>Корпоративна Вежа - Gulliver Creative Quarter, Вхід Б</p>
+                            <p className={classes.detailText}>{intl.formatMessage({ id: "cyberpunk.placeInfo" })}</p>
                         </div>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
                                 <LuClock4 />
-                                <p>Початок \ Кінець</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.start" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
@@ -385,7 +386,7 @@ const Cyberpunk = (props) => {
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
                                 <RiTicket2Line />
-                                <p>Кількість квитків</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.count" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
@@ -396,32 +397,32 @@ const Cyberpunk = (props) => {
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
                                 <PiDatabaseLight />
-                                <p>Ціна квитків</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.ticketPrice" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
                             <p className={cx(classes.detailText, classes.time)}>600 UAH</p>
-                            <p className={classes.detailText}>Ціна квитків залежить від етапу передпродажу. Кількість етапів: ІІ. Чим ближче до дати - тим дорожче. Не зволікайте.</p>
+                            <p className={classes.detailText}>{intl.formatMessage({ id: "cyberpunk.ticketPriceInfo" })}</p>
                         </div>
                     </div>
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
                                 <RiTShirtLine />
-                                <p>Дресс-Код</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.dresscode" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
                             <p className={classes.detailText}>
-                                Тобі треба замаскуватись, для цього потрібно одягнутись в стилі корпо. Нижче знайдеш твоїх “колег” з праці, використай це, як референс.
+                                {intl.formatMessage({ id: "cyberpunk.dresscodeText1" })}
                                 <br/><br/>
-                                Чим краще маскування, тим більший шанс оминути охорону не викликаючи підозри
+                                {intl.formatMessage({ id: "cyberpunk.dresscodeText2" })}
                                 <br/><br/>
-                                Інакше, мусиш підкупити охоронців.
+                                {intl.formatMessage({ id: "cyberpunk.dresscodeText3" })}
                             </p>
                         </div>
                     </div>
@@ -439,7 +440,7 @@ const Cyberpunk = (props) => {
                     >
                         <img src={el.img} alt={el.name} className={classes.skinImg}/>
                         <div className={classes.cardInfo}>
-                            <img src={card.src}/>
+                            <img src={card.src} alt="card"/>
                             <div className={classes.skinInfo}>
                                 <strong>{el.name}</strong>
                                 <div className={classes.infoLine}/>
@@ -460,7 +461,7 @@ const Cyberpunk = (props) => {
             <div className={classes.lineup}>
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">LINE UP</h3>
                 <img src={decor1.src} alt="decor" className={classes.decor1}/>
-                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">Е: Вони попіклуються, щоб ви мали про що згадати з цієї події, під час наступного Брейнданс’у</p>
+                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "cyberpunk.lineupText" })}</p>
                 <div className={classes.djs} data-aos="fade-up" data-aos-duration="2000">
                     {djs.map(el => (
                         <div className={classes.dj} key={el.name} onClick={() => onDjClick(el.url)}>
@@ -512,17 +513,17 @@ const Cyberpunk = (props) => {
                     <div className={classes.notBlock}>
                         <div className={classes.notHeader}>
                             <img src={rect1.src} alt="decor"/>
-                            <p>Ви отримали повідомлення</p>
+                            <p>{intl.formatMessage({ id: "cyberpunk.messageTitle" })}</p>
                         </div>
                         <div className={classes.notBody}>
                             <img src={rect3.src} alt="decor" className={classes.ramka}/>
                             <img src={rect2.src} alt="decor"/>
-                            <p className={classes.gameText}>Е: Агов, чумба! Незволікай! <br/>Квитків на подію лімітовано, встигни отримати доступ поки є місця</p>
+                            <p className={classes.gameText}>{intl.formatMessage({ id: "cyberpunk.messageBody" })} <br/>{intl.formatMessage({ id: "cyberpunk.messageBody2" })}</p>
                         </div>
                     </div>
                 </div>
                 <Button className={classes.buyButt} onClick={scrollToPayment}>
-                    <p>ПРИДБАТИ КВИТОК</p>
+                    <p>{intl.formatMessage({ id: "cyberpunk.buyTicket" })}</p>
                     <div className={classes.r25}>
                         <IoMdArrowDown />
                         <img src={r25.src} alt="r25"/>
@@ -541,18 +542,18 @@ const Cyberpunk = (props) => {
                         <div className={cx(classes.blured, classes.blured2)}/>
                         <div className={classes.stuffLeftText}>
                             <div className={classes.detailHeader}>
-                                <p>Профіль для завдання</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.profile" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
                             <p className={classes.detailText}>
-                                Ми знайшли спосіб потрапити на захід корпорації. приготували тимчасовий профіль. 
+                                {intl.formatMessage({ id: "cyberpunk.profileText1" })}
                                 <br/><br/>
-                                Хоча тебе не будуть знати в лице, всі з тобою знайомі, оскільки весь цей час ви працювали разом віддалено. 
+                                {intl.formatMessage({ id: "cyberpunk.profileText2" })}
                                 <br/><br/>
-                                Твій нікнейм - KSID. Працює у відділу захисту програмного забеспечення. На цій посаді, ти вже давно та очікуєш незабаром підвищення.
+                                {intl.formatMessage({ id: "cyberpunk.profileText3" })}
                             </p>
                         </div>
                     </div>
@@ -562,18 +563,18 @@ const Cyberpunk = (props) => {
                         }}
                     >
                         <div className={classes.detailHeader}>
-                                <p>Кейс</p>
+                                <p>{intl.formatMessage({ id: "cyberpunk.case" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
                             <p className={classes.detailText}>
-                                Що ж, той хто володіє кейсом, зокрема тим, що всередині, має владу у всесвіті Crystal Ninja. Ці дані, що записані на Braindance девайсі, мають вплив на вектор подій. 
+                                {intl.formatMessage({ id: "cyberpunk.caseText1" })}
                                 <br/><br/>
-                                Коли відкриєш та надішлеш нам дані - ти отримаєш подарунки від партнерів. Не будемо відкривати завісу, сам дізнаєшся, що отримаєш врешті решт. 
+                                {intl.formatMessage({ id: "cyberpunk.caseText2" })}
                                 <br/><br/>
-                                Але запевняємо, подарунки - переконливі. Памʼятай, частину коду знайдеш у матеріалах доступу, після купівлі.
+                                {intl.formatMessage({ id: "cyberpunk.caseText3" })}
                             </p>
                     </div>
                 </div>
@@ -583,7 +584,7 @@ const Cyberpunk = (props) => {
                 <div className={classes.priceInfo}>
                     {/* <img src={moon.src} alt="moon" className={classes.moon}/> */}
                     <h3 className={classes.blockHeader}>PRICE</h3>
-                    <p className={classes.gameText}>Е: Чим ближче до дати - тим дорожче. Не зволікайте :)</p>
+                    <p className={classes.gameText}>{intl.formatMessage({ id: "cyberpunk.priceSub" })}</p>
                 </div>
                 <img src={price_back.src} alt="price_back" className={classes.priceBack}/>
             </div>

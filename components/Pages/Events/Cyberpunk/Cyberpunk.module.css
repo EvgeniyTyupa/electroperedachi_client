@@ -81,6 +81,8 @@
     font-weight: bold;
 }
 .answerBlock {
+    position: relative;
+    left: -27px;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -405,6 +407,7 @@
     box-sizing: border-box;
     position: relative;
     gap: 8px;
+    max-width: 250px;
 }
 .skinInfo strong {
     font-size: 26px;
