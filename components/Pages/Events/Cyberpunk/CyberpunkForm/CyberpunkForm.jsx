@@ -1,5 +1,5 @@
 import classes from "./CyberpunkForm.module.css"
-import robot from "/public/images/cyberpunk/robot.png"
+import robot from "/public/images/cyberpunk/robot.webp"
 import Image from "next/image"
 import { useIntl } from "react-intl"
 import { useEffect, useState } from "react"
