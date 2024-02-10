@@ -13,6 +13,8 @@ import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 
 import Button from "@mui/material/Button"
 
+import moment from "moment"
+
 import Link from "next/link"
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -20,6 +22,9 @@ import { LuClock4 } from "react-icons/lu";
 import { RiTicket2Line, RiTShirtLine } from "react-icons/ri";
 import { PiDatabaseLight } from "react-icons/pi";
 import { IoMdArrowDown } from "react-icons/io";
+
+import CyberpunkForm from "./CyberpunkForm/CyberpunkForm"
+import CyberpunkFaqItem from "./CyberpunkFaqItem/CyberpunkFaqItem"
 
 import { cx } from "../../../../utils/classnames"
 
@@ -61,29 +66,35 @@ import stuff2 from "/public/images/cyberpunk/stuff2.jpg"
 import decor3 from "/public/images/cyberpunk/decor3.svg"
 
 import price_back from "/public/images/cyberpunk/price_back.png"
-import CyberpunkForm from "./CyberpunkForm/CyberpunkForm"
-import CyberpunkFaqItem from "./CyberpunkFaqItem/CyberpunkFaqItem"
+
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const Cyberpunk = (props) => {
+    const { event } = props
+
+    const [price, setPrice] = useState(0)
+    const [isShowBuy, setIsShowBuy] = useState(false)
+
+    const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
+
     const text1 = "Основна мета - знайти спосіб відкрити кейс та трасувати дані на сервер. Є декілька способів відкриття, але найпростіший - знайти колегу для злиття своїх кодів. \n\n У останні секунди звʼязку ми отримали пул з цифрами, думаємо це частина коду. Не зволікай часу, стань частиною плану!"
     
     const typingMore1 = useMagicWriter(text1, 40)
 
     const [infoIndex, setInfoIndex] = useState(0)
 
+    const isEnd = event ? moment().startOf("day") > moment(event.date) : true
+
     const paymentBlockRef = useRef(null)
+    const readMoreRef = useRef(null)
 
     const intl = useIntl()
 
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
 
-    const faq = [
-        {
-            title: "Чи можу я використати придбаний квиток скасованої події Union?",
-            text: "Згідно з документом, що підтверджується при придбанні квитків Умови та правила на заходах організації electroperedachi, ми чекаємо усіх хто придбав квитки на скасований захід, на будь-яку подію у майбутньому. Ваш квиток не втрачає важність, а також може бути використаним навіть якщо ціна є вищою."
-        }
-    ]
+    const faq = event.faq
 
     const skins = [
         {
@@ -127,45 +138,110 @@ const Cyberpunk = (props) => {
     const djs = [
         {
             img: earmake.src,
-            name: "Earmake",
+            name: "Nadai",
             code: "#234T67",
             style: "Synthwave, Psybient",
-            time: "17:30"
+            time: "17:30",
+            url: "https://google.com"
         },
         {
             img: earmake.src,
             name: "Earmake",
             code: "#234T67",
             style: "Synthwave, Psybient",
-            time: "17:30"
+            time: "17:30",
+            url: "https://google.com"
         },
         {
             img: earmake.src,
-            name: "Earmake",
+            name: "Noff",
             code: "#234T67",
             style: "Synthwave, Psybient",
-            time: "17:30"
+            time: "17:30",
+            url: "https://google.com"
         },
         {
             img: earmake.src,
-            name: "Earmake",
+            name: "Kyiv2c",
             code: "#234T67",
             style: "Synthwave, Psybient",
-            time: "17:30"
+            time: "17:30",
+            url: "https://google.com"
         },
         {
             img: earmake.src,
-            name: "Earmake",
+            name: "Manyface",
             code: "#234T67",
             style: "Synthwave, Psybient",
-            time: "17:30"
+            time: "17:30",
+            url: "https://google.com"
         }
     ]
+
+    const handleAddToCartClick = () => {
+        import("react-facebook-pixel")
+        .then((module) => module.default)
+        .then((ReactPixel) => {
+            ReactPixel.init("573414703062456")
+            ReactPixel.track("AddToCart")
+        })
+    };
+
+    const onDjClick = (djUrl) => {
+        let anchor = document.createElement("a")
+        anchor.href = djUrl
+        anchor.target = "_blank"
+        anchor.click()
+    }
+
+    const readMoreClick = () => {
+        readMoreRef.current.scrollIntoView()
+    }
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
     }
 
+    useEffect(() => {
+        Aos.init({ duration: 1000 })
+    }, [])
+
+    useEffect(() => {
+        let now = moment()
+
+        
+        event.pricing.forEach((el) => {
+            if (now >= moment(el.start) && now <= moment(el.end)) {
+                setPrice(el.price)
+                setIsShowBuy(true)
+            }
+        })
+    }, [])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if(paymentBlockRef && paymentBlockRef.current) {
+                if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
+                    if (!isAddToCartEventSend) {
+                        setIsAddToCartEventSend(true)
+                    }
+                }
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+        
+    }, [paymentBlockRef])
+
+    useEffect(() => {
+        if (isAddToCartEventSend) {
+            handleAddToCartClick()
+        }
+    }, [isAddToCartEventSend])
+    
     return (
         <div className={classes.main}>
             {/* HOME */}
@@ -174,7 +250,7 @@ const Cyberpunk = (props) => {
                     backgroundImage: `url(${home_back_img.src})`
                 }}
             >
-                <div className={classes.title}>
+                <div className={classes.title} data-aos="zoom-in" data-aos-duration="2000">
                     <div className={classes.titleH1}>
                         <h1>Crystal Ninja</h1>
                         <h1>Crystal Ninja</h1>
@@ -185,18 +261,24 @@ const Cyberpunk = (props) => {
                     </div>
                 </div>
                 <div className={classes.homeDialog}>
-                    <p className={classes.gameText}>Е: Твій час прийшов Чумба, ти потрібен для місії</p>
-                    <div className={classes.answerBlock}>
+                    <p
+                        className={classes.gameText}
+                        data-aos="fade-down"
+                        data-aos-duration="2000"
+                    >
+                        Е: Твій час прийшов Чумба, ти потрібен для місії
+                    </p>
+                    <div className={classes.answerBlock} data-aos="fade-up" data-aos-duration="2000">
                         <p className={classes.gameText}>KSID:</p>
                         <div className={classes.answers}>
-                            <button className={classes.gameText}>Ознайомитись з досьє завдання</button>
+                            <button className={classes.gameText} onClick={readMoreClick}>Ознайомитись з досьє завдання</button>
                             <button className={classes.gameText} onClick={scrollToPayment}>Пропустити та <span>придбати доступ</span> одразу</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* INTRO */}
-            <div className={classes.intro}>
+            <div className={classes.intro} ref={readMoreRef}>
                 <div className={cx(classes.introInfo)}
                     style={{
                         backgroundImage: `url(${ramka1.src})`
@@ -216,7 +298,7 @@ const Cyberpunk = (props) => {
                 </div>
             </div>
             {/* VIDOS */}
-            <div className={classes.vidos}>
+            <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.videoBlock}>
                     <img src={girl.src} alt="girl"/>
                 </div>
@@ -241,8 +323,8 @@ const Cyberpunk = (props) => {
                     backgroundImage: `url(${mission_back.src})`
                 }}
             >
-                <h3 className={classes.blockHeader}>Mission Steps</h3>
-                <div className={classes.steps}>
+                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Mission Steps</h3>
+                <div className={classes.steps} data-aos="fade-down" data-aos-duration="2000">
                     <div className={cx(classes.step, classes.stepPast)}>
                         <div className={classes.stepNumberBlock}>
                             <p>01</p>
@@ -268,13 +350,13 @@ const Cyberpunk = (props) => {
                         <p>Зроби трасування даних. Для цього треба знайти колегу, щоб відчинити кейс. Далі, можеш насолоджуватись подією</p>
                     </div>
                 </div>
-                <img src={hand.src} alt="hand"/>
+                <img src={hand.src} alt="hand" data-aos="fade-left" data-aos-duration="2000"/>
             </div>
             {/* DETAILS */}
             <div className={classes.details}>
-                <h3 className={classes.blockHeader}>Party Details</h3>
-                <p className={classes.gameText}>Е: Інструктаж для 2-ї та 3-ї фази</p>
-                <div className={classes.detailsSections}>
+                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Party Details</h3>
+                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">Е: Інструктаж для 2-ї та 3-ї фази</p>
+                <div className={classes.detailsSections} data-aos="fade-down" data-aos-duration="2000">
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
@@ -344,10 +426,10 @@ const Cyberpunk = (props) => {
                         </div>
                     </div>
                 </div>
-                <img src={hand2.src} alt="hand"/>
+                <img src={hand2.src} alt="hand" data-aos="fade-right" data-aos-duration="2000"/>
             </div>
             {/* SKINS */}
-            <div className={classes.skins}>
+            <div className={classes.skins} data-aos="fade-down" data-aos-duration="2000">
                 {skins.map((el, index) => (
                     <div
                         className={cx(classes.skin, infoIndex === index ? classes.skinOpen : undefined)}
@@ -376,12 +458,12 @@ const Cyberpunk = (props) => {
             </div>
             {/* LINEUP */}
             <div className={classes.lineup}>
-                <h3 className={classes.blockHeader}>LINE UP</h3>
+                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">LINE UP</h3>
                 <img src={decor1.src} alt="decor" className={classes.decor1}/>
-                <p className={classes.gameText}>Е: Вони попіклуються, щоб ви мали про що згадати з цієї події, під час наступного Брейнданс’у</p>
-                <div className={classes.djs}>
+                <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">Е: Вони попіклуються, щоб ви мали про що згадати з цієї події, під час наступного Брейнданс’у</p>
+                <div className={classes.djs} data-aos="fade-up" data-aos-duration="2000">
                     {djs.map(el => (
-                        <div className={classes.dj} key={el.name}>
+                        <div className={classes.dj} key={el.name} onClick={() => onDjClick(el.url)}>
                             <div className={classes.djLight}/>
                             <img src={dj_card.src} alt="card" className={classes.djCard}/>
                             <div className={classes.djImgContainer}>
@@ -448,7 +530,7 @@ const Cyberpunk = (props) => {
                 </Button>
             </div>
             {/* STUFF */}
-            <div className={classes.stuff}>
+            <div className={classes.stuff} data-aos="fade-down" data-aos-duration="2000">
                 <h3 className={classes.blockHeader}>MISSION`S STUFF</h3>
                 <div className={classes.stuffContainer}>
 
@@ -497,7 +579,7 @@ const Cyberpunk = (props) => {
                 </div>
             </div>
             {/* PRICE */}
-            <div className={classes.price}>
+            <div className={classes.price} data-aos="fade" data-aos-duration="2000">
                 <div className={classes.priceInfo}>
                     {/* <img src={moon.src} alt="moon" className={classes.moon}/> */}
                     <h3 className={classes.blockHeader}>PRICE</h3>
@@ -506,14 +588,23 @@ const Cyberpunk = (props) => {
                 <img src={price_back.src} alt="price_back" className={classes.priceBack}/>
             </div>
             {/* FORM */}
-            <CyberpunkForm paymentBlockRef={paymentBlockRef}/>
+            {!isEnd && isShowBuy && (
+                <div className={classes.form} data-aos="fade-down" data-aos-duration="2000">
+                    <CyberpunkForm
+                        paymentBlockRef={paymentBlockRef}
+                        price={price}
+                        setPrice={setPrice}
+                        event={event}
+                    />
+                </div>
+            )}
             {/* FAQ */}
-            <div className={classes.faqContainer}>
+            <div className={classes.faqContainer} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.faq}>
                     <h3 className={classes.blockHeader}>FAQ</h3>
                     <div className={classes.questions}>
                         {faq.map(el => (
-                            <CyberpunkFaqItem item={el}/>
+                            <CyberpunkFaqItem item={el} key={el._id}/>
                         ))}
                     </div>
                 </div>

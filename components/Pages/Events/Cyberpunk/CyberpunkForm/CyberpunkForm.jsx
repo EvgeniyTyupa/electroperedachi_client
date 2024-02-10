@@ -29,6 +29,39 @@ const CyberpunkForm = (props) => {
         setCount(count + 1)
     }
 
+    useEffect(() => {
+        setTotalPrice(price * count)
+    }, [count, price])
+
+    useEffect(() => {
+        if (!event?.is_multi_buy) {
+            const newPrice = price - discount
+            setTotalPriceDiscount(Math.ceil(newPrice) * count)
+        } else {
+            let newDiscountPercents = 0
+            switch(count) {
+                case 1: {
+                    newDiscountPercents = 0
+                    break
+                }
+                case 2: {
+                    newDiscountPercents = 10
+                    break
+                }
+                case 3: {
+                    newDiscountPercents = 15
+                    break
+                }
+                default: {
+                    newDiscountPercents = 20
+                    break
+                }
+            }
+            const newDiscount = (price * count) / 100 * newDiscountPercents
+            setTotalPriceDiscount(Math.ceil(price * count - newDiscount))
+        }
+    }, [count, discount, price, event])
+
     return (
         <div className={classes.main}>
             <div className={classes.left} ref={paymentBlockRef}>

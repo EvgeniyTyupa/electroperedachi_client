@@ -91,6 +91,7 @@ const CyberpunkBuyForm = (props) => {
 
             window.location.replace(response.url)
         } catch (err) {
+            console.log(err)
             setServerError("Server Error, try again")
         }
         setIsFetchingContext(false)
