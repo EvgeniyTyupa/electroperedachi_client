@@ -19,10 +19,10 @@ import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 import Link from "next/link"
 
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { LuClock4 } from "react-icons/lu";
-import { RiTicket2Line, RiTShirtLine } from "react-icons/ri";
-import { PiDatabaseLight } from "react-icons/pi";
+import { MdOutlineMyLocation } from "react-icons/md";
+import { LuTicket, LuClock4 } from "react-icons/lu";
+import { BiMaleFemale } from "react-icons/bi";
+import { TbCurrencyDollar } from "react-icons/tb";
 import { IoMdArrowDown } from "react-icons/io";
 
 import CyberpunkForm from "./CyberpunkForm/CyberpunkForm"
@@ -54,12 +54,13 @@ import card from "/public/images/cyberpunk/card.webp"
 import dj_card from "/public/images/cyberpunk/dj_card.svg"
 
 import message_back from "/public/images/cyberpunk/message.webp"
+import message_back_mobile from "/public/images/cyberpunk/message_mobile_back.webp"
 
-import earmake from "/public/images/cyberpunk/earmake.png"
-import baks from "/public/images/cyberpunk/baks.png"
-import manyface from "/public/images/cyberpunk/manyface.png"
-import noff from "/public/images/cyberpunk/noff.png"
-import nadai from "/public/images/cyberpunk/nadai.png"
+import earmake from "/public/images/cyberpunk/earmake.webp"
+import baks from "/public/images/cyberpunk/baks.webp"
+import manyface from "/public/images/cyberpunk/manyface.webp"
+import noff from "/public/images/cyberpunk/noff.webp"
+import nadai from "/public/images/cyberpunk/nadai.webp"
 
 import rect1 from "/public/images/cyberpunk/rect1.svg"
 import rect2 from "/public/images/cyberpunk/rect2.svg"
@@ -77,6 +78,7 @@ import price_back_mobile from "/public/images/cyberpunk/price_back_mobile.webp"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
+import useIsChrome from "../../../../hooks/useIsChrome"
 
 const Cyberpunk = (props) => {
     const { event } = props
@@ -101,6 +103,7 @@ const Cyberpunk = (props) => {
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
 
+    const isChrome = useIsChrome();
 
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
@@ -252,7 +255,7 @@ const Cyberpunk = (props) => {
             handleAddToCartClick()
         }
     }, [isAddToCartEventSend])
-    
+
     return (
         <div className={classes.main}>
             {/* HOME */}
@@ -261,7 +264,7 @@ const Cyberpunk = (props) => {
                     backgroundImage: `url(${home_back_img.src})`
                 }}
             >
-                <div className={classes.title} data-aos="zoom-in" data-aos-duration="2000">
+                <div className={cx(classes.title, isChrome ? classes.chromeTitle : undefined)} data-aos="zoom-in" data-aos-duration="2000">
                     <div className={classes.titleH1}>
                         <h1>Crystal Ninja</h1>
                         <h1>Crystal Ninja</h1>
@@ -283,54 +286,57 @@ const Cyberpunk = (props) => {
                         <p className={classes.gameText}>KSID:</p>
                         <div className={classes.answers}>
                             <button className={classes.gameText} onClick={readMoreClick}>{intl.formatMessage({ id: "cyberpunk.answer1" })}</button>
-                            <button className={classes.gameText} onClick={scrollToPayment}>{intl.formatMessage({ id: "cyberpunk.answer2" })} <span>{intl.formatMessage({ id: "cyberpunk.answer2.1" })}</span> {intl.formatMessage({ id: "cyberpunk.answer2.2" })}</button>
+                            <button className={classes.gameText} onClick={scrollToPayment}>{intl.formatMessage({ id: "cyberpunk.answer2" })} <span>{intl.formatMessage({ id: "cyberpunk.answer2.1" })}</span> {width > 468 ? intl.formatMessage({ id: "cyberpunk.answer2.2" }) : ""}</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* INTRO */}
-            <div className={classes.intro} ref={readMoreRef}>
-                <div className={cx(classes.introInfo)}
-                    style={{
-                        backgroundImage: `url(${ramka1.src})`
-                    }}
-                >
-                    <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
-                </div>
-                <img src={tabl.src} alt="freedom, equality, techno"/>
-                <div className={cx(classes.introInfo, classes.ramka2)}
-                    style={{
-                        backgroundImage: `url(${ramka2.src})`
-                    }}
-                >
-                    <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
-                    <br/><br/>
-                    {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
-                </div>
-            </div>
-            <div className={classes.introMobile} ref={readMoreRef}>
-                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Legend</h3>
-                <div className={cx(classes.introInfo)}
-                    style={{
-                        backgroundImage: `url(${info_card_mobile.src})`
-                    }}
-                >
-                    <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
-                </div>
-                <div className={classes.tablets}>
+            {width > 1170 ? (
+                <div className={classes.intro} ref={readMoreRef}>
+                    <div className={cx(classes.introInfo)}
+                        style={{
+                            backgroundImage: `url(${ramka1.src})`
+                        }}
+                    >
+                        <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
+                    </div>
                     <img src={tabl.src} alt="freedom, equality, techno"/>
-                    <img src={tabl.src} alt="freedom, equality, techno"/>
+                    <div className={cx(classes.introInfo, classes.ramka2)}
+                        style={{
+                            backgroundImage: `url(${ramka2.src})`
+                        }}
+                    >
+                        <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
+                        <br/><br/>
+                        {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
+                    </div>
                 </div>
-                <div className={classes.introInfo}
-                    style={{
-                        backgroundImage: `url(${info_card_mobile.src})`
-                    }}
-                >
-                    <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
-                    <br/><br/>
-                    {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
+            ) : (
+                <div className={classes.introMobile} ref={readMoreRef}>
+                    <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Legend</h3>
+                    <div className={cx(classes.introInfo)}
+                        style={{
+                            backgroundImage: `url(${info_card_mobile.src})`
+                        }}
+                    >
+                        <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
+                    </div>
+                    <div className={classes.tablets}>
+                        <img src={tabl.src} alt="freedom, equality, techno"/>
+                        <img src={tabl.src} alt="freedom, equality, techno"/>
+                    </div>
+                    <div className={classes.introInfo}
+                        style={{
+                            backgroundImage: `url(${info_card_mobile.src})`
+                        }}
+                    >
+                        <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
+                        <br/><br/>
+                        {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
+                    </div>
                 </div>
-            </div>
+            )}
             {/* VIDOS */}
             <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.videoBlock}>
@@ -343,7 +349,7 @@ const Cyberpunk = (props) => {
             {/* MORE */}
             <div className={classes.more}
                 style={{
-                    backgroundImage: `url(${more_back.src})`
+                    backgroundImage: `url(${width > 468 ? more_back.src : message_back_mobile.src})`
                 }}
             >
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Main Goal</h3>
@@ -395,7 +401,7 @@ const Cyberpunk = (props) => {
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
-                                <HiOutlineLocationMarker />
+                                <MdOutlineMyLocation />
                                 <p>{intl.formatMessage({ id: "cyberpunk.place" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
@@ -419,7 +425,7 @@ const Cyberpunk = (props) => {
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
-                                <RiTicket2Line />
+                                <LuTicket />
                                 <p>{intl.formatMessage({ id: "cyberpunk.count" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
@@ -430,7 +436,7 @@ const Cyberpunk = (props) => {
                         </div>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
-                                <PiDatabaseLight />
+                                <TbCurrencyDollar />
                                 <p>{intl.formatMessage({ id: "cyberpunk.ticketPrice" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
@@ -444,7 +450,7 @@ const Cyberpunk = (props) => {
                     <div className={classes.detailSection}>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
-                                <RiTShirtLine />
+                                <BiMaleFemale />
                                 <p>{intl.formatMessage({ id: "cyberpunk.dresscode" })}</p>
                             </div>
                             <div className={classes.detailBorder}>
@@ -533,7 +539,7 @@ const Cyberpunk = (props) => {
                     backgroundImage: `url(${message_back.src})`
                 }}
             >
-                <div className={classes.title}>
+                <div className={cx(classes.title, isChrome ? classes.chromeTitle : undefined)}>
                     <div className={classes.titleH1}>
                         <h1>Crystal Ninja</h1>
                         <h1>Crystal Ninja</h1>

@@ -115,4 +115,7 @@
     .textBlock a {
         font-size: 17px;
     }
+    .main button svg {
+        transform: scale(.8);
+    }
 }

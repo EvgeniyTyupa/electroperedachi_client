@@ -55,6 +55,9 @@
     font-size: 120px;
     z-index: 1;
 }
+.chromeTitle h1 {
+    text-shadow: #DF0252 1px 0 40px !important;
+}
 .title h1 + h1 {
     color: black;
     z-index: 0;
@@ -74,6 +77,9 @@
     text-shadow: #df02533b 1px 0 40px;
     font-size: 50px;
     z-index: 1;
+}
+.chromeTitle h2 {
+    text-shadow: #DF0252 1px 0 40px;
 }
 .title h2 + h2 {
     color: black;
@@ -477,7 +483,7 @@
 }
 .dj {
     width: 100%;
-    max-width: 22%;
+    max-width: 23%;
     position: relative;
     padding: 24px;
     padding-top: 0;
@@ -513,7 +519,7 @@
 .djImgContainer {
     position: relative;
     width: 100%;
-    height: 172px;
+    height: 222px;
     margin-top: 24px;
 }
 .djImgContainer img {
@@ -992,6 +998,12 @@
 }
 
 @media screen and (max-width: 1440px) {
+    .dj {
+        max-width: 23%;
+    }
+    .djImgContainer {
+        height: 202px;
+    }
     .price {
         margin-top: 50px;
     }
@@ -1000,6 +1012,12 @@
     }
     .priceInfo {
         top: 60px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .dj {
+        max-width: 24%;
     }
 }
 
@@ -1034,7 +1052,7 @@
         max-width: 200px;
     }
     .dj {
-        max-width: 23%;
+        max-width: 26%;
     }
     .notification {
         transform: scale(.7);
@@ -1453,5 +1471,252 @@
     .links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .homeDialog {
+        margin-top: 60px;
+        text-align: center;
+    }
+    .title h2 {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+    .answerBlock {
+        width: 100%;
+    }
+    .gameText {
+        font-size: 14px;
+    }
+    .answers button {
+        padding: 10px 30px;
+    }
+    .introInfo {
+        padding: 50px;
+        height: fit-content;
+    }
+    .introInfo p {
+        font-size: 12px;
+    }
+    .more {
+        padding: 50px 20px;
+        height: 92vh;
+    }
+    .mission {
+        margin-top: 50px;
+        padding-bottom: 150px;
+    }
+    .steps {
+        margin-top: 30px;
+    }
+    .step {
+        max-width: 100%;
+        gap: 25px;
+    }
+    .step p {
+        font-size: 15px;
+    }
+    .stepNumberBlock {
+        width: 70px;
+        height: 70px;
+    }
+    .mission img {
+        width: 90%;
+    }
+    .detailHeader p {
+        font-size: 18px;
+    }
+    .detailText {
+        font-size: 15px;
+    }
+    .time {
+        font-size: 20px;
+    }
+    .details img {
+        bottom: 36px;
+        width: 95%;
+    }
+    .collegues {
+        margin-top: 20px;
+    }
+    .skins {
+        gap: 2rem;
+    }
+    .skin {
+        height: 362px;
+        justify-content: flex-end;
+    }
+    .skinImg {
+        width: 200px;
+        height: 360px;
+        position: relative;
+        left: 5%;
+    }
+    .skinInfo {
+        height: 360px;
+    }
+    .skinInfo p {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .skinInfo strong {
+        font-size: 18px;
+    }
+    .cardInfo {
+        transform: translateX(-20%);
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(-20%);
+    }
+    .cardInfo img {
+        width: 200px;
+        height: 360px;
+    }
+    .dj {
+        max-width: 77%;
+    }
+    .message {
+        margin-top: 50px;
+    }
+    .buyButt {
+        margin-top: 0 !important;
+    }
+    .stuffLeft {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .home::after {
+        height: 10%;
+    }
+    .answers {
+        width: 100%;
+    }
+    .answers button {
+        padding: 10px 20px;
+    }
+    .introInfo p {
+        line-height: 15px;
+    }
+    .tablets {
+        top: 10px;
+    }
+    .more {
+        height: 543px;
+        background-size: cover;
+    }
+    .skinImg {
+        width: 50%;
+        left: 3%;
+    }
+    .skinInfo {
+        padding-left: 70px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(-24%);
+    }
+    .cardInfo {
+        transform: translateX(-24%);
+    }
+    .djs {
+        gap: 2rem;
+    }
+    .dj {
+        max-width: 77%;
+    }
+    .djStyle {
+        max-width: 46%;
+    }
+    .ramka {
+        right: -165px !important;
+    }
+    .notBody p {
+        padding-left: 90px;
+        box-sizing: border-box;
+        max-width: 450px;
+        text-shadow: 0 0 4px #000;
+        transform: scale(1.4);
+    }
+    .buyButt {
+        padding: 5px 36px !important;
+    }
+    .r25 img {
+        top: 13px;
+    }
+    .title h1 {
+        font-size: 47px;
+    }
+    .blockHeader {
+        font-size: 38px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .dj {
+        max-width: 86%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .title h2 {
+        font-size: 24px;
+    }
+    .introInfo {
+        background-image: none !important;
+        padding: 0;
+    }
+    .cabel3 {
+        bottom: 14%;
+    }
+    .more {
+        height: 88vh;
+    }
+    .skin {
+        justify-content: flex-start;
+        height: 252px;
+    }
+    .skins {
+        overflow: hidden;
+        gap: 1rem;
+    }
+    .skinInfo {
+        /* padding-left: 50px; */
+        height: 250px;
+        width: 170px;
+    }
+    .skinInfo p {
+        line-height: 19px;
+    }
+    .skinImg {
+        height: 250px;
+    }
+    .skin img {
+        left: 0;
+    }
+    .cardInfo {
+        width: 100%;
+    }
+    .cardInfo img {
+        height: 250px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(-34%);
+    }
+    .cardInfo {
+        transform: translateX(-34%);
+    }
+    .skinInfo p {
+        line-height: 17px;
+    }
+    .djs {
+        gap: 1rem;
+    }
+    .dj {
+        max-width: 100%;
+    }
+    .djImgContainer {
+        height: 210px;
     }
 }

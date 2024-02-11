@@ -64,7 +64,7 @@ const CyberpunkForm = (props) => {
 
     return (
         <div className={classes.main}>
-            <div className={classes.left} ref={paymentBlockRef}>
+            <div className={classes.left}>
                 <div className={classes.leftImgContainer}>
                     <Image src={robot.src} alt="robot_hud" fill/>
                 </div>
@@ -72,7 +72,7 @@ const CyberpunkForm = (props) => {
             </div>
             <div className={classes.right}>
                 <p className={classes.electroperedachi}>electroperedachi</p>
-                <div className={classes.titleBlock}>
+                <div className={classes.titleBlock} ref={paymentBlockRef}>
                     <h3 className={classes.title}>CRYSTAL NINJA</h3>
                     <h3 className={classes.titleAbsolute}>CRYSTAL NINJA</h3>
                 </div>
