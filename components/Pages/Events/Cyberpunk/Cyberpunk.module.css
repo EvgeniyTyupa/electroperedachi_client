@@ -18,6 +18,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #121211;
+}
+.home::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, #121211, rgba(52, 152, 219, 0));
+    filter: blur(1px);
+    z-index: 1;
 }
 .title {
     font-family: "Blaster";
@@ -112,13 +126,18 @@
 }
 
 /* INTRO */
-
+.introMobile {
+    display: none;
+}
 .intro {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 150px 100px;
     box-sizing: border-box;
+}
+.intro .blockHeader {
+    display: none;
 }
 .intro img {
     width: 600px;
@@ -194,6 +213,9 @@
     justify-content: center;
     padding: 50px 300px;
     box-sizing: border-box;
+}
+.more h3 {
+    display: none;
 }
 .more p {
     white-space: pre-wrap;
@@ -378,14 +400,14 @@
     z-index: 0;
     background-repeat: no-repeat;
     position: absolute;
-    left: 0;
+    left: 1px;
     top: 0;
     width: 100%;
     height: 100%;
     transition-duration: .4s;
 }
 .cardInfo img {
-    width: 280px;
+    width: 278px;
     height: 455px;
     z-index: 1;
     position: absolute;
@@ -419,6 +441,9 @@
 }
 .skinInfo p {
     font-size: 14px;
+}
+.collegues {
+    display: none;
 }
 
 /* LINEUP */
@@ -553,13 +578,13 @@
     width: 100%;
     /* padding-top: 100px; */
     /* padding-bottom: 100px; */
-    height: 80vh;
+    height: 85vh;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 .message .title {
@@ -776,6 +801,9 @@
     padding-left: 100px;
     box-sizing: border-box;
 }
+.stuffMobile {
+    display: none;
+}
 .stuffContainer {
     display: flex;
     justify-content: space-between;
@@ -972,5 +1000,458 @@
     }
     .priceInfo {
         top: 60px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .introInfo {
+        padding: 47px 50px;
+    }   
+    .ramka2 {
+        padding-left: 77px;
+    }
+    .introInfo p {
+        font-size: 14px;
+    }
+    .more {
+        padding: 50px 200px;
+    }
+    .skinImg {
+        width: 240px;
+        height: 400px;
+    }
+    .cardInfo img {
+        width: 238px;
+        height: 398px;
+        top: 1px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(170px);
+    }
+    .skinInfo {
+        padding-left: 80px;
+        height: 400px;
+        max-width: 200px;
+    }
+    .dj {
+        max-width: 23%;
+    }
+    .notification {
+        transform: scale(.7);
+        left: -38px;
+    }
+    .stuff {
+        padding-left: 50px;
+    }
+    .stuffLeft {
+        width: 80%;
+    }
+    .stuffImg1 {
+        width: 45%;
+    }
+    .stuffImg2 {
+        width: 40%;
+        top: 420px;
+        left: 20%;
+    }
+    .stuffLeftText {
+        padding-left: 50%;
+    }
+    .priceInfo {
+        top: 35px;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .home {
+        background-position: center;
+    }
+    .intro {
+        display: none;
+    }
+    .introMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 2rem;
+        margin-top: 50px;
+    }
+    .introInfo {
+        top: 0;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-position: center;
+        max-width: 100%;
+    }
+    .introInfo p {
+        font-size: 20px;
+        line-height: 45px;
+        max-width: 600px;
+        color: #84ECE4;
+    }
+    .tablets {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 0 50px;
+        box-sizing: border-box;
+    }
+    .tablets img {
+        width: 50%;
+    }
+    .videoBlock {
+        width: 80%;
+    }
+    .more {
+        padding: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        background-position: center;
+    }
+    .more h3 {
+        display: block;
+    }
+    .mission {
+        background-image: none !important;
+        height: fit-content;
+        padding-top: 0;
+        padding-bottom: 200px;
+    }
+    .steps {
+        flex-wrap: wrap;
+        gap: 4rem;
+        margin-top: 80px;
+        padding: 0 50px;
+    }
+    .mission img {
+        bottom: 0;
+        width: 58%;
+    }
+    .detailsSections {
+        padding: 0 50px;
+    }
+    .skins {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 4rem;
+        margin-top: 40px;
+    }
+    .skin {
+        width: 45%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 400px;
+    }
+    .cardInfo {
+        position: relative;
+        transform: translateX(-60px);
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(-60px);
+    }
+    .lineup {
+        margin-top: 80px;
+    }
+    .decor1 {
+        display: none;
+    }
+    .collegues {
+        display: block;
+        margin-top: 50px;
+    }
+    .lineup {
+        padding: 0 50px;
+    }
+    .djs {
+        gap: 6rem;
+    }
+    .dj {
+        max-width: 32%;
+    }
+    .djImgContainer {
+        height: 220px;
+    }
+    .decor2 {
+        width: 100%;
+    }
+    .message {
+        background-position: center;
+    }
+    .message .title {
+        transform: scale(1);
+    }
+    .notification {
+        transform: scale(1);
+        top: 80px;
+    }
+    .buyButt {
+        margin-top: 80px !important;
+    }
+    .stuff {
+        padding: 0 50px;
+        height: fit-content;
+        display: none;
+    }
+    .stuffMobile {
+        display: flex;
+        flex-direction: column;
+        padding: 0 50px;
+        box-sizing: border-box;
+        margin-top: 50px;
+    }
+    .stuffContainer {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .stuffLeft {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .stuffLeft img {
+        position: relative;
+    }
+    .stuffLeftText {
+        padding-left: 0;
+    }
+    .stuffRight {
+        width: 100%;
+        padding: 0;
+        margin-top: 0;
+        background-image: none !important;
+    }
+    .stuffImages {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 100px;
+        padding-left: 100px;
+        box-sizing: border-box;
+    }
+    .stuffImg2 {
+        top: 200px;
+        left: -100px;
+    }
+    .stuffRight {
+        margin-top: 200px;
+    }
+    .blured {
+        top: 150px;
+        left: 50%;
+    }
+    .blured2 {
+        top: 450px;
+        left: 28%;
+    }
+    .price {
+        margin-top: 100px;
+    }
+    .priceInfo .blockHeader {
+        font-size: 60px;
+    }
+    .faq {
+        margin-top: 80px;
+    }
+    .blockHeader {
+        font-size: 70px;
+    }
+    .faq {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 862px) {
+    .title h1 {
+        font-size: 90px;
+    }
+    .introMobile {
+        padding: 0 50px;
+        box-sizing: border-box;
+    }
+    .introInfo {
+        padding: 47px 80px;
+    }
+    .introInfo p {
+        line-height: 40px;
+    }
+    .tablets {
+        padding: 0;
+    }
+    .vidos {
+        padding: 50px 0;
+        padding-bottom: 100px;
+    }
+    .cabel3 {
+        bottom: -9%;
+    }
+    .step {
+        max-width: 300px;
+    }
+    .detailsSections {
+        flex-direction: column;
+    }
+    .details {
+        margin-top: 50px;
+    }
+    .detail {
+        width: 100%;
+        max-width: 100%;
+    }
+    .details img {
+        width: 76%;
+    }
+    .skins {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 50px;
+        box-sizing: border-box;
+    }
+    .skin {
+        height: 402px;
+        width: 100%;
+    }
+    .cardInfo {
+        width: fit-content;
+    }
+    .djs {
+        gap: 4rem;
+    }
+    .dj {
+        max-width: 43%;
+    }
+    .notification {
+        transform: scale(.8);
+    }
+    .priceInfo .blockHeader {
+        font-size: 48px;
+    }
+    .priceInfo {
+        top: 21px;
+    }
+    .priceInfo .gameText {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .home {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+    .homeDialog {
+        gap: 20px;
+    }
+    .title h1 {
+        font-size: 68px;
+    }
+    .title h2 {
+        font-size: 40px;
+    }
+    .answerBlock {
+        flex-direction: column;
+        left: 0;
+    }
+    .blockHeader {
+        font-size: 50px;
+    }
+    .introMobile {
+        padding: 0 20px;
+    }
+    .introInfo {
+        height: 300px;
+    }
+    .introInfo p {
+        line-height: 22px;
+        font-size: 14px;
+    }
+    .tablets {
+        position: relative;
+    }
+    .cabel3 {
+        bottom: 0;
+    }
+    .mission img {
+        width: 75%;
+    }
+    .steps {
+        padding: 0 20px;
+    }
+    .detailsSections {
+        padding: 0 20px;
+    }
+    .details img {
+        bottom: 20px;
+        width: 89%;
+    }
+    .skins {
+        padding: 0 20px;
+    }
+    .lineup {
+        padding: 0 20px;
+    }
+    .djs {
+        gap: 3rem;
+    }
+    .dj {
+        max-width: 59%;
+    }
+    .lineup .gameText {
+        margin-top: 1rem;
+    }
+    .notification {
+        transform: scale(.6);
+        top: 35px;
+    }
+    .buyButt {
+        margin-top: 40px !important;
+    }
+    .stuffMobile {
+        padding: 0 20px;
+    }
+    .stuffImg1 {
+        width: 60%;
+    }
+    .stuffImg2 {
+        width: 50%;
+    }
+    .stuffImages {
+        padding-left: 60px;
+        padding-top: 60px;
+    }
+    .blured {
+        top: 100px;
+        left: 40%;
+    }
+    .blured2 {
+        top: 350px;
+        left: 17%;
+    }
+    .price {
+        margin-top: 0;
+    }
+    .faq {
+        padding: 0 20px;
+    }
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
+    }
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

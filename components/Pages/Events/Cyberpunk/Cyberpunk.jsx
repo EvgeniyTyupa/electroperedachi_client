@@ -15,6 +15,8 @@ import Button from "@mui/material/Button"
 
 import moment from "moment"
 
+import useWindowDimensions from "../../../../hooks/useWindowDimension"
+
 import Link from "next/link"
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -31,6 +33,7 @@ import { cx } from "../../../../utils/classnames"
 import home_back_img from "/public/images/cyberpunk/main.webp"
 import tabl from "/public/images/cyberpunk/tabl.svg"
 import ramka1 from "/public/images/cyberpunk/ramk1.svg"
+import info_card_mobile from "/public/images/cyberpunk/info_card_mobile.svg"
 import ramka2 from "/public/images/cyberpunk/ramk2.svg"
 import cabel1 from "/public/images/cyberpunk/cable1.webp"
 import cabel2 from "/public/images/cyberpunk/cable2.webp"
@@ -53,6 +56,10 @@ import dj_card from "/public/images/cyberpunk/dj_card.svg"
 import message_back from "/public/images/cyberpunk/message.webp"
 
 import earmake from "/public/images/cyberpunk/earmake.png"
+import baks from "/public/images/cyberpunk/baks.png"
+import manyface from "/public/images/cyberpunk/manyface.png"
+import noff from "/public/images/cyberpunk/noff.png"
+import nadai from "/public/images/cyberpunk/nadai.png"
 
 import rect1 from "/public/images/cyberpunk/rect1.svg"
 import rect2 from "/public/images/cyberpunk/rect2.svg"
@@ -66,6 +73,7 @@ import stuff2 from "/public/images/cyberpunk/stuff2.webp"
 import decor3 from "/public/images/cyberpunk/decor3.svg"
 
 import price_back from "/public/images/cyberpunk/price_back.webp"
+import price_back_mobile from "/public/images/cyberpunk/price_back_mobile.webp"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -79,6 +87,8 @@ const Cyberpunk = (props) => {
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
     
     const intl = useIntl()
+
+    const { width } = useWindowDimensions()
 
     const text1 = intl.formatMessage({ id: "cyberpunk.meta" })
     
@@ -138,12 +148,28 @@ const Cyberpunk = (props) => {
 
     const djs = [
         {
-            img: earmake.src,
+            img: baks.src,
+            name: "Kyiv2c",
+            code: "#234T67",
+            style: "Synthwave, House",
+            time: "16:00",
+            url: "https://soundcloud.com/kyiv2c"
+        },
+        {
+            img: noff.src,
+            name: "Noff",
+            code: "#234T67",
+            style: "Techno, Industrial",
+            time: "19:30",
+            url: "https://soundcloud.com/dj_noff"
+        },
+        {
+            img: nadai.src,
             name: "Nadai",
             code: "#234T67",
-            style: "Synthwave, Psybient",
-            time: "17:30",
-            url: "https://google.com"
+            style: "Electroclash, Techno",
+            time: "20:30",
+            url: "https://soundcloud.com/nadai"
         },
         {
             img: earmake.src,
@@ -151,31 +177,15 @@ const Cyberpunk = (props) => {
             code: "#234T67",
             style: "Synthwave, Psybient",
             time: "17:30",
-            url: "https://google.com"
+            url: "https://soundcloud.com/earmake"
         },
         {
-            img: earmake.src,
-            name: "Noff",
-            code: "#234T67",
-            style: "Synthwave, Psybient",
-            time: "17:30",
-            url: "https://google.com"
-        },
-        {
-            img: earmake.src,
-            name: "Kyiv2c",
-            code: "#234T67",
-            style: "Synthwave, Psybient",
-            time: "17:30",
-            url: "https://google.com"
-        },
-        {
-            img: earmake.src,
+            img: manyface.src,
             name: "Manyface",
             code: "#234T67",
-            style: "Synthwave, Psybient",
-            time: "17:30",
-            url: "https://google.com"
+            style: "Synthpop, Electroclash",
+            time: "18:30",
+            url: "https://soundcloud.com/user-548157346"
         }
     ]
 
@@ -298,6 +308,29 @@ const Cyberpunk = (props) => {
                     {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
                 </div>
             </div>
+            <div className={classes.introMobile} ref={readMoreRef}>
+                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Legend</h3>
+                <div className={cx(classes.introInfo)}
+                    style={{
+                        backgroundImage: `url(${info_card_mobile.src})`
+                    }}
+                >
+                    <p>{intl.formatMessage({ id: "cyberpunk.introText" })}</p>
+                </div>
+                <div className={classes.tablets}>
+                    <img src={tabl.src} alt="freedom, equality, techno"/>
+                    <img src={tabl.src} alt="freedom, equality, techno"/>
+                </div>
+                <div className={classes.introInfo}
+                    style={{
+                        backgroundImage: `url(${info_card_mobile.src})`
+                    }}
+                >
+                    <p>{intl.formatMessage({ id: "cyberpunk.introText2" })}
+                    <br/><br/>
+                    {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
+                </div>
+            </div>
             {/* VIDOS */}
             <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.videoBlock}>
@@ -313,6 +346,7 @@ const Cyberpunk = (props) => {
                     backgroundImage: `url(${more_back.src})`
                 }}
             >
+                <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Main Goal</h3>
                 <p className={classes.gameText}>
                     Е: &nbsp;
                     {typingMore1}
@@ -430,6 +464,7 @@ const Cyberpunk = (props) => {
                 <img src={hand2.src} alt="hand" data-aos="fade-right" data-aos-duration="2000"/>
             </div>
             {/* SKINS */}
+            <h3 className={cx(classes.blockHeader, classes.collegues)} data-aos="fade-down" data-aos-duration="2000">Colleagues</h3>
             <div className={classes.skins} data-aos="fade-down" data-aos-duration="2000">
                 {skins.map((el, index) => (
                     <div
@@ -509,8 +544,8 @@ const Cyberpunk = (props) => {
                     </div>
                 </div>
                 <div className={classes.notification}>
-                    <img src={circle.src} alt="circle" className={classes.circle}/>
-                    <div className={classes.notBlock}>
+                    <img src={circle.src} alt="circle" className={classes.circle} data-aos="zoom-in" data-aos-duration="2000"/>
+                    <div className={classes.notBlock} data-aos="zoom-in" data-aos-duration="2000">
                         <div className={classes.notHeader}>
                             <img src={rect1.src} alt="decor"/>
                             <p>{intl.formatMessage({ id: "cyberpunk.messageTitle" })}</p>
@@ -579,14 +614,62 @@ const Cyberpunk = (props) => {
                     </div>
                 </div>
             </div>
+            <div className={classes.stuffMobile} data-aos="fade-down" data-aos-duration="2000">
+                <h3 className={classes.blockHeader}>MISSION`S STUFF</h3>
+                <div className={classes.stuffContainer}>
+                    <div className={classes.stuffLeft}>
+                        <div className={classes.stuffLeftText}>
+                            <div className={classes.detailHeader}>
+                                <p>{intl.formatMessage({ id: "cyberpunk.profile" })}</p>
+                            </div>
+                            <div className={classes.detailBorder}>
+                                <div className={classes.line}/>
+                                <div className={classes.parallelogram}/>
+                            </div>
+                            <p className={classes.detailText}>
+                                {intl.formatMessage({ id: "cyberpunk.profileText1" })}
+                                <br/><br/>
+                                {intl.formatMessage({ id: "cyberpunk.profileText2" })}
+                                <br/><br/>
+                                {intl.formatMessage({ id: "cyberpunk.profileText3" })}
+                            </p>
+                        </div>
+                        <div className={classes.stuffImages}>
+                            <img src={stuff1.src} alt="stuff" className={classes.stuffImg1}/>
+                            <img src={stuff2.src} alt="stuff" className={classes.stuffImg2}/>
+                            <div className={classes.blured}/>
+                            <div className={cx(classes.blured, classes.blured2)}/>
+                        </div>
+                    </div>
+                    <div className={classes.stuffRight}
+                        style={{
+                            backgroundImage: `url(${decor3.src})`
+                        }}
+                    >
+                        <div className={classes.detailHeader}>
+                                <p>{intl.formatMessage({ id: "cyberpunk.case" })}</p>
+                            </div>
+                            <div className={classes.detailBorder}>
+                                <div className={classes.line}/>
+                                <div className={classes.parallelogram}/>
+                            </div>
+                            <p className={classes.detailText}>
+                                {intl.formatMessage({ id: "cyberpunk.caseText1" })}
+                                <br/><br/>
+                                {intl.formatMessage({ id: "cyberpunk.caseText2" })}
+                                <br/><br/>
+                                {intl.formatMessage({ id: "cyberpunk.caseText3" })}
+                            </p>
+                    </div>
+                </div>
+            </div>
             {/* PRICE */}
             <div className={classes.price} data-aos="fade" data-aos-duration="2000">
-                <div className={classes.priceInfo}>
-                    {/* <img src={moon.src} alt="moon" className={classes.moon}/> */}
+                {/* <div className={classes.priceInfo}>
                     <h3 className={classes.blockHeader}>PRICE</h3>
                     <p className={classes.gameText}>{intl.formatMessage({ id: "cyberpunk.priceSub" })}</p>
-                </div>
-                <img src={price_back.src} alt="price_back" className={classes.priceBack}/>
+                </div> */}
+                <img src={width > 568 ? price_back.src : price_back_mobile.src} alt="price_back" className={classes.priceBack}/>
             </div>
             {/* FORM */}
             {!isEnd && isShowBuy && (

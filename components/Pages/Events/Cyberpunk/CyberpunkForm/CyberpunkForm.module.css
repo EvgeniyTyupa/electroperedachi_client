@@ -134,3 +134,24 @@
     text-decoration: line-through;
     font-weight: 300;
 }
+
+@media screen and (max-width: 1170px) {
+    .main {
+        flex-direction: column-reverse;
+        padding: 0 50px;
+        height: fit-content;
+        margin-top: 50px;
+    }
+    .left, .right {
+        width: 100%;
+    }
+    .left {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .main {
+        padding: 0 20px;
+    }
+}
