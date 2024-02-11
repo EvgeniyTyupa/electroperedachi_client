@@ -71,6 +71,14 @@
     clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
 }
 
+.main p {
+    font-weight: 400;
+}
+
+.main a {
+    color: #DF0252 !important;
+}
+
 @media screen and (max-width: 1440px) {
     .textBlock a {
         font-size: 18px;

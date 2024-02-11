@@ -52,6 +52,7 @@
     color: black;
     text-shadow: #df0253 0px 0 1px;
     font-size: 60px;
+    font-weight: 400;
     z-index: 1;
     font-family: "Blaster";
     position: relative;

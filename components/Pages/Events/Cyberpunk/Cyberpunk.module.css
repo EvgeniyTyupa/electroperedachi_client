@@ -51,9 +51,10 @@
 }
 .title h1 {
     color: #FFF1C9;
-    text-shadow: #df02533b 1px 0 40px;
+    text-shadow: #DF0252 1px 0 40px;
     font-size: 120px;
     z-index: 1;
+    font-weight: 400;
 }
 .chromeTitle h1 {
     text-shadow: #DF0252 1px 0 40px !important;
@@ -74,9 +75,10 @@
 }
 .title h2 {
     color: #FFF1C9;
-    text-shadow: #df02533b 1px 0 40px;
+    text-shadow: #DF0252 1px 0 40px;
     font-size: 50px;
     z-index: 1;
+    font-weight: 400;
 }
 .chromeTitle h2 {
     text-shadow: #DF0252 1px 0 40px;
@@ -99,6 +101,9 @@
     font-size: 18px;
     text-shadow: 0 0 2px #000;
     font-weight: bold;
+    -webkit-text-stroke-width: .1px;
+    -webkit-text-stroke-color: black;
+    font-weight: 900;
 }
 .answerBlock {
     position: relative;
@@ -280,6 +285,9 @@
     justify-content: center;
     font-size: 28px;
     font-weight: bold;
+}
+.stepNumberBlock p {
+    font-size: 20px !important;
 }
 .stepPast {
     opacity: .4;
@@ -1476,7 +1484,7 @@
 
 @media screen and (max-width: 468px) {
     .homeDialog {
-        margin-top: 60px;
+        margin-top: 125px;
         text-align: center;
     }
     .title h2 {
@@ -1487,7 +1495,7 @@
         width: 100%;
     }
     .gameText {
-        font-size: 14px;
+        font-size: 16px;
     }
     .answers button {
         padding: 10px 30px;
@@ -1578,12 +1586,33 @@
     }
     .message {
         margin-top: 50px;
+        padding: 0 20px;
+        box-sizing: border-box;
     }
     .buyButt {
         margin-top: 0 !important;
     }
     .stuffLeft {
         margin-top: 30px;
+    }
+    .notHeader p {
+        font-size: 20px;
+    }
+    .ramka {
+        right: -147px !important;
+    }
+    .notBody p {
+        transform: scale(1.4);
+        padding-left: 90px;
+    }
+    .notification {
+        left: -53px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .homeDialog {
+        margin-top: 180px;
     }
 }
 
@@ -1593,6 +1622,9 @@
     }
     .answers {
         width: 100%;
+    }
+    .gameText {
+        font-size: 15px;
     }
     .answers button {
         padding: 10px 20px;
@@ -1653,13 +1685,38 @@
     }
 }
 
+@media screen and (max-width: 390px) {
+    .cabel3 {
+        bottom: 10%;
+    }
+    .dj {
+        max-width: 83%;
+    }
+    .stuffImg1 {
+        width: 74%;
+    }
+    .stuffImg2 {
+        width: 65%;
+    }
+}
+
 @media screen and (max-width: 375px) {
     .dj {
         max-width: 86%;
     }
+    .notBody p {
+        padding-left: 84px;
+        padding-top: 40px;
+    }
 }
 
 @media screen and (max-width: 350px) {
+    .homeDialog {
+        margin-top: 30px;
+    }
+    .gameText {
+        font-size: 14px;
+    }
     .title h2 {
         font-size: 24px;
     }
@@ -1718,5 +1775,16 @@
     }
     .djImgContainer {
         height: 210px;
+    }
+}
+
+@media screen and (max-width: 349px) {
+    .notification {
+        display: none;
+    }
+    .buyButt {
+        padding: 5px 17px !important;
+        transform: scale(.8) !important;
+        margin-top: 30px !important;
     }
 }

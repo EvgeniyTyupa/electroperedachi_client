@@ -270,3 +270,9 @@
         width: 100% !important;
     }
 }
+
+@media screen and (max-width: 349px) {
+    .buyButt {
+        padding: 6px 13px !important;
+    }
+}

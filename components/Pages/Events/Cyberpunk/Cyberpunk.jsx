@@ -217,7 +217,7 @@ const Cyberpunk = (props) => {
     }
 
     useEffect(() => {
-        Aos.init({ duration: 1000 })
+        Aos.init({ duration: 1000, offset: 100 })
     }, [])
 
     useEffect(() => {
