@@ -208,8 +208,9 @@
     border-radius: 20px;
     overflow: hidden;
 }
-.videoBlock img {
-    width: 100%
+.videoBlock iframe {
+    width: 100%;
+    height: 600px;
 }
 
 /* MORE */
@@ -1021,6 +1022,10 @@
     .priceInfo {
         top: 60px;
     }
+    .videoBlock iframe {
+        width: 100%;
+        height: 500px;
+    }
 }
 
 @media screen and (max-width: 1366px) {
@@ -1507,9 +1512,14 @@
     .introInfo p {
         font-size: 12px;
     }
+    .cabel3 {
+        bottom: 5%;
+    }
     .more {
         padding: 50px 20px;
-        height: 92vh;
+        height: 550px;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     .mission {
         margin-top: 50px;
@@ -1607,6 +1617,10 @@
     }
     .notification {
         left: -53px;
+    }
+    .videoBlock iframe {
+        width: 100%;
+        height: 250px;
     }
 }
 

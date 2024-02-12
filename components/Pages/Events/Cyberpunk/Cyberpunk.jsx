@@ -38,7 +38,6 @@ import ramka2 from "/public/images/cyberpunk/ramk2.svg"
 import cabel1 from "/public/images/cyberpunk/cable1.webp"
 import cabel2 from "/public/images/cyberpunk/cable2.webp"
 import cabel3 from "/public/images/cyberpunk/cable3.webp"
-import girl from "/public/images/cyberpunk/girl.webp"
 import more_back from "/public/images/cyberpunk/more_back.webp"
 import mission_back from "/public/images/cyberpunk/mission_back.svg"
 import hand from "/public/images/cyberpunk/hand.webp"
@@ -86,6 +85,8 @@ const Cyberpunk = (props) => {
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
 
+    const [isPlayVideo, setIsPlayVideo] = useState(false)
+
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
     
     const intl = useIntl()
@@ -102,6 +103,7 @@ const Cyberpunk = (props) => {
 
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
+    const videoRef = useRef(null)
 
     const isChrome = useIsChrome();
 
@@ -234,6 +236,15 @@ const Cyberpunk = (props) => {
 
     useEffect(() => {
         const handleScroll = () => {
+            if (videoRef && videoRef.current) {
+                const triggerElement = videoRef.current
+                const triggerPosition = triggerElement.getBoundingClientRect()
+
+                
+                if (triggerPosition.y <= 348) {
+                    setIsPlayVideo(true)
+                }
+            }
             if(paymentBlockRef && paymentBlockRef.current) {
                 if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
                     if (!isAddToCartEventSend) {
@@ -248,7 +259,7 @@ const Cyberpunk = (props) => {
             window.removeEventListener("scroll", handleScroll)
         }
         
-    }, [paymentBlockRef])
+    }, [paymentBlockRef, videoRef])
 
     useEffect(() => {
         if (isAddToCartEventSend) {
@@ -340,7 +351,16 @@ const Cyberpunk = (props) => {
             {/* VIDOS */}
             <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.videoBlock}>
-                    <img src={girl.src} alt="girl"/>
+                    <iframe
+                        src={`https://www.youtube.com/embed/jjr1ou4yPvo?si=eM0ksxr9WbviMNS3&autoplay=${
+                            isPlayVideo ? 1 : 0
+                        }&mute=1`}
+                        frameborder="0"
+                        allowfullscreen
+                        ref={videoRef}
+                        data-aos="fade"
+                        data-aos-duration="2000"
+                    />
                 </div>
                 <img className={classes.cabel1} src={cabel1.src} alt="cables"/>
                 <img className={classes.cabel2} src={cabel2.src} alt="cables"/>
