@@ -93,6 +93,7 @@ const TermsOfUsePage = () => {
                         <p>{intl.formatMessage({ id: "terms.7.2" })}</p>
                         <p>{intl.formatMessage({ id: "terms.7.3" })}</p>
                         <p>{intl.formatMessage({ id: "terms.7.4" })}</p>
+                        <p>{intl.formatMessage({ id: "terms.7.5" })}</p>
                     </div>
                     <div className={classes.section}>
                         <Header type="h5">{intl.formatMessage({ id: "terms.8" })}</Header>
