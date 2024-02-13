@@ -428,7 +428,7 @@ const Cyberpunk = (props) => {
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
-                            <p className={classes.detailText}>{intl.formatMessage({ id: "cyberpunk.placeInfo" })}</p>
+                            <a href="https://www.google.com/maps?client=safari&sca_esv=f917e2823a31333e&sca_upv=1&rls=en&output=search&q=Gulliver,+Creative+Quarter,+Tower+B&source=lnms&entry=mc" target={"_blank"} rel="noreferrer noopener">{intl.formatMessage({ id: "cyberpunk.placeInfo" })}</a>
                         </div>
                         <div className={classes.detail}>
                             <div className={classes.detailHeader}>
