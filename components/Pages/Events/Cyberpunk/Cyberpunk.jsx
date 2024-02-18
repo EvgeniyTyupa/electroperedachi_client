@@ -699,7 +699,7 @@ const Cyberpunk = (props) => {
             </div>
             {/* FORM */}
             {!isEnd && isShowBuy && (
-                <div className={classes.form} data-aos="fade-down" data-aos-duration="2000">
+                <div className={classes.form}>
                     <CyberpunkForm
                         paymentBlockRef={paymentBlockRef}
                         price={price}
