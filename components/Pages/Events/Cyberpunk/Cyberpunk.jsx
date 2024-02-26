@@ -463,7 +463,7 @@ const Cyberpunk = (props) => {
                                 <div className={classes.line}/>
                                 <div className={classes.parallelogram}/>
                             </div>
-                            <p className={cx(classes.detailText, classes.time)}>600 UAH</p>
+                            <p className={cx(classes.detailText, classes.time)}>{price} UAH</p>
                             <p className={classes.detailText}>{intl.formatMessage({ id: "cyberpunk.ticketPriceInfo" })}</p>
                         </div>
                     </div>
@@ -697,6 +697,17 @@ const Cyberpunk = (props) => {
                 </div> */}
                 <img src={width > 568 ? price_back.src : price_back_mobile.src} alt="price_back" className={classes.priceBack}/>
             </div>
+            {/* FAQ */}
+            <div className={classes.faqContainer}>
+                <div className={classes.faq}>
+                    <h3 className={classes.blockHeader}>FAQ</h3>
+                    <div className={classes.questions}>
+                        {faq.map(el => (
+                            <CyberpunkFaqItem item={el} key={el._id}/>
+                        ))}
+                    </div>
+                </div>
+            </div>
             {/* FORM */}
             {!isEnd && isShowBuy && (
                 <div className={classes.form}>
@@ -708,17 +719,6 @@ const Cyberpunk = (props) => {
                     />
                 </div>
             )}
-            {/* FAQ */}
-            <div className={classes.faqContainer} data-aos="fade-down" data-aos-duration="2000">
-                <div className={classes.faq}>
-                    <h3 className={classes.blockHeader}>FAQ</h3>
-                    <div className={classes.questions}>
-                        {faq.map(el => (
-                            <CyberpunkFaqItem item={el} key={el._id}/>
-                        ))}
-                    </div>
-                </div>
-            </div>
             {/* FOOTER */}
             <footer className={classes.footer}>
                 <div className={classes.links}>
