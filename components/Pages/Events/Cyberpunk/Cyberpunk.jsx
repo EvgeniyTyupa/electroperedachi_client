@@ -78,9 +78,14 @@ import price_back_mobile from "/public/images/cyberpunk/price_back_mobile.webp"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import useIsChrome from "../../../../hooks/useIsChrome"
+import { useRouter } from "next/router"
 
 const Cyberpunk = (props) => {
     const { event } = props
+
+    const router = useRouter()
+
+    const { promo } = router.query
 
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
@@ -88,7 +93,7 @@ const Cyberpunk = (props) => {
     const [isPlayVideo, setIsPlayVideo] = useState(false)
 
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
-    
+
     const intl = useIntl()
 
     const { width } = useWindowDimensions()
@@ -266,6 +271,12 @@ const Cyberpunk = (props) => {
             handleAddToCartClick()
         }
     }, [isAddToCartEventSend])
+
+    useEffect(() => {
+        if (promo === "hacking" && paymentBlockRef && paymentBlockRef.current) {
+            scrollToPayment()
+        }
+    }, [promo, paymentBlockRef, paymentBlockRef?.current])
 
     return (
         <div className={classes.main}>
