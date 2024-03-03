@@ -314,8 +314,8 @@ const Cyberpunk = (props) => {
                 </div>
             </div>
             {/* INTRO */}
-            {width > 1170 ? (
-                <div className={classes.intro} ref={readMoreRef}>
+            {/* {width > 1170 ? (
+                <div className={classes.intro}>
                     <div className={cx(classes.introInfo)}
                         style={{
                             backgroundImage: `url(${ramka1.src})`
@@ -358,9 +358,9 @@ const Cyberpunk = (props) => {
                         {intl.formatMessage({ id: "cyberpunk.introText3" })}</p>
                     </div>
                 </div>
-            )}
+            )} */}
             {/* VIDOS */}
-            <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
+            {/* <div className={classes.vidos} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.videoBlock}>
                     <iframe
                         src={`https://www.youtube.com/embed/jjr1ou4yPvo?si=eM0ksxr9WbviMNS3&autoplay=${
@@ -376,9 +376,9 @@ const Cyberpunk = (props) => {
                 <img className={classes.cabel1} src={cabel1.src} alt="cables"/>
                 <img className={classes.cabel2} src={cabel2.src} alt="cables"/>
                 <img className={classes.cabel3} src={cabel3.src} alt="cables"/>
-            </div>
+            </div> */}
             {/* MORE */}
-            <div className={classes.more}
+            {/* <div className={classes.more}
                 style={{
                     backgroundImage: `url(${width > 468 ? more_back.src : message_back_mobile.src})`
                 }}
@@ -388,9 +388,9 @@ const Cyberpunk = (props) => {
                     Е: &nbsp;
                     {typingMore1}
                 </p>
-            </div>
+            </div> */}
             {/* MISSION */}
-            <div className={classes.mission}
+            {/* <div className={classes.mission}
                 style={{
                     backgroundImage: `url(${mission_back.src})`
                 }}
@@ -423,9 +423,9 @@ const Cyberpunk = (props) => {
                     </div>
                 </div>
                 <img src={hand.src} alt="hand" data-aos="fade-left" data-aos-duration="2000"/>
-            </div>
+            </div> */}
             {/* DETAILS */}
-            <div className={classes.details}>
+            <div className={classes.details} ref={readMoreRef}>
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">Party Details</h3>
                 <p className={classes.gameText} data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "cyberpunk.phase" })}</p>
                 <div className={classes.detailsSections} data-aos="fade-down" data-aos-duration="2000">
@@ -498,10 +498,17 @@ const Cyberpunk = (props) => {
                         </div>
                     </div>
                 </div>
+                <Button className={classes.buyButt} onClick={scrollToPayment}>
+                    <p>{intl.formatMessage({ id: "cyberpunk.buyTicket" })}</p>
+                    <div className={classes.r25}>
+                        <IoMdArrowDown />
+                        <img src={r25.src} alt="r25"/>
+                    </div>
+                </Button>
                 <img src={hand2.src} alt="hand" data-aos="fade-right" data-aos-duration="2000"/>
             </div>
             {/* SKINS */}
-            <h3 className={cx(classes.blockHeader, classes.collegues)} data-aos="fade-down" data-aos-duration="2000">Colleagues</h3>
+            {/* <h3 className={cx(classes.blockHeader, classes.collegues)} data-aos="fade-down" data-aos-duration="2000">Colleagues</h3>
             <div className={classes.skins} data-aos="fade-down" data-aos-duration="2000">
                 {skins.map((el, index) => (
                     <div
@@ -528,7 +535,7 @@ const Cyberpunk = (props) => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
             {/* LINEUP */}
             <div className={classes.lineup}>
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">LINE UP</h3>
@@ -603,7 +610,7 @@ const Cyberpunk = (props) => {
                 </Button>
             </div>
             {/* STUFF */}
-            <div className={classes.stuff} data-aos="fade-down" data-aos-duration="2000">
+            {/* <div className={classes.stuff} data-aos="fade-down" data-aos-duration="2000">
                 <h3 className={classes.blockHeader}>MISSION`S STUFF</h3>
                 <div className={classes.stuffContainer}>
 
@@ -650,8 +657,8 @@ const Cyberpunk = (props) => {
                             </p>
                     </div>
                 </div>
-            </div>
-            <div className={classes.stuffMobile} data-aos="fade-down" data-aos-duration="2000">
+            </div> */}
+            {/* <div className={classes.stuffMobile} data-aos="fade-down" data-aos-duration="2000">
                 <h3 className={classes.blockHeader}>MISSION`S STUFF</h3>
                 <div className={classes.stuffContainer}>
                     <div className={classes.stuffLeft}>
@@ -699,7 +706,7 @@ const Cyberpunk = (props) => {
                             </p>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* PRICE */}
             <div className={classes.price} data-aos="fade" data-aos-duration="2000">
                 {/* <div className={classes.priceInfo}>
@@ -708,6 +715,24 @@ const Cyberpunk = (props) => {
                 </div> */}
                 <img src={width > 568 ? price_back.src : price_back_mobile.src} alt="price_back" className={classes.priceBack}/>
             </div>
+            {/* FORM */}
+            {!isEnd && isShowBuy && (
+                <div className={classes.form}>
+                    <Button className={classes.buyButt} onClick={scrollToPayment}>
+                        <p>{intl.formatMessage({ id: "cyberpunk.buyTicket" })}</p>
+                        <div className={classes.r25}>
+                            <IoMdArrowDown />
+                            <img src={r25.src} alt="r25"/>
+                        </div>
+                    </Button>
+                    <CyberpunkForm
+                        paymentBlockRef={paymentBlockRef}
+                        price={price}
+                        setPrice={setPrice}
+                        event={event}
+                    />
+                </div>
+            )}
             {/* FAQ */}
             <div className={classes.faqContainer}>
                 <div className={classes.faq}>
@@ -719,17 +744,6 @@ const Cyberpunk = (props) => {
                     </div>
                 </div>
             </div>
-            {/* FORM */}
-            {!isEnd && isShowBuy && (
-                <div className={classes.form}>
-                    <CyberpunkForm
-                        paymentBlockRef={paymentBlockRef}
-                        price={price}
-                        setPrice={setPrice}
-                        event={event}
-                    />
-                </div>
-            )}
             {/* FOOTER */}
             <footer className={classes.footer}>
                 <div className={classes.links}>

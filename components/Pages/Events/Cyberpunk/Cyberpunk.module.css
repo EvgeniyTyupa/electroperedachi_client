@@ -323,6 +323,7 @@
     font-family: 'Open Sans';
     position: relative;
     padding-bottom: 200px;
+    margin-top: 50px;
 }
 .detail {
     max-width: 350px;
@@ -389,7 +390,7 @@
 }
 .details img {
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 0;
     width: 50%;
 }
@@ -673,6 +674,10 @@
     text-shadow: 0 0 4px #000;
 }
 
+.details .buyButt {
+    margin-top: 70px !important;
+}
+
 .buyButt {
     /* margin-top: 80px !important; */
     background-color: #FFF1C9 !important;
@@ -925,6 +930,16 @@
     width: 100%;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form .buyButt {
+    display: none !important;
+    margin-top: 70px !important;
+}
+
 /* FAQ */
 .faqContainer {
     width: 100%;
@@ -947,7 +962,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-top: 100px; */
+    margin-top: 100px;
     padding-bottom: 50px;
 }
 .links {
@@ -1290,6 +1305,9 @@
     }
     .faq {
         padding: 0 50px;
+    }
+    .form .buyButt {
+        display: flex !important;
     }
 }
 

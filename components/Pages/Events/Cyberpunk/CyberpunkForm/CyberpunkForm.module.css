@@ -15,9 +15,11 @@
 }
 .leftImgContainer {
     width: 100%;
-    height: 100%;
+    height: 90%;
+    margin-top: 50px;
     position: relative;
     z-index: 1;
+    opacity: .8;
 }
 .leftImgContainer img {
     object-fit: contain;
@@ -60,7 +62,7 @@
 .titleAbsolute {
     position: absolute;
     z-index: 0;
-    text-shadow: #df025333 0px 0 15px;
+    text-shadow: #df0253 0px 0 15px;
     color: black;
     font-size: 60px;
     font-family: "Blaster";
@@ -147,8 +149,15 @@
         width: 100%;
     }
     .left {
-        display: none;
+        height: 100vh;
     }
+    .leftImgContainer {
+        margin-top: 0;
+        height: 100%;
+    }
+    /* .left {
+        display: none;
+    } */
 }
 
 @media screen and (max-width: 834px) {

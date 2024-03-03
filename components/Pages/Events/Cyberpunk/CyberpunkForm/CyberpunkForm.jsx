@@ -1,5 +1,5 @@
 import classes from "./CyberpunkForm.module.css"
-import robot from "/public/images/cyberpunk/robot.webp"
+import robot from "/public/images/cyberpunk/girl.webp"
 import Image from "next/image"
 import { useIntl } from "react-intl"
 import { useEffect, useState } from "react"
@@ -68,7 +68,6 @@ const CyberpunkForm = (props) => {
                 <div className={classes.leftImgContainer}>
                     <Image src={robot.src} alt="robot_hud" fill/>
                 </div>
-                <div className={classes.blured}/>
             </div>
             <div className={classes.right}>
                 <p className={classes.electroperedachi}>electroperedachi</p>
