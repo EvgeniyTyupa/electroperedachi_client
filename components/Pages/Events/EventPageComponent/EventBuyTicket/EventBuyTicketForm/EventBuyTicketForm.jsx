@@ -21,6 +21,7 @@ import moment from "moment"
 import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
+import { FB_PIXEL } from "../../../../../../utils/constants"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } = props
@@ -61,7 +62,7 @@ const EventBuyTicketForm = (props) => {
                 .then((module) => module.default)
                 .then((ReactPixel) => {
                     // ReactPixel.init("573414703062456")
-                    ReactPixel.init("1667954890675870")
+                    ReactPixel.init(FB_PIXEL)
                     ReactPixel.track("InitiateCheckout", {
                         value: isAppliedPromo ? totalPriceDiscount : totalPrice,
                         currency: "UAH"

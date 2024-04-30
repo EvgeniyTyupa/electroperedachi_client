@@ -13,6 +13,7 @@ import { useAppContext } from "../../context/AppContext"
 import atob from "atob"
 
 import moment from "moment"
+import { FB_PIXEL } from "../../utils/constants"
 
 const ThankyouPage = (props) => {
     const { paymentHash, message } = props
@@ -37,7 +38,7 @@ const ThankyouPage = (props) => {
             .then(module => module.default)
             .then(ReactPixel => {
                 // ReactPixel.init('573414703062456')
-                ReactPixel.init("1667954890675870")
+                ReactPixel.init(FB_PIXEL)
                 ReactPixel.track('Purchase', {
                     value: Number(total_price) / 37,
                     currency: "USD"

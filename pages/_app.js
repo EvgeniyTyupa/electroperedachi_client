@@ -17,6 +17,7 @@ import { AppContextProvider } from "../context/AppContext"
 import poster_img from "/public/poster.jpg"
 import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
+import { FB_PIXEL } from "../utils/constants"
 
 const messages = { en, ua }
 
@@ -68,7 +69,8 @@ export default function App({ Component, pageProps }) {
         import('react-facebook-pixel')
           .then(module => module.default)
           .then(ReactPixel => {
-            ReactPixel.init('573414703062456')
+            // ReactPixel.init('573414703062456')
+            ReactPixel.init(FB_PIXEL)
             ReactPixel.pageView()
         })
     }, [])
