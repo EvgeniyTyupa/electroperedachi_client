@@ -17,44 +17,48 @@ const Footer = () => {
     const intl = useIntl()
 
     return (
-        <footer className={classes.main}>
-            <Container className={classes.container}>
-                <div className={classes.links}>
-                    {links.map((el) => (
-                        <CustomLink
-                            key={el.href}
-                            href={el.href}
-                            text={el.text}
-                            className={cx(
-                                classes.link,
-                                router.pathname == el.href ? classes.active : ""
-                            )}
-                        />
-                    ))}
-                </div>
-                <div className={classes.social}>
-                    {socialLinks.map((el) => (
-                        <a
-                            href={el.url}
-                            key={el.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {el.icon}
-                        </a>
-                    ))}
-                </div>
-                <div className={classes.mini}>
-                    <Link href="/terms-of-use">
-                        {intl.formatMessage({ id: "footer.terms" })}
-                    </Link>
-                    <Link href="/privacy-policy">
-                        {intl.formatMessage({ id: "footer.privacy" })}
-                    </Link>
-                </div>
-            </Container>
-            <PeaksFooter />
-        </footer>
+        <>
+            {router.asPath !== "/events/145bpm" && (
+                <footer className={classes.main}>
+                    <Container className={classes.container}>
+                        <div className={classes.links}>
+                            {links.map((el) => (
+                                <CustomLink
+                                    key={el.href}
+                                    href={el.href}
+                                    text={el.text}
+                                    className={cx(
+                                        classes.link,
+                                        router.pathname == el.href ? classes.active : ""
+                                    )}
+                                />
+                            ))}
+                        </div>
+                        <div className={classes.social}>
+                            {socialLinks.map((el) => (
+                                <a
+                                    href={el.url}
+                                    key={el.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {el.icon}
+                                </a>
+                            ))}
+                        </div>
+                        <div className={classes.mini}>
+                            <Link href="/terms-of-use">
+                                {intl.formatMessage({ id: "footer.terms" })}
+                            </Link>
+                            <Link href="/privacy-policy">
+                                {intl.formatMessage({ id: "footer.privacy" })}
+                            </Link>
+                        </div>
+                    </Container>
+                    <PeaksFooter />
+                </footer>
+            )}
+        </>
     )
 }
 

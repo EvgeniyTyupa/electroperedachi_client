@@ -82,7 +82,7 @@ const EventBuyTicket = (props) => {
                     data-aos="fade-down"
                     data-aos-duration="2000"
                 >
-                    <h3>electroperedachi</h3>
+                    {/* <h3>electroperedachi</h3> */}
                     <p className={classes.date}>
                         {moment(event.date).format("DD.MM.YY")}
                     </p>

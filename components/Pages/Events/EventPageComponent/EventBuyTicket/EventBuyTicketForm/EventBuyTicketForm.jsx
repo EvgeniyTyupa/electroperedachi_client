@@ -60,20 +60,21 @@ const EventBuyTicketForm = (props) => {
             import("react-facebook-pixel")
                 .then((module) => module.default)
                 .then((ReactPixel) => {
-                    ReactPixel.init("573414703062456")
+                    // ReactPixel.init("573414703062456")
+                    ReactPixel.init("1667954890675870")
                     ReactPixel.track("InitiateCheckout", {
                         value: isAppliedPromo ? totalPriceDiscount : totalPrice,
                         currency: "UAH"
                     })
                 })
 
-            await eventApi.saveDataToGoogleSheet({
-                date: moment().format('DD/MM/YYYY HH:mm'),
-                email: data.email,
-                phone: data.phone,
-                totalPrice: "",
-                userURL: currentURL
-            }, 1)
+            // await eventApi.saveDataToGoogleSheet({
+            //     date: moment().format('DD/MM/YYYY HH:mm'),
+            //     email: data.email,
+            //     phone: data.phone,
+            //     totalPrice: "",
+            //     userURL: currentURL
+            // }, 1)
 
             window.location.replace(response.url)
         } catch (err) {

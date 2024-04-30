@@ -71,7 +71,7 @@ const EventAbout = (props) => {
                     />
                 )}
             </div>
-            <PhotosFromPastEvents photos={randomPhotos}/>
+            {/* <PhotosFromPastEvents photos={randomPhotos}/> */}
             <div
                 className={classes.buyTicket}
                 data-aos="fade-down"

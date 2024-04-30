@@ -36,20 +36,21 @@ const ThankyouPage = (props) => {
             import('react-facebook-pixel')
             .then(module => module.default)
             .then(ReactPixel => {
-                ReactPixel.init('573414703062456')
+                // ReactPixel.init('573414703062456')
+                ReactPixel.init("1667954890675870")
                 ReactPixel.track('Purchase', {
                     value: Number(total_price) / 37,
                     currency: "USD"
                 })
             })
 
-            eventApi.saveDataToGoogleSheet({
-                date: moment().format('DD/MM/YYYY HH:mm'),
-                email: email,
-                phone: phone,
-                totalPrice: total_price,
-                userURL: ""
-            }, "sheet2")
+            // eventApi.saveDataToGoogleSheet({
+            //     date: moment().format('DD/MM/YYYY HH:mm'),
+            //     email: email,
+            //     phone: phone,
+            //     totalPrice: total_price,
+            //     userURL: ""
+            // }, "sheet2")
         }
     }, [paymentHash, message])
 
