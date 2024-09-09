@@ -69,13 +69,13 @@ const EventBuyTicketForm = (props) => {
                     })
                 })
 
-            // await eventApi.saveDataToGoogleSheet({
-            //     date: moment().format('DD/MM/YYYY HH:mm'),
-            //     email: data.email,
-            //     phone: data.phone,
-            //     totalPrice: "",
-            //     userURL: currentURL
-            // }, 1)
+            await eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: data.email,
+                phone: data.phone,
+                totalPrice: "",
+                userURL: currentURL
+            }, "sheet1")
 
             window.location.replace(response.url)
         } catch (err) {

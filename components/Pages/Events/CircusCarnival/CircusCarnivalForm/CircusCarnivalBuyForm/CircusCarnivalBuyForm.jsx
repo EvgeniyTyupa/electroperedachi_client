@@ -21,6 +21,7 @@ import { logEvent } from "../../../../../../utils/gtag"
 import { eventApi, userApi } from "../../../../../../api/api"
 import { cx } from "../../../../../../utils/classnames"
 import Link from "next/link"
+import { USD_EQ } from "../../../../../../utils/constants"
 
 const CircusCarnivalBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
@@ -71,7 +72,7 @@ const CircusCarnivalBuyForm = (props) => {
                 .then((ReactPixel) => {
                     ReactPixel.init("573414703062456")
                     ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount / 37 : totalPrice / 37,
+                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
                         currency: "USD"
                     })
                 })

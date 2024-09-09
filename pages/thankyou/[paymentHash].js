@@ -13,7 +13,7 @@ import { useAppContext } from "../../context/AppContext"
 import atob from "atob"
 
 import moment from "moment"
-import { FB_PIXEL } from "../../utils/constants"
+import { FB_PIXEL, USD_EQ } from "../../utils/constants"
 
 const ThankyouPage = (props) => {
     const { paymentHash, message } = props
@@ -40,18 +40,18 @@ const ThankyouPage = (props) => {
                 // ReactPixel.init('573414703062456')
                 ReactPixel.init(FB_PIXEL)
                 ReactPixel.track('Purchase', {
-                    value: Number(total_price) / 37,
+                    value: Number(total_price) / USD_EQ,
                     currency: "USD"
                 })
             })
 
-            // eventApi.saveDataToGoogleSheet({
-            //     date: moment().format('DD/MM/YYYY HH:mm'),
-            //     email: email,
-            //     phone: phone,
-            //     totalPrice: total_price,
-            //     userURL: ""
-            // }, "sheet2")
+            eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: email,
+                phone: phone,
+                totalPrice: total_price,
+                userURL: ""
+            }, "sheet2")
         }
     }, [paymentHash, message])
 

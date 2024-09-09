@@ -23,6 +23,7 @@ import { cx } from "../../../../../../utils/classnames"
 import Link from "next/link"
 import { IoMdArrowDown } from "react-icons/io";
 import r25 from "/public/images/cyberpunk/r25.svg"
+import { USD_EQ } from "../../../../../../utils/constants"
 
 const CyberpunkBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
@@ -73,7 +74,7 @@ const CyberpunkBuyForm = (props) => {
                 .then((ReactPixel) => {
                     ReactPixel.init("573414703062456")
                     ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount / 37 : totalPrice / 37,
+                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
                         currency: "USD"
                     })
                 })
