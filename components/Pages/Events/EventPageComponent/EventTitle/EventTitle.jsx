@@ -44,11 +44,11 @@ const EventTitle = (props) => {
                 data-aos="fade"
                 data-aos-duration="2000"
             >
-                {!isEnd && (
+                {/* {!isEnd && (
                     <h4 data-aos="fade-down" data-aos-duration="2000">
                         {intl.formatMessage({ id: "event.hook" })}
                     </h4>
-                )}
+                )} */}
                 <div
                     className={classes.title}
                     data-aos="fade-down"
@@ -82,11 +82,14 @@ const EventTitle = (props) => {
                             {intl.formatMessage({ id: "event.place" })}
                         </h5>
                         <div className={classes.infoData}>
-                            <a rel="noopener noreferrer" href={`https://www.google.com/maps/search/${encodeURIComponent(`${event.venue ? (`${event.venue.trim()},`) : ""} ${city}`)}`} target={"_blank"}>
+                            {/* <a rel="noopener noreferrer" href={`https://www.google.com/maps/search/${encodeURIComponent(`${event.venue ? (`${event.venue.trim()},`) : ""} ${city}`)}`} target={"_blank"}>
                                 <p className={classes.important}>
                                     {event.venue ? (`${event.venue.trim()},`) : ""} {city}
                                 </p>
-                            </a>
+                            </a> */}
+                            <p className={classes.important}>
+                                {event.venue ? (`${event.venue.trim()},`) : ""} {city}
+                            </p>
                         </div>
                     </div>
                     {(!isEnd && isShowBuy) && (
