@@ -83,7 +83,8 @@
     text-transform: capitalize;
 }
 .place {
-    width: 40%;
+    max-width: 100%;
+    max-width: 310px;
 }
 .pastInfo {
     margin-top: 6rem;

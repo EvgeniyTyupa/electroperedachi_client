@@ -36,7 +36,6 @@
 }
 .liquid {
     bottom: 0;
-    max-height: 460px;
     position: relative !important;
     margin-top: auto;
     object-fit: cover;
