@@ -1,0 +1,901 @@
+@font-face {
+    font-family: 'Angel wish';
+    src: url('../../../../public/fonts/Angelwish-Regular.eot');
+    src: local('Angel wish Regular'), local('Angelwish-Regular'),
+        url('../../../../public/fonts/Angelwish-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../../../../public/fonts/Angelwish-Regular.woff2') format('woff2'),
+        url('../../../../public/fonts/Angelwish-Regular.woff') format('woff'),
+        url('../../../../public/fonts/Angelwish-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+.main p {
+    font-family: "NeueMachinaRegular";
+}
+.main h2 {
+    text-shadow: #D70100 1px 0 10px;
+    font-family: "NeueMachina" !important;
+    font-size: 50px !important;
+    color: #D70100 !important;
+}
+.home {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    box-sizing: border-box;
+}
+.title {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Angel wish' !important;
+    color: #D70100;
+}
+.title h1 {
+    font-size: 160px !important;
+    font-weight: 300 !important;
+    text-shadow: #D70100 1px 0 10px;
+    font-family: 'Angel wish' !important;
+}
+.title h2 {
+    font-size: 110px !important;
+    font-weight: 300 !important;
+    text-shadow: #D70100 1px 0 10px;
+    font-family: 'Angel wish' !important;
+}
+.foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+.foot p {
+    max-width: 560px;
+    font-size: 20px;
+    text-align: center;
+}
+.homeButts {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mock {
+    width: 220px;
+}
+.cta {
+    background-color: #FE0002 !important;
+    font-size: 18px !important;
+    font-family: "NeueMachina" !important;
+    color: white !important;
+    padding: 20px 30px !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-transform: none !important;
+    line-height: normal !important;
+}
+.cta:hover {
+    background-color: #e20000 !important;
+}
+.moreButt {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-family: "NeueMachina";
+    font-size: 18px;
+    width: 220px;
+    transition-duration: .3s;
+}
+.moreButt:hover {
+    transform: scale(1.03);
+}
+
+/* VIDEO */
+.video {
+    width: 100%;
+    height: 100vh;
+    background-position: top;
+    background-position-x: -10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0;
+    padding-bottom: 130px;
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+.video iframe {
+    width: 50vw;
+    height: 63vh;
+    position: relative;
+    left: -5px;
+    top: -10px;
+}
+.shadow {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.videoText {
+    color: white;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-size: 20px;
+    max-width: 595px;
+    text-align: center;
+}
+.vidos {
+    width: 50vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    gap: 90px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    z-index: 1;
+}
+.vidos p {
+    font-size: 35px;
+    font-family: "NeueMachina";
+    text-align: center;
+}
+.vidos svg {
+    font-size: 40px;
+}
+.vidosText {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* INVITE */
+.invite {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 100px 50px;
+    box-sizing: border-box;
+    position: relative;
+}
+.invite p {
+    font-size: 20px;
+    max-width: 700px;
+    z-index: 1;
+}
+.invite h3 {
+    font-size: 35px;
+    font-family: "NeueMachina";
+    max-width: 478px;
+    text-align: center;
+    z-index: 1;
+}
+.details {
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 2rem;
+}
+.details h2 {
+    color: #D70100;
+    font-size: 50px;
+    font-family: "NeueMachina";
+    margin-bottom: 70px;
+}
+.detailsCols {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 70px;
+}
+.detailsCol {
+    max-width: 33%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.detailsCol h4 {
+    font-family: "NeueMachina";
+    font-size: 24px;
+    color: #D70100;
+}
+.redText {
+    color: #FF0000;
+    margin-top: 30px;
+}
+.detailsCol h3 {
+    font-size: 30px;
+    font-family: "NeueMachina";
+}
+.duration {
+    margin-top: auto;
+}
+/* PREVS */
+.prevs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0 100px;
+    box-sizing: border-box;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.prev {
+    max-width: 33%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.prevImg {
+    position: relative;
+    width: 100%;
+    height: 273px;
+}
+.prevImg img {
+    object-fit: cover;
+}
+.prev p {
+    font-size: 20px;
+}
+
+.lineup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 100px;
+    box-sizing: border-box;
+    gap: 6rem;
+}
+.stage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.stage1 .djs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+.stage2 .djs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+.djContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.djContainer p {
+    font-family: "NeueMachina";
+    font-size: 20px;
+    color: #D70100;
+    text-transform: uppercase;
+    text-shadow: #D70100 1px 0 10px;
+}
+.dj {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    transition-duration: .3s;
+}
+.dj:hover {
+    transform: scale(1.1);
+}
+.djMirror {
+    z-index: 0;
+    transition-duration: .6s;
+}
+.djShadow {
+    width: 60% !important;
+    height: auto !important;
+    margin: auto;
+    margin-bottom: 5%;
+    z-index: 0 !important;
+    transition-duration: .6s;
+}
+.djPhoto {
+    opacity: 0;
+    transition-duration: .6s;
+    object-fit: cover;
+}
+.dj:hover .djMirror, .dj:hover .djShadow {
+    opacity: 0;
+}
+.dj:hover .djPhoto {
+    opacity: 1;
+}
+
+/* RESIDENCE */
+.residence {
+    width: 100%;
+    height: 832px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+.residenceContent {
+    z-index: 1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.residenceContent h3 {
+    font-size: 70px;
+    font-family: "NeueMachina";
+    margin-bottom: 20px;
+}
+.residenceContent p {
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+/* GIRL */
+.girl {
+    width: 100%;
+    height: 685px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+.girl img {
+    height: 104%;
+    top: -10px;
+}
+.girl p {
+    z-index: 1;
+    max-width: 370px;
+}
+.girl p {
+    margin-right: auto;
+}
+.girl p + p {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* FAQ */
+.faq {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 200px;
+}
+.questions {
+    width: 100%;
+    background-size: cover;
+    margin-top: 80px;
+}
+.faq h2 {
+    z-index: 1;
+}
+
+/* PRICE */
+.price {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    min-height: 800px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+.priceContent {
+    width: 100%;
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+.priceEmpty {
+    width: 60%;
+}
+.priceInfo {
+    width: 100%;
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.prices {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.priceBlock {
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    position: relative;
+    overflow: hidden;
+}
+.activePrice {
+    border: 1px solid #D70100;
+    background-color: transparent;
+}
+.blur {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    filter: blur(70px);
+    z-index: 2;
+    background-color: #690303;
+}
+.priceBlock p {
+    font-size: 20px;
+    filter: blur(10px);
+}
+.priceBlock h4 {
+    font-size: 30px;
+    color: #FF0000;
+    font-family: "NeueMachina";
+    filter: blur(10px);
+}
+.activePrice h4, .activePrice p {
+    filter: blur(0);
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.link {
+    font-family: "NeueMachinaRegular" !important;
+}
+.link:hover {
+    color: #D70100 !important;
+}
+.social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 35px;
+}
+.social a {
+    border-radius: 50%;
+    background-color: #D70100;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .3s;
+}
+.social a:hover {
+    background-color: red;
+}
+.social svg {
+    font-size: 20px;
+}
+.mini {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+.mini a {
+    font-weight: 100;
+    font-size: 14px;
+    font-family: "NeueMachinaRegular" !important;
+}
+.mini a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1440px) {
+    .home {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .details {
+        padding: 0 50px;
+    }
+    .prevs {
+        padding: 0 50px
+    }
+    .lineup {
+        padding: 0 50px;
+    }
+    .girl {
+        padding: 0 50px;
+        height: 515px;
+    }
+    .faq {
+        padding: 0 50px;
+    }
+    .djShadow {
+        width: 80% !important;
+    }
+    .video iframe {
+        width: 54vw;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .video iframe {
+       top: 10px;
+       height: 60vh;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .home {
+        padding-top: 150px;
+        padding-bottom: 100px;
+    }
+    .homeButts {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .mock {
+        display: none;
+    }
+    .video {
+        height: 70vh;
+        background-position: center;
+        background-size: cover;
+        padding-bottom: 0;
+    }
+    .video iframe {
+        width: 90vw;
+        height: 50vh;
+    }
+    .detailsCols {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .detailsCol {
+        max-width: 100%;
+    }
+    .redText {
+        margin-top: 0;
+    }
+    .prevs {
+        flex-direction: column;
+    }
+    .prev {
+        max-width: 100%;
+    }
+    .prevImg {
+        height: 550px;
+    }
+    .prevImg img {
+        object-position: top;
+    }
+    .lineup {
+        padding: 0;
+    }
+    .djs {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 0 50px;
+        padding-bottom: 2rem;
+        box-sizing: border-box;
+    }
+    .djs::-webkit-scrollbar {
+        height: 6px;
+    }
+      
+    .djs::-webkit-scrollbar-track {
+        background: transparent;
+    }
+      
+    .djs::-webkit-scrollbar-thumb {
+        background: #D70100;
+        border-radius: 8px;
+    }
+    .dj {
+        width: 500px;
+        height: 700px;
+    }
+    .djContainer p {
+        font-size: 30px;
+    }
+    .dj:hover {
+        transform: scale(1);
+    }
+    .djMirror, .djShadow {
+        display: none;
+    }
+    .djPhoto {
+        opacity: 1;
+    }
+    .priceEmpty {
+        display: none;
+    }
+    .priceContent {
+        width: 100%;
+    }
+    .priceInfo {
+        width: 100%;
+        max-width: 100%;
+    }
+    .price {
+        background-position: left;
+        min-height: unset;
+        height: fit-content;
+        margin-bottom: 100px;
+        align-items: center;
+        background-position: unset;
+        background-position-x: 77%;
+        background-size: cover;
+    }
+    .price p {
+        width: fit-content;
+    }
+    .priceInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .prices {
+        width: 100%;
+    }
+    .faq {
+        padding-top: 100px;
+        padding-bottom: 200px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .home {
+        padding: 0;
+        justify-content: space-around;
+    }
+    .title {
+        padding-top: 50px;
+    }
+    .title h1, .main .title h2 {
+        font-size: 92px !important;
+    }
+    .cta {
+        width: 100% !important;
+    }
+    .home p {
+        max-width: 90%;
+    }
+    .video iframe {
+        height: 30vh;
+    }
+    .video {
+        margin-top: 0;
+        height: 50vh;
+        background-size: cover;
+        background-image: none !important;
+    }
+    .videoText {
+        font-size: 16px;
+    }
+    .invite {
+        padding: 2rem 1rem;
+        margin-top: 100px;
+        height: 75vh;
+    }
+    .invite p {
+        font-size: 16px;
+    }
+    .invite h3 {
+        font-size: 26px;
+    }
+    .details {
+        padding: 0 1rem;
+        margin-top: 100px;
+    }
+    .main h2 {
+        font-size: 30px !important;
+    }
+    .prevs {
+        padding: 0 1rem;
+        margin-top: 50px;
+    }
+    .prevImg {
+        height: 273px;
+    }
+    .prev p {
+        font-size: 16px;
+    }
+    .djs {
+        padding: 0 1rem;
+    }
+    .dj {
+        width: 200px;
+        height: 300px;
+    }
+    .djContainer p {
+        font-size: 16px;
+    }
+    .residence {
+        padding: 0 1rem;
+        box-sizing: border-box;
+        margin-top: 1rem;
+    }
+    .residence img {
+        height: 110%;
+        top: -10px;
+    }
+    .residence h3 {
+        font-size: 44px;
+    }
+    .residenceContent p {
+        font-size: 16px;
+    }
+    .girl {
+        height: fit-content;
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 0 1rem;
+        gap: 15rem;
+        margin-top: 5rem;
+    }
+    .girl img {
+        height: 50%;
+        margin: auto;
+    }
+    .faq {
+        padding: 0 1rem;
+        margin-top: 5rem;
+        padding-bottom: 100px;
+    }
+    .questions {
+        margin-top: 50px;
+    }
+    .price {
+        margin-top: 50px;
+        padding: 0 1rem;
+    }
+    .price p {
+        text-align: center;
+    }
+    .priceBlock {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer {
+        z-index: 2;
+        position: relative;
+    }
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .title h1, .main .title h2 {
+        font-size: 78px !important;
+    }
+    .foot p {
+        font-size: 16px;
+    }
+    .video {
+        height: 75vh;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    .video iframe {
+        width: 100%;
+        height: 30vh;
+    }
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
+    }
+}

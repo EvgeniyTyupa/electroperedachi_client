@@ -1,0 +1,166 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.main {
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 42px;
+    padding-bottom: 20px;
+}
+.left, .poster {
+    width: 50%;
+}
+.poster img {
+    width: 100%;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 5;
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 27px;
+}
+.header h2 {
+    color: #FF0000;
+    font-size: 50px;
+    font-family: "Angel wish" !important;
+    font-weight: 200 !important;
+}
+.infoText {
+    margin-bottom: 1rem;
+}
+
+.rules {
+    white-space: pre-wrap;
+    font-weight: 100;
+    line-height: 25px;
+    margin-top: 30px;
+}
+.price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+}
+.price br {
+    display: none;
+}
+.ticketsBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+.ticketsCount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ticketsCount label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+}
+.countBut {
+    min-width: unset !important;
+    width: 32px;
+    height: 32px;
+    background-color: #D70100 !important;
+    border-radius: 0 !important;
+    color: white !important;
+    font-size: 22px !important;
+}
+.ticketsCount span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    width: 30px;
+    text-align: center;
+}
+.oldPrice {
+    text-decoration: line-through;
+    font-weight: 300;
+}
+
+@media screen and (max-width: 1440px) {
+    .main {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .main {
+        padding: 0 60px;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .formCircle {
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at center, rgba(255, 0, 0, 0.356) 0%, transparent 60%);
+        right: -50vw;
+        bottom: -10vh;
+    }
+}
+
+@media screen and (max-width: 834px) {
+    .main {
+        flex-direction: column;
+    }
+    .left, .poster {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .price br {
+        display: block;
+    }
+    .main {
+        padding: 0 1rem;
+    }
+    .header h2 {
+        font-size: 30px;
+    }
+    .rules {
+        font-size: 16px;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .rules {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main {
+        padding: 0 1rem;
+    }
+    .ticketsBlock {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .price br {
+        display: none;
+    }
+    .left h3 {
+        font-size: 20px;
+    }
+}

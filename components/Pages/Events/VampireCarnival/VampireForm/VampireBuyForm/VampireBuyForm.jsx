@@ -1,7 +1,6 @@
-import classes from "./EventBuyTicketForm.module.css"
+import classes from "./VampireBuyForm.module.css"
 import { useForm, Controller } from "react-hook-form"
 import { useIntl } from "react-intl"
-import { cx } from "../../../../../../utils/classnames"
 
 import visa from "/public/images/visa.png"
 import mastercard from "/public/images/mastercard.png"
@@ -13,20 +12,23 @@ import {
     Checkbox,
     Button
 } from "@mui/material"
-import { eventApi, userApi } from "../../../../../../api/api"
-import { useAppContext } from "../../../../../../context/AppContext"
-import { logEvent } from "../../../../../../utils/gtag"
 import { useRouter } from "next/router"
 import moment from "moment"
 import { useState } from "react"
 import { useEffect } from "react"
+import { useAppContext } from "../../../../../../context/AppContext"
+import { logEvent } from "../../../../../../utils/gtag"
+import { eventApi, userApi } from "../../../../../../api/api"
+import { cx } from "../../../../../../utils/classnames"
 import Link from "next/link"
-import { FB_PIXEL } from "../../../../../../utils/constants"
+import { USD_EQ } from "../../../../../../utils/constants"
 
-const EventBuyTicketForm = (props) => {
-    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } = props
+const VampireBuyForm = (props) => {
+    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
+        props
 
-    const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
+    const { setIsFetchingContext, setServerError, setServerResponse } =
+        useAppContext()
 
     const [isLoadingPromocode, setIsLoadingPromocode] = useState(false)
     const [checkPromocodeError, setCheckPromocodeError] = useState(false)
@@ -37,7 +39,7 @@ const EventBuyTicketForm = (props) => {
     const router = useRouter()
     const { query } = router
 
-    const currentURL = router.asPath;
+    const currentURL = router.asPath
 
     const { control, handleSubmit, reset, getValues } = useForm()
 
@@ -47,35 +49,44 @@ const EventBuyTicketForm = (props) => {
         setIsFetchingContext(true)
         try {
             const response = await userApi.add(
-                data.email,
+                data.email.toLowerCase(),
                 data.phone,
-                (isAppliedPromo || event.is_multi_buy) ? totalPriceDiscount : totalPrice,
+                isAppliedPromo || event?.is_multi_buy
+                    ? totalPriceDiscount
+                    : totalPrice,
                 count,
                 query.promo || "",
                 event._id,
                 isAppliedPromo ? data.promocode : ""
             )
 
-            logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
+            logEvent(
+                "Purchase",
+                "Buy Ticket",
+                event.title,
+                isAppliedPromo ? totalPriceDiscount : totalPrice
+            )
 
             import("react-facebook-pixel")
                 .then((module) => module.default)
                 .then((ReactPixel) => {
-                    // ReactPixel.init("573414703062456")
-                    ReactPixel.init(FB_PIXEL)
+                    ReactPixel.init("573414703062456")
                     ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
-                        currency: "UAH"
+                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
+                        currency: "USD"
                     })
                 })
 
-            await eventApi.saveDataToGoogleSheet({
-                date: moment().format('DD/MM/YYYY HH:mm'),
-                email: data.email,
-                phone: data.phone,
-                totalPrice: "",
-                userURL: currentURL
-            }, "sheet1")
+            await eventApi.saveDataToGoogleSheet(
+                {
+                    date: moment().format("DD/MM/YYYY HH:mm"),
+                    email: data.email.toLowerCase(),
+                    phone: data.phone,
+                    totalPrice: "",
+                    userURL: currentURL
+                },
+                "sheet1"
+            )
 
             window.location.replace(response.url)
         } catch (err) {
@@ -100,7 +111,8 @@ const EventBuyTicketForm = (props) => {
             if (response !== "not valid") {
                 setCheckPromocodeError(false)
                 setServerResponse("Promocode applied!")
-                const discount = (price / 100) * Number(response.promocode.discount)
+                const discount =
+                    (price / 100) * Number(response.promocode.discount)
                 setDiscount(discount)
                 setIsAppliedPromo(true)
             } else {
@@ -112,8 +124,11 @@ const EventBuyTicketForm = (props) => {
 
     useEffect(() => {
         if (event && event.promocodes.length > 0) {
-            event.promocodes.forEach(el => {
-                if (moment() >= moment(el.start) && moment() <= moment(el.end)) {
+            event.promocodes.forEach((el) => {
+                if (
+                    moment() >= moment(el.start) &&
+                    moment() <= moment(el.end)
+                ) {
                     setIsHaveActualPromocode(true)
                 }
             })
@@ -123,35 +138,36 @@ const EventBuyTicketForm = (props) => {
     const material = {
         width: "100%",
         "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "black"
+            borderColor: "#C4C4C4"
         },
-        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-            {
-                borderColor: "black"
-            },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#D70100"
+        },
+        "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#D70100"
+        },
         "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "black"
+            borderColor: "#C4C4C4"
         },
         "& .MuiOutlinedInput-root": {
-            borderRadius: 0,
-            borderTopRightRadius: "50px",
-            borderBottomRightRadius: "50px"
+            borderRadius: 0
         },
         "& .MuiFormLabel-root": {
-            color: "black",
-            borderColor: "black",
+            color: "white",
+            borderColor: "#C4C4C4",
             "@media screen and (max-width: 468px)": {
                 fontSize: "14px"
             }
         },
         "& .MuiInputLabel-root.Mui-focused": {
-            color: "black"
+            color: "white"
         },
         "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "black"
+            borderColor: "#C4C4C4"
         },
         "& .MuiInputBase-root": {
-            color: "black",
+            color: "white",
+            fontFamily: "NeueMachinaRegular",
             "@media screen and (max-width: 468px)": {
                 height: "50px"
             }
@@ -159,12 +175,13 @@ const EventBuyTicketForm = (props) => {
         "& .MuiFormHelperText-contained": {
             marginLeft: 0,
             marginTop: "5px",
+            fontFamily: "NeueMachinaRegular",
             "@media screen and (max-width: 468px)": {
                 fontSize: "12px"
             }
         },
         "& .MuiTypography-colorTextSecondary": {
-            color: "black"
+            color: "white"
         }
     }
 
@@ -207,6 +224,11 @@ const EventBuyTicketForm = (props) => {
                                 startAdornment: (
                                     <InputAdornment
                                         classes={{ root: classes.adornment }}
+                                        sx={{
+                                            "& p": {
+                                                color: "white"
+                                            }
+                                        }}
                                         position="start"
                                     >
                                         +38
@@ -249,40 +271,55 @@ const EventBuyTicketForm = (props) => {
                     )}
                 />
             </div>
-            {(!event.is_multi_buy && isHaveActualPromocode && !isAppliedPromo) && (
+            {(!event?.is_multi_buy && isHaveActualPromocode && !isAppliedPromo) && (
                 <div className={classes.field}>
                     <Controller
                         name="promocode"
                         control={control}
                         defaultValue=""
-                        render={({
-                            field: { onChange, value }
-                        }) => (
+                        render={({ field: { onChange, value } }) => (
                             <TextField
                                 error={checkPromocodeError}
-                                helperText={checkPromocodeError ? intl.formatMessage({ id: "form.error.promocode" }) : null}
+                                helperText={
+                                    checkPromocodeError
+                                        ? intl.formatMessage({
+                                              id: "form.error.promocode"
+                                          })
+                                        : null
+                                }
                                 sx={{
                                     ...material,
                                     "& .MuiInputBase-root": {
-                                        paddingRight: 0
+                                        paddingRight: 0,
+                                        color: "white"
                                     }
                                 }}
-                                label={intl.formatMessage({ id: "event.form.promocode" })}
+                                label={intl.formatMessage({
+                                    id: "event.form.promocode"
+                                })}
                                 variant="outlined"
                                 onChange={onChange}
                                 value={value}
                                 InputProps={{
                                     endAdornment: (
-                                        <InputAdornment position='end'>
+                                        <InputAdornment position="end">
                                             <Button
                                                 className={classes.promoBut}
                                                 onClick={checkPromocode}
                                                 disabled={isLoadingPromocode}
                                             >
                                                 {isLoadingPromocode ? (
-                                                    <img src={preloader.src} alt="preloader" className={classes.miniPreloader}/>
+                                                    <img
+                                                        src={preloader.src}
+                                                        alt="preloader"
+                                                        className={
+                                                            classes.miniPreloader
+                                                        }
+                                                    />
                                                 ) : (
-                                                    intl.formatMessage({ id: "button.promocode" })
+                                                    intl.formatMessage({
+                                                        id: "button.promocode"
+                                                    })
                                                 )}
                                             </Button>
                                         </InputAdornment>
@@ -296,7 +333,7 @@ const EventBuyTicketForm = (props) => {
             <div className={cx(classes.field, classes.confirm)}>
                 <FormControlLabel
                     sx={{
-                        fontFamily: "Helvetica"
+                        fontFamily: "ArialCurvie"
                     }}
                     control={<Checkbox required={true} onChange={() => ""} />}
                     label={
@@ -335,7 +372,7 @@ const EventBuyTicketForm = (props) => {
             <div className={cx(classes.field, classes.confirm)}>
                 <FormControlLabel
                     sx={{
-                        fontFamily: "Helvetica"
+                        fontFamily: "ArialCurvie"
                     }}
                     control={<Checkbox required={true} onChange={() => ""} />}
                     label={
@@ -370,4 +407,4 @@ const EventBuyTicketForm = (props) => {
     )
 }
 
-export default EventBuyTicketForm
+export default VampireBuyForm

@@ -18,7 +18,8 @@ const Footer = () => {
 
     return (
         <>
-            {router.asPath !== "/events/145bpm" && (
+            {!router.pathname.includes("vampire") && (
+
                 <footer className={classes.main}>
                     <Container className={classes.container}>
                         <div className={classes.links}>
@@ -27,10 +28,7 @@ const Footer = () => {
                                     key={el.href}
                                     href={el.href}
                                     text={el.text}
-                                    className={cx(
-                                        classes.link,
-                                        router.pathname == el.href ? classes.active : ""
-                                    )}
+                                    className={cx(classes.link, router.pathname == el.href ? classes.active : "")}
                                 />
                             ))}
                         </div>
@@ -47,12 +45,8 @@ const Footer = () => {
                             ))}
                         </div>
                         <div className={classes.mini}>
-                            <Link href="/terms-of-use">
-                                {intl.formatMessage({ id: "footer.terms" })}
-                            </Link>
-                            <Link href="/privacy-policy">
-                                {intl.formatMessage({ id: "footer.privacy" })}
-                            </Link>
+                            <Link href="/terms-of-use">{intl.formatMessage({ id: "footer.terms" })}</Link>
+                            <Link href="/privacy-policy">{intl.formatMessage({ id: "footer.privacy" })}</Link>
                         </div>
                     </Container>
                     <PeaksFooter />
