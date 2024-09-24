@@ -47,6 +47,7 @@ const VampireFaqItem = (props) => {
                 in={expanded}
                 timeout="auto"
                 unmountOnExit
+                className={classes.root}
             >
                 <div className={classes.expanded}>
                     <div className={classes.textBlock}>

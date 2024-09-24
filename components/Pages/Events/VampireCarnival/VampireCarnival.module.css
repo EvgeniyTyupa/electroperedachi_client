@@ -468,12 +468,13 @@
     box-sizing: border-box;
     position: relative;
     padding-bottom: 200px;
-    height: 800px;
+    height: fit-content
 }
 .questions {
     width: 100%;
     background-size: cover;
     margin-top: 80px;
+    z-index: 2;
 }
 .faq h2 {
     z-index: 1;

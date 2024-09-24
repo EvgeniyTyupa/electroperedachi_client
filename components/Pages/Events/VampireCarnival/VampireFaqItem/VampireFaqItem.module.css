@@ -47,10 +47,14 @@
 .textBlock {
     white-space: pre-wrap;
     color: white;
+    width: 100%;
 }
 .textBlock p, .textBlock li, .textBlock span {
     color: white;
     font-size: 18px;
+}
+.root {
+    width: 100% !important;
 }
 .textBlock a {
     color: var(--main-orange);
@@ -71,7 +75,10 @@
     padding-left: 65px;
     box-sizing: border-box;
 }
-
+.textBlock li {
+    font-family: "NeueMachinaRegular" !important;
+    width: 100%;
+}
 @media screen and (max-width: 1440px) {
     .textBlock a {
         font-size: 18px;
