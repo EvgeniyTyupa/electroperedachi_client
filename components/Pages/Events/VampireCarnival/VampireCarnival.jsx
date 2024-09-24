@@ -39,6 +39,7 @@ import monastetiq from "/public/images/vampire/monastetiq.webp"
 import manyface from "/public/images/vampire/manyface.webp"
 import lena from "/public/images/vampire/lena.jpg"
 import paul from "/public/images/vampire/paul.jpg"
+import buryi from "/public/images/vampire/buryi.jpg"
 
 import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
@@ -73,7 +74,7 @@ const VampireCarnival = (props) => {
         {
             name: "Monastetiq",
             photo: monastetiq.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/monastetiq"
         },
         {
             name: "Nadai",
@@ -83,22 +84,22 @@ const VampireCarnival = (props) => {
         {
             name: "Blade",
             photo: blade.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/yura-astahov"
         },
         {
             name: "Neumateria",
             photo: neu.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/neumateria"
         },
         {
             name: "Noff",
             photo: noff.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/dj_noff"
         },
         {
             name: "Paul Meise",
             photo: paul.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/dj_meise"
         }
     ]
 
@@ -106,22 +107,22 @@ const VampireCarnival = (props) => {
         {
             name: "Rave Mysterio",
             photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/wez7xcvttop9"
         },
         {
             name: "Staylen",
             photo: lena.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/staylen_techno"
         },
         {
             name: "Kyiv2c",
             photo: kyiv2c.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/kyiv2c"
         },
         {
             name: "Manyface",
             photo: manyface.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/user-548157346"
         },
         {
             name: "Artem Sky",
@@ -131,14 +132,21 @@ const VampireCarnival = (props) => {
         {
             name: "Marteli",
             photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
+            url: "https://soundcloud.com/artem-sky"
         },
         {
             name: "Buryi",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
+            photo: buryi.src,
+            url: "https://soundcloud.com/buryidj"
         },
     ]
+
+    const onDjClick = (djUrl) => {
+        let anchor = document.createElement("a")
+        anchor.href = djUrl
+        anchor.target = "_blank"
+        anchor.click()
+    }
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
@@ -377,7 +385,7 @@ const VampireCarnival = (props) => {
                     <div ref={djsRef} className={classes.djs}>
                         {stage1.map((el) => (
                             <div className={classes.djContainer}>
-                                <div className={classes.dj} onMouseEnter={handleDjHover}>
+                                <div onClick={() => onDjClick(el.url)} className={classes.dj} onMouseEnter={handleDjHover}>
                                     <Image
                                         className={classes.djMirror}
                                         src={dj_card_bg.src}
@@ -419,7 +427,7 @@ const VampireCarnival = (props) => {
                     <div className={classes.djs}>
                         {stage2.map((el) => (
                             <div className={classes.djContainer}>
-                                <div className={classes.dj} onMouseEnter={handleDjHover}>
+                                <div onClick={() => onDjClick(el.url)} className={classes.dj} onMouseEnter={handleDjHover}>
                                     <Image
                                         className={classes.djMirror}
                                         src={dj_card_bg.src}
