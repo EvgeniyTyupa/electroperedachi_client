@@ -37,6 +37,8 @@ import sky from "/public/images/vampire/sky.webp"
 import noff from "/public/images/vampire/noff.webp"
 import monastetiq from "/public/images/vampire/monastetiq.webp"
 import manyface from "/public/images/vampire/manyface.webp"
+import lena from "/public/images/vampire/lena.jpg"
+import paul from "/public/images/vampire/paul.jpg"
 
 import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
@@ -95,7 +97,7 @@ const VampireCarnival = (props) => {
         },
         {
             name: "Paul Meise",
-            photo: marteli.src,
+            photo: paul.src,
             url: "https://soundcloud.com/nadai"
         }
     ]
@@ -108,7 +110,7 @@ const VampireCarnival = (props) => {
         },
         {
             name: "Staylen",
-            photo: marteli.src,
+            photo: lena.src,
             url: "https://soundcloud.com/nadai"
         },
         {
