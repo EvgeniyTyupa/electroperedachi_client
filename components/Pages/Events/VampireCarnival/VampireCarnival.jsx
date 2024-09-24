@@ -24,13 +24,23 @@ import prev2 from "/public/images/vampire/prev2.jpg"
 import prev3 from "/public/images/vampire/prev3.jpg"
 import residence from "/public/images/vampire/residence.webp"
 import shadow2 from "/public/images/vampire/shadow2.png"
-import girl from "/public/images/vampire/girl.webp"
+import girl from "/public/images/vampire/girl.jpg"
 import veny from "/public/images/vampire/veny.png"
 import price_img from "/public/images/vampire/price.png"
-import marteli from "/public/images/vampire/marteli.jpg"
-import card from "/public/images/vampire/card.png"
+
+import marteli from "/public/images/vampire/marteli.webp"
+import nadai from "/public/images/vampire/nadai.webp"
+import kyiv2c from "/public/images/vampire/baks.webp"
+import blade from "/public/images/vampire/blade.webp"
+import neu from "/public/images/vampire/neu.webp"
+import sky from "/public/images/vampire/sky.webp"
+import noff from "/public/images/vampire/noff.webp"
+import monastetiq from "/public/images/vampire/monastetiq.webp"
+import manyface from "/public/images/vampire/manyface.webp"
+
+import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
-import dj_card_bg from "/public/images/vampire/card_bg.png"
+import dj_card_bg from "/public/images/vampire/card_bg.webp"
 import light from "/public/images/vampire/light.png"
 
 const VampireCarnival = (props) => {
@@ -59,28 +69,28 @@ const VampireCarnival = (props) => {
 
     const stage1 = [
         {
-            name: "Blade",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
-            name: "Neumateria",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
             name: "Monastetiq",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
-            name: "Noff",
-            photo: marteli.src,
+            photo: monastetiq.src,
             url: "https://soundcloud.com/nadai"
         },
         {
             name: "Nadai",
-            photo: marteli.src,
+            photo: nadai.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Blade",
+            photo: blade.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Neumateria",
+            photo: neu.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Noff",
+            photo: noff.src,
             url: "https://soundcloud.com/nadai"
         },
         {
@@ -92,32 +102,32 @@ const VampireCarnival = (props) => {
 
     const stage2 = [
         {
-            name: "Kyiv2c",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
-            name: "Manyface",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
-            name: "Artem Sky",
-            photo: marteli.src,
-            url: "https://soundcloud.com/nadai"
-        },
-        {
             name: "Rave Mysterio",
             photo: marteli.src,
             url: "https://soundcloud.com/nadai"
         },
         {
-            name: "Marteli",
+            name: "Staylen",
             photo: marteli.src,
             url: "https://soundcloud.com/nadai"
         },
         {
-            name: "Stayeln",
+            name: "Kyiv2c",
+            photo: kyiv2c.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Manyface",
+            photo: manyface.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Artem Sky",
+            photo: sky.src,
+            url: "https://soundcloud.com/nadai"
+        },
+        {
+            name: "Marteli",
             photo: marteli.src,
             url: "https://soundcloud.com/nadai"
         },
@@ -398,6 +408,12 @@ const VampireCarnival = (props) => {
                 </div>
                 <div className={cx(classes.stage, classes.stage2)}>
                     <h2>LINEUP STAGE 2</h2>
+                    <Image
+                    src={video_shadow_img}
+                    alt="shadow"
+                    fill
+                    className={classes.shadow}
+                />
                     <div className={classes.djs}>
                         {stage2.map((el) => (
                             <div className={classes.djContainer}>

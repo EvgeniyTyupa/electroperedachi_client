@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 40px;
     width: 100%;
-    border-bottom: 1px solid #FF0000;
+    border-top: 1px solid #FF0000;
     padding: 40px 0px;
 }
 .main h5 {
@@ -19,9 +19,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.first {
-    border-top: 1px solid #FF0000;
 }
 .info {
     display: flex;

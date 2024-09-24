@@ -22,8 +22,6 @@
 }
 .main h2 {
     text-shadow: #D70100 1px 0 10px;
-    font-family: "NeueMachina" !important;
-    font-size: 50px !important;
     color: #D70100 !important;
 }
 .home {
@@ -297,9 +295,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 100px;
     box-sizing: border-box;
-    gap: 6rem;
+    padding: 0;
+    /* gap: 6rem; */
 }
 .stage {
     width: 100%;
@@ -307,6 +305,23 @@
     align-items: center;
     flex-direction: column;
     gap: 2rem;
+}
+.stage2 {
+    background-color: #D70100;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
+}
+.stage2 .shadow {
+    height: 101% !important;
+    top: -5px !important;
+}
+.stage2 h2 {
+    color: black !important;
+}
+.djs {
+    padding: 0 100px;
+    box-sizing: border-box;
 }
 .stage1 .djs {
     width: 100%;
@@ -333,6 +348,9 @@
     color: #D70100;
     text-transform: uppercase;
     text-shadow: #D70100 1px 0 10px;
+}
+.stage2 .djContainer p {
+    color: black;
 }
 .dj {
     width: 100%;
@@ -450,6 +468,7 @@
     box-sizing: border-box;
     position: relative;
     padding-bottom: 200px;
+    height: 800px;
 }
 .questions {
     width: 100%;
@@ -589,6 +608,10 @@
 .mini a:hover {
     text-decoration: underline;
 }
+.lineup h2, .price h2, .faq h2 {
+    font-family: "NeueMachina" !important;
+    font-size: 50px !important;
+}
 
 @media screen and (max-width: 1440px) {
     .home {
@@ -601,7 +624,7 @@
     .prevs {
         padding: 0 50px
     }
-    .lineup {
+    .djs {
         padding: 0 50px;
     }
     .girl {
@@ -711,7 +734,7 @@
         display: none;
     }
     .djPhoto {
-        opacity: 1;
+        opacity: 0;
     }
     .priceEmpty {
         display: none;
@@ -751,6 +774,9 @@
 }
 
 @media screen and (max-width: 568px) {
+    .main h2 {
+        text-shadow: #D70100 1px 0 6px;
+    }
     .home {
         padding: 0;
         justify-content: space-around;
@@ -809,13 +835,17 @@
     }
     .djs {
         padding: 0 1rem;
+        padding-bottom: 20px;
     }
     .dj {
-        width: 200px;
-        height: 300px;
+        width: 250px;
+        height: 400px;
     }
     .djContainer p {
-        font-size: 16px;
+        font-size: 20px;
+    }
+    .stage2 {
+        padding-top: 8rem;
     }
     .residence {
         padding: 0 1rem;
@@ -823,8 +853,8 @@
         margin-top: 1rem;
     }
     .residence img {
-        height: 110%;
-        top: -10px;
+        height: 110% !important;
+        top: -10px !important;
     }
     .residence h3 {
         font-size: 44px;
