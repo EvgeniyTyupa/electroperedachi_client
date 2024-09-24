@@ -734,7 +734,7 @@
         display: none;
     }
     .djPhoto {
-        opacity: 0;
+        opacity: 1;
     }
     .priceEmpty {
         display: none;
