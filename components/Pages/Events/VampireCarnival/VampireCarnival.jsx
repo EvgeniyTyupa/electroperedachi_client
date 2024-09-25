@@ -40,6 +40,7 @@ import manyface from "/public/images/vampire/manyface.webp"
 import lena from "/public/images/vampire/lena.jpg"
 import paul from "/public/images/vampire/paul.jpg"
 import buryi from "/public/images/vampire/buryi.jpg"
+import rave from "/public/images/vampire/rave.jpg"
 
 import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
@@ -106,7 +107,7 @@ const VampireCarnival = (props) => {
     const stage2 = [
         {
             name: "Rave Mysterio",
-            photo: marteli.src,
+            photo: rave.src,
             url: "https://soundcloud.com/wez7xcvttop9"
         },
         {
