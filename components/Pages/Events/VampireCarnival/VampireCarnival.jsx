@@ -46,6 +46,7 @@ import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
 import dj_card_bg from "/public/images/vampire/card_bg.webp"
 import light from "/public/images/vampire/light.png"
+import { FB_PIXEL } from "../../../../utils/constants"
 
 const VampireCarnival = (props) => {
     const { event } = props
@@ -161,7 +162,7 @@ const VampireCarnival = (props) => {
         import("react-facebook-pixel")
         .then((module) => module.default)
         .then((ReactPixel) => {
-            ReactPixel.init("573414703062456")
+            ReactPixel.init(FB_PIXEL)
             ReactPixel.track("AddToCart")
         })
     };

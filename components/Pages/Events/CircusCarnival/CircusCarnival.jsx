@@ -65,6 +65,7 @@ import lamp from "/public/images/circus/lamp.webp"
 import lamp_mobile from "/public/images/circus/light_mobile.webp"
 import shadow from "/public/images/circus/shadow.webp"
 import Link from "next/link"
+import { FB_PIXEL } from "../../../../utils/constants"
 
 const CircusCarnival = (props) => {
     const { event } = props
@@ -102,7 +103,7 @@ const CircusCarnival = (props) => {
         import("react-facebook-pixel")
         .then((module) => module.default)
         .then((ReactPixel) => {
-            ReactPixel.init("573414703062456")
+            ReactPixel.init(FB_PIXEL)
             ReactPixel.track("AddToCart")
         })
     };

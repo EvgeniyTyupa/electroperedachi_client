@@ -79,6 +79,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import useIsChrome from "../../../../hooks/useIsChrome"
 import { useRouter } from "next/router"
+import { FB_PIXEL } from "../../../../utils/constants"
 
 const Cyberpunk = (props) => {
     const { event } = props
@@ -203,7 +204,7 @@ const Cyberpunk = (props) => {
         import("react-facebook-pixel")
         .then((module) => module.default)
         .then((ReactPixel) => {
-            ReactPixel.init("573414703062456")
+            ReactPixel.init(FB_PIXEL)
             ReactPixel.track("AddToCart")
         })
     };

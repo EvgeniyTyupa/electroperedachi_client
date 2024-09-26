@@ -21,7 +21,7 @@ import { logEvent } from "../../../../../../utils/gtag"
 import { eventApi, userApi } from "../../../../../../api/api"
 import { cx } from "../../../../../../utils/classnames"
 import Link from "next/link"
-import { USD_EQ } from "../../../../../../utils/constants"
+import { FB_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 
 const CircusCarnivalBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
@@ -70,7 +70,7 @@ const CircusCarnivalBuyForm = (props) => {
             import("react-facebook-pixel")
                 .then((module) => module.default)
                 .then((ReactPixel) => {
-                    ReactPixel.init("573414703062456")
+                    ReactPixel.init(FB_PIXEL)
                     ReactPixel.track("InitiateCheckout", {
                         value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
                         currency: "USD"
