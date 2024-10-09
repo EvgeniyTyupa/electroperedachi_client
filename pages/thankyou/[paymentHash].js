@@ -23,49 +23,35 @@ const ThankyouPage = (props) => {
 
     const { setIsFetchingContext } = useAppContext()
     
-    const createTicketFunc = () => {
-        setIsFetchingContext(true)
-        const decoded = JSON.parse(atob(paymentHash))
-        const { userId, count, promo, event_id, total_price, promocode, email, phone } = decoded
-        eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
-        .then(() => setIsFetchingContext(false))
-        .catch(() => setIsFetchingContext(false))
-
-        import('react-facebook-pixel')
-        .then(module => module.default)
-        .then(ReactPixel => {
-            // ReactPixel.init('573414703062456')
-            ReactPixel.init(FB_PIXEL)
-            ReactPixel.track('Purchase', {
-                value: Number(total_price) / USD_EQ,
-                currency: "USD"
-            })
-        })
-
-        eventApi.saveDataToGoogleSheet({
-            date: moment().format('DD/MM/YYYY HH:mm'),
-            email: email,
-            phone: phone,
-            totalPrice: total_price,
-            userURL: ""
-        }, "sheet2")
-    }
-
     useEffect(() => {
-        if (!paymentHash) {
+        if (!paymentHash || message === "Not found") {
             router.push("/")
-        } else if (message === "Not found") {
-            eventApi.checkPaymentHash(paymentHash).then(response => {
-                if (response.message === "Not found") {
-                    router.push("/")
-                } else {
-                    createTicketFunc()
-                }
-            })
         } else if (message === "Ok") {
-            createTicketFunc()
-        } else {
-            router.push("/")
+            setIsFetchingContext(true)
+            const decoded = JSON.parse(atob(paymentHash))
+            const { userId, count, promo, event_id, total_price, promocode, email, phone } = decoded
+            eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
+            .then(() => setIsFetchingContext(false))
+            .catch(() => setIsFetchingContext(false))
+
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                // ReactPixel.init('573414703062456')
+                ReactPixel.init(FB_PIXEL)
+                ReactPixel.track('Purchase', {
+                    value: Number(total_price) / USD_EQ,
+                    currency: "USD"
+                })
+            })
+
+            eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: email,
+                phone: phone,
+                totalPrice: total_price,
+                userURL: ""
+            }, "sheet2")
         }
     }, [paymentHash, message])
 
@@ -90,8 +76,16 @@ const ThankyouPage = (props) => {
 export const getServerSideProps = async ({ params, res }) => {
     const { paymentHash } = params
 
-    const response = await eventApi.checkPaymentHash(paymentHash)
+    let response = await eventApi.checkPaymentHash(paymentHash)
     
+    if (response.message !== "Ok") {
+        response = await eventApi.checkPaymentHash(paymentHash)
+
+        if (response.message !== "Ok") {
+            response = await eventApi.checkPaymentHash(paymentHash)            
+        }
+    }
+
     res.setHeader('X-Robots-Tag', 'noindex')
     
     return {
