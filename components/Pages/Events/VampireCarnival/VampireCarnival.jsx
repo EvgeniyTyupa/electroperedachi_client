@@ -41,6 +41,10 @@ import lena from "/public/images/vampire/lena.jpg"
 import paul from "/public/images/vampire/paul.jpg"
 import buryi from "/public/images/vampire/buryi.jpg"
 import rave from "/public/images/vampire/rave.jpg"
+import location1 from "/public/images/vampire/location1.webp"
+import location2 from "/public/images/vampire/location2.webp"
+import location3 from "/public/images/vampire/location3.webp"
+import location4 from "/public/images/vampire/location4.webp"
 
 import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
@@ -502,6 +506,25 @@ const VampireCarnival = (props) => {
                 <p>{intl.formatMessage({ id: "vampire.girl1" })}</p>
                 <p>{intl.formatMessage({ id: "vampire.girl2" })}</p>
             </div>
+            <div className={classes.location}>
+                <h2>LOCATION SCHEME</h2>
+                <div className={classes.locGrad1}/>
+                <div className={classes.locGrad2}/>
+                <div className={classes.locations}>
+                    <div className={classes.lc}>
+                        <Image src={location1} fill alt="location"/>
+                    </div>
+                    <div className={classes.lc}>
+                        <Image src={location2} fill alt="location"/>
+                    </div>
+                    <div className={classes.lc}>
+                        <Image src={location3} fill alt="location"/>
+                    </div>
+                    <div className={classes.lc}>
+                        <Image src={location4} fill alt="location"/>
+                    </div>
+                </div>
+            </div>
             {/* FAQ */}
             <div
                 className={classes.faq}
@@ -527,7 +550,7 @@ const VampireCarnival = (props) => {
                 </div>
             </div>
             {/* PRICE */}
-            <div
+            {/* <div
                 className={classes.price}
                 style={{
                     backgroundImage: width > 1170 ? `url(${price_img.src})` : `url(${light.src})`
@@ -556,7 +579,7 @@ const VampireCarnival = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* FORM */}
             <VampireForm
                 paymentBlockRef={paymentBlockRef}
