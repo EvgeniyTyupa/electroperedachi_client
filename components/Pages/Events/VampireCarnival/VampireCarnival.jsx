@@ -22,11 +22,9 @@ import logo from "/public/images/vampire/logo.png"
 import prev1 from "/public/images/vampire/prev1.jpg"
 import prev2 from "/public/images/vampire/prev2.jpg"
 import prev3 from "/public/images/vampire/prev3.jpg"
-import residence from "/public/images/vampire/residence.webp"
 import shadow2 from "/public/images/vampire/shadow2.png"
 import girl from "/public/images/vampire/girl.jpg"
 import veny from "/public/images/vampire/veny.png"
-import price_img from "/public/images/vampire/price.png"
 
 import marteli from "/public/images/vampire/marteli.webp"
 import nadai from "/public/images/vampire/nadai.webp"
@@ -49,8 +47,14 @@ import location4 from "/public/images/vampire/location4.webp"
 import card from "/public/images/vampire/card.webp"
 import dj_preview from "/public/images/vampire/loh.png"
 import dj_card_bg from "/public/images/vampire/card_bg.webp"
-import light from "/public/images/vampire/light.png"
 import { FB_PIXEL } from "../../../../utils/constants"
+
+import how_it_was from "/public/images/vampire/how_it_was.webp"
+import how_it_was_mobile from "/public/images/vampire/how_it_was_mobile.png"
+import loc1 from "/public/images/vampire/loc1.webp"
+import loc2 from "/public/images/vampire/loc2.png"
+import loc3 from "/public/images/vampire/loc3.webp"
+import loc4 from "/public/images/vampire/loc4.webp"
 
 const VampireCarnival = (props) => {
     const { event } = props
@@ -425,11 +429,11 @@ const VampireCarnival = (props) => {
                 <div className={cx(classes.stage, classes.stage2)}>
                     <h2>LINEUP STAGE 2</h2>
                     <Image
-                    src={video_shadow_img}
-                    alt="shadow"
-                    fill
-                    className={classes.shadow}
-                />
+                        src={video_shadow_img}
+                        alt="shadow"
+                        fill
+                        className={classes.shadow}
+                    />
                     <div className={classes.djs}>
                         {stage2.map((el) => (
                             <div className={classes.djContainer}>
@@ -466,27 +470,33 @@ const VampireCarnival = (props) => {
                 </div>
             </div>
             {/* RESIDENCE */}
-            <div
-                className={classes.residence}
-                style={{
-                    backgroundImage: `url(${residence.src})`
-                }}
-            >
-                <Image
-                    src={video_shadow_img}
-                    alt="shadow"
-                    fill
-                    className={classes.shadow}
-                />
+            <div className={classes.residence}>
+                <Image src={width > 568 ? how_it_was : how_it_was_mobile} alt="how it was" className={classes.how_it_was}/>
+                <div className={classes.residenceText}>
+                    <span className={classes.howItWasTitle}>{intl.formatMessage({ id: "vampire.residence2" })}</span>
+                    <span className={classes.titleEl}>electroperedachi</span>
+                    <span className={classes.howItWasTitle2}>{intl.formatMessage({ id: "vampire.residence3" })}</span>
+                </div>
+                {width > 568 ? (
+                    <div className={classes.stages}>
+                        <Image src={loc1} alt="vamp stage"/>
+                        <Image src={loc2} alt="vamp stage"/>
+                        <Image src={loc3} alt="bloodhall stage"/>
+                        <Image src={loc4} alt="bloodhall stage"/>
+                    </div>
+                ) : (
+                    <div className={classes.stages}>
+                        <Image src={loc1} alt="vamp stage"/>
+                        <p>{intl.formatMessage({ id: "vampire.residence4" })}</p>
+                        <Image src={loc2} alt="vamp stage"/>
+                        <p>{intl.formatMessage({ id: "vampire.residence5" })}</p>
+                        <Image src={loc3} alt="bloodhall stage"/>
+                        <p>{intl.formatMessage({ id: "vampire.residence6" })}</p>
+                        <Image src={loc4} alt="bloodhall stage"/>
+                    </div> 
+                )}
                 <div className={classes.residenceContent}>
-                    <h3>
-                        RESIDENCE
-                        <br />
-                        IS WAITING
-                        <br />
-                        FOR YOU
-                    </h3>
-                    <p>{intl.formatMessage({ id: "vampire.residence1" })}</p>
+                    {width > 568 && <p>{intl.formatMessage({ id: "vampire.residence1" })}</p>}
                     <Button onClick={scrollToPayment} className={classes.cta}>{intl.formatMessage({ id: "vampire.cta" })}</Button>
                 </div>
             </div>
