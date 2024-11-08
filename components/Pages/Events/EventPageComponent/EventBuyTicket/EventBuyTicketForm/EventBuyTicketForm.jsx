@@ -64,8 +64,8 @@ const EventBuyTicketForm = (props) => {
                     // ReactPixel.init("573414703062456")
                     ReactPixel.init(FB_PIXEL)
                     ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
-                        currency: "UAH"
+                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
+                        currency: "USD"
                     })
                 })
 
