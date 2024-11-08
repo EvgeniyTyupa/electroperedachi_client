@@ -14,6 +14,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
+import { FB_PIXEL } from "../../../../utils/constants"
 
 const EventPageComponent = (props) => {
     const { event, randomPhotos } = props
@@ -24,6 +25,8 @@ const EventPageComponent = (props) => {
     const videoRef = useRef(null)
     const [isPlayVideo, setIsPlayVideo] = useState(false)
 
+    const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
+
     const paymentBlockRef = useRef(null)
 
     const isEnd = event ? moment().startOf("day") > moment(event.date) : true
@@ -33,6 +36,15 @@ const EventPageComponent = (props) => {
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
     }
+
+    const handleAddToCartClick = () => {
+        import("react-facebook-pixel")
+        .then((module) => module.default)
+        .then((ReactPixel) => {
+            ReactPixel.init(FB_PIXEL)
+            ReactPixel.track("AddToCart")
+        })
+    };
 
     useEffect(() => {
         let now = moment()
@@ -56,6 +68,14 @@ const EventPageComponent = (props) => {
                 if (triggerPosition.y <= width > 548 ? 0 : 348) {
                     setIsPlayVideo(true)
                 }
+
+                if(paymentBlockRef && paymentBlockRef.current) {
+                    if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
+                        if (!isAddToCartEventSend) {
+                            setIsAddToCartEventSend(true)
+                        }
+                    }
+                }
             }
     
             window.addEventListener("scroll", handleScroll)
@@ -64,6 +84,12 @@ const EventPageComponent = (props) => {
             }
         }
     }, [videoRef])
+
+    useEffect(() => {
+        if (isAddToCartEventSend) {
+            handleAddToCartClick()
+        }
+    }, [isAddToCartEventSend])
 
     return (
         <div className={classes.main}>
