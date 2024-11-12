@@ -21,7 +21,7 @@ import moment from "moment"
 import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
-import { FB_PIXEL } from "../../../../../../utils/constants"
+import { FB_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } = props
