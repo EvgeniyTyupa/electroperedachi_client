@@ -75,7 +75,7 @@ const EventBuyTicketForm = (props) => {
                 phone: data.phone,
                 totalPrice: "",
                 userURL: currentURL
-            }, "sheet1")
+            }, event.google_table_id, "sheet1")
 
             window.location.replace(response.url)
         } catch (err) {

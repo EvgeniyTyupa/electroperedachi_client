@@ -29,10 +29,12 @@ const ThankyouPage = (props) => {
         } else if (message === "Ok") {
             setIsFetchingContext(true)
             const decoded = JSON.parse(atob(paymentHash))
-            const { userId, count, promo, event_id, total_price, promocode, email, phone } = decoded
+            const { userId, count, promo, event_id, total_price, promocode, email, phone, google_table_id } = decoded
             eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
             .then(() => setIsFetchingContext(false))
             .catch(() => setIsFetchingContext(false))
+
+            
 
             import('react-facebook-pixel')
             .then(module => module.default)
@@ -51,7 +53,7 @@ const ThankyouPage = (props) => {
                 phone: phone,
                 totalPrice: total_price,
                 userURL: ""
-            }, "sheet2")
+            }, google_table_id, "sheet2")
         }
     }, [paymentHash, message])
 

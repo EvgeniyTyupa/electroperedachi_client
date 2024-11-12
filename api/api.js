@@ -70,11 +70,12 @@ export const eventApi = {
             .get(`/events/get/randomPhotos`)
             .then((response) => response.data)
     },
-    saveDataToGoogleSheet(formData, sheetId) {
+    saveDataToGoogleSheet(formData, tableId, tabId) {
         return instance
             .post('/ticket/gtable', {
                 data: { ...formData },
-                sheetId: sheetId
+                tableId: tableId,
+                tabId: tabId
             })
             .then((response) => response.data)
     }
