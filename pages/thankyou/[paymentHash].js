@@ -24,39 +24,39 @@ const ThankyouPage = (props) => {
 
     const { setIsFetchingContext } = useAppContext()
     
-    // useEffect(() => {
-    //     if (!paymentHash || message === "Not found") {
-    //         router.push("/")
-    //     } else if (message === "Ok") {
-    //         setIsFetchingContext(true)
-    //         const decoded = JSON.parse(atob(paymentHash))
-    //         const { userId, count, promo, event_id, total_price, promocode, email, phone, google_table_id } = decoded
-    //         eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
-    //         .then(() => setIsFetchingContext(false))
-    //         .catch(() => setIsFetchingContext(false))
+    useEffect(() => {
+        if (!paymentHash || message === "Not found") {
+            router.push("/")
+        } else if (message === "Ok") {
+            setIsFetchingContext(true)
+            const decoded = JSON.parse(atob(paymentHash))
+            const { userId, count, promo, event_id, total_price, promocode, email, phone, google_table_id } = decoded
+            eventApi.createTicket(userId, count, promo, event_id, total_price, promocode)
+            .then(() => setIsFetchingContext(false))
+            .catch(() => setIsFetchingContext(false))
 
             
 
-    //         import('react-facebook-pixel')
-    //         .then(module => module.default)
-    //         .then(ReactPixel => {
-    //             // ReactPixel.init('573414703062456')
-    //             ReactPixel.init(FB_PIXEL)
-    //             ReactPixel.track('Purchase', {
-    //                 value: Number(total_price) / USD_EQ,
-    //                 currency: "USD"
-    //             })
-    //         })
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                // ReactPixel.init('573414703062456')
+                ReactPixel.init(FB_PIXEL)
+                ReactPixel.track('Purchase', {
+                    value: Number(total_price) / USD_EQ,
+                    currency: "USD"
+                })
+            })
 
-    //         eventApi.saveDataToGoogleSheet({
-    //             date: moment().format('DD/MM/YYYY HH:mm'),
-    //             email: email,
-    //             phone: phone,
-    //             totalPrice: total_price,
-    //             userURL: ""
-    //         }, google_table_id, "sheet2")
-    //     }
-    // }, [paymentHash, message])
+            eventApi.saveDataToGoogleSheet({
+                date: moment().format('DD/MM/YYYY HH:mm'),
+                email: email,
+                phone: phone,
+                totalPrice: total_price,
+                userURL: ""
+            }, google_table_id, "sheet2")
+        }
+    }, [paymentHash, message])
 
     return (
         <>
