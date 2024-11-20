@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX-Bold.eot');
+    src: local('Decima Mono X Bold'), local('DecimaMonoX-Bold'),
+        url('DecimaMonoX-Bold.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX-Bold.woff2') format('woff2'),
+        url('DecimaMonoX-Bold.woff') format('woff'),
+        url('DecimaMonoX-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX-LightItalic.eot');
+    src: local('Decima Mono X Light Italic'), local('DecimaMonoX-LightItalic'),
+        url('DecimaMonoX-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX-LightItalic.woff2') format('woff2'),
+        url('DecimaMonoX-LightItalic.woff') format('woff'),
+        url('DecimaMonoX-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX-BoldItalic.eot');
+    src: local('Decima Mono X Bold Italic'), local('DecimaMonoX-BoldItalic'),
+        url('DecimaMonoX-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX-BoldItalic.woff2') format('woff2'),
+        url('DecimaMonoX-BoldItalic.woff') format('woff'),
+        url('DecimaMonoX-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX.eot');
+    src: local('Decima Mono X'), local('DecimaMonoX'),
+        url('DecimaMonoX.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX.woff2') format('woff2'),
+        url('DecimaMonoX.woff') format('woff'),
+        url('DecimaMonoX.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX-Light.eot');
+    src: local('Decima Mono X Light'), local('DecimaMonoX-Light'),
+        url('DecimaMonoX-Light.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX-Light.woff2') format('woff2'),
+        url('DecimaMonoX-Light.woff') format('woff'),
+        url('DecimaMonoX-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('DecimaMonoX-Italic.eot');
+    src: local('Decima Mono X Italic'), local('DecimaMonoX-Italic'),
+        url('DecimaMonoX-Italic.eot?#iefix') format('embedded-opentype'),
+        url('DecimaMonoX-Italic.woff2') format('woff2'),
+        url('DecimaMonoX-Italic.woff') format('woff'),
+        url('DecimaMonoX-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+

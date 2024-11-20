@@ -1,0 +1,1387 @@
+@font-face {
+    font-family: 'Blaster';
+    src: url('../../../../public/fonts/BlasterFont-Demo.ttf');
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('../../../../public/fonts/decima/DecimaMonoX-Bold.eot');
+    src: local('Decima Mono X Bold'), local('DecimaMonoX-Bold'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Bold.woff2') format('woff2'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Bold.woff') format('woff'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('../../../../public/fonts/decima/DecimaMonoX.eot');
+    src: local('Decima Mono X'), local('DecimaMonoX'),
+        url('../../../../public/fonts/decima/DecimaMonoX.eot?#iefix') format('embedded-opentype'),
+        url('../../../../public/fonts/decima/DecimaMonoX.woff2') format('woff2'),
+        url('../../../../public/fonts/decima/DecimaMonoX.woff') format('woff'),
+        url('../../../../public/fonts/decima/DecimaMonoX.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Decima Mono X';
+    src: url('../../../../public/fonts/decima/DecimaMonoX-Light.eot');
+    src: local('Decima Mono X Light'), local('DecimaMonoX-Light'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Light.eot?#iefix') format('embedded-opentype'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Light.woff2') format('woff2'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Light.woff') format('woff'),
+        url('../../../../public/fonts/decima/DecimaMonoX-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+.main {
+    width: 100%;
+    background-color: black;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.home {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #121211;
+    padding: 0 8rem;
+    box-sizing: border-box;
+    position: relative;
+}
+.title {
+    font-family: "Blaster";
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+.titleH1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    animation: vis 1.5s infinite ease-in-out;
+}
+.title h1 {
+    color: #B4F57F;
+    font-size: 120px;
+    z-index: 1;
+    font-weight: 400;
+}
+.title h1 + h1 {
+    color: black;
+    z-index: 0;
+    transform: translateX(-10px) translateY(10px);
+    position: absolute;
+}
+.titleH2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    animation: vis 1.5s infinite ease-in-out;
+}
+.main p {
+    font-family: "Decima Mono X";
+    text-shadow: black 1px 1px 0px;
+}
+.subtitle {
+    font-weight: bold;
+    color: #B4F57F;
+    font-size: 20px;
+    margin-top: 45px;
+}
+
+.home .buyButt {
+    margin-top: 35px !important;
+}
+.buyButt {
+    /* margin-top: 80px !important; */
+    background-color: #FFFFFF !important;
+    border-radius: 0 !important;
+    padding: 10px 50px !important;
+    padding-right: 30px !important;
+    clip-path: polygon(
+        0 0, /* top left */
+        100% 0, /* top right */
+        100% 100%, /* bottom right */
+        5% 100%, /* mid bottom before the cut */
+        0 80% /* bottom left cut */
+    ) !important;
+    border-right: 10px solid #B4F57F !important;
+    color: #000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold !important;
+    font-size: 34px !important;
+    font-family: "Decima Mono X" !important;
+    align-self: flex-start !important;
+}
+.buyButt svg {
+    font-size: 24px !important;
+    position: relative;
+    top: 9px;
+}
+.buyButt:hover {
+    color: black !important;
+    border-right: 10px solid #FFFFFF !important;
+    background-color: #B4F57F !important;
+}
+.r25 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.r25 img {
+    position: relative;
+    top: 18px;
+}
+
+.buyButt::before, 
+.buyButt::after {
+    content: 'ПРИДБАТИ КВИТОК'; /* Your button text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 8px 0;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, 0, 0, 0);
+    background: #FFFFFF;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0;
+    font-size: 24px; /* Ensure matching font size */
+}
+
+.buyButt::before {
+    left: -3px;
+    top: -2px;
+    text-shadow: 2px 0 #FFFFFF;
+    box-shadow: 2px 0 #FFFFFF;
+    animation: glitch-test 1.5s infinite linear alternate-reverse;
+}
+
+.buyButt::after {
+    left: 2px;
+    bottom: -2px;
+    text-shadow: -1px 0 #FFFFFF;
+    box-shadow: -1px 0 #FFFFFF;
+    animation: glitch-test 2s infinite linear alternate;
+}
+
+.buyButt p {
+    text-shadow: none !important;
+}
+
+.buyButt:hover::before, 
+.buyButt:hover::after {
+    animation: none;
+}
+
+.moreButt {
+    width: fit-content;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-family: "Decima Mono X";
+    font-weight: 400;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    position: absolute;
+    right: 8rem;
+    bottom: 4rem;
+    transition-duration: .3s;
+}
+.moreButt:hover {
+    transform: scale(1.05);
+}
+
+@keyframes glitch-test {
+    0% {
+      clip: rect(-3px, 600px, 0px, 0px);
+    }
+    5.88235% {
+      clip: rect(0px, 600px, 0px, 0px);
+    }
+    11.76471% {
+      clip: rect(-3px, 600px, 0px, 0px);
+    }
+    17.64706% {
+      clip: rect(-3px, 600px, 0px, 0px);
+    }
+    23.52941% {
+      clip: rect(100px, 600px, 100px, 0px);
+    }
+    29.41176% {
+      clip: rect(0px, 600px, 600px, 0px);
+    }
+    35.29412% {
+      clip: rect(100px, 600px, 0px, 0px);
+    }
+    41.17647% {
+      clip: rect(0px, 600px, 600px, 0px);
+    }
+    47.05882% {
+      clip: rect(100px, 600px, 0px, 0px);
+    }
+    52.94118% {
+      clip: rect(-3px, 600px, 0px, 0px);
+    }
+    58.82353% {
+      clip: rect(100px, 450px,100px, 0px);
+    }
+    64.70588% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+    70.58824% {
+      clip: rect(100px, 450px, 100px, 0px);
+    }
+    76.47059% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+    82.35294% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+    88.23529% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+    94.11765% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+    100% {
+      clip: rect(0px, 450px, 0px, 0px);
+    }
+}
+
+
+@keyframes vis {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.intro {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.introSection {
+    width: 100%;
+    border: 1px solid #B4F57F;
+    border-radius: 70px;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    min-height: 294px;
+}
+.introSection p {
+    font-size: 20px;
+}
+
+.candies {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content
+}
+
+
+/* VIDOS */
+
+.vidos {
+    width: 100%;
+    padding: 100px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
+    z-index: 1;
+}
+.cabel1, .cabel2, .cabel3 {
+    position: absolute;
+}
+.cabel1 {
+    left: 0;
+    width: 25%;
+}
+.cabel2 {
+    right: 0;
+    top: 10%;
+    width: 25%;
+}
+.cabel3 {
+    bottom: -15%;
+    left: 20%;
+    width: 40%;
+}
+.videoBlock {
+    width: 60%;
+    z-index: 1;
+    box-shadow: 0 0 30px -3px rgba(248, 248, 255, .3);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: black;
+}
+.videoBlock iframe {
+    width: 100%;
+    height: 600px;
+}
+
+.vidosText {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 50px;
+}
+.vidosText p {
+    color: white;
+    font-size: 26px;
+}
+.vidosText p + p {
+    color: #B4F57F;
+    font-size: 42px;
+}
+.vidosText label {
+    display: none;
+}
+
+.speech {
+    width: 100%;
+    min-height: 556px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8rem;
+    box-sizing: border-box;
+}
+.speech p {
+    max-width: 720px;
+    text-align: center;
+    color: #B4F57F;
+    white-space: pre-wrap;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* DETAILS */
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans';
+    position: relative;
+    padding-bottom: 200px;
+    margin-top: 50px;
+}
+.detail {
+    max-width: 350px;
+    width: 100%;
+}
+.detailHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #B4F57F;
+}
+.detailHeader svg {
+    font-size: 24px;
+}
+.blockHeader {
+    font-size: 70px;
+    color: #B4F57F;
+    text-shadow: #b4f57f9c 1px 0 40px;
+    font-family: "Oswald";
+    z-index: 1;
+}
+.detailHeader p {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: #b4f57f9c 1px 0 10px;
+}
+.detail a {
+    display: block;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+.detailBorder {
+    margin-top: 20px;
+}
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+.parallelogram {
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+}
+.detailText {
+    font-weight: 400;
+    margin-top: 20px;
+    white-space: pre-wrap;
+    font-family: "Decima Mono X";
+    font-size: 18px;
+}
+.time {
+    font-size: 24px;
+    font-weight: bold;
+}
+.detailsSections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 100px;
+    box-sizing: border-box;
+    gap: 2rem;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+.detailSection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.hand1 {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    bottom: 0px;
+}
+.hand2 {
+    position: absolute;
+    left: 0;
+    width: 20%;
+}
+
+.dress {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 800px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.hud {
+    width: 100%;
+    position: absolute;
+    top: 25px;
+}
+.dressVariants {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    gap: 1rem;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 4rem;
+}
+.dressEl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.dressImgContainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    transition-duration: .3s;
+    border-radius: 16px;
+}
+.dressImgContainer:hover {
+    box-shadow: 0px 0px 0px 3px #B4F57F;
+}
+.buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 200px;
+    margin: 0 auto;
+}
+
+
+/* SKINS */
+.lineup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+.stage {
+    width: 100%;
+}
+.skins {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1rem 8rem;
+    height: fit-content;
+}
+.skins::-webkit-scrollbar {
+    height: 3px;
+}
+  
+.skins::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+.skins::-webkit-scrollbar-thumb {
+    background: #b4f57f2a;
+    border-radius: 8px;
+}
+.skinsRed::-webkit-scrollbar {
+    height: 3px;
+}
+  
+.skinsRed::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+.skinsRed::-webkit-scrollbar-thumb {
+    background: #df02063a;
+    border-radius: 8px;
+}
+.skin {
+    width: fit-content;
+    height: 500px;
+    position: relative;
+    transition-duration: .3s;
+}
+.skinImg {
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+    border-left: 2px solid #B4F57F;
+    border-top: 2px solid #B4F57F;
+    border-bottom: 2px solid #B4F57F;
+}
+.skinsRed .skinImg {
+    border-left: 2px solid #DF0206;
+    border-top: 2px solid #DF0206;
+    border-bottom: 2px solid #DF0206;
+}
+.cardInfo {
+    z-index: 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    transition-duration: .4s;
+}
+.cardInfo img {
+    height: 100.5%;
+    top: -2px;
+    z-index: 1;
+    position: absolute;
+}
+.skinOpen {
+    /* width: 35%; */
+}
+.skinOpen {
+    margin-right: 200px;
+}
+.skinOpen .cardInfo {
+    transform: translateX(200px);
+}
+.skinInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
+    padding-left: 120px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 8px;
+    max-width: 250px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.skinInfo a {
+    text-decoration: underline;
+    font-size: 20px;
+    font-family: "Decima Mono X";
+}
+.skinInfo strong {
+    font-family: "Decima Mono X";
+    font-size: 35px;
+    font-weight: bold;
+}
+.infoLine {
+    width: 48px;
+    height: 2px;
+    background-color: #B4F57F;
+}
+.skinsRed .infoLine {
+    background-color: #DF0206;
+}
+.skinInfo p {
+    font-size: 20px;
+}
+.collegues {
+    display: none;
+}
+.stageHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid white;
+    border-radius: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 40px 0;
+}
+.stageHeader img {
+    animation: rotate360 5s infinite linear;
+}
+.stageHeader p {
+    font-size: 38px;
+    font-weight: bold;
+}
+.separator {
+    margin-top: 100px;
+    position: absolute;
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.playlist {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.playlistBody {
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+.playlistBody iframe {
+    width: 700px;
+}
+
+/* HOW IT WAS */
+.how {
+    width: 100%;
+    padding: 0 8rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 140px
+}
+.howSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.was h4 {
+    font-family: "Decima Mono X";
+    font-size: 50px;
+    opacity: .5;
+}
+.will {
+    align-items: flex-end;
+}
+.will h4 {
+    font-family: "Decima Mono X";
+    font-size: 50px;
+    color: #B4F57F;
+}
+.howContainerImg {
+    height: 572px;
+    width: 100%;
+    position: relative;
+}
+.howContainerImg img {
+    object-fit: cover;
+}
+.willStages {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.willImgContainer {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+.disclaimer {
+    font-size: 20px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+.stagesText {
+    display: none;
+}
+
+/* DOP */
+.dop {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 3rem 8rem;
+    padding-top: 4rem;
+    box-sizing: border-box;
+    margin-top: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.dopEl {
+    width: 100%;
+    height: fit-content;
+    max-height: 360px;
+    min-height: 360px;
+    padding: 12px 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    background-color: black;
+    clip-path: polygon(
+        0% 0%, 
+        0% 95.38%, 
+        4.67% 100%, 
+        89.15% 100%, 
+        89.15% 97.7%, 
+        94.74% 97.7%, 
+        94.74% 100%, 
+        100% 100%, 
+        100% 4.85%, 
+        94.98% 0%
+    );
+}
+.dopEl p {
+    font-size: 16px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.dopImgContainer {
+    width: 100%;
+    height: 197px;
+    position: relative;
+}
+.separator_cyber {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.separator_cyber + .separator_cyber {
+    bottom: -1px;
+    top: unset;
+    transform: rotate(180deg);
+}
+.dopCard {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    top: 0rem;
+}
+
+/* FAQ */
+.faqContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.faq {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 8rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.questions {
+    width: 100%;
+}
+
+/* FOOTER */
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.link {
+    font-family: "Decima Mono X" !important;
+    font-weight: 500;
+}
+.link:hover {
+    color: #a2f85b !important;
+}
+.social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 35px;
+}
+.social a {
+    border-radius: 50%;
+    background-color: #B4F57F;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .3s;
+}
+.social a:hover {
+    background-color: #a2f85b;
+}
+.social svg {
+    font-size: 20px;
+}
+.mini {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+.mini a {
+    font-weight: 100;
+    font-size: 14px;
+    font-family: "Decima Mono X" !important;
+}
+.mini a:hover {
+    text-decoration: underline;
+}
+.promo {
+    border: none !important;
+    height: 95vh !important;
+    margin: 0 auto;
+}
+.lights {
+    width: 100%;
+}
+.frame {
+    display: none;
+}
+
+@media screen and (max-width: 1240px) {
+    .home {
+        padding: 0 4rem;
+    }
+    .moreButt {
+        right: 4rem;
+    }
+    .intro {
+        padding: 4rem 4rem;
+    }
+    .detailsSections {
+        padding: 0 4rem;
+    }
+    .skins {
+        padding: 1rem 4rem;
+        padding-right: 60px;
+    }
+    .how {
+        padding: 0 4rem;
+    }
+    .separator {
+        top: -1px;
+    }
+    .dop {
+        padding: 3rem 4rem;
+    }
+    .faq {
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .cabel1, .cabel2, .cabel3 {
+        display: none;
+    }
+    .title {
+        align-items: center;
+        margin-bottom: 4rem;
+    }
+    .subtitle {
+        align-items: center;
+        text-align: center;
+    }
+    .home {
+        align-items: center;
+        background-size: cover;
+    }
+    .buyButt {
+        align-self: center !important;
+    }
+    .moreButt {
+        right: unset;
+        bottom: 4rem;
+        margin: 0 auto;
+    }
+    .intro {
+        flex-direction: column;
+    }
+    .introSection {
+        min-height: unset;
+    }
+    .promo {
+        border: 6px solid white !important;
+    }
+    .frame {
+        display: block;
+    }
+    .videoBlock {
+        width: 100%;
+        box-shadow: none;
+    }
+    .howContainerImg {
+        height: 350px;
+    }
+    .vidosText {
+        padding: 0 4rem;
+        box-sizing: border-box;
+    }
+    .speech {
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 868px) {
+    .skin {
+        height: 400px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(140px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dress {
+        height: fit-content;
+    }
+    .hud {
+        display: none;
+    }
+    .dressVariants {
+        flex-direction: column;
+    }
+    .dressImgContainer {
+        height: 600px;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+    .dressImgContainer img {
+        object-fit: cover;
+    }
+    .playlistBody {
+        width: 100%;
+        padding: 0 2rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .playlistBody svg {
+        display: none;
+    }
+    .playlist iframe {
+        width: 100%;
+    }
+    .how {
+        margin-top: 0
+    }
+    .willStages {
+        flex-direction: column;
+    }
+    .willImgContainer {
+        overflow: hidden;
+        border-radius: 16px;
+    }
+    .stagesText {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+    }
+    .will {
+        align-items: center;
+    }
+    .howSection {
+        align-items: center;
+    }
+    .dop {
+        flex-direction: column;
+        align-items: center;
+    }
+    .dopImgContainer {
+        height: 250px;
+    }
+    .faq {
+        padding: 0 50px
+    }
+}
+
+@media screen and (max-width: 658px) {
+    .title h1 {
+        font-size: 60px;
+    }
+    .home {
+        padding: 0 2rem;
+    }
+    .intro {
+        padding: 2rem;
+    }
+    .introSection p {
+        font-size: 16px;
+    }
+    .introSection img {
+        width: 37px;
+    }
+    .vidos {
+        padding: 50px 0;
+    }
+    .vidosText {
+        flex-direction: row;
+    }
+    .vidosText p {
+        font-size: 24px;
+        display: none;
+    }
+    .vidosText label {
+        font-family: "Decima Mono X";
+        color: white;
+        font-size: 24px;
+    }
+    .detailsSections {
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+    .detailSection {
+        gap: 2rem;
+    }
+    .detail {
+        max-width: 100%;
+    }
+    .blockHeader {
+        font-size: 40px;
+    }
+    .detailHeader p {
+        font-size: 24px;
+    }
+    .detailText {
+        font-size: 16px;
+    }
+    .time {
+        font-size: 24px;
+    }
+    .hand1 {
+        width: 80%;
+    }
+    .dressImgContainer {
+        height: 300px;
+    }
+    .dressImgContainer img {
+        object-position: top;
+    }
+    .how {
+        padding: 0 2rem;
+    }
+    .willImgContainer {
+        height: 250px;
+    }
+    .faq {
+        padding: 0 2rem;
+    }
+    .footer {
+        margin-top: 50px;
+    }
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
+    }
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .skins {
+        padding: 1rem 2rem;
+        padding-right: 60px;
+    }
+    .stageHeader p {
+        font-size: 24px;
+    }
+    .speech {
+        padding: 0 2rem;
+    }
+    .howSection p {
+        text-align: center;
+    }
+    .videoBlock {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .separator {
+        display: none
+    }
+    .vidos {
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+    .vidosText label {
+        display: block;
+        font-size: 24px;
+    }
+    .vidosText span {
+        margin-left: 8px;
+        color: #B4F57F;
+    }
+    .vidosText {
+        padding: 0 2rem;
+        margin-top: 50px;
+    }
+    .skinOpen {
+        margin-right: 120px;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .speech p {
+        font-size: 16px;
+    }
+    .dopEl {
+        min-height: unset;
+    }
+    .dopImgContainer {
+        height: 150px;
+    }
+    .dop {
+        padding: 2rem 2rem;
+    }
+    .introSection {
+        display: block;
+        border-radius: 2rem;
+    }
+    .introSection img {
+        float: left;
+        margin-right: 1rem;
+    }
+    .dressVariants {
+        margin-top: 2rem;
+    }
+    .vidos {
+        padding-top: 0;
+    }
+    .skin {
+        height: 350px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(120px);
+    }
+    .skinInfo {
+        padding-left: 90px;
+    }
+    .skinInfo strong {
+        font-size: 26px;
+    }
+    .skinInfo p {
+        font-size: 16px;
+    }
+    .stageHeader img {
+        width: 25px;
+    }
+    .stageHeader p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .subtitle {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .home {
+        padding: 0 1rem;
+    }
+    .title h1 {
+        font-size: 48px;
+    }
+    .buyButt {
+        padding: 5px 17px !important;
+        transform: scale(.9) !important;
+        margin-top: 30px !important;
+    }
+    .introSection {
+        padding: 1rem;
+    }
+    .videoBlock {
+        padding: 0 1rem;
+    }
+    .vidosText label {
+        font-size: 18px;
+    }
+    .speech {
+        padding: 0 1rem;
+    }
+    .detailsSections {
+        padding: 0 1rem;
+    }
+    .details {
+        padding-bottom: 100px;
+    }
+    .dressVariants {
+        padding: 0 1rem;
+    }
+    .buy {
+        height: 100px;
+    }
+    .playlistBody {
+        padding: 0 1rem;
+    }
+    .blockHeader {
+        text-align: center;
+    }
+    .playlist {
+        margin: 50px 0;
+    }
+    .how {
+        padding: 0 1rem;
+    }
+    .was h4 {
+        font-size: 32px;
+    }
+    .will h4 {
+        font-size: 32px;
+    }
+    .disclaimer {
+        font-size: 16px;
+    }
+    .dop {
+        padding: 1rem;
+    }
+    .faq {
+        padding: 0 1rem;
+    }
+    .intro {
+        padding: 2rem 1rem;
+    }
+    .skin {
+        height: 270px;
+    }
+    .skinOpen .cardInfo {
+        transform: translateX(90px);
+    }
+    .skinInfo {
+        padding-left: 70px;
+    }
+    .skinInfo strong {
+        font-size: 18px;
+    }
+    .skinInfo p {
+        font-size: 14px;
+    }
+    .skinInfo a {
+        font-size: 14px;
+    }
+}

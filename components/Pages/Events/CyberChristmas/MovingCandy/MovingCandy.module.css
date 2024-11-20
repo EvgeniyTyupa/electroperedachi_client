@@ -1,0 +1,15 @@
+.block {
+    width: 87%;
+    top: 0;
+    position: absolute;
+}
+.main {
+    width: 100%;
+    transition: top 0.1s ease-out;
+}
+.one {
+
+}
+.two {
+
+}
