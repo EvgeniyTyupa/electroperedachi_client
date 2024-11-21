@@ -88,6 +88,18 @@ import CyberChristmasFaqItem from "./CyberChristmasFaqItem/CyberChristmasFaqItem
 import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 import VideoLazy from "../../../Common/VideoLazy/VideoLazy"
 
+import dj1 from "/public/images/cyber-christmas/dj1.png"
+import dj2 from "/public/images/cyber-christmas/dj2.png"
+import dj3 from "/public/images/cyber-christmas/dj3.png"
+import dj4 from "/public/images/cyber-christmas/dj4.png"
+import dj5 from "/public/images/cyber-christmas/dj5.png"
+import dj6 from "/public/images/cyber-christmas/dj6.png"
+import dj7 from "/public/images/cyber-christmas/dj7.png"
+import dj8 from "/public/images/cyber-christmas/dj8.png"
+import dj9 from "/public/images/cyber-christmas/dj9.png"
+import dj10 from "/public/images/cyber-christmas/dj10.png"
+import dj11 from "/public/images/cyber-christmas/dj11.png"
+
 const CyberChristmas = (props) => {
     const { event } = props
 
@@ -110,7 +122,6 @@ const CyberChristmas = (props) => {
 
     const paymentBlockRef = useRef(null)
     const readMoreRef = useRef(null)
-    const videoRef = useRef(null)
 
     const faq = event.faq
 
@@ -119,31 +130,31 @@ const CyberChristmas = (props) => {
 
     const stage1 = [
         {
-            img: dj.src,
+            img: dj3.src,
             name: "Nadai",
             style: "Minimal Techno",
             url: "https://soundcloud.com/nadai"
         },
         {
-            img: dj.src,
+            img: dj1.src,
             name: "Neumateria",
             style: "Melodic Techno, Indie Dance",
             url: "https://soundcloud.com/neumateria"
         },
         {
-            img: dj.src,
+            img: dj2.src,
             name: "Latyshev",
             style: "Melodic Techno, Indie Dance",
             url: "https://soundcloud.com/kyiv2c"
         },
         {
-            img: dj.src,
+            img: dj4.src,
             name: "Manyface",
             style: "Techno, Electro",
             url: "https://soundcloud.com/user-548157346"
         },
         {
-            img: dj.src,
+            img: dj5.src,
             name: "Abradan",
             style: "Melodic Techno",
             url: "https://soundcloud.com/abradan"
@@ -152,40 +163,39 @@ const CyberChristmas = (props) => {
 
     const stage2 = [
         {
-            img: dj.src,
+            img: dj6.src,
             name: "Sasha Storm",
             style: "Hard Techno",
             url: "https://soundcloud.com/sasha_storm_music"
         },
         {
-            img: dj.src,
+            img: dj7.src,
             name: "Maria Rodina",
             style: "Hard Techno",
-            url: "https://soundcloud.com/kyiv2c"
         },
         {
-            img: dj.src,
+            img: dj8.src,
             name: "Symonenko (live)",
             style: "Techno, Industrial",
             url: "https://soundcloud.com/symonenkomusic"
         },
         {
-            img: dj.src,
+            img: dj9.src,
             name: "Kyiv2c",
             style: "Psy Trance",
             url: "https://soundcloud.com/kyiv2c"
         },
         {
-            img: dj.src,
-            name: "Illusion",
-            style: "Hard Techno",
-            url: "https://soundcloud.com/py1gj60edvqz"
-        },
-        {
-            img: dj.src,
+            img: dj10.src,
             name: "Buryi",
             style: "Electro",
             url: "https://soundcloud.com/buryidj"
+        },
+        {
+            img: dj11.src,
+            name: "Illusion",
+            style: "Hypnotic Techno",
+            url: "https://soundcloud.com/py1gj60edvqz"
         },
     ]
 
@@ -446,6 +456,7 @@ const CyberChristmas = (props) => {
                                 onMouseLeave={() => setInfoIndex(0)}
                                 key={index}
                             >
+                                <p className={classes.djName}><strong>{el.name}</strong></p>
                                 <img src={el.img} alt={el.name} className={classes.skinImg}/>
                                 <div className={classes.cardInfo}>
                                     <img src={dj_card_green.src} alt="card"/>
@@ -476,6 +487,7 @@ const CyberChristmas = (props) => {
                                 onMouseLeave={() => setInfoIndex(10)}
                                 key={index}
                             >
+                                <p className={classes.djName}><strong>{el.name}</strong></p>
                                 <img src={el.img} alt={el.name} className={classes.skinImg}/>
                                 <div className={classes.cardInfo}>
                                     <img src={dj_card_red.src} alt="card"/>
@@ -486,7 +498,7 @@ const CyberChristmas = (props) => {
                                             <p>{el.style}</p>
                                         </div>
                                         <div className={classes.infoLine}/>
-                                        <a href={el.url} target="_blank">{intl.formatMessage({ id: "cyberChristmas.soc" })}</a>
+                                        {el.url && <a href={el.url} target="_blank">{intl.formatMessage({ id: "cyberChristmas.soc" })}</a>}
                                     </div>
                                 </div>
                             </div>

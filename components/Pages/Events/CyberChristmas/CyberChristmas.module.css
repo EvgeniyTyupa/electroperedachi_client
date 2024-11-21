@@ -623,6 +623,23 @@
     border-top: 2px solid #B4F57F;
     border-bottom: 2px solid #B4F57F;
 }
+.djName {
+    position: absolute;
+    left: .1rem;
+    bottom: .1rem;
+    color: white;
+    font-size: 24px;
+    z-index: 2;
+    transition-duration: .3s;
+    opacity: 1;
+    padding-top: 1rem;
+    width: 99%;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
 .skinsRed .skinImg {
     border-left: 2px solid #DF0206;
     border-top: 2px solid #DF0206;
@@ -643,6 +660,9 @@
     top: -2px;
     z-index: 1;
     position: absolute;
+}
+.skinOpen .djName {
+    opacity: 0;
 }
 .skinOpen {
     /* width: 35%; */
