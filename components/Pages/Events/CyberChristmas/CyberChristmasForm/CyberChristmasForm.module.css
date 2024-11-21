@@ -25,7 +25,6 @@
     margin-top: 50px;
     position: relative;
     z-index: 1;
-    opacity: .8;
 }
 .leftImgContainer img {
     object-fit: contain;
@@ -57,13 +56,11 @@
     margin-top: 20px;
 }
 .title {
+    z-index: 0;
+    text-shadow: #B4F57F 0px 0 3px;
     color: black;
-    text-shadow: #B4F57F 0px 0 1px;
     font-size: 60px;
-    font-weight: 400;
-    z-index: 1;
     font-family: "Blaster";
-    position: relative;
 }
 .titleAbsolute {
     position: absolute;
@@ -72,6 +69,7 @@
     color: black;
     font-size: 60px;
     font-family: "Blaster";
+    display: none;
 }
 .rules {
     white-space: pre-wrap;
