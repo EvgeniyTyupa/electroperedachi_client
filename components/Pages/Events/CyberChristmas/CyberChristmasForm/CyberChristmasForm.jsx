@@ -77,13 +77,15 @@ const CyberChristmasForm = (props) => {
             </div>
             <div className={classes.right}>
                 <p className={classes.electroperedachi}>electroperedachi</p>
-                <div className={classes.titleBlock} ref={paymentBlockRef}>
-                    <h3 className={classes.title}>CYBER</h3>
-                    <h3 className={classes.titleAbsolute}>CYBER</h3>
-                </div>
-                <div className={classes.titleBlock}>
-                    <h3 className={classes.title}>CHRISTMAS</h3>
-                    <h3 className={classes.titleAbsolute}>CHRISTMAS</h3>
+                <div className={classes.titleContainer}>
+                    <div className={classes.titleBlock} ref={paymentBlockRef}>
+                        <h3 className={classes.title}>CYBER</h3>
+                        <h3 className={classes.titleAbsolute}>CYBER</h3>
+                    </div>
+                    <div className={classes.titleBlock}>
+                        <h3 className={classes.title}>CHRISTMAS</h3>
+                        <h3 className={classes.titleAbsolute}>CHRISTMAS</h3>
+                    </div>
                 </div>
                 <p className={classes.rules}>
                     {intl.formatMessage({ id: "event.ticketRules" })}
