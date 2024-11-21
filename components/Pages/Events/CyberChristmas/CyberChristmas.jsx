@@ -145,7 +145,7 @@ const CyberChristmas = (props) => {
             img: dj2.src,
             name: "Latyshev",
             style: "Melodic Techno, Indie Dance",
-            url: "https://soundcloud.com/kyiv2c"
+            url: "https://soundcloud.com/latyshev"
         },
         {
             img: dj4.src,
