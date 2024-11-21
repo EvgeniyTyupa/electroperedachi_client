@@ -172,6 +172,7 @@ const CyberChristmas = (props) => {
             img: dj7.src,
             name: "Maria Rodina",
             style: "Hard Techno",
+            url: "https://www.instagram.com/maria__rodina"
         },
         {
             img: dj8.src,
