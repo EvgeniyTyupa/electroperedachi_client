@@ -1298,10 +1298,10 @@
         transform: translateX(120px);
     }
     .skinInfo {
-        padding-left: 90px;
+        padding-left: 100px;
     }
     .skinInfo strong {
-        font-size: 26px;
+        font-size: 22px;
     }
     .skinInfo p {
         font-size: 16px;
