@@ -274,7 +274,7 @@ const CyberChristmas = (props) => {
                     </div>
                 </div>
                 <p className={classes.subtitle}>Е: {typingMore1}</p>
-                <Button className={classes.buyButt} onClick={scrollToPayment}>
+                <Button id="home" className={classes.buyButt} onClick={scrollToPayment}>
                     <p>{intl.formatMessage({ id: "cyberpunk.buyTicket" })}</p>
                     <div className={classes.r25}>
                         <IoMdArrowDown />
@@ -434,7 +434,7 @@ const CyberChristmas = (props) => {
                 </div>
             </div>
             <div className={classes.buy}>
-                <Button className={classes.buyButt} onClick={scrollToPayment}>
+                <Button id="center" className={classes.buyButt} onClick={scrollToPayment}>
                     <p>{intl.formatMessage({ id: "cyberpunk.buyTicket" })}</p>
                     <div className={classes.r25}>
                         <IoMdArrowDown />
