@@ -133,7 +133,7 @@ const CyberChristmas = (props) => {
         {
             img: dj14.src,
             name: "Xenia Torino",
-            style: "Melodic Techno, Peak Time",
+            style: "Melodic Techno,\n Peak Time",
             url: "https://soundcloud.com/xenia-torino"
         },
         {
