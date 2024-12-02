@@ -93,7 +93,7 @@ import dj10 from "/public/images/cyber-christmas/dj10.png"
 import dj11 from "/public/images/cyber-christmas/dj11.png"
 import dj12 from "/public/images/cyber-christmas/dj12.jpg"
 import dj13 from "/public/images/cyber-christmas/dj13.jpg"
-import dj14 from "/public/images/cyber-christmas/dj14.jpg"
+import dj14 from "/public/images/cyber-christmas/dj14.JPG"
 
 const CyberChristmas = (props) => {
     const { event } = props
