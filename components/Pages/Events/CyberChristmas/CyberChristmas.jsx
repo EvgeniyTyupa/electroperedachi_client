@@ -97,7 +97,7 @@ import dj14 from "/public/images/cyber-christmas/dj14.jpg"
 
 const CyberChristmas = (props) => {
     const { event } = props
-
+ 
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
 
