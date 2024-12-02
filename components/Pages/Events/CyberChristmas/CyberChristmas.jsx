@@ -7,7 +7,6 @@ import useNavLinks from "../../../../hooks/useNavLinks"
 import useSocialLinks from "../../../../hooks/useSocialLinks"
 import Button from "@mui/material/Button"
 import moment from "moment"
-import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import Link from "next/link"
 
 import { cx } from "../../../../utils/classnames"
@@ -15,15 +14,10 @@ import { cx } from "../../../../utils/classnames"
 import { useMagicWriter } from "../../../../hooks/useTypedChar"
 
 import { IoMdArrowDown } from "react-icons/io";
-import { MdOutlineMyLocation } from "react-icons/md";
-import { LuTicket, LuClock4 } from "react-icons/lu";
-import { BiMaleFemale } from "react-icons/bi";
-import { TbCurrencyDollar } from "react-icons/tb";
 
 import Aos from "aos"
 import "aos/dist/aos.css"
 
-import { useRouter } from "next/router"
 import { FB_PIXEL } from "../../../../utils/constants"
 import useIsChrome from "../../../../hooks/useIsChrome"
 
@@ -56,7 +50,6 @@ import dress1 from "/public/images/cyber-christmas/urban.png"
 import dress2 from "/public/images/cyber-christmas/rave.png"
 import dress3 from "/public/images/cyber-christmas/corpo.png"
 
-import dj from "/public/images/cyber-christmas/dj.png"
 import dj_card_green from "/public/images/cyber-christmas/card_green.svg"
 import dj_card_red from "/public/images/cyber-christmas/card_red.svg"
 
@@ -95,10 +88,12 @@ import dj4 from "/public/images/cyber-christmas/dj4.png"
 import dj5 from "/public/images/cyber-christmas/dj5.png"
 import dj6 from "/public/images/cyber-christmas/dj6.png"
 import dj7 from "/public/images/cyber-christmas/dj7.png"
-import dj8 from "/public/images/cyber-christmas/dj8.png"
 import dj9 from "/public/images/cyber-christmas/dj9.png"
 import dj10 from "/public/images/cyber-christmas/dj10.png"
 import dj11 from "/public/images/cyber-christmas/dj11.png"
+import dj12 from "/public/images/cyber-christmas/dj12.jpg"
+import dj13 from "/public/images/cyber-christmas/dj13.jpg"
+import dj14 from "/public/images/cyber-christmas/dj14.JPG"
 
 const CyberChristmas = (props) => {
     const { event } = props
@@ -134,6 +129,12 @@ const CyberChristmas = (props) => {
             name: "Nadai",
             style: "Minimal Techno",
             url: "https://soundcloud.com/nadai"
+        },
+        {
+            img: dj14.src,
+            name: "Xenia Torino",
+            style: "Melodic Techno, Peak Time",
+            url: "https://soundcloud.com/xenia-torino"
         },
         {
             img: dj1.src,
@@ -175,12 +176,6 @@ const CyberChristmas = (props) => {
             url: "https://www.instagram.com/maria__rodina"
         },
         {
-            img: dj8.src,
-            name: "Symonenko (live)",
-            style: "Techno, Industrial",
-            url: "https://soundcloud.com/symonenkomusic"
-        },
-        {
             img: dj9.src,
             name: "Kyiv2c",
             style: "Psy Trance",
@@ -197,6 +192,18 @@ const CyberChristmas = (props) => {
             name: "Illusion",
             style: "Hypnotic Techno",
             url: "https://soundcloud.com/py1gj60edvqz"
+        },
+        {
+            img: dj12.src,
+            name: "The_Zhorov",
+            style: "Electro Punk, Breaks",
+            url: "https://soundcloud.com/the_zhorov"
+        },
+        {
+            img: dj13.src,
+            name: "Foggy",
+            style: "Electro Punk, Breaks",
+            url: "https://soundcloud.com/the_zhorov"
         },
     ]
 
