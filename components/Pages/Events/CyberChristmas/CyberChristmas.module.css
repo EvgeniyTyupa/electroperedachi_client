@@ -811,6 +811,9 @@
     height: 300px;
     position: relative;
 }
+.willImgContainer img {
+    object-fit: cover;
+}
 .disclaimer {
     font-size: 20px;
     text-align: center;
@@ -1266,7 +1269,13 @@
     }
 }
 
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 568px) {
+    .home {
+        background-position: center;
+    }
+    .subtitle {
+        color: #FFF1C9;
+    }
     .skinImg {
         max-width: 220px;
     }

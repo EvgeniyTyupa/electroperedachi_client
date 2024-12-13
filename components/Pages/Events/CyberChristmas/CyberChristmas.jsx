@@ -8,6 +8,7 @@ import useSocialLinks from "../../../../hooks/useSocialLinks"
 import Button from "@mui/material/Button"
 import moment from "moment"
 import Link from "next/link"
+import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 import { cx } from "../../../../utils/classnames"
 
@@ -24,6 +25,7 @@ import useIsChrome from "../../../../hooks/useIsChrome"
 import MovingCandy from "./MovingCandy/MovingCandy"
 
 import home_bg from "/public/images/cyber-christmas/home_bg.jpg"
+import home_bg_mobile from "/public/images/cyber-christmas/home_bg_mobile.jpg"
 import r25 from "/public/images/cyberpunk/r25.svg"
 import worldIcon from "/public/images/cyber-christmas/world-icon.svg"
 import runeIcon from "/public/images/cyber-christmas/rune-icon.svg"
@@ -122,6 +124,8 @@ const CyberChristmas = (props) => {
 
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
+
+    const { width } = useWindowDimensions()
 
     const stage1 = [
         {
@@ -267,7 +271,7 @@ const CyberChristmas = (props) => {
         <div className={classes.main}>
             <div className={classes.home}
                 style={{
-                    backgroundImage: `url(${home_bg.src})`
+                    backgroundImage: width > 568 ? `url(${home_bg.src})` : `url(${home_bg_mobile.src})`
                 }}
             >
                 <div className={cx(classes.title, isChrome ? classes.chromeTitle : undefined)}>
@@ -420,24 +424,24 @@ const CyberChristmas = (props) => {
                 <img src={hudImg.src} className={classes.hud} alt="hud"/>
                 <h3 className={classes.blockHeader} data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "cyberChristmas.dresscode" })}</h3>
                 <div className={classes.dressVariants}>
-                    <div className={classes.dressEl}>
+                    <Link target={"_blank"} href={"https://www.instagram.com/turwear_ua/"} className={classes.dressEl}>
                         <div className={classes.dressImgContainer}>
                             <Image src={dress1} alt="Urban" fill/>
                         </div>
                         <p>Urban</p>
-                    </div>
-                    <div className={classes.dressEl}>
-                        <div className={classes.dressImgContainer}>
-                            <Image src={dress2} alt="Rave" fill/>
-                        </div>
-                        <p>Rave</p>
-                    </div>
-                    <div className={classes.dressEl}>
+                    </Link>
+                    <Link target={"_blank"} href={"https://www.instagram.com/turwear_ua/"} className={classes.dressEl}>
                         <div className={classes.dressImgContainer}>
                             <Image src={dress3} alt="Corpo" fill/>
                         </div>
                         <p>Corpo</p>
-                    </div>
+                    </Link>
+                    <Link target={"_blank"} href={"https://www.instagram.com/turwear_ua/"} className={classes.dressEl}>
+                        <div className={classes.dressImgContainer}>
+                            <Image src={dress2} alt="Rave" fill/>
+                        </div>
+                        <p>Rave</p>
+                    </Link>
                 </div>
             </div>
             <div className={classes.buy}>
