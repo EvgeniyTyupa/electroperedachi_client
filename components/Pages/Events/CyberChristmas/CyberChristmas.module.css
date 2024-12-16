@@ -812,7 +812,7 @@
     position: relative;
 }
 .willImgContainer img {
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 .disclaimer {
     font-size: 20px;
