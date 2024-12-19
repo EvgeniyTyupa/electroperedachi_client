@@ -26,7 +26,7 @@ import r25 from "/public/images/cyberpunk/r25.svg"
 import { FB_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 
 const CyberChristmasBuyForm = (props) => {
-    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } =
+    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, setPromocodeDiscount } =
         props
 
     const { setIsFetchingContext, setServerError, setServerResponse } =
@@ -118,6 +118,7 @@ const CyberChristmasBuyForm = (props) => {
                 const discount =
                     (price / 100) * Number(response.promocode.discount)
                 setDiscount(discount)
+                setPromocodeDiscount(Number(response.promocode.discount))
                 setIsAppliedPromo(true)
             } else {
                 setCheckPromocodeError(true)
@@ -275,7 +276,7 @@ const CyberChristmasBuyForm = (props) => {
                     )}
                 />
             </div>
-            {(!event?.is_multi_buy && isHaveActualPromocode && !isAppliedPromo) && (
+            {(isHaveActualPromocode && !isAppliedPromo) && (
                 <div className={classes.field}>
                     <Controller
                         name="promocode"

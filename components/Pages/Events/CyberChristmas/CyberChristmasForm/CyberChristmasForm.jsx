@@ -15,6 +15,7 @@ const CyberChristmasForm = (props) => {
     const [totalPrice, setTotalPrice] = useState(0)
 
     const [totalPriceDiscount, setTotalPriceDiscount] = useState(0)
+    const [promocodeDiscount, setPromocodeDiscount] = useState(0)
 
     const [discount, setDiscount] = useState(0)
 
@@ -42,7 +43,7 @@ const CyberChristmasForm = (props) => {
             let newDiscountPercents = 0
             switch(count) {
                 case 1: {
-                    newDiscountPercents = 0
+                    newDiscountPercents = promocodeDiscount
                     break
                 }
                 case 2: {
@@ -126,6 +127,7 @@ const CyberChristmasForm = (props) => {
                     price={price}
                     setDiscount={setDiscount}
                     totalPriceDiscount={totalPriceDiscount}
+                    setPromocodeDiscount={setPromocodeDiscount}
                 />
             </div>
         </div>
