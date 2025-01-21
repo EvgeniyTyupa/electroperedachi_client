@@ -15,40 +15,42 @@ const Navbar = () => {
     const links = useNavLinks()
 
     return (
-        <>
-            {router.asPath !== "/events/145bpm" && (
-                <header className={cx(
-                    classes.main,
-                    router.pathname === "/" ? classes.transparent : undefined,
-                    router.pathname === "/events/circus" ? classes.absolute : undefined,
-                    router.pathname === "/events/cyberpunk" ? classes.absolute : undefined,
-                    router.pathname === "/events/vampire-carnival" ? classes.absolute : undefined,
-                    router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
-                )}>
-                    <Container className={classes.container}>
-                        <Link href={routes.home}>
-                            <img src={logo.src} alt="logo" className={classes.logo}/>
-                        </Link>
-                            <nav className={classes.links}>
-                                {(router.pathname !== "/events/circus" && router.pathname !== "/events/cyberpunk" && router.pathname !== "/events/vampire-carnival" && router.pathname !== "/events/cyber-christmas") && (
-                                    links.map(el => (
-                                        <CustomLink
-                                            key={el.href}
-                                            href={el.href}
-                                            text={el.text}
-                                            className={cx(classes.link, router.pathname == el.href ? classes.active : "")}
-                                        />
-                                    ))
-                                )}
-                                <LanguageSelector/>
-                            </nav>
-                        <div className={classes.burger}>
-                            <Burger/>
-                        </div>
-                    </Container>
-                </header>
-            )}
-        </>
+        <nav className={cx(
+            classes.main,
+            router.pathname === "/" ? classes.transparent : undefined,
+            router.pathname === "/events/circus" ? classes.absolute : undefined,
+            router.pathname === "/events/cyberpunk" ? classes.absolute : undefined,
+            router.pathname === "/events/vampire-carnival" ? classes.absolute : undefined,
+            router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
+            router.pathname === "/events/hozho" ? classes.absolute : undefined,
+        )}>
+            <Container className={classes.container}>
+                <Link href={routes.home}>
+                    <img src={logo.src} alt="logo" className={classes.logo}/>
+                </Link>
+                    <nav className={classes.links}>
+                        {(router.pathname !== "/events/circus" &&
+                        router.pathname !== "/events/cyberpunk" &&
+                        router.pathname !== "/events/vampire-carnival" &&
+                        router.pathname !== "/events/cyber-christmas" &&
+                        router.pathname !== "/events/hozho"
+                        ) && (
+                            links.map(el => (
+                                <CustomLink
+                                    key={el.href}
+                                    href={el.href}
+                                    text={el.text}
+                                    className={cx(classes.link, router.pathname == el.href ? classes.active : "")}
+                                />
+                            ))
+                        )}
+                        <LanguageSelector/>
+                    </nav>
+                <div className={classes.burger}>
+                    <Burger/>
+                </div>
+            </Container>
+        </nav>
     )
 }
 

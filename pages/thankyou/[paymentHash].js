@@ -70,7 +70,7 @@ const ThankyouPage = (props) => {
                         <AiFillCheckCircle/>
                         <p>{intl.formatMessage({ id: "thankyou.text" })}</p>
                     </div>
-                    <HozhoThankyou/>
+                    {/* <HozhoThankyou/> */}
                 </Container>
             </div>
         </>

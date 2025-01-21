@@ -42,9 +42,11 @@
     "react-intersection-observer": "^9.13.1",
     "react-intl": "^6.2.5",
     "react-lines-ellipsis": "^0.15.3",
+    "react-slick": "^0.30.3",
     "react-typewriter-hook": "^1.0.2",
     "sharp": "^0.32.1",
     "sitemap": "^7.1.1",
+    "slick-carousel": "^1.8.1",
     "soundcloud-scraper": "^5.0.3",
     "tss-react": "^4.5.2"
   },

@@ -1,0 +1,47 @@
+.main {
+    color: white !important;
+    text-transform: initial !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: .75rem !important;
+    padding: 1.6rem 1.6rem !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    position: relative !important;
+    z-index: 1 !important;
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 209px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.main:hover .shadow {
+    box-shadow: 0 0px 10px 5px #4318A8 !important;
+}
+.main:hover img {
+    transform: rotate(225deg);
+}
+.main img {
+    transition-duration: .3s;
+}
+.main p {
+    font-family: "NeueMachinaRegular" !important;
+    font-size: 18px !important;
+}
+.shadow {
+    transition-duration: .3s;
+    position: absolute;
+    width: 91%;
+    height: 80%;
+    z-index: 0 !important;
+    left: 10px;
+    top: 8px;
+}
+
+@media screen and (max-width: 468px) {
+    .shadow {
+        width: 87%;
+    }
+}

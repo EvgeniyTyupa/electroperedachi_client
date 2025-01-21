@@ -19,8 +19,7 @@ const Footer = () => {
     return (
         <>
             {!router.pathname.includes("cyber") && (
-
-                <footer className={classes.main}>
+                <footer className={`${classes.main} ${router.pathname.includes("hozho") ? classes.black : ""}`}>
                     <Container className={classes.container}>
                         <div className={classes.links}>
                             {links.map((el) => (

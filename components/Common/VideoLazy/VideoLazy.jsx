@@ -5,7 +5,7 @@ import classes from "./VideoLazy.module.css"
 import { FaPlayCircle } from "react-icons/fa";
 import { IconButton } from '@mui/material';
 
-const VideoLazy = ({ src, className, classNameMain, classNameFrame, frame, preview }) => {
+const VideoLazy = ({ src, className, classNameMain, classNameFrame, frame, preview, isPlayVideo }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPlay, setIsPlay] = useState(false)
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -27,6 +27,12 @@ const VideoLazy = ({ src, className, classNameMain, classNameFrame, frame, previ
       }
     }
   }, [inView, isLoaded]);
+
+  useEffect(() => {
+    if (isPlayVideo) {
+      setIsPlay(true)
+    }
+  }, [isPlayVideo])
 
   return (
       <div className={cx(classes.main, classNameMain)}>

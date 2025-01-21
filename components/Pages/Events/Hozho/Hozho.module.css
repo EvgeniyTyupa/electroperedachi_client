@@ -1,0 +1,1047 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+}
+.main p {
+    font-family: "Roboto";
+}
+.main ul {
+    padding-left: 1rem
+}
+.home {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+    position: relative;
+}
+.homeContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+}
+.homeTitleInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    display: none;
+}
+.partners {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.partners img {
+    width: 40px;
+}
+.present {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.cityDate {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cityDate h3 {
+    font-family: "NeueMachina";
+    font-size: 18px
+}
+.hozhoLogo {
+    width: 100%;
+    height: 139px;
+}
+.venue {
+    font-family: "NeueMachina";
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.homeMore {
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+.homeMore p {
+    transition-duration: .3s;
+}
+.homeMore img {
+    transition-duration: .3s;
+}
+.homeMore:hover img {
+    transform: rotate(-90deg);
+}
+
+/* INTRO */
+.intro {
+    width: 100%;
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.intro h3 {
+    display: none;
+}
+.introContainer {
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.introImg1 {
+    width: 300px
+}
+.introImg2 {
+    width: 250px;
+    position: relative;
+    top: -60px;
+}
+.introImg3 {
+    display: none;
+}
+.intro p {
+    white-space: pre-wrap;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+/* VIDOS */
+.vidos {
+    margin: 90px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 130px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.vidosText {
+    max-width: 390px;
+    text-align: center;
+}
+.vidosContainer {
+    width: 100%;
+    height: 647px;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer;
+    padding: 2rem 0;
+    box-sizing: border-box;
+}
+.vidosContainerMob {
+    display: none;
+}
+.vidosContainer svg {
+    font-size: 129px;
+}
+.vidosBigText {
+    font-size: 22px;
+}
+.videoMain {
+    border: none !important;
+    width: fit-content !important;
+}
+
+/* DETAILS */
+.details {
+    width: 100%;
+    height: 960px;
+    background-color: #F4F2ED;
+    padding: 90px 60px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.details h3 {
+    font-size: 32px;
+    font-family: "NeueMachina";
+    color: #0D0D0D;
+    margin-bottom: 2rem;
+}
+.runaContainer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+.runaImg {
+    position: relative;
+    width: 600px;
+    height: 630px
+}
+.detailsContainer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.detailsRow {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 500px;
+}
+.detailsRow + .detailsRow {
+    gap: 600px;
+}
+.detailsRow + .detailsRow + .detailsRow {
+    gap: 100px;
+    margin-top: 5rem;
+}
+.detail {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.detailEnd {
+    align-items: flex-end;
+    text-align: right;
+}
+.detailRelative {
+    position: relative;
+    top: 80px;
+}
+.detailHeader {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #4318A8;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 22px;
+}
+.detailSub, .detailText {
+    color: black;
+    font-family: "Roboto";
+}
+.detailSub {
+    font-weight: 500;
+}
+.buyButtContainer {
+    margin-top: auto;
+    margin-bottom: 2rem;
+}
+
+/* HEADLINER */
+.headliner {
+    width: 100%;
+}
+.headliner h3 {
+    text-align: center;
+    font-family: "NeueMachina";
+    font-size: 32px;
+}
+.headlinerTop {
+    padding: 0 130px;
+    padding-top: 90px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 66px;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 90px;
+}
+.headlinerTopInfo {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto";
+}
+.headlinerTopInfo p strong {
+    font-size: 52px;
+    font-weight: 500;
+}
+.headlinerTop span {
+    font-weight: 500;
+}
+.headlinerTextBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 50%;
+}
+.rightText {
+    margin-left: auto;
+    max-width: 40%;
+}
+.slider {
+    margin-top: 45px;
+    box-sizing: border-box;
+    position: relative;
+    top: -90px;
+}
+.sliderEl {
+    padding: 0 1rem;
+}
+.sliderEl iframe {
+    border-radius: 12px;
+    height: 352px;
+}
+
+/* ARTISTS */
+.artists {
+    width: 100%;
+}
+.artistsTop {
+    padding: 0 130px;
+    padding-top: 90px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 66px;
+    background-size: cover;
+    padding-bottom: 90px;
+}
+.artistsTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.artistsTitle h3 {
+    font-family: "NeueMachina";
+    font-size: 32px;
+}
+.artists p {
+    font-family: "Roboto";
+}
+.artistsTitle p {
+    font-size: 20px;
+    font-weight: 200;
+}
+.artistsTextBlock {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 260px;
+}
+.artistsTextBlock p {
+    width: 40%;
+}
+
+/* FLASK */
+.flask {
+    width: 100%;
+    background-size: cover;
+    position: relative;
+}
+.flask h3 {
+    text-transform: uppercase;
+    font-size: 28px;
+    margin-bottom: 2rem;
+    font-family: "NeueMachina";
+}
+.flaskTopGrad {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+}
+.flaskBotGrad {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+.flaskText {
+    padding: 200px 130px;
+    box-sizing: border-box;
+    max-width: 70%;
+    z-index: 1;
+}
+.flaskText p {
+    max-width: 80%;
+}
+
+/* LOCATION */
+.location {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 125px;
+    box-sizing: border-box;
+}
+.location h3 {
+    font-size: 32px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+.locationSub {
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: 200;
+    margin-top: 2rem;
+}
+.locationPoints {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.locationPoint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    width: 30%;
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 200;
+}
+.greenLine {
+    background-color: #01DB9B;
+    width: 1px;
+    height: 100px;
+}
+.locationVideo {
+    width: calc(100% - 260px);
+    height: 647px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.locationMain {
+    height: fit-content !important;
+    width: fit-content !important;
+    border: none !important;
+}
+
+/* SHOW */
+.show {
+    width: 100%;
+    padding: 90px 130px;
+    padding-top: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+.show h3 {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "NeueMachina";
+    margin-bottom: 1rem;
+}
+.show p {
+    text-align: center;
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 200;
+}
+.krest {
+    position: absolute;
+    width: 1000px;
+    top: 100px;
+}
+.showPhotos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    z-index: 1;
+}
+.showPhoto {
+    width: 50%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+.showPhoto img {
+    object-fit: cover;
+}
+.fog {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: -400px;
+    z-index: 0;
+}
+/* FAQ */
+.faqContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.faq {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 8rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.faq h3 {
+    font-size: 32px;
+    font-family: "NeueMachina";
+}
+.questions {
+    width: 100%;
+}
+
+/* DRESSCODE */
+.dresscode {
+    width: 100%;
+    padding: 0 130px;
+    padding-top: 140px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-size: cover;
+    margin-top: 4rem;
+}
+.dresscode h3 {
+    font-size: 32px;
+    font-family: "NeueMachina";
+    color: white;
+}
+.dressInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    z-index: 2;
+}
+.dressText {
+    max-width: 700px;
+    font-family: "Roboto";
+    font-weight: 200;
+}
+.dressBlocks {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.dressBlock {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+.dressImgContainer {
+    position: relative;
+    width: 100%;
+    height: 248px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.dressImgContainer img {
+    object-fit: cover;
+}
+.dressTextBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.dressTextHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+}
+.dressTextHeader p {
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: 500;
+}
+.dressSub {
+    font-size: 18px;
+    font-family: "Roboto";
+    font-weight: 200;
+}
+.dressFooter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    padding-bottom: 4rem;
+    z-index: 2;
+}
+.dressLeft {
+    width: 40%;
+}
+.dressRight {
+    width: 40%;
+    text-align: left;
+}
+.dressRight p {
+    font-family: "Roboto";
+    font-size: 22px;
+    color: #01DB9B;
+}
+.dressLeft {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-align: left;
+}
+.dressLeft ul {
+    text-align: left;
+    font-family: "Roboto";
+    font-weight: 200;
+}
+
+@media screen and (max-width: 1200px) {
+    .homeMore {
+        right: 2rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .vidos {
+        margin-top: 0;
+    }
+    .details {
+        height: fit-content;
+    }
+    .runaContainer {
+        position: relative;
+    }
+    .detailsContainer {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    .runaImg {
+        display: none;
+    }
+    .detailsRow {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    .detailsRow + .detailsRow {
+        gap: 2rem;
+    }
+    .detailsRow + .detailsRow + .detailsRow {
+        gap: 2rem;
+        margin-top: 0;
+    }
+    .detailEnd {
+        align-items: center;
+        text-align: center;
+    }
+    .detail {
+        align-items: center;
+        text-align: center;
+    }
+    .detailRelative {
+        top: 0;
+    }
+    .locationVideo {
+        width: 100%;
+    }
+    .fog {
+        bottom: -250px;
+    }
+    .flaskText {
+        padding: 200px 50px;
+    }
+    .headlinerTop {
+        padding: 90px 50px;
+    }
+    .artistsTop {
+        padding: 90px 50px;
+        background-position: center;
+    }
+    .artistsTextBlock {
+        margin-top: 100px;
+    }
+    .faq {
+        padding: 0 50px;
+    }
+    .dresscode {
+        padding: 0 50px;
+        padding-top: 140px;
+    }
+}
+
+@media screen and (max-width: 888px) {
+    .intro {
+        height: fit-content;
+        margin-top: 4rem;
+    }
+    .introContainer {
+        flex-direction: column;
+        padding: 50px 0px;
+        box-sizing: border-box;
+    }
+    .introContainer h3, .introContainer p {
+        padding: 0 50px;
+        box-sizing: border-box;
+    }
+    .intro h3 {
+        display: block;
+        font-family: "NeueMachina";
+        font-size: 25px;
+        align-self: flex-start;
+    }
+    .introImg1 {
+        display: none;
+    }
+    .introImg2 {
+        display: none;
+    }
+    .introImg3 {
+        display: block;
+        width: 100%;
+    }
+    .vidosContainer {
+        display: none;
+    }
+    .vidosContainerMob {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    .vidosContainerMob video {
+        margin-top: 3rem;
+    }
+    .vidos {
+        margin-bottom: 0;
+    }
+    .videoMain {
+        width: 100% !important;
+    }
+    .vidosBgMob {
+        width: 100%;
+        height: 95vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin-top: 2rem;
+        cursor: pointer;
+    }
+    .vidos {
+        padding: 0;
+    }
+    .headlinerTextBlock {
+        width: 100%;
+    }
+    .rightText {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 160px;
+    }
+    .headlinerTop {
+        gap: 2rem;
+    }
+    .artistsTextBlock {
+        margin-top: 0;
+        flex-direction: column;
+        gap: 200px;
+    }
+    .artistsTextBlock p {
+        width: 100%;
+    }
+    .artistsTop {
+        gap: 2rem;
+    }
+    .artistsTop p {
+        text-align: center;
+    }
+    .artistsTop p + p {
+        text-align: left;
+    }
+    .flaskText {
+        padding: 100px 50px;
+        box-sizing: border-box;
+        max-width: 90%;
+    }
+    .show {
+        padding: 90px 50px;
+        padding-top: 0;
+    }
+    .showPhoto {
+        display: none;
+    }
+    .showPhoto + .showPhoto {
+        display: block;
+        width: 100%;
+    }
+    .dressBlocks {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .dressBlock {
+        width: 100%;
+    }
+    .dressImgContainer {
+        height: 350px;
+    }
+    .dressFooter {
+        flex-direction: column;
+        gap: 2rem;
+        padding-bottom: 0;
+    }
+    .dressLeft {
+        width: 100%;
+    }
+    .dressRight {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .homeContent {
+        height: 100%;
+    }
+    .homeTitleInfo {
+        display: flex;
+    }
+    .hozhoLogo {
+        width: auto;
+    }
+    .present {
+        max-width: 340px;
+    }
+    .home {
+        padding: 2rem 2rem;
+        padding-top: 7rem;
+        box-sizing: border-box;
+        justify-content: center
+    }
+    .homeSub {
+        margin-top: auto;
+        text-align: center;
+    }
+    .homeMore {
+        position: relative;
+        margin-top: 1rem;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .location {
+        padding: 90px 0rem;
+    }
+    .location h3, .location p {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .locationPoints {
+        flex-direction: column;
+    }
+    .locationPoint {
+        width: 100%;
+    }
+    .partners {
+        max-width: 100%;
+        justify-content: space-around;
+    }
+    .intro h3, .intro p {
+        padding: 0 2rem;
+    }
+    .vidosText {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .vidosContainerMob p {
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    .details {
+        padding: 90px 2rem;
+        padding-bottom: 2rem;
+    }
+    .runaContainer {
+        margin-top: 2rem;
+    }
+    .detailsRow {
+        align-items: flex-start;
+    }
+    .detail {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .headlinerTop {
+        padding: 90px 2rem;
+    }
+    .headlinerTopInfo p strong {
+        font-size: 32px;
+    }
+    .artistsTop {
+        padding: 90px 2rem;
+    }
+    .flaskText {
+        padding: 50px 2rem;
+        max-width: 100%;
+    }
+    .flask {
+        background-position: left;
+    }
+    .show {
+        padding: 90px 2rem;
+        padding-top: 0;
+    }
+    .faq {
+        padding: 0 2rem;
+    }
+    .dresscode {
+        padding: 50px 2rem;
+        padding-top: 70px;
+    }
+    .dressImgContainer {
+        height: 250px;
+    }
+    .dressFooter {
+        margin-top: 3rem;
+    }
+    .dressTextHeader p {
+        font-size: 18px;
+    }
+    .locationMain {
+        padding: 0 1rem !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .detail {
+        width: fit-content;
+    }
+    .showPhotos {
+        margin-top: 2rem;
+    }
+    .partners {
+        gap: .5rem;
+    }
+    .hozhoLogo {
+        width: 100%;
+    }
+    .showPhoto {
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .location h3, .location p {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    .home {
+        padding: 1rem;
+        padding-top: 6rem;
+    }
+    .hozhoLogo {
+        height: 110px;
+    }
+    .intro h3, .intro p {
+        padding: 0 1rem;
+    }
+    .details {
+        padding: 50px 1rem;
+    }
+    .runaContainer {
+        margin-top: 1rem;
+    }
+    .headlinerTop {
+        padding: 50px 1rem;
+    }
+    .artistsTop {
+        padding: 50px 1rem;
+    }
+    .flaskText {
+        padding: 50px 1rem;
+    }
+    .show {
+        padding: 50px 1rem;
+    }
+    .faq {
+        padding: 0 1rem;
+    }
+    .dresscode {
+        padding: 50px 1rem;
+        padding-top: 70px;
+    }
+}

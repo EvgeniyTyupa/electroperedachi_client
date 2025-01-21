@@ -1,4 +1,6 @@
 import "../styles/globals.css"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import en from "../lang/en.json"
 import ua from "../lang/ua.json"
 import { IntlProvider } from "react-intl"
@@ -94,13 +96,13 @@ export default function App({ Component, pageProps }) {
                                 property="og:image"
                                 content={poster_img.src}
                             />
-                            <script
+                            {/* <script
                                 id="help-ukraine-win"
                                 async="true"
                                 src="https://helpukrainewinwidget.org/cdn/widget.js"
                                 data-type="two"
                                 data-position="bottom-left"
-                            />
+                            /> */}
                         </Head>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <AnimatePresence
