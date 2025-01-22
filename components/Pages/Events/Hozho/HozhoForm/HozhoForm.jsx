@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Button from "@mui/material/Button"
 import { cx } from "../../../../../utils/classnames"
 import Image from "next/image"
-import formImg from "/public/images/hozho/form.png"
+import formImg from "/public/images/hozho/form.webp"
 import hozhoLogo from "/public/images/hozho/hozho_logo.png"
 import HozhoBuyForm from "./HozhoBuyForm/HozhoBuyForm"
 

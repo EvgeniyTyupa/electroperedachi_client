@@ -1,6 +1,6 @@
 import classes from "./Hozho.module.css"
-import home_bg from "/public/images/hozho/home.png"
-import home_bg_en from "/public/images/hozho/home_en.png"
+import home_bg from "/public/images/hozho/home.webp"
+import home_bg_en from "/public/images/hozho/home_en.webp"
 import home_bg_mob from "/public/images/hozho/home_bg_mob.jpg"
 import { useIntl } from "react-intl"
 import HozhoBuyButton from "./Button/HozhoBuyButton"
@@ -29,8 +29,8 @@ import location_bg_mob from "/public/images/hozho/location_bg_mob.png"
 import HozhoSlider from "./Slider/HozhoSlider"
 import YoutubeCard from "../../../Common/YoutubeCard/YoutubeCard"
 import krest from "/public/images/hozho/krest.svg"
-import photo1 from "/public/images/hozho/photo1.png"
-import photo2 from "/public/images/hozho/photo2.png"
+import photo1 from "/public/images/hozho/photo1.webp"
+import photo2 from "/public/images/hozho/photo2.webp"
 import fog from "/public/images/hozho/fog.png"
 import dresscode_bg from "/public/images/hozho/dresscode_bg.jpg"
 import HozhoForm from "./HozhoForm/HozhoForm"
@@ -44,7 +44,7 @@ import dr1_icon from "/public/images/hozho/dr1_icon.svg"
 import dr2_icon from "/public/images/hozho/dr2_icon.svg"
 import dr3_icon from "/public/images/hozho/dr3_icon.svg"
 import dr1 from "/public/images/hozho/dr1.png"
-import dr2 from "/public/images/hozho/dr2.png"
+import dr2 from "/public/images/hozho/dr2.webp"
 import dr3 from "/public/images/hozho/dr3.png"
 import { FB_PIXEL } from "../../../../utils/constants"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
@@ -345,31 +345,31 @@ const Hozho = (props) => {
                     <HozhoSlider>
                         <div className={classes.sliderEl}>
                             <YoutubeCard
-                                src="https://www.youtube.com/embed/VjNr9ZVK4tI?si=uoMCBtrbj0LFAJWO"
+                                src="https://www.youtube.com/embed/VjNr9ZVK4tI"
                                 title="Nadai @ Gulliver, Roof Top, Kyiv, High-Tech Minimal Mix | 4K"
                             />
                         </div>
                         <div className={classes.sliderEl}>
                             <YoutubeCard
-                                src="https://www.youtube.com/embed/oW21H7l6cwo?si=EEt3Pqf0u98nH-4k"
+                                src="https://www.youtube.com/embed/oW21H7l6cwo"
                                 title="Paul Meise @ National Circus of Ukraine, Techno Mix, Air Acrobatic Performance | 4K"
                             />
                         </div>
                         <div className={classes.sliderEl}>
                             <YoutubeCard
-                                src="https://www.youtube.com/embed/UyECenAmWjY?si=Ed9EQvIzbTBqJzum"
+                                src="https://www.youtube.com/embed/UyECenAmWjY"
                                 title="Marteli @ National Circus of Ukraine, Techno Mix, Air Acrobatic Performance | 4K"
                             />
                         </div>
                         <div className={classes.sliderEl}>
                             <YoutubeCard
-                                src="https://www.youtube.com/embed/DhqA_vwSfic?si=ih2Rb_AfRue6pn5w"
+                                src="https://www.youtube.com/embed/DhqA_vwSfic"
                                 title="Staylen @ electroperedachi rave opera 10/05/19"
                             />
                         </div>
                         <div className={classes.sliderEl}>
                             <YoutubeCard
-                                src="https://www.youtube.com/embed/qpbdrpvvnX8?si=pojeXOhFIzDgFEdR"
+                                src="https://www.youtube.com/embed/qpbdrpvvnX8"
                                 title="Noff @ electroperedachi Hortitsa open air 22/06/19"
                             />
                         </div>

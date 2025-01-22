@@ -90,6 +90,8 @@
     outline: none;
     cursor: pointer;
     border: none;
+    color: white !important;
+    background-color: transparent !important;
 }
 .homeMore p {
     transition-duration: .3s;

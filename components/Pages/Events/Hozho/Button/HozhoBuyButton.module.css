@@ -13,7 +13,6 @@
     border: none;
     outline: none;
     cursor: pointer;
-    min-width: 209px !important;
     align-items: center !important;
     justify-content: center !important;
 }
