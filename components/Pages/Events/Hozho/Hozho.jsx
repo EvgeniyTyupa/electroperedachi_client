@@ -57,6 +57,9 @@ import drug from "/public/images/hozho/drug.png"
 import hozho_logo from "/public/images/hozho/hozho_logo.png"
 import details_bg_mob from "/public/images/hozho/details_bg_mob.jpg"
 import vidos_bg_mob from "/public/images/hozho/video_bg_mob.jpg"
+import loc1 from "/public/images/hozho/upscaled1.webp"
+import loc2 from "/public/images/hozho/upscaled2.webp"
+import loc3 from "/public/images/hozho/upscaled3.webp"
 
 const Hozho = (props) => {
     const { event } = props
@@ -399,14 +402,23 @@ const Hozho = (props) => {
                 <div className={classes.locationPoints}>
                     <div className={classes.locationPoint}>
                         <div className={classes.greenLine}/>
+                        <div className={classes.locImg}>
+                            <Image src={loc1} alt="location" fill/>
+                        </div>
                         <p>{intl.formatMessage({ id: "hozho.33" })}</p>
                     </div>
                     <div className={classes.locationPoint}>
                         <div className={classes.greenLine}/>
+                        <div className={classes.locImg}>
+                            <Image src={loc2} alt="location" fill/>
+                        </div>
                         <p>{intl.formatMessage({ id: "hozho.34" })}</p>
                     </div>
                     <div className={classes.locationPoint}>
                         <div className={classes.greenLine}/>
+                        <div className={classes.locImg}>
+                            <Image src={loc3} alt="location" fill/>
+                        </div>
                         <p>{intl.formatMessage({ id: "hozho.35" })}</p>
                     </div>
                 </div>

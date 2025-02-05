@@ -194,6 +194,7 @@ p {
 @media screen and (max-width: 468px) {
   .slick-track {
     padding-left: 5rem;
+    height: 190px;
   }
 }
 
@@ -207,5 +208,6 @@ p {
 @media screen and (max-width: 350px) {
   .slick-track {
     padding-left: 4rem;
+    height: 180px;
   }
 }
