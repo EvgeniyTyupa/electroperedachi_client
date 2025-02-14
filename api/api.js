@@ -43,9 +43,9 @@ export const eventApi = {
             })
             .then((response) => response.data)
     },
-    scanTicket(ticketId, userId, eventId, currentEventId) {
+    scanTicket(ticketId, userId, eventId, currentEventId, concertUaBarcode = null) {
         return instance
-            .post(`/ticket/scan`, { ticketId, userId, eventId, currentEventId })
+            .post(`/ticket/scan`, { ticketId, userId, eventId, currentEventId, concertUaBarcode })
             .then((response) => response.data)
             .catch(function (err) {
                 const data = {
