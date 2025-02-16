@@ -1,231 +1,254 @@
-import { useState } from "react"
-import classes from "../../styles/QrReader.module.css"
-import jsQR from "jsqr"
-import { eventApi } from "../../api/api"
-import Container from "../../components/UI/Container/Container"
-import { useRef } from "react"
-import ActionButton from "../../components/UI/Buttons/ActionButton/ActionButton"
-import Head from "next/head"
-import { useAppContext } from "../../context/AppContext"
-import { useEffect } from "react"
+import { useState, useRef, useEffect } from "react";
+import classes from "../../styles/QrReader.module.css";
+import jsQR from "jsqr";
+import { eventApi } from "../../api/api";
+import Container from "../../components/UI/Container/Container";
+import ActionButton from "../../components/UI/Buttons/ActionButton/ActionButton";
+import Head from "next/head";
+import { useAppContext } from "../../context/AppContext";
 
 const QRCodeReader = (props) => {
-    const { currentEvent } = props
+  const { currentEvent } = props;
+  const { setIsFetchingContext } = useAppContext();
 
-    const { setIsFetchingContext } = useAppContext()
+  const [result, setResult] = useState("");
+  const [capturedImage, setCapturedImage] = useState(null);
+  const [latestScanResult, setLatestScanResult] = useState(null);
 
-    const [result, setResult] = useState("")
-    const [capturedImage, setCapturedImage] = useState(null)
-    const [latestScanResult, setLatestScanResult] = useState(null);
+  const videoRef = useRef(null);
+  const isProcessing = useRef(false); // Флаг для дебаунсинга
 
-    const videoRef = useRef(null)
+  const constraints = { video: { facingMode: "environment" } };
 
-    const constraints = { video: { facingMode: "environment" } }
+  // Функция запуска камеры
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (error) {
+      console.error("Ошибка доступа к камере:", error);
+    }
+  };
 
-    const startCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia(
-                constraints
+  // Сброс состояния для нового сканирования
+  const handleReset = () => {
+    setResult("");
+    setCapturedImage(null);
+    setLatestScanResult(null);
+    startCamera();
+    requestAnimationFrame(processFrame);
+  };
+
+  useEffect(() => {
+    startCamera();
+
+    return () => {
+      // Останавливаем камеру при размонтировании компонента
+      if (videoRef.current && videoRef.current.srcObject) {
+        videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, []);
+
+  // Функция обработки кадра
+  const processFrame = async () => {
+    if (capturedImage) return; // Если QR уже считан, не продолжаем
+
+    const video = videoRef.current;
+    if (!video) {
+      requestAnimationFrame(processFrame);
+      return;
+    }
+
+    // Проверяем, что видео готово (ширина и высота не равны 0)
+    if (video.videoWidth === 0 || video.videoHeight === 0) {
+      requestAnimationFrame(processFrame);
+      return;
+    }
+
+    // Если уже обрабатываем кадр — пропускаем
+    if (isProcessing.current) {
+      requestAnimationFrame(processFrame);
+      return;
+    }
+    isProcessing.current = true;
+
+    // Создаем канвас с размерами видео
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const context = canvas.getContext("2d");
+
+    // Рисуем текущий кадр
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    let imageData;
+    try {
+      imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    } catch (e) {
+      console.error("Ошибка получения данных изображения:", e);
+      isProcessing.current = false;
+      requestAnimationFrame(processFrame);
+      return;
+    }
+
+    // Распознаем QR-код
+    const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+    if (code && latestScanResult !== code.data) {
+      setLatestScanResult(code.data);
+      setIsFetchingContext(true);
+
+      try {
+        const { _id, userId, eventId } = JSON.parse(code.data);
+        const imageUrl = canvas.toDataURL();
+        setCapturedImage(imageUrl);
+
+        let res = null
+
+        if (!_id) {
+            //concert ua case
+            res = await eventApi.scanTicket(
+                _id,
+                userId,
+                eventId,
+                currentEvent._id,
+                code.data
             )
-            videoRef.current.srcObject = stream
-        } catch (error) {
-            console.error("Error accessing camera:", error)
-        }
-    }
-
-    const handleReset = () => {
-        setResult("")
-        setCapturedImage(null)
-        setLatestScanResult(null);
-        startCamera()
-    }
-
-    useEffect(() => {
-        startCamera()
-
-        return () => {
-            // Stop the camera when the component unmounts
-            if (videoRef.current.srcObject) {
-                videoRef.current.srcObject.getTracks().forEach((track) => {
-                    track.stop()
-                })
-            }
-        }
-    }, [])
-
-    const processFrame = async () => {
-        if (!capturedImage) {
-            const video = videoRef.current
-            const canvas = document.createElement("canvas")
-            const context = canvas.getContext("2d")
-    
-            context.drawImage(video, 0, 0, canvas.width, canvas.height)
-    
-            const imageData = context.getImageData(
-                0,
-                0,
-                canvas.width,
-                canvas.height
+        } else {
+            res = await eventApi.scanTicket(
+                _id,
+                userId,
+                eventId,
+                currentEvent._id,
             )
-            const code = jsQR(imageData.data, imageData.width, imageData.height)
-
-
-            if (code && latestScanResult !== code.data) {
-                // alert(latestScanResult, code.data)
-                setLatestScanResult(code.data);
-                setIsFetchingContext(true)
-
-                const { _id, userId, eventId } = JSON.parse(code.data)
-    
-                const image = new Image()
-                image.src = canvas.toDataURL()
-                setCapturedImage(image.src)
-    
-                context.clearRect(0, 0, canvas.width, canvas.height);
-
-                let res = null
-
-                if (typeof code.data === "string") {
-                    //concert ua case
-                    res = await eventApi.scanTicket(
-                        _id,
-                        userId,
-                        eventId,
-                        currentEvent._id,
-                        code.data
-                    )
-                } else {
-                    res = await eventApi.scanTicket(
-                        _id,
-                        userId,
-                        eventId,
-                        currentEvent._id,
-                    )
-                }
-                
-                setResult(res)
-                if (videoRef.current.srcObject) {
-                    videoRef.current.srcObject.getTracks().forEach((track) => {
-                        track.stop()
-                    })
-                }
-                setIsFetchingContext(false)
-            }
-            requestAnimationFrame(processFrame)
         }
+        setResult(res);
+
+        // Останавливаем камеру после успешного сканирования
+        if (videoRef.current && videoRef.current.srcObject) {
+          videoRef.current.srcObject.getTracks().forEach((track) =>
+            track.stop()
+          );
+        }
+      } catch (error) {
+        console.error("Ошибка при обработке QR-кода:", error);
+      }
+      setIsFetchingContext(false);
     }
 
-    useEffect(() => {
-        requestAnimationFrame(processFrame)
-    }, [])
+    // Через 200 мс снимаем блокировку, чтобы не вызывать слишком часто
+    setTimeout(() => {
+      isProcessing.current = false;
+    }, 200);
 
-    return (
-        <>
-            <Head>
-                <meta name="robots" content="noindex" />
-            </Head>
-            <div className={classes.qrReader}>
-                <Container className={classes.container}>
-                    <div className={classes.qrBox}>
-                        {capturedImage && (
-                            <>
-                                <img src={capturedImage} className={classes.previewStyle}/>
-                                <ActionButton
-                                    onClick={handleReset}
-                                >
-                                    Submit new QR code
-                                </ActionButton>
-                            </>
-                        )}
-                        <video
-                            ref={videoRef}
-                            autoPlay
-                            playsInline
-                            muted
-                            style={{
-                                display: capturedImage ? "none" : "block"
-                            }}
-                        />
-                    </div>
-                    <div className={classes.qrOutput}>
-                        {result ? (
-                            <div className={classes.outputContainer}>
-                                {result.user && (
-                                    <p>
-                                        <b>Name:</b> {result.user.email}
-                                    </p>
-                                )}
-                                {result.user && (
-                                    <p>
-                                        <b>Event:</b> {result.event.title}
-                                    </p>
-                                )}
-                                <p>
-                                    <b>Status:</b>
-                                    <span
-                                        className={
-                                            result.status === "good"
-                                                ? classes.good
-                                                : classes.bad
-                                        }
-                                    >
-                                        {" "}
-                                        {result.status === "good"
-                                            ? "good"
-                                            : "bad"}
-                                    </span>
-                                </p>
-                                <p>
-                                    <b>Message:</b> {result.message}
-                                </p>
-                            </div>
-                        ) : (
-                            <p className={classes.noData}>
-                                No data submited yet
-                            </p>
-                        )}
-                    </div>
-                </Container>
-            </div>
-        </>
-    )
-}
+    requestAnimationFrame(processFrame);
+  };
 
-export default QRCodeReader
+  useEffect(() => {
+    // Запускаем цикл обработки кадров
+    requestAnimationFrame(processFrame);
+  }, [capturedImage]);
+
+  return (
+    <>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <div className={classes.qrReader}>
+        <Container className={classes.container}>
+          <div className={classes.qrBox}>
+            {capturedImage ? (
+              <>
+                <img src={capturedImage} className={classes.previewStyle} alt="QR code snapshot" />
+                <ActionButton onClick={handleReset}>
+                  Submit new QR code
+                </ActionButton>
+              </>
+            ) : (
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                style={{ display: capturedImage ? "none" : "block" }}
+              />
+            )}
+          </div>
+          <div className={classes.qrOutput}>
+            {result ? (
+              <div className={classes.outputContainer}>
+                {result.user && (
+                  <p>
+                    <b>Name:</b> {result.user.email}
+                  </p>
+                )}
+                {result.user && (
+                  <p>
+                    <b>Event:</b> {result.event.title}
+                  </p>
+                )}
+                <p>
+                  <b>Status:</b>
+                  <span
+                    className={
+                      result.status === "good" ? classes.good : classes.bad
+                    }
+                  >
+                    {" "}
+                    {result.status === "good" ? "good" : "bad"}
+                  </span>
+                </p>
+                <p>
+                  <b>Message:</b> {result.message}
+                </p>
+              </div>
+            ) : (
+              <p className={classes.noData}>No data submitted yet</p>
+            )}
+          </div>
+        </Container>
+      </div>
+    </>
+  );
+};
+
+export default QRCodeReader;
 
 export const getStaticPaths = async ({ locales }) => {
-    const { events } = await eventApi.getEvents(1, 1000)
+  const { events } = await eventApi.getEvents(1, 1000);
+  const paths = [];
 
-    const paths = []
-
-    events.forEach((event) => {
-        for (const locale of locales) {
-            paths.push({
-                params: { eventSlug: event.title_code },
-                locale
-            })
-        }
-    })
-
-    return {
-        paths: paths,
-        fallback: "blocking"
+  events.forEach((event) => {
+    for (const locale of locales) {
+      paths.push({
+        params: { eventSlug: event.title_code },
+        locale,
+      });
     }
-}
+  });
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
 
 export async function getStaticProps(context) {
-    const { event } = await eventApi.getEvent(context.params.eventSlug)
+  const { event } = await eventApi.getEvent(context.params.eventSlug);
 
-    if (!event) {
-        return {
-            notFound: true
-        }
-    }
-
+  if (!event) {
     return {
-        props: {
-            currentEvent: event
-        },
-        revalidate: 10
-    }
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      currentEvent: event,
+    },
+    revalidate: 10,
+  };
 }
