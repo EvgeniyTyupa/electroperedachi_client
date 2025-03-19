@@ -56,26 +56,28 @@ const EventBuyTicketForm = (props) => {
                 isAppliedPromo ? data.promocode : ""
             )
 
-            logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
-
-            import("react-facebook-pixel")
-                .then((module) => module.default)
-                .then((ReactPixel) => {
-                    // ReactPixel.init("573414703062456")
-                    ReactPixel.init(FB_PIXEL)
-                    ReactPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
-                        currency: "USD"
+            if (event.google_table_id) {
+                logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
+    
+                import("react-facebook-pixel")
+                    .then((module) => module.default)
+                    .then((ReactPixel) => {
+                        // ReactPixel.init("573414703062456")
+                        ReactPixel.init(FB_PIXEL)
+                        ReactPixel.track("InitiateCheckout", {
+                            value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
+                            currency: "USD"
+                        })
                     })
-                })
-
-            await eventApi.saveDataToGoogleSheet({
-                date: moment().format('DD/MM/YYYY HH:mm'),
-                email: data.email,
-                phone: data.phone,
-                totalPrice: "",
-                userURL: currentURL
-            }, event.google_table_id, "sheet1")
+    
+                await eventApi.saveDataToGoogleSheet({
+                    date: moment().format('DD/MM/YYYY HH:mm'),
+                    email: data.email,
+                    phone: data.phone,
+                    totalPrice: "",
+                    userURL: currentURL
+                }, event.google_table_id, "sheet1")
+            }
 
             window.location.replace(response.url)
         } catch (err) {

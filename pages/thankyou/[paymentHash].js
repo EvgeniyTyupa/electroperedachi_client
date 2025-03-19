@@ -36,25 +36,26 @@ const ThankyouPage = (props) => {
             .catch(() => setIsFetchingContext(false))
 
             
-
-            import('react-facebook-pixel')
-            .then(module => module.default)
-            .then(ReactPixel => {
-                // ReactPixel.init('573414703062456')
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.track('Purchase', {
-                    value: Number(total_price) / USD_EQ,
-                    currency: "USD"
+            if (google_table_id) {
+                import('react-facebook-pixel')
+                .then(module => module.default)
+                .then(ReactPixel => {
+                    // ReactPixel.init('573414703062456')
+                    ReactPixel.init(FB_PIXEL)
+                    ReactPixel.track('Purchase', {
+                        value: Number(total_price) / USD_EQ,
+                        currency: "USD"
+                    })
                 })
-            })
-
-            eventApi.saveDataToGoogleSheet({
-                date: moment().format('DD/MM/YYYY HH:mm'),
-                email: email,
-                phone: phone,
-                totalPrice: total_price,
-                userURL: ""
-            }, google_table_id, "sheet2")
+    
+                eventApi.saveDataToGoogleSheet({
+                    date: moment().format('DD/MM/YYYY HH:mm'),
+                    email: email,
+                    phone: phone,
+                    totalPrice: total_price,
+                    userURL: ""
+                }, google_table_id, "sheet2")
+            }
         }
     }, [paymentHash, message])
 
