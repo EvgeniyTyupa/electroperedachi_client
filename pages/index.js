@@ -31,7 +31,7 @@ function HomePage(props) {
                 />
             </Head>
             <HomePageComponent
-                upcomingEvent={upcomingEvent}
+                upcomingEvent={upcomingEvent?.title_code === "spectrum" ? null : upcomingEvent}
                 news={news}
                 events={events}
                 partners={partners}
@@ -61,7 +61,7 @@ export async function getStaticProps() {
     const script = `${JSON.stringify(organization)}`;
 
     const { upcomingEvents } = await eventApi.getUpcomingEvents()
-    const { events } = await eventApi.getEvents(1, 3)
+    const { events } = await eventApi.getEvents(1, 4)
     const { news } = await newsApi.getNews(1, 3, "desc")
     const { partners } = await partnersApi.getPartners(1, 1000)
 
@@ -81,7 +81,7 @@ export async function getStaticProps() {
         props: {
             upcomingEvent: upcomingEvents[0] ? upcomingEvents[0] : null,
             news: news,
-            events: events,
+            events: events.filter(el => el.title_code !== "spectrum"),
             partners: partners,
             listeningsCount: listeningsCount,
             script: script

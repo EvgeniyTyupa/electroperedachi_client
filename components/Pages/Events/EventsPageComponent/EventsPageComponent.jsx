@@ -21,15 +21,15 @@ const EventsPageComponent = (props) => {
                 <Header type="h2">
                     {intl.formatMessage({ id: "events.title" })}
                 </Header>
-                {upcomingEvents.length > 0 && (
-                    <UpcomingEventsSlider events={upcomingEvents} />
+                {upcomingEvents.filter(el => el.title_code !== "spectrum").length > 0 && (
+                    <UpcomingEventsSlider events={upcomingEvents.filter(el => el.title_code !== "spectrum")} />
                 )}
                 <EventsViewModeControls
                     filterYear={filterYear}
                     setFilterYear={setFilterYear}
                 />
                 
-                <EventsList events={events} filterYear={filterYear} />
+                <EventsList events={events.filter(el => el.title_code !== "spectrum")} filterYear={filterYear} />
             </Container>
         </div>
     )
