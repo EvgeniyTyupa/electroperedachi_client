@@ -6,34 +6,37 @@ import classes from "../../styles/Thankyou.module.css"
 import thankyou_img from "/public/images/thankyou.svg"
 import { AiFillCheckCircle } from "react-icons/ai"
 import { useEffect } from "react"
-import { useRouter } from "next/router"
-import { eventApi } from "../../api/api"
+
+import atob from "atob"
 
 import { FB_PIXEL, USD_EQ } from "../../utils/constants"
 import HozhoThankyou from "../../components/Pages/Events/Hozho/HozhoThankyou/HozhoThankyou"
 
 const ThankyouPage = (props) => {
-    const { paymentHash, message } = props
+    const { paymentHash } = props
 
     const intl = useIntl()
-    const router = useRouter()
     
     useEffect(() => {
-        if (!paymentHash || message === "Not found") {
-            router.push("/")
-        } else if (message === "Ok") {            
-            import('react-facebook-pixel')
-            .then(module => module.default)
-            .then(ReactPixel => {
-                // ReactPixel.init('573414703062456')
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.track('Purchase', {
-                    value: Number(total_price) / USD_EQ,
-                    currency: "USD"
+        if (paymentHash) {
+            const decoded = JSON.parse(atob(paymentHash))
+            const { total_price } = decoded
+            
+            if (total_price) {
+                import('react-facebook-pixel')
+                .then(module => module.default)
+                .then(ReactPixel => {
+                    // ReactPixel.init('573414703062456')
+                    ReactPixel.init(FB_PIXEL)
+                    ReactPixel.track('Purchase', {
+                        value: Number(total_price) / USD_EQ,
+                        currency: "USD"
+                    })
                 })
-            })
+            }
         }
-    }, [paymentHash, message])
+
+    }, [paymentHash])
 
     return (
         <>
@@ -57,22 +60,11 @@ const ThankyouPage = (props) => {
 export const getServerSideProps = async ({ params, res }) => {
     const { paymentHash } = params
 
-    let response = await eventApi.checkPaymentHash(paymentHash)
-    
-    // if (response.message !== "Ok") {
-    //     response = await eventApi.checkPaymentHash(paymentHash)
-
-    //     if (response.message !== "Ok") {
-    //         response = await eventApi.checkPaymentHash(paymentHash)            
-    //     }
-    // }
-
     res.setHeader('X-Robots-Tag', 'noindex')
     
     return {
         props: {
-            paymentHash,
-            message: response.message
+            paymentHash
         }
     }
 }
