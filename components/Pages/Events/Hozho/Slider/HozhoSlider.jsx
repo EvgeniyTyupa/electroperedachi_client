@@ -11,7 +11,7 @@ const HozhoSlider = (props) => {
         // autoplay: true, // Enable auto-swiping
         // autoplaySpeed: 3000, // Time delay between auto-swipes (in milliseconds)
         dots: false, // Disable dots
-        arrows: false, // Disable arrows
+        arrows: true, // Disable arrows
         responsive: [
             {
                 breakpoint: 769, // For devices with width <= 768px

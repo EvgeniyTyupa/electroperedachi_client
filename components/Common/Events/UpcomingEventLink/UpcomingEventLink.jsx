@@ -8,6 +8,7 @@ import { useEffect } from "react"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
+import { humanizeDates } from "../../../../utils/humanizeDate"
 
 const UpcomingEventLink = (props) => {
     const { event, type = "upcoming" } = props
@@ -34,7 +35,7 @@ const UpcomingEventLink = (props) => {
                     {type === "upcoming" ? (
                         <p>
                             {event?.title} /{" "}
-                            {moment(event?.date).format("DD.MM.YYYY")} /{" "}
+                            {humanizeDates(event.dates ? event.dates : event.date)} /{" "}
                             {event?.address}
                         </p>
                     ) : (

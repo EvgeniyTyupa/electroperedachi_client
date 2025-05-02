@@ -11,6 +11,7 @@ import atob from "atob"
 
 import { FB_PIXEL, USD_EQ } from "../../utils/constants"
 import HozhoThankyou from "../../components/Pages/Events/Hozho/HozhoThankyou/HozhoThankyou"
+import { ttqPurchase } from "../../utils/tikTokTracker"
 
 const ThankyouPage = (props) => {
     const { paymentHash } = props
@@ -33,6 +34,8 @@ const ThankyouPage = (props) => {
                         currency: "USD"
                     })
                 })
+
+                ttqPurchase({ value: Number(total_price) / USD_EQ, currency: "USD" })
             }
         }
 

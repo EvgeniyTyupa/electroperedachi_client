@@ -13,6 +13,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import ExploreButton from "../../../../../UI/Buttons/ExploreButton/ExploreButton"
 import { cx } from "../../../../../../utils/classnames"
+import { humanizeDates, humanizeDatesWithDay } from "../../../../../../utils/humanizeDate"
 
 const UpcomingSlideItem = (props) => {
     const { item } = props
@@ -62,7 +63,7 @@ const UpcomingSlideItem = (props) => {
                     )}
                     <div className={classes.block} data-aos="fade-left" data-aos-duration="2000">
                         <span>{intl.formatMessage({ id: "event.date" })}</span>
-                        <p style={{ textTransform: "capitalize" }}>{dayOfWeek}, {moment(item.date).format("DD.MM.YYYY")}</p>
+                        <p style={{ textTransform: "capitalize" }}>{humanizeDatesWithDay(item.dates ? item.dates : item.date)}, {humanizeDates(item.dates ? item.dates : item.date)}</p>
                         <label>{item.start} : {item.end}</label>
                     </div>
                     {isShowBuy && (

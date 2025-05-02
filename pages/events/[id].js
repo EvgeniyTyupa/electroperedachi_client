@@ -65,7 +65,6 @@ export async function getStaticProps(context) {
     const locale = context.locale;
 
     const { event } = await eventApi.getEvent(context.params.id)
-    const { photos } = await eventApi.getRandomPhotos()
 
     if (!event) {
         return {
@@ -73,29 +72,57 @@ export async function getStaticProps(context) {
         }
     }
     
-    const nextDay = new Date(event.date);
+    let nextDay
+
+    if (event.date) {
+        nextDay = new Date(event.date);
+    } else {
+        nextDay = new Date(event.dates[event.dates.length - 1].date)
+    }
     nextDay.setDate(nextDay.getDate() + 1);
 
     let now = moment()
 
     let currentPrice = 0
+    let validFrom
 
-    event.pricing.forEach((el) => {
-        if (now >= moment(el.start) && now <= moment(el.end)) {
-            currentPrice = el.price
+    if (event.price) {
+        const allWindows = event.price.flatMap(t => t.price);
+        
+        const matching = allWindows.filter(el =>
+            now.isBetween(
+                moment(el.start), 
+                moment(el.end), 
+                null, 
+                '[]'
+            )
+        );
+        
+        if (matching.length > 0) {
+            const cheapest = matching.reduce((a, b) =>
+                a.price < b.price ? a : b
+            );
+            currentPrice = cheapest.price;
+            validFrom = cheapest.start
         }
-    })
+    }
 
     const lineup = []
 
-    event.lineup.forEach(stage => {
-        stage.djs.forEach(dj => {
-            lineup.push({
-                "@type": "Person",
-                "name": dj.name
+    if (event.lineup[0].stages) {
+        event.lineup.forEach(day => {
+            day?.stages.forEach(stage => {
+                stage?.slots.forEach(slot => {
+                    slot?.djs.forEach(dj => {
+                        lineup.push({
+                            "@type": "Person",
+                            "name": dj.name
+                        })  
+                    })
+                })
             })
         })
-    })
+    }
 
     const event_json_info = {
         "@context": "https://schema.org",
@@ -103,7 +130,7 @@ export async function getStaticProps(context) {
         "name": event.title,
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
-        "startDate": event.date,
+        "startDate": event.date ? event.date : event.dates[0].date,
         "endDate": nextDay.toISOString(),
         "location": {
             "@type": "Place",
@@ -123,7 +150,7 @@ export async function getStaticProps(context) {
             "price": currentPrice,
             "priceCurrency": "UAH",
             "availability": "https://schema.org/InStock",
-            "validFrom": event.pricing[0].start
+            "validFrom": event.pricing ? event.pricing[0].start : validFrom
         },
         "inLanguage": locale,
         "organizer": {
@@ -141,7 +168,7 @@ export async function getStaticProps(context) {
             event: event,
             script,
             lang: locale,
-            randomPhotos: photos
+            randomPhotos: []
         },
         revalidate: 10
     }

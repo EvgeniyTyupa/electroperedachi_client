@@ -21,6 +21,9 @@ import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
 import { FB_PIXEL } from "../utils/constants"
 
+import Script from 'next/script'
+import { ttqInit } from "../utils/tikTokTracker";
+
 const messages = { en, ua }
 
 export default function App({ Component, pageProps }) {
@@ -75,6 +78,7 @@ export default function App({ Component, pageProps }) {
             ReactPixel.init(FB_PIXEL)
             ReactPixel.pageView()
         })
+        ttqInit();
     }, [])
 
     return (
@@ -103,6 +107,39 @@ export default function App({ Component, pageProps }) {
                                 data-type="two"
                                 data-position="bottom-left"
                             /> */}
+                            <Script
+                                id="tiktok-pixel"
+                                strategy="afterInteractive"
+                                dangerouslySetInnerHTML={{
+                                __html: `
+                                    !function (w, d, t) {
+                                    w.TiktokAnalyticsObject = t;
+                                    var ttq = w[t] = w[t] || [];
+                                    ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+                                    ttq.setAndDefer = function(t,e){ t[e] = function(){ t.push([e].concat(Array.prototype.slice.call(arguments,0))); } };
+                                    for (var i = 0; i < ttq.methods.length; i++) {
+                                        ttq.setAndDefer(ttq, ttq.methods[i]);
+                                    }
+                                    ttq.instance = function(i){ var e = ttq._i[i] || []; for(var n = 0; n < ttq.methods.length; n++){
+                                        ttq.setAndDefer(e, ttq.methods[n]);
+                                    } return e; };
+                                    ttq.load = function(id, opt){
+                                        var u = "https://analytics.tiktok.com/i18n/pixel/events.js";
+                                        ttq._i = ttq._i || {}; ttq._i[id] = []; ttq._i[id]._u = u;
+                                        ttq._t = ttq._t || {}; ttq._t[id] = +new Date;
+                                        ttq._o = ttq._o || {}; ttq._o[id] = opt || {};
+                                        var s = document.createElement("script");
+                                        s.type = "text/javascript"; s.async = true;
+                                        s.src = u + "?sdkid=" + id + "&lib=" + t;
+                                        var x = document.getElementsByTagName("script")[0];
+                                        x.parentNode.insertBefore(s, x);
+                                    };
+                                    ttq.load('D08U1CRC77U9CBHGPIKG'); // ← ваш пиксель-ID
+                                    ttq.page();
+                                    }(window, document, 'ttq');
+                                `,
+                                }}
+                            />
                         </Head>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <AnimatePresence

@@ -7,12 +7,18 @@ import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import EventFaq from "./EventFaq/EventFaq"
 import { cx } from "../../../../../utils/classnames"
 import PhotosFromPastEvents from "../PhotosFromPastEvents/PhotosFromPastEvents"
 import HomePartners from "../../../Home/HomePartners/HomePartners"
 import EventLineUp from "../EventLineUp/EventLineUp"
+import AboutLines from "../../../../UI/Animation/About/AboutLines"
+import Container from "../../../../UI/Container/Container"
+import HozhoSlider from "../../Hozho/Slider/HozhoSlider"
+import YoutubeCard from "../../../../Common/YoutubeCard/YoutubeCard"
+import EventHowItWas from "../EventHowItWas/EventHowItWas"
+import Image from "next/image"
 
 const EditerMarkdown = dynamic(
     () =>
@@ -25,16 +31,37 @@ const EditerMarkdown = dynamic(
 const EventAbout = (props) => {
     const { event, scrollToPayment, randomPhotos } = props
 
+    const [featuredMedia, setFeaturedMedia] = useState([])
+
     const { locale } = useRouter()
     const intl = useIntl()
 
-    
-    const description =
-    locale === "ua" ? event.description : event.description_en
+    const description = locale === "ua" ? event.description : event.description_en
 
     const main_keys = locale === "ua" ? event.main_keys : event.main_keys_en
 
     useEffect(() => {
+        const newFeaturedMedia = []
+
+        if (event.lineup[0].stages) {
+            event.lineup.forEach((day) => {
+                day?.stages.forEach((stage) => {
+                    stage?.slots.forEach((slot) => {
+                        slot?.djs.forEach((dj) => {
+                            if (dj.embed_link) {
+                                newFeaturedMedia.push({
+                                    url: dj.embed_link,
+                                    title: dj.embed_title
+                                })
+                            }
+                        })
+                    })
+                })
+            })
+        }
+
+        setFeaturedMedia(newFeaturedMedia)
+
         Aos.init({ duration: 1000 })
     }, [])
 
@@ -44,24 +71,40 @@ const EventAbout = (props) => {
             data-aos="fade-down"
             data-aos-duration="2000"
         >
-            <Header type="h2">
-                {intl.formatMessage({ id: "event.about" })}
-            </Header>
-            <div className={classes.textBlock}>
-                <EditerMarkdown
-                    source={description}
-                    className={cx(classes.markdown, !main_keys ? classes.full : "" )}
-                    style={{
-                        background: "transparent",
-                        color: "white",
-                        fontFamily: "Helvetica",
-                        whiteSpace: "pre-wrap"
-                    }}
-                />
-                {main_keys && (
+            <EventLineUp
+                event={event}
+                disableMargin={true}
+            />
+            {featuredMedia.length > 0 && (
+                <div className={classes.featured}>
+                    <Container className={classes.container}>
+                        <h5>ARTISTS MEDIA</h5>
+                    </Container>
+                    <HozhoSlider>
+                        {featuredMedia.map((el, index) => (
+                            <div
+                                className={classes.sliderEl}
+                                key={index}
+                            >
+                                {el.url?.includes("<iframe") ? (
+                                    <div dangerouslySetInnerHTML={{ __html: el.url }}/>
+                                ) : (
+                                    <YoutubeCard
+                                        src={el.url}
+                                        title={el.title}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </HozhoSlider>
+                </div>
+            )}
+            <Container className={classes.container}>
+                <Header type="h2">{intl.formatMessage({ id: "event.about" })}</Header>
+                <div className={classes.textBlock}>
                     <EditerMarkdown
-                        source={main_keys}
-                        className={classes.markdown}
+                        source={description}
+                        className={cx(classes.markdown, !main_keys ? classes.full : "")}
                         style={{
                             background: "transparent",
                             color: "white",
@@ -69,32 +112,54 @@ const EventAbout = (props) => {
                             whiteSpace: "pre-wrap"
                         }}
                     />
-                )}
-            </div>
-            {/* <PhotosFromPastEvents photos={randomPhotos}/> */}
-            <div
-                className={classes.buyTicket}
-                data-aos="fade-down"
-                data-aos-duration="2000"
-            >
-                <Header type="h4">
-                    {intl.formatMessage({ id: "event.readyBuy" })}
-                </Header>
-                <ExploreButton
-                    onClick={scrollToPayment}
-                    className={classes.redirectBut}
-                    text={intl.formatMessage({
-                        id: "button.buyTicket"
-                    })}
-                />
-            </div>
-            <EventLineUp event={event} disableMargin={true}/>
-            {event.partners?.length > 0 && (
-                <HomePartners partners={event.partners} disablePadding={true} />
+                    {main_keys && (
+                        <EditerMarkdown
+                            source={main_keys}
+                            className={classes.markdown}
+                            style={{
+                                background: "transparent",
+                                color: "white",
+                                fontFamily: "Helvetica",
+                                whiteSpace: "pre-wrap"
+                            }}
+                        />
+                    )}
+                </div>
+                <div
+                    className={classes.buyTicket}
+                    data-aos="fade-down"
+                    data-aos-duration="2000"
+                >
+                    <Header type="h4">{intl.formatMessage({ id: "event.readyBuy" })}</Header>
+                    <ExploreButton
+                        onClick={scrollToPayment}
+                        className={classes.redirectBut}
+                        text={intl.formatMessage({
+                            id: "button.buyTicket"
+                        })}
+                    />
+                </div>
+            </Container>
+            {event.location_scheme && (
+                <div className={classes.locationScheme}>
+                    <Container>
+                        <h5>LOCATION SCHEME</h5>
+                    </Container>
+                    <HozhoSlider>
+                        {event.location_scheme.map(el => (
+                            <div className={classes.sliderEl}>
+                                <div className={classes.locSchemeEl}>
+                                    <Image src={el} fill/>
+                                </div>
+                            </div>
+                        ))}
+                    </HozhoSlider>
+                </div>
             )}
-            {event.faq && event.faq.length > 0 && (
-                <EventFaq event={event} />
+            {event.howItWas && (
+                <EventHowItWas event={event} />
             )}
+            {event.faq && event.faq.length > 0 && <EventFaq event={event} />}
         </div>
     )
 }

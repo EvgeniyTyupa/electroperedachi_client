@@ -24,16 +24,37 @@ const EventBuyTicket = (props) => {
 
     const [discount, setDiscount] = useState(0)
 
+    const [ticketCart, setTicketCart] = useState([])
+
     const intl = useIntl()
 
-    const minusCount = () => {
-        if (count - 1 >= 1) {
-            setCount(count - 1)
+    const minusCount = (ticketType) => {
+        const newTicketCart = [ ...ticketCart ]
+        const ticketTypeIndex = newTicketCart.findIndex(el => el._id === ticketType._id)
+        if (ticketTypeIndex >= 0) {
+            if (newTicketCart[ticketTypeIndex].count - 1 > 0) {
+                newTicketCart[ticketTypeIndex].count -= 1
+            } else {
+                newTicketCart.splice(ticketTypeIndex, 1)
+            }
         }
+        setTicketCart(newTicketCart)
     }
 
-    const plusCount = () => {
-        setCount(count + 1)
+    const plusCount = (ticketType) => {
+        const newTicketCart = [ ...ticketCart ]
+        const ticketTypeIndex = newTicketCart.findIndex(el => el._id === ticketType._id)
+
+        if (ticketTypeIndex >= 0) {
+            newTicketCart[ticketTypeIndex].count += 1
+        } else {
+            newTicketCart.push({
+                _id: ticketType._id,
+                price: discount ? ticketType.price[0].price - (Number(ticketType.price[0].price) / 100 * Number(discount)) : ticketType.price[0].price,
+                count: 1
+            })
+        }
+        setTicketCart(newTicketCart)
     }
 
     useEffect(() => {
@@ -41,34 +62,22 @@ const EventBuyTicket = (props) => {
     }, [count, price])
 
     useEffect(() => {
-        if (!event.is_multi_buy) {
-            const newPrice = price - discount
-            setTotalPriceDiscount(Math.ceil(newPrice) * count)
-        } else {
-            let newDiscountPercents = 0
-            switch(count) {
-                case 1: {
-                    newDiscountPercents = 0
-                    break
-                }
-                case 2: {
-                    newDiscountPercents = 10
-                    break
-                }
-                case 3: {
-                    newDiscountPercents = 15
-                    break
-                }
-                default: {
-                    newDiscountPercents = 20
-                    break
-                }
-            }
-            const newDiscount = (price * count) / 100 * newDiscountPercents
-            setTotalPriceDiscount(Math.ceil(price * count - newDiscount))
-        }
-    }, [count, discount, price, event])
+        let newTotalPrice = 0
+        ticketCart.forEach(el => {
+            newTotalPrice += el.price * el.count
+        })
+        setTotalPrice(newTotalPrice)
+    }, [ticketCart])
 
+    useEffect(() => {
+        if (discount) {
+            const newTicketCart = [ ...ticketCart ]
+            newTicketCart.forEach(el => {
+                el.price = el.price - (Number(el.price) / 100 * Number(discount))
+            })
+            setTicketCart(newTicketCart)
+        }
+    }, [discount])
 
     useEffect(() => {
         Aos.init({ duration: 1000 })
@@ -83,9 +92,9 @@ const EventBuyTicket = (props) => {
                     data-aos-duration="2000"
                 >
                     {/* <h3>electroperedachi</h3> */}
-                    <p className={classes.date}>
+                    {/* <p className={classes.date}>
                         {moment(event.date).format("DD.MM.YY")}
-                    </p>
+                    </p> */}
                     <Image
                         src={
                             event.image_on_ticket_form
@@ -106,36 +115,50 @@ const EventBuyTicket = (props) => {
                     <p className={classes.rules}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
-                    <div className={classes.ticketsBlock}>
-                        <p className={classes.price}>
-                            {intl.formatMessage({ id: "event.price" })}
-                            &nbsp;
-                            <span className={totalPriceDiscount !== totalPrice ? classes.oldPrice : ""}>{totalPrice}</span>
-                            &nbsp;
-                            <br/>
-                            {totalPriceDiscount != totalPrice && <span className={classes.discountPrice}>{totalPriceDiscount}{" "}</span>}
-                            {intl.formatMessage({ id: "event.currency" })}.
-                        </p>
-                        <div className={classes.ticketsCount}>
-                            <label>
-                                {intl.formatMessage({ id: "event.tickets" })}
-                            </label>
-                            <Button
-                                className={classes.countBut}
-                                onClick={minusCount}
-                            >
-                                -
-                            </Button>
-                            <span>{count}</span>
-                            <Button
-                                className={classes.countBut}
-                                onClick={plusCount}
-                            >
-                                +
-                            </Button>
-                        </div>
+                    {event.price?.map(el => (
+                        el.price.length > 0 && (
+                            <div className={classes.ticketsBlock}>
+                                <div className={classes.ticketType}>
+                                    <p className={classes.ticketName}>{el.name}</p>
+                                    <p className={classes.price}>
+                                        {intl.formatMessage({ id: "event.price" })}
+                                        &nbsp;
+                                        <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
+                                        &nbsp;
+                                        <br/>
+                                        {discount ? <span className={classes.discountPrice}>{(el.price[0]?.price / 100 * discount)}{" "}</span> : ""}
+                                        {intl.formatMessage({ id: "event.currency" })}.
+                                    </p>
+                                </div>
+                                <div className={classes.ticketsCount}>
+                                    <label>
+                                        {intl.formatMessage({ id: "event.tickets" })}
+                                    </label>
+                                    <Button
+                                        className={classes.countBut}
+                                        onClick={() => minusCount(el)}
+                                    >
+                                        -
+                                    </Button>
+                                    <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
+                                    <Button
+                                        className={classes.countBut}
+                                        onClick={() => plusCount(el)}
+                                    >
+                                        +
+                                    </Button>
+                                </div>
+                            </div>
+                        )
+                    ))}
+                    <div className={classes.totalPrice}>
+                        <label>
+                            {intl.formatMessage({ id: "event.totalPrice" })}
+                        </label>
+                        <span>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
                     </div>
                     <EventBuyTicketForm
+                        ticketCart={ticketCart}
                         totalPrice={totalPrice}
                         count={count}
                         event={event}

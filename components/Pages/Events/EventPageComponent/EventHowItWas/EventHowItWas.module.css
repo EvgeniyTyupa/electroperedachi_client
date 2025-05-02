@@ -1,68 +1,32 @@
 .main {
     width: 100%;
-    margin-top: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+    padding-top: 250px;
+    box-sizing: border-box;
+    margin-bottom: 100px;
 }
-.main h5 {
-    font-weight: 300;
-    font-size: 22px;
-    line-height: 25px;
-    margin-bottom: 1rem;
-}
-.main iframe {
+.photo {
+    position: relative;
     width: 100%;
-    height: 609px;
-    border: none;
+    height: 350px
 }
-.video {
-    margin-top: 2rem;
+.photo img {
+    object-fit: cover;
 }
-.photosSection, .videoSection {
-    margin-top: 100px;
+.main h2 {
+    margin-bottom: 2rem;
 }
-.video img {
-}
-.photos img {
-    transition-duration: .3s;
-}
-.photos img:hover {
-    transform: scale(1.02);
-}
-.fullAlbumLink {
-    margin-top: 2rem;
-    display: block;
-    color: var(--main-orange);
-    text-decoration: underline;
+.sliderEl {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 568px) {
     .main {
-        padding: 0 2rem;
-        box-sizing: border-box;
-    }
-}
-
-@media screen and (max-width: 864px) {
-    .main iframe {
-        height: 400px;
-    }
-}
-
-@media screen and (max-width: 468px) {
-    .main {
-        padding: 0 2rem;
-        margin-top: 60px;
-    }
-    .main iframe {
-        height: 220px;
-    }
-    .photosSection, .videoSection {
-        margin-top: 45px;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .main {
-        padding: 0 1rem;
-        margin-top: 60px;
+        height: 450px;
+        padding-top: 150px;
     }
 }

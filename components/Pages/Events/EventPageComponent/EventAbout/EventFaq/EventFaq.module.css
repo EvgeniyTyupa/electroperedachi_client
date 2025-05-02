@@ -15,8 +15,12 @@
     z-index: 0;
     position: absolute;
     width: 100%;
-    top: -10%;
-    left: -10%;
+    top: 10%;
+    transform: rotate(0deg);
+    opacity: .4;
+}
+.container {
+    flex-direction: column;
 }
 
 @media screen and (max-width: 568px) {

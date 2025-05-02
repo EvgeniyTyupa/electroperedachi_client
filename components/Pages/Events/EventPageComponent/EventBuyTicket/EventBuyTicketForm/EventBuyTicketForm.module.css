@@ -98,6 +98,9 @@
     background-color: var(--main-orange) !important;
     color: white !important;
 }
+.buyBut:disabled {
+    opacity: .1
+}
 .promoBut {
     color: #000000 !important;
     font-family: "Helvetica" !important;

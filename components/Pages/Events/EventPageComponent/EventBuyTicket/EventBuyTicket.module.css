@@ -62,6 +62,9 @@
     color: #000000;
     margin-top: 30px;
 }
+.ticketName {
+    color: #000000;
+}
 .price {
     font-weight: 700;
     font-size: 20px;
@@ -73,10 +76,14 @@
 }
 .ticketsBlock {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     width: 100%;
     margin-top: 30px;
+    border: 2px solid black;
+    /* border-radius: 4px; */
+    padding: 1rem;
+    box-sizing: border-box;
 }
 .ticketsCount {
     display: flex;
@@ -110,6 +117,20 @@
     text-decoration: line-through;
     font-weight: 300;
 }
+.totalPrice {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    color: black;
+    margin-top: 2rem;
+}
+.totalPrice label {
+    font-size: 20px;
+}
+.totalPrice span {
+    font-size: 24px;
+    font-weight: 600;
+}
 
 @media screen and (max-width: 968px) {
     .container {
@@ -141,6 +162,17 @@
         padding-bottom: 45px;
         gap: 45px;
     }
+    .ticketsBlock {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5rem;
+    }
+    .ticketType br {
+        display: none;
+    }
+    .ticketType {
+        width: 100%;
+    }
     .date {
         font-size: 40px;
     }
@@ -158,11 +190,6 @@
     .container {
         padding-top: 1rem;
         padding-bottom: 1rem;
-    }
-    .ticketsBlock {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 1rem;
     }
     .price br {
         display: none;

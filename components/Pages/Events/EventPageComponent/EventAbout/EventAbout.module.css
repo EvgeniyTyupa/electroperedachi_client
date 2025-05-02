@@ -2,16 +2,23 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 190px;
     gap: 70px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
 }
 .textBlock {
     display: flex;
     justify-content: space-between;
     gap: 105px;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
 }
 .markdown {
     width: 50%;
+    z-index: 1;
+    position: relative;
 }
 .full {
     width: 100%;
@@ -28,7 +35,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: 65px;
 }
 .redirectBut {
     width: 140px !important;
@@ -40,6 +46,37 @@
     position: relative !important;
     top: 8px !important; 
     transition-duration: .3s !important;
+}
+.slider {
+    margin-top: 45px;
+    box-sizing: border-box;
+    position: relative;
+    top: -90px;
+}
+.sliderEl {
+    padding: 0 1rem;
+}
+.sliderEl iframe {
+    border-radius: 12px;
+    height: 352px;
+}
+.featured {
+    display: flex;
+    flex-direction: column;
+}
+.main h5 {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 25px;
+    margin-bottom: 2rem;
+}
+.locSchemeEl {
+    width: 100%;
+    position: relative;
+    height: 300px;
+}
+.locSchemeEl img {
+    object-fit: contain;
 }
 
 @media screen and (max-width: 1024px) {
@@ -66,9 +103,12 @@
 }
 
 @media screen and (max-width: 568px) {
+    .container {
+        padding: 0 2rem !important;
+    }
     .main {
-        padding: 0 2rem;
-        margin-top: 90px;
+        padding: 0 0rem;
+        margin-top: 45px;
         gap: 45px;
     }
     .textBlock {
@@ -82,11 +122,17 @@
         position: relative !important;
         top: 5px !important;
     }
+    .featured h5 {
+        font-size: 15px;
+    }
 }
 
 @media screen and (max-width: 350px) {
-    .main {
-        padding: 0 1rem;
+    .container {
+        padding: 0 1rem !important;
+    }
+    .sliderEl {
+        padding: 0 .5rem;
     }
 }
 

@@ -11,6 +11,7 @@ import "aos/dist/aos.css"
 import Header from "../../../../UI/Text/Header/Header"
 import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
+import { humanizeDates, humanizeDatesWithDay } from "../../../../../utils/humanizeDate"
 
 const EventTitle = (props) => {
     const { event, isEnd, price, scrollToPayment, isShowBuy } = props
@@ -20,6 +21,8 @@ const EventTitle = (props) => {
     const { width } = useWindowDimensions()
 
     const intl = useIntl()
+
+    console.log(width)
 
     const dayOfWeek =
         locale === "ua"
@@ -49,6 +52,13 @@ const EventTitle = (props) => {
                         {intl.formatMessage({ id: "event.hook" })}
                     </h4>
                 )} */}
+                {event.partners && (
+                    <div className={classes.partners}>
+                        {event.partners.map((el) => (
+                            <img src={el.image} alt={`${el.name} partner`} />
+                        ))}
+                    </div>
+                )}
                 <div
                     className={classes.title}
                     data-aos="fade-down"
@@ -67,12 +77,12 @@ const EventTitle = (props) => {
                         </h5>
                         <div className={classes.infoData}>
                             <p className={classes.important}>
-                                {dayOfWeek},{" "}
-                                {moment(event.date).format("DD.MM.YYYY")}
+                                {/* {humanizeDatesWithDay(event.dates ? event.dates : event.date, locale)},{" "} */}
+                                {humanizeDates(event.dates ? event.dates : event.date)}
                             </p>
                             {!isEnd && (
                                 <span>
-                                    {event.start} : {event.end}
+                                    {event.dates ? event.dates[0].start : event.start} : {event.dates ? event.dates[0].end : event.end}
                                 </span>
                             )}
                         </div>

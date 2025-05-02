@@ -2,7 +2,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 170px
+    margin-top: 170px;
+    margin-bottom: 45px;
+}
+.container {
+    flex-direction: column;
 }
 .withVideo {
     margin-top: 100px;
@@ -23,6 +27,39 @@
     flex-wrap: wrap;
     gap: 150px;
     margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+.newLineUp {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.lines {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 20%;
+    opacity: .2;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.lines2 {
+    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 60%;
+    opacity: .2;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1024px) {
@@ -34,6 +71,9 @@
 
 
 @media screen and (max-width: 568px) {
+    .container {
+        padding: 0 2rem !important;
+    }
     .main {
         padding: 0 0rem;
         margin-top: 75px;
@@ -47,10 +87,13 @@
     .wrapper {
         margin-top: 25px;
     }
+    .lines2 {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 350px) {
-    .main {
-        padding: 0 0rem;
+    .container {
+        padding: 0 1rem !important;
     }
 }

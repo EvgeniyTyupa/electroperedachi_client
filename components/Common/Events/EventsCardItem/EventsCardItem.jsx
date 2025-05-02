@@ -24,10 +24,6 @@ const EventsCardItem = (props) => {
 
     const { width } = useWindowDimensions()
 
-    let date = locale === "ua" 
-    ? moment(item.date).locale('uk').format("DD MMM YYYY")
-    : moment(item.date).locale('en').format("DD MMM YYYY")
-
     const lineup = item.lineup[0].djs.map((el, index) => (
         el.name + (index < item.lineup[0].djs.length - 1 ? ", " : "")
     ))
@@ -44,6 +40,19 @@ const EventsCardItem = (props) => {
             return 1
         } else {
             return 0
+        }
+    }
+
+    const humanizeDates = (dates) => {
+        const loc = locale === "ua" ? "uk" : "en"
+
+        if (dates.length > 1) {
+            const firstDate = moment(dates[0].date).locale(loc).format("D")
+            const lastDate = moment(dates[dates.length - 1].date).locale(loc).format("D MMM YYYY")
+
+            return `${firstDate}-${lastDate}`
+        } else {
+            return moment(dates[0].date).locale(loc).format("DD MMM YYYY")
         }
     }
 
@@ -70,7 +79,7 @@ const EventsCardItem = (props) => {
                 <div className={classes.info}>
                     <div className={classes.mainInfo}>
                         <div className={classes.date}>
-                            <p>{date}</p>
+                            <p>{humanizeDates(item.dates ? item.dates : [{ date: item.date }])}</p>
                         </div>
                         <div className={classes.titleAndLineup}>
                             <h5 ref={titleRef}>{item.title}</h5>

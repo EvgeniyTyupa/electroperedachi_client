@@ -1,19 +1,18 @@
 import classes from "./EventHowItWas.module.css"
-import Masonry from "@mui/lab/Masonry"
-import { useIntl } from "react-intl"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
-import RedirectToAlbum from "./RedirectToAlbum/RedirectToAlbum"
 import { isValidYoutubeLink } from "../../../../../utils/isValidYoutubeLink"
 import Image from "next/image"
+import Header from "../../../../UI/Text/Header/Header"
+import HozhoSlider from "../../Hozho/Slider/HozhoSlider"
+import YoutubeCard from "../../../../Common/YoutubeCard/YoutubeCard"
+import Container from "../../../../UI/Container/Container"
 
 const EventHowItWas = (props) => {
     const { event } = props
-
-    const intl = useIntl()
 
     const { width } = useWindowDimensions()
 
@@ -22,51 +21,34 @@ const EventHowItWas = (props) => {
     }, [])
 
     return (
-        <div className={classes.main}>
-            {(event.how_it_was && isValidYoutubeLink(event.how_it_was.video)) && (
-                <div
-                    className={classes.videoSection}
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                >
-                    <h5>
-                        {intl.formatMessage({ id: "event.how_it_was.video" })}
-                    </h5>
-                    <div className={classes.video}>
-                        <iframe src={event.how_it_was.video} />
+        <div
+            className={classes.main}
+            style={{
+                backgroundImage: `url(${event.howItWas.backgroundImg})`
+            }}
+        >
+            <Container className={classes.container}>
+                <Header type="h2">How it was</Header>
+            </Container>
+            <HozhoSlider>
+                {event.howItWas?.content?.map((el, index) => (
+                    <div
+                        className={classes.sliderEl}
+                        key={index}
+                    >
+                        {el.photo ? (
+                            <div className={classes.photo}>
+                                <Image fill src={el.photo} alt={el.title ?? "How it Was"}/>
+                            </div>
+                        ) : (
+                            <YoutubeCard
+                                src={el.youtubeUrl}
+                                title={el.title}
+                            />
+                        )}
                     </div>
-                </div>
-            )}
-            {((event.how_it_was && event.how_it_was.photos.length) > 0 ||
-                (event.how_it_was && event.how_it_was.fullAlbumPhotosUrl)) && (
-                <div
-                    className={classes.photosSection}
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                >
-                    <h5>
-                        {intl.formatMessage({ id: "event.how_it_was.photos" })}
-                    </h5>
-                    <div className={classes.photos}>
-                        <Masonry columns={width > 568 ? 3 : 2} spacing={2}>
-                            {event.how_it_was.photos.map(el => (
-                                <div key={el}>
-                                    <Image
-                                        src={el}
-                                        alt={`electroperedachi ${event.title} photo`}
-                                        layout="responsive"
-                                        width={300}
-                                        height={200}
-                                    />
-                                </div>
-                            ))}
-                        </Masonry>
-                    </div>
-                    {event.how_it_was.fullAlbumPhotosUrl && (
-                        <RedirectToAlbum albumUrl={event.how_it_was.fullAlbumPhotosUrl}/>
-                    )}
-                </div>
-            )}
+                ))}
+            </HozhoSlider>
         </div>
     )
 }

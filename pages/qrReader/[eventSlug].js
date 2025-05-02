@@ -6,6 +6,7 @@ import Container from "../../components/UI/Container/Container";
 import ActionButton from "../../components/UI/Buttons/ActionButton/ActionButton";
 import Head from "next/head";
 import { useAppContext } from "../../context/AppContext";
+import moment from "moment";
 
 const QRCodeReader = (props) => {
   const { currentEvent } = props;
@@ -102,11 +103,13 @@ const QRCodeReader = (props) => {
       setIsFetchingContext(true);
 
       try {
-        const { _id, userId, eventId } = JSON.parse(code.data);
+        const { _id, userId, eventId, ticketTypeId } = JSON.parse(code.data);
         const imageUrl = canvas.toDataURL();
         setCapturedImage(imageUrl);
 
         let res = null
+
+        const scanTs = moment().toISOString();
 
         if (!_id) {
             //concert ua case
@@ -123,6 +126,9 @@ const QRCodeReader = (props) => {
                 userId,
                 eventId,
                 currentEvent._id,
+                "",
+                ticketTypeId,
+                scanTs
             )
         }
         setResult(res);

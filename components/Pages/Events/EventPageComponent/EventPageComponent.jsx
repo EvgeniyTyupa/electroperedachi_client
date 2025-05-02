@@ -1,11 +1,9 @@
 import Container from "../../../UI/Container/Container"
 import EventAbout from "./EventAbout/EventAbout"
 import EventBuyTicket from "./EventBuyTicket/EventBuyTicket"
-import EventLineUp from "./EventLineUp/EventLineUp"
 import classes from "./EventPageComponent.module.css"
 import EventTitle from "./EventTitle/EventTitle"
 import moment from "moment"
-import EventHowItWas from "./EventHowItWas/EventHowItWas"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useRef } from "react"
@@ -15,6 +13,7 @@ import "aos/dist/aos.css"
 import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { FB_PIXEL } from "../../../../utils/constants"
+import { ttqAddToCart } from "../../../../utils/tikTokTracker"
 
 const EventPageComponent = (props) => {
     const { event, randomPhotos } = props
@@ -29,7 +28,7 @@ const EventPageComponent = (props) => {
 
     const paymentBlockRef = useRef(null)
 
-    const isEnd = event ? moment().startOf("day") > moment(event.date) : true
+    const isEnd = event ? moment().startOf("day") > moment(event.dates ? event.dates[event.dates.length - 1].date : event.date) : true
 
     const { width } = useWindowDimensions()
 
@@ -44,17 +43,35 @@ const EventPageComponent = (props) => {
             ReactPixel.init(FB_PIXEL)
             ReactPixel.track("AddToCart")
         })
+        ttqAddToCart()
     };
 
     useEffect(() => {
-        let now = moment()
+        const now = moment();
 
-        event.pricing.forEach((el) => {
-            if (now >= moment(el.start) && now <= moment(el.end)) {
-                setPrice(el.price)
-                setIsShowBuy(true)
+        // flatten all price-windows into one array
+        if (event.price) {
+            const allWindows = event.price.flatMap(t => t.price);
+    
+            const matching = allWindows.filter(el =>
+                now.isBetween(
+                    moment(el.start), 
+                    moment(el.end), 
+                    null, 
+                    '[]'
+                )
+            );
+            
+            if (matching.length > 0) {
+                const cheapest = matching.reduce((a, b) =>
+                  a.price < b.price ? a : b
+                );
+                setPrice(cheapest.price);
+                setIsShowBuy(true);
+            } else {
+                setIsShowBuy(false);
             }
-        })
+        }
 
         Aos.init({ duration: 1000 })
     }, [])
@@ -83,7 +100,7 @@ const EventPageComponent = (props) => {
                 window.removeEventListener("scroll", handleScroll)
             }
         }
-    }, [videoRef])
+    }, [videoRef, paymentBlockRef])
 
     useEffect(() => {
         if (isAddToCartEventSend) {
@@ -112,21 +129,13 @@ const EventPageComponent = (props) => {
                         data-aos-duration="2000"
                     />
                 )}
-                {!isEnd && (
-                    <EventAbout
-                        event={event}
-                        scrollToPayment={scrollToPayment}
-                        randomPhotos={randomPhotos}
-                    />
-                )}
                 
-                {isEnd && (
-                    <>
-                        <EventLineUp event={event}/>
-                        <EventHowItWas event={event} />
-                    </>
-                )}
             </Container>
+            <EventAbout
+                event={event}
+                scrollToPayment={scrollToPayment}
+                randomPhotos={randomPhotos}
+            />
             {!isEnd && isShowBuy && (
                 <EventBuyTicket
                     event={event}

@@ -24,7 +24,7 @@ import Link from "next/link"
 import { FB_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 
 const EventBuyTicketForm = (props) => {
-    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount } = props
+    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart } = props
 
     const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
@@ -39,22 +39,22 @@ const EventBuyTicketForm = (props) => {
 
     const currentURL = router.asPath;
 
-    const { control, handleSubmit, reset, getValues } = useForm()
+    const { control, handleSubmit, reset, getValues, setValue } = useForm()
 
     const intl = useIntl()
 
     const onSubmit = async (data) => {
         setIsFetchingContext(true)
         try {
-            const response = await userApi.add(
-                data.email,
-                data.phone,
-                (isAppliedPromo || event.is_multi_buy) ? totalPriceDiscount : totalPrice,
-                count,
-                query.promo || "",
-                event._id,
-                isAppliedPromo ? data.promocode : ""
-            )
+            const submitData = {
+                ...data,
+                ticketCart,
+                promo: query.promo || "",
+                eventId: event._id,
+                promocode: isAppliedPromo ? data.promocode : ""
+            }
+
+            const response = await userApi.add(submitData)
 
             if (event.google_table_id) {
                 logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
@@ -102,8 +102,7 @@ const EventBuyTicketForm = (props) => {
             if (response !== "not valid") {
                 setCheckPromocodeError(false)
                 setServerResponse("Promocode applied!")
-                const discount = (price / 100) * Number(response.promocode.discount)
-                setDiscount(discount)
+                setDiscount(Number(response.promocode.discount))
                 setIsAppliedPromo(true)
             } else {
                 setCheckPromocodeError(true)
@@ -360,7 +359,7 @@ const EventBuyTicketForm = (props) => {
                 />
             </div>
             <div className={classes.form_footer}>
-                <Button type={"submit"} className={classes.buyBut}>
+                <Button disabled={!totalPrice} type={"submit"} className={classes.buyBut}>
                     {intl.formatMessage({ id: "button.buyTicket" })}
                 </Button>
                 <div className={classes.payment_sources}>
