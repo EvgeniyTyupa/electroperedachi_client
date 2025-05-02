@@ -80,7 +80,7 @@ const EventAbout = (props) => {
                     <Container className={classes.container}>
                         <h5>ARTISTS MEDIA</h5>
                     </Container>
-                    <HozhoSlider>
+                    <HozhoSlider length={featuredMedia.length}>
                         {featuredMedia.map((el, index) => (
                             <div
                                 className={classes.sliderEl}
@@ -140,12 +140,12 @@ const EventAbout = (props) => {
                     />
                 </div>
             </Container>
-            {event.location_scheme && (
+            {(event.location_scheme && event.location_scheme.length > 0) && (
                 <div className={classes.locationScheme}>
                     <Container>
                         <h5>LOCATION SCHEME</h5>
                     </Container>
-                    <HozhoSlider>
+                    <HozhoSlider length={event.location_scheme?.length}>
                         {event.location_scheme.map(el => (
                             <div className={classes.sliderEl}>
                                 <div className={classes.locSchemeEl}>
