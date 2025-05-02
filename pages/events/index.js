@@ -53,22 +53,64 @@ export async function getStaticProps(context) {
     const eventsLineups = []
     
     events.forEach(event => {
-        event.pricing.forEach((el) => {
-            if (now >= moment(el.start) && now <= moment(el.end)) {
-                eventsPricing.push(el.price)
+        if (event.pricing) {
+            event.pricing.forEach((el) => {
+                if (now >= moment(el.start) && now <= moment(el.end)) {
+                    eventsPricing.push({ price: el.price, validFrom: el.start })
+                }
+            })
+        } else {
+            if (event.price) {
+                const allWindows = event.price.flatMap(t => t.price);
+                
+                const matching = allWindows.filter(el =>
+                    now.isBetween(
+                        moment(el.start), 
+                        moment(el.end), 
+                        null, 
+                        '[]'
+                    )
+                );
+                
+                if (matching.length > 0) {
+                    const cheapest = matching.reduce((a, b) =>
+                        a.price < b.price ? a : b
+                    );
+                    
+                    let currentPrice = cheapest.price;
+                    let validFrom = cheapest.start
+                    eventsPricing.push({ price: currentPrice, validFrom: validFrom })
+                }
             }
-        })
+        }
         let djs = []
-        event.lineup.forEach(stage => {
-            stage.djs.forEach(dj => {
-                djs.push({
-                    "@type": "Person",
-                    "name": dj.name
+        if (event.lineup[0].stages) {
+            event.lineup.forEach(day => {
+                day?.stages.forEach(stage => {
+                    stage?.slots.forEach(slot => {
+                        slot?.djs.forEach(dj => {
+                            djs.push({
+                                "@type": "Person",
+                                "name": dj.name
+                            })  
+                        })
+                    })
                 })
             })
-        })
+        } else {
+            event.lineup.forEach(stage => {
+                stage.djs.forEach(dj => {
+                    djs.push({
+                        "@type": "Person",
+                        "name": dj.name
+                    })
+                })
+            })
+        }
         eventsLineups.push(djs)
     })
+
+    console.log(eventsPricing, events.length)
 
     const events_json_info = {
         "@context": "https://schema.org",
@@ -81,8 +123,8 @@ export async function getStaticProps(context) {
                 "name": el.title,
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "eventStatus": "https://schema.org/EventScheduled",
-                "startDate": el.date,
-                "endDate": el.date,
+                "startDate": el.date ? el.date : el.dates[0].date,
+                "endDate": el.date ? new Date(el.date) : new Date(el.dates[el.dates.length - 1].date),
                 "location": {
                     "@type": "Place",
                     "name": el.venue,
@@ -98,10 +140,10 @@ export async function getStaticProps(context) {
                 "offers": {
                     "@type": "Offer",
                     "url": `https://electroperedachi.com/events/${el.title_code}`,
-                    "price": eventsPricing[index],
+                    "price": eventsPricing[index]?.price ?? 0,
                     "priceCurrency": "UAH",
                     "availability": "https://schema.org/InStock",
-                    "validFrom": el.pricing[0].start
+                    "validFrom": eventsPricing[index]?.validFrom ?? null
                 },
                 "inLanguage": locale,
                 "organizer": {
