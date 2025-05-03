@@ -16,6 +16,10 @@ const EventHowItWas = (props) => {
 
     const { width } = useWindowDimensions()
 
+    const hasPhoto = Boolean(
+        event.howItWas?.content?.find(el => el.photo)
+    );
+
     useEffect(() => {
         Aos.init({ duration: 1000 })
     }, [])
@@ -30,7 +34,7 @@ const EventHowItWas = (props) => {
             <Container className={classes.container}>
                 <Header type="h2">How it was</Header>
             </Container>
-            <HozhoSlider length={event.howItWas?.content?.length}>
+            <HozhoSlider length={event.howItWas?.content?.length} hasPhoto={hasPhoto}>
                 {event.howItWas?.content?.map((el, index) => (
                     <div
                         className={classes.sliderEl}

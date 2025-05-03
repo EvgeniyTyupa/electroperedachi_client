@@ -2,6 +2,7 @@
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     height: 550px;
     padding-top: 250px;
     box-sizing: border-box;
@@ -14,6 +15,8 @@
 }
 .photo img {
     object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
 }
 .main h2 {
     margin-bottom: 2rem;
