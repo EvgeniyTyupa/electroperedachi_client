@@ -8,18 +8,13 @@ import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect, useState } from "react"
-import EventFaq from "./EventFaq/EventFaq"
 import { cx } from "../../../../../utils/classnames"
-import PhotosFromPastEvents from "../PhotosFromPastEvents/PhotosFromPastEvents"
-import HomePartners from "../../../Home/HomePartners/HomePartners"
 import EventLineUp from "../EventLineUp/EventLineUp"
-import AboutLines from "../../../../UI/Animation/About/AboutLines"
 import Container from "../../../../UI/Container/Container"
 import HozhoSlider from "../../Hozho/Slider/HozhoSlider"
 import YoutubeCard from "../../../../Common/YoutubeCard/YoutubeCard"
 import EventHowItWas from "../EventHowItWas/EventHowItWas"
 import Image from "next/image"
-import PhotoModal from "../../../../Common/PhotoModal/PhotoModal"
 
 const EditerMarkdown = dynamic(
     () =>
