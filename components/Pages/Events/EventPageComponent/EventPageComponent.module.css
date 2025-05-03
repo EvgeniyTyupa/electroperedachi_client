@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+    position: relative;
 }
 .container {
     width: 100%;

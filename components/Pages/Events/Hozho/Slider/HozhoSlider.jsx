@@ -16,14 +16,14 @@ const PrevArrow = ({ onClick }) => (
 )
 
 const HozhoSlider = (props) => {
-    const { children, length } = props
+    const { children, arrows } = props
 
     const settings = {
         infinite: true,
-        slidesToShow: length >= 3 ? 2.8 : 1,
+        slidesToShow: 2.8,
         slidesToScroll: 1,
         dots: false,
-        arrows: true,
+        arrows: arrows,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         responsive: [

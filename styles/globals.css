@@ -166,16 +166,16 @@ h1, h2, h3, h4, h5, h6, p {
 
 .hozho-arrow {
   position: absolute;
-  top: -4.5rem;
+  top: -4rem;
   cursor: pointer;
 }
 .hozho-prev {
-  right: 5rem;
+  right: 5.5rem;
   transition-duration: .3s;
   opacity: .7;
 }
 .hozho-next {
-  right: 1rem;
+  right: 1.5rem;
   transition-duration: .3s;
   opacity: .7;
 }
@@ -212,7 +212,7 @@ p {
 
 @media screen and (max-width: 568px) {
   .hozho-arrow {
-    top: -4rem;
+    top: -3.6rem;
   }
 }
 
@@ -220,6 +220,15 @@ p {
   .slick-track {
     padding-left: 5rem;
     height: 190px;
+  }
+  .hozho-prev svg, .hozho-next svg {
+    width: .5rem;
+  }
+  .hozho-prev {
+    right: 6rem;
+  }
+  .hozho-next {
+    right: 2rem;
   }
 }
 
@@ -234,5 +243,14 @@ p {
   .slick-track {
     padding-left: 4rem;
     height: 180px;
+  }
+  .hozho-prev {
+    right: 5rem;
+  }
+  .hozho-next {
+    right: 1rem;
+  }
+  .hozho-arrow {
+    top: -3.5rem;
   }
 }

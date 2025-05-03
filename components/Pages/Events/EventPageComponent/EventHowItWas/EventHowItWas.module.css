@@ -2,11 +2,27 @@
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     height: 550px;
-    padding-top: 250px;
+    padding-top: 300px;
     box-sizing: border-box;
-    margin-bottom: 100px;
+    margin-bottom: 180px;
+    position: relative;
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.gradient {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: -2px;
+}
+.gradient + .gradient {
+    top: unset;
+    bottom: 0;
+    transform: rotate(180deg);
 }
 .photo {
     position: relative;
@@ -21,10 +37,23 @@
 .main h2 {
     margin-bottom: 2rem;
 }
+.slider {
+    position: relative;
+    z-index: 1;
+    margin-top: 85px;
+}
 .sliderEl {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
+}
+.text h2 {
+    margin-bottom: 0 !important;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 @media screen and (max-width: 568px) {

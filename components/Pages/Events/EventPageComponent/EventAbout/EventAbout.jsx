@@ -19,6 +19,7 @@ import HozhoSlider from "../../Hozho/Slider/HozhoSlider"
 import YoutubeCard from "../../../../Common/YoutubeCard/YoutubeCard"
 import EventHowItWas from "../EventHowItWas/EventHowItWas"
 import Image from "next/image"
+import PhotoModal from "../../../../Common/PhotoModal/PhotoModal"
 
 const EditerMarkdown = dynamic(
     () =>
@@ -32,6 +33,8 @@ const EventAbout = (props) => {
     const { event, scrollToPayment, randomPhotos } = props
 
     const [featuredMedia, setFeaturedMedia] = useState([])
+    const [currentPhoto, setCurrentPhoto] = useState(null)
+    const [modalMedia, setModalMedia] = useState([])
 
     const { locale } = useRouter()
     const intl = useIntl()
@@ -39,6 +42,16 @@ const EventAbout = (props) => {
     const description = locale === "ua" ? event.description : event.description_en
 
     const main_keys = locale === "ua" ? event.main_keys : event.main_keys_en
+
+    const handleClickPhoto = (index, photos) => {
+        setModalMedia(photos)
+        setCurrentPhoto(index)
+    }
+
+    const onClose = () => {
+        setModalMedia([])
+        setCurrentPhoto(null)
+    }
 
     useEffect(() => {
         const newFeaturedMedia = []
@@ -80,7 +93,7 @@ const EventAbout = (props) => {
                     <Container className={classes.container}>
                         <h5>ARTISTS MEDIA</h5>
                     </Container>
-                    <HozhoSlider length={featuredMedia.length}>
+                    <HozhoSlider arrows={true} length={featuredMedia.length}>
                         {featuredMedia.map((el, index) => (
                             <div
                                 className={classes.sliderEl}
@@ -145,10 +158,10 @@ const EventAbout = (props) => {
                     <Container>
                         <h5>LOCATION SCHEME</h5>
                     </Container>
-                    <HozhoSlider length={event.location_scheme?.length}>
-                        {event.location_scheme.map(el => (
+                    <HozhoSlider arrows={true}>
+                        {event.location_scheme.map((el, index) => (
                             <div className={classes.sliderEl}>
-                                <div className={classes.locSchemeEl}>
+                                <div className={classes.locSchemeEl} onClick={() => handleClickPhoto(index, event.location_scheme)}>
                                     <Image src={el} fill/>
                                 </div>
                             </div>

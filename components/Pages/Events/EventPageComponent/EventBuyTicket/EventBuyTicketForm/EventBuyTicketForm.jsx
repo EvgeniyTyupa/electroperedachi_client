@@ -135,8 +135,8 @@ const EventBuyTicketForm = (props) => {
         },
         "& .MuiOutlinedInput-root": {
             borderRadius: 0,
-            borderTopRightRadius: "50px",
-            borderBottomRightRadius: "50px"
+            // borderTopRightRadius: "50px",
+            // borderBottomRightRadius: "50px"
         },
         "& .MuiFormLabel-root": {
             color: "black",
