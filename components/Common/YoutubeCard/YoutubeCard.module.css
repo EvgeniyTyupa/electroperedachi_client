@@ -19,3 +19,9 @@
     padding: 0 1rem;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 468px) {
+    .main {
+        /* height: 255px; */
+    }
+}

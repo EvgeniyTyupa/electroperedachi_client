@@ -164,6 +164,25 @@ h1, h2, h3, h4, h5, h6, p {
   margin-block-start: 0;
 }
 
+.hozho-arrow {
+  position: absolute;
+  top: -4.5rem;
+  cursor: pointer;
+}
+.hozho-prev {
+  right: 5rem;
+  transition-duration: .3s;
+  opacity: .7;
+}
+.hozho-next {
+  right: 1rem;
+  transition-duration: .3s;
+  opacity: .7;
+}
+.hozho-next:hover, .hozho-prev:hover {
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -188,6 +207,12 @@ p {
   p {
     font-size: 18px;
     line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .hozho-arrow {
+    top: -4rem;
   }
 }
 

@@ -1,24 +1,38 @@
 import React from "react"
 import Slider from "react-slick"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+
+const NextArrow = ({ onClick }) => (
+    <div className="hozho-arrow hozho-next" onClick={onClick}>
+        <FaChevronRight size={24} />
+    </div>
+)
+  
+  // Кастомная стрелка «назад»
+const PrevArrow = ({ onClick }) => (
+    <div className="hozho-arrow hozho-prev" onClick={onClick}>
+        <FaChevronLeft size={24} />
+    </div>
+)
 
 const HozhoSlider = (props) => {
     const { children, length } = props
 
     const settings = {
-        infinite: true, // Infinite looping of slides
-        slidesToShow: length >= 3 ? 2.8 : 1, // Number of slides to show at a time
-        slidesToScroll: 1, // Number of slides to scroll at a time
-        // autoplay: true, // Enable auto-swiping
-        // autoplaySpeed: 3000, // Time delay between auto-swipes (in milliseconds)
-        dots: false, // Disable dots
-        arrows: false, // Disable arrows
+        infinite: true,
+        slidesToShow: length >= 3 ? 2.8 : 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
         responsive: [
             {
-                breakpoint: 769, // For devices with width <= 768px
+                breakpoint: 769,
                 settings: {
-                    slidesToShow: 1.2, // Show fewer slides
-                    slidesToScroll: 1, // Scroll one slide at a time
-                    autoplaySpeed: 2000, // Adjust autoplay speed if necessary
+                    slidesToShow: 1.2,
+                    slidesToScroll: 1,
+                    autoplaySpeed: 2000,
                 },
             },
         ],

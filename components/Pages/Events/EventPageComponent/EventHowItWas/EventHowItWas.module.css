@@ -27,6 +27,19 @@
 @media screen and (max-width: 568px) {
     .main {
         height: 450px;
-        padding-top: 150px;
+        padding-top: 50px;
+    }
+}
+
+
+@media screen and (max-width: 390px) {
+    .main h2 {
+        font-size: 32px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main h2 {
+        font-size: 32px !important;
     }
 }

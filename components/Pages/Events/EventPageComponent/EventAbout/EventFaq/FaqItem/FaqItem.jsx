@@ -1,11 +1,11 @@
-import { Collapse } from "@mui/material"
+import { Collapse, IconButton } from "@mui/material"
 import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
 import { useState } from "react"
-import { cx } from "../../../../../../../utils/classnames"
-import ExploreButton from "../../../../../../UI/Buttons/ExploreButton/ExploreButton"
 import Header from "../../../../../../UI/Text/Header/Header"
 import classes from "./FaqItem.module.css"
+import { RiArrowRightLine } from "react-icons/ri"
+
 
 const EditerMarkdown = dynamic(
     () =>
@@ -46,10 +46,12 @@ const FaqItem = (props) => {
                     </div>
                 </Collapse>
             </div>
-            <ExploreButton
+            <IconButton
                 onClick={handleExpandClick}
-                className={cx(classes.redirectBut, expanded ? classes.expanded : "")}
-            />
+                className={expanded ? classes.expanded : ""}
+            >
+                <RiArrowRightLine />
+            </IconButton>
         </div>
     )
 }

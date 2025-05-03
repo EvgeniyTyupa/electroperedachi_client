@@ -87,7 +87,7 @@ const EventAbout = (props) => {
                                 key={index}
                             >
                                 {el.url?.includes("<iframe") ? (
-                                    <div dangerouslySetInnerHTML={{ __html: el.url }}/>
+                                    <div className={classes.spoty} dangerouslySetInnerHTML={{ __html: el.url }}/>
                                 ) : (
                                     <YoutubeCard
                                         src={el.url}
@@ -159,7 +159,6 @@ const EventAbout = (props) => {
             {event.howItWas && (
                 <EventHowItWas event={event} />
             )}
-            {event.faq && event.faq.length > 0 && <EventFaq event={event} />}
         </div>
     )
 }

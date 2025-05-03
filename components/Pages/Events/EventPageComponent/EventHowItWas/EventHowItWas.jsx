@@ -30,7 +30,7 @@ const EventHowItWas = (props) => {
             <Container className={classes.container}>
                 <Header type="h2">How it was</Header>
             </Container>
-            <HozhoSlider>
+            <HozhoSlider length={event.howItWas?.content?.length}>
                 {event.howItWas?.content?.map((el, index) => (
                     <div
                         className={classes.sliderEl}

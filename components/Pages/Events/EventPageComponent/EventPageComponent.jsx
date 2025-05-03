@@ -14,6 +14,7 @@ import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { FB_PIXEL } from "../../../../utils/constants"
 import { ttqAddToCart } from "../../../../utils/tikTokTracker"
+import EventFaq from "./EventAbout/EventFaq/EventFaq"
 
 const EventPageComponent = (props) => {
     const { event, randomPhotos } = props
@@ -144,6 +145,7 @@ const EventPageComponent = (props) => {
                     paymentBlockRef={paymentBlockRef}
                 />
             )}
+            {event.faq && event.faq.length > 0 && <EventFaq event={event} />}
         </div>
     )
 }
