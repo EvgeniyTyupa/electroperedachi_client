@@ -55,6 +55,10 @@ export const eventApi = {
                 return data
             })
     },
+    getPayment(paymentId) {
+        return instance.get(`/ticket/payment/${paymentId}`)
+        .then(response => response.data)
+    },
     checkPromocode(promocode, event_id) {
         return instance
             .get(

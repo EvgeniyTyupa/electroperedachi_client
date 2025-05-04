@@ -10,14 +10,16 @@ import { useEffect } from "react"
 import atob from "atob"
 
 import { FB_PIXEL, USD_EQ } from "../../utils/constants"
-import HozhoThankyou from "../../components/Pages/Events/Hozho/HozhoThankyou/HozhoThankyou"
 import { ttqPurchase } from "../../utils/tikTokTracker"
+import { eventApi } from "../../api/api"
 
 const ThankyouPage = (props) => {
     const { paymentHash } = props
 
     const intl = useIntl()
-    
+
+    console.log(paymentHash)
+
     useEffect(() => {
         if (paymentHash) {
             const decoded = JSON.parse(atob(paymentHash))
@@ -61,7 +63,15 @@ const ThankyouPage = (props) => {
 }
 
 export const getServerSideProps = async ({ params, res }) => {
-    const { paymentHash } = params
+    const { paymentId } = params
+
+    let paymentHash
+
+    paymentHash = await eventApi.getPayment(paymentId)
+
+    if (!paymentHash) {
+        paymentHash = null
+    }
 
     res.setHeader('X-Robots-Tag', 'noindex')
     
