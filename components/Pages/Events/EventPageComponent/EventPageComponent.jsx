@@ -102,7 +102,7 @@ const EventPageComponent = (props) => {
                 const triggerElement = paymentBlockRef.current
                 const triggerPosition = triggerElement.getBoundingClientRect()
 
-                if (triggerPosition.y <= 880) {
+                if (triggerPosition.y <= 880 || triggerPosition.y >= 4900) {
                     setIsShowButt(false)
                     setIsAddToCartEventSend(true)
                 } else {

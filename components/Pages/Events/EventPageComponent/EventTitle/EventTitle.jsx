@@ -51,7 +51,7 @@ const EventTitle = (props) => {
                 {event.partners && (
                     <div className={classes.partners}>
                         {event.partners.map((el) => (
-                            <img src={el.image} alt={`${el.name} partner`} />
+                            <img key={el.name} src={el.image} alt={`${el.name} partner`} />
                         ))}
                     </div>
                 )}

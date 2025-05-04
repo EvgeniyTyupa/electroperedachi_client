@@ -133,7 +133,7 @@ const EventAbout = (props) => {
                         />
                     )}
                 </div>
-                <div
+                {/* <div
                     className={classes.buyTicket}
                     data-aos="fade-down"
                     data-aos-duration="2000"
@@ -146,7 +146,7 @@ const EventAbout = (props) => {
                             id: "button.buyTicket"
                         })}
                     />
-                </div>
+                </div> */}
             </Container>
             {(event.location_scheme && event.location_scheme.length > 0) && (
                 <div className={classes.locationScheme}>
