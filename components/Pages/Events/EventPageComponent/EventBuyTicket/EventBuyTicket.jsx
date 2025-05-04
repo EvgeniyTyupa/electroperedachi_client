@@ -126,7 +126,7 @@ const EventBuyTicket = (props) => {
                                         <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
                                         &nbsp;
                                         <br/>
-                                        {discount ? <span className={classes.discountPrice}>{(el.price[0]?.price / 100 * discount)}{" "}</span> : ""}
+                                        {discount ? <span className={classes.discountPrice}>{el.price[0]?.price - (el.price[0]?.price / 100 * discount)}{" "}</span> : ""}
                                         {intl.formatMessage({ id: "event.currency" })}.
                                     </p>
                                 </div>
