@@ -155,9 +155,9 @@ const EventAbout = (props) => {
                     </Container>
                     <HozhoSlider arrows={true}>
                         {event.location_scheme.map((el, index) => (
-                            <div className={classes.sliderEl}>
+                            <div key={el} className={classes.sliderEl}>
                                 <div className={classes.locSchemeEl} onClick={() => handleClickPhoto(index, event.location_scheme)}>
-                                    <Image src={el} fill/>
+                                    <Image src={el} fill alt={"location scheme"}/>
                                 </div>
                             </div>
                         ))}

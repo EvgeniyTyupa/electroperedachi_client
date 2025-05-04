@@ -50,7 +50,7 @@ const EventHowItWas = (props) => {
                         >
                             {el.photo ? (
                                 <div className={classes.photo}>
-                                    <Image fill src={el.photo} alt={el.title ?? "How it Was"}/>
+                                    <Image fill src={el.photo} alt={el.title ? el.title : "How it Was"}/>
                                 </div>
                             ) : (
                                 <YoutubeCard

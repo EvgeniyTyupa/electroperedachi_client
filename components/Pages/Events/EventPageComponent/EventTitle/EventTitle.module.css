@@ -4,13 +4,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 0 120px;
+    padding-top: 12%;
     box-sizing: border-box;
+    z-index: 2;
 }
 .main h4 {
     font-family: "NeueMachina";
@@ -131,8 +132,8 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    position: absolute;
-    top: 25%;
+    /* position: absolute; */
+    /* top: 25%; */
 }
 .partners img {
     width: 70px;
@@ -223,6 +224,10 @@
 }
 
 @media screen and (max-width: 568px) {
+    .partners {
+        top: unset !important;
+        position: relative !important;
+    }
     /* .main {
         height: calc(100vh - 80px);
     } */

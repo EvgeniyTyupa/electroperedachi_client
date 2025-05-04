@@ -115,9 +115,9 @@ const EventBuyTicket = (props) => {
                     <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
-                    {event.price?.map(el => (
+                    {event.price?.map((el, index) => (
                         el.price.length > 0 && (
-                            <div className={classes.ticketsBlock}>
+                            <div key={index} className={classes.ticketsBlock}>
                                 <div className={classes.ticketType}>
                                     <p className={classes.ticketName}>{el.name}</p>
                                     <p className={classes.price}>
