@@ -22,8 +22,6 @@ const EventTitle = (props) => {
 
     const intl = useIntl()
 
-    console.log(width)
-
     const dayOfWeek =
         locale === "ua"
             ? moment(event.date).locale("uk").format("ddd")

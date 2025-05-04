@@ -15,12 +15,15 @@ import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import { FB_PIXEL } from "../../../../utils/constants"
 import { ttqAddToCart } from "../../../../utils/tikTokTracker"
 import EventFaq from "./EventAbout/EventFaq/EventFaq"
+import { Button } from "@mui/material"
 
 const EventPageComponent = (props) => {
     const { event, randomPhotos } = props
 
     const [price, setPrice] = useState(0)
     const [isShowBuy, setIsShowBuy] = useState(false)
+
+    const [isShowBuyButt, setIsShowButt] = useState(true)
 
     const videoRef = useRef(null)
     const [isPlayVideo, setIsPlayVideo] = useState(false)
@@ -86,13 +89,24 @@ const EventPageComponent = (props) => {
                 if (triggerPosition.y <= width > 548 ? 0 : 348) {
                     setIsPlayVideo(true)
                 }
+            }
+    
+            window.addEventListener("scroll", handleScroll)
+            return () => {
+                window.removeEventListener("scroll", handleScroll)
+            }
+        }
 
-                if(paymentBlockRef && paymentBlockRef.current) {
-                    if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
-                        if (!isAddToCartEventSend) {
-                            setIsAddToCartEventSend(true)
-                        }
-                    }
+        if (paymentBlockRef && paymentBlockRef.current) {
+            const handleScroll = () => {
+                const triggerElement = paymentBlockRef.current
+                const triggerPosition = triggerElement.getBoundingClientRect()
+
+                if (triggerPosition.y <= 880) {
+                    setIsShowButt(false)
+                    setIsAddToCartEventSend(true)
+                } else {
+                    setIsShowButt(true)
                 }
             }
     
@@ -112,6 +126,7 @@ const EventPageComponent = (props) => {
     return (
         <div className={classes.main}>
             <Container className={classes.container}>
+                {isShowBuyButt && <Button onClick={scrollToPayment} className={classes.buyTicketMob}>Buy Ticket</Button>}
                 <EventTitle
                     event={event}
                     isEnd={isEnd}

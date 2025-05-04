@@ -84,7 +84,7 @@ const EventBuyTicket = (props) => {
     }, [])
 
     return (
-        <div className={classes.main} ref={paymentBlockRef}>
+        <div className={classes.main}>
             <Container className={classes.container}>
                 <div
                     className={classes.left}
@@ -112,7 +112,7 @@ const EventBuyTicket = (props) => {
                     data-aos-duration="2000"
                 >
                     <h2>{event.title}</h2>
-                    <p className={classes.rules}>
+                    <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
                     {event.price?.map(el => (

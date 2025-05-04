@@ -1,102 +1,63 @@
-import { useEffect } from "react"
-import anime from "animejs"
-import { useRef } from "react"
-import { useState } from "react"
-import AboutLines1 from "./AboutLines1"
-import AboutLines2 from "./AboutLines2"
-import AboutLines3 from "./AboutLines3"
-import AboutLines4 from "./AboutLines4"
+import React, { useLayoutEffect, useRef } from "react";
+import anime from "animejs";
+import AboutLines1 from "./AboutLines1";
+import AboutLines2 from "./AboutLines2";
+import AboutLines3 from "./AboutLines3";
+import AboutLines4 from "./AboutLines4";
 
-const AboutLines = (props) => {
-    const ref1 = useRef(null)
-    const ref2 = useRef(null)
-    const ref3 = useRef(null)
-    const ref4 = useRef(null)
+const AboutLines = () => {
+  // четыре рефа для четырёх групп <path>
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const ref4 = useRef(null);
 
-    const [dna1, setDna1] = useState()
-    const [dna2, setDna2] = useState()
-    const [dna3, setDna3] = useState()
-    const [dna4, setDna4] = useState()
+  useLayoutEffect(() => {
+    const g1 = ref1.current;
+    const g2 = ref2.current;
+    const g3 = ref3.current;
+    const g4 = ref4.current;
+    if (!g1 || !g2 || !g3 || !g4) return;
 
-    useEffect(() => {
-        if (dna1) {
-            dna1.forEach((el, index) => {
-                anime({
-                    targets: `#about #line${index + 1}`,
-                    d: [
-                        {
-                            value: [
-                                dna1[index],
-                                dna2[index]
-                            ]
-                        },
-                        {
-                            value: [
-                                dna2[index],
-                                dna3[index]
-                            ]
-                        },
-                        {
-                            value: [
-                                dna3[index],
-                                dna4[index]
-                            ]
-                        },
-                        {
-                            value: [
-                                dna4[index],
-                                dna1[index]
-                            ]
-                        },
-                    ],
-                    easing: 'linear',
-                    direction: "alternate",
-                    duration: 30000,
-                    loop: true
-                })
-            })
-            
-        }
-        
-    }, [dna1])
+    // читаем d-атрибуты
+    const shapes1 = Array.from(g1.children).map(el => el.getAttribute("d"));
+    const shapes2 = Array.from(g2.children).map(el => el.getAttribute("d"));
+    const shapes3 = Array.from(g3.children).map(el => el.getAttribute("d"));
+    const shapes4 = Array.from(g4.children).map(el => el.getAttribute("d"));
 
-    useEffect(() => {
-        if(ref1, ref1.current && ref2, ref2.current) {
-            const newDna1 = []
-            Array.from(ref1.current.children).forEach((el, index) => {
-                el.setAttribute('id', `line${index + 1}`);
-                newDna1.push(el.getAttribute('d'))
-            })
-            setDna1(newDna1)
+    // убеждаемся, что все массивы одного минимального размера
+    const count = Math.min(shapes1.length, shapes2.length, shapes3.length, shapes4.length);
+    const paths = Array.from(g1.children).slice(0, count);
 
-            const newDna2 = []
-            Array.from(ref2.current.children).forEach(el => {
-                newDna2.push(el.getAttribute('d'))
-            })
-            setDna2(newDna2)
+    // единый таймлайн для синхронной морфки
+    const tl = anime.timeline({
+      easing: "linear",
+      direction: "alternate",
+      duration: 30000,
+      loop: true
+    });
 
-            const newDna3 = []
-            Array.from(ref3.current.children).forEach(el => {
-                newDna3.push(el.getAttribute('d'))
-            })
-            setDna3(newDna3)
+    paths.forEach((pathEl, i) => {
+      tl.add({
+        targets: pathEl,
+        d: [
+          { value: shapes2[i] },
+          { value: shapes3[i] },
+          { value: shapes4[i] },
+          { value: shapes1[i] }
+        ]
+      }, 0); // все анимации стартуют одновременно
+    });
+  }, []);
 
-            const newDna4 = []
-            Array.from(ref4.current.children).forEach(el => {
-                newDna4.push(el.getAttribute('d'))
-            })
-            setDna4(newDna4)
-        }
-    }, [ref1, ref1.current, ref2, ref2.current, ref3, ref3.current, ref4, ref4.current])
+  return (
+    <>
+      <AboutLines1 dnaRef={ref1} />
+      <AboutLines2 dnaRef={ref2} />
+      <AboutLines3 dnaRef={ref3} />
+      <AboutLines4 dnaRef={ref4} />
+    </>
+  );
+};
 
-    return (
-        <>
-            <AboutLines1 dnaRef={ref1}/>
-            <AboutLines2 dnaRef={ref2}/>
-            <AboutLines3 dnaRef={ref3}/>
-            <AboutLines4 dnaRef={ref4}/>
-        </>
-    )
-}
-
-export default AboutLines
+export default AboutLines;

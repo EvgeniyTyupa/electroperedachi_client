@@ -255,7 +255,8 @@
         position: relative;
     }
     .buy {
-        padding: 1rem ;
+        padding: 1rem;
+        display: none;
     }
     .buy span {
         display: block;
