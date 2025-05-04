@@ -5,8 +5,14 @@ const YoutubeCard = (props) => {
 
     return (
         <div className={classes.main}>
-            <iframe src={src} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-            {/* <p>{title}</p> */}
+            <iframe 
+                src={src}
+                loading="lazy"
+                style={{ border: "none" }}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={title}
+            ></iframe>
         </div>
     )
 }

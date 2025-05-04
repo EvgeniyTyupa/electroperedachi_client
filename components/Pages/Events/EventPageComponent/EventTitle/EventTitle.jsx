@@ -42,8 +42,6 @@ const EventTitle = (props) => {
             <div
                 className={classes.main}
                 style={{ backgroundImage: `url(${event.poster.image})` }}
-                data-aos="fade"
-                data-aos-duration="2000"
             >
                 {/* {!isEnd && (
                     <h4 data-aos="fade-down" data-aos-duration="2000">
