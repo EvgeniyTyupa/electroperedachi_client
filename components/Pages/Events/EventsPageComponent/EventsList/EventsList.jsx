@@ -12,13 +12,21 @@ const EventsList = (props) => {
     const [filteredEvents, setFilteredEvents] = useState(events)
     const [sortedEvents, setSortedEvents] = useState([])
 
+    const handleReturnDate = (event) => {
+        if (event.date) {
+            return event.date
+        } else {
+            return event.dates[0].date
+        }
+    }
+
     useEffect(() => {
         if (filterYear === "all") {
             setFilteredEvents(events)
         } else {
             const newEvents = []
             events.forEach((el) => {
-                if (new Date(el.date).getFullYear() === filterYear) {
+                if (new Date(handleReturnDate(el)).getFullYear() === filterYear) {
                     newEvents.push(el)
                 }
             })
@@ -38,8 +46,8 @@ const EventsList = (props) => {
             let isUniqYear = true
             uniqueEventsByYear.forEach((event) => {
                 if (
-                    new Date(event.date).getFullYear() ===
-                    new Date(el.date).getFullYear()
+                    new Date(handleReturnDate(event)).getFullYear() ===
+                    new Date(handleReturnDate(el)).getFullYear()
                 ) {
                     isUniqYear = false
                 }
@@ -59,8 +67,8 @@ const EventsList = (props) => {
             el.forEach((i_ev) => {
                 newFiltered.forEach((event) => {
                     if (
-                        new Date(i_ev.date).getFullYear() ===
-                            new Date(event.date).getFullYear() &&
+                        new Date(handleReturnDate(i_ev)).getFullYear() ===
+                            new Date(handleReturnDate(event)).getFullYear() &&
                         event._id !== i_ev._id
                     ) {
                         el.push(event)

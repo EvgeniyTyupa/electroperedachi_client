@@ -37,12 +37,35 @@ const UpcomingSlideItem = (props) => {
     useEffect(() => {
         let now = moment()
 
-        item.pricing.forEach((el) => {
-            if (now >= moment(el.start) && now <= moment(el.end)) {
-                setPrice(el.price)
+        if (item.pricing) {
+            item.pricing.forEach((el) => {
+                if (now >= moment(el.start) && now <= moment(el.end)) {
+                    setPrice(el.price)
+                    setIsShowBuy(true)
+                }
+            })
+        } else if (item.price) {
+            const allWindows = item.price.flatMap(t => t.price);
+
+            const matching = allWindows.filter(el =>
+                now.isBetween(
+                    moment(el.start), 
+                    moment(el.end), 
+                    null, 
+                    '[]'
+                )
+            );
+            
+            if (matching.length > 0) {
+                const cheapest = matching.reduce((a, b) =>
+                    a.price < b.price ? a : b
+                );
+                let currentPrice = cheapest.price;
+                setPrice(currentPrice)
                 setIsShowBuy(true)
             }
-        })
+        }
+
     }, [])
 
     useEffect(() => {

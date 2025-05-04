@@ -50,7 +50,7 @@ const EventBuyTicket = (props) => {
         } else {
             newTicketCart.push({
                 _id: ticketType._id,
-                price: discount ? ticketType.price[0].price - (Number(ticketType.price[0].price) / 100 * Number(discount)) : ticketType.price[0].price,
+                price: discount ? Math.round(ticketType.price[0].price - (Number(ticketType.price[0].price) / 100 * Number(discount))) : ticketType.price[0].price,
                 count: 1
             })
         }
@@ -73,7 +73,7 @@ const EventBuyTicket = (props) => {
         if (discount) {
             const newTicketCart = [ ...ticketCart ]
             newTicketCart.forEach(el => {
-                el.price = el.price - (Number(el.price) / 100 * Number(discount))
+                el.price = Math.round(el.price - (Number(el.price) / 100 * Number(discount)))
             })
             setTicketCart(newTicketCart)
         }
@@ -126,7 +126,7 @@ const EventBuyTicket = (props) => {
                                         <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
                                         &nbsp;
                                         <br/>
-                                        {discount ? <span className={classes.discountPrice}>{el.price[0]?.price - (el.price[0]?.price / 100 * discount)}{" "}</span> : ""}
+                                        {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
                                         {intl.formatMessage({ id: "event.currency" })}.
                                     </p>
                                 </div>

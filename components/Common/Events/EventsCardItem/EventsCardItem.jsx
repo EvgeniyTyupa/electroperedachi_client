@@ -24,9 +24,23 @@ const EventsCardItem = (props) => {
 
     const { width } = useWindowDimensions()
 
-    const lineup = item.lineup[0].djs.map((el, index) => (
-        el.name + (index < item.lineup[0].djs.length - 1 ? ", " : "")
-    ))
+    let lineup = []
+
+    if (item.lineup[0].djs) {
+        lineup = item.lineup[0].djs.map((el, index) => (
+            el.name + (index < item.lineup[0].djs.length - 1 ? ", " : "")
+        ))
+    } else {
+        item.lineup.forEach(day => {
+            day?.stages.forEach(stage => {
+                stage?.slots.forEach(slot => {
+                    slot?.djs.forEach(dj => {
+                        lineup.push(`${dj.name},`)
+                    })
+                })
+            })
+        })
+    }
 
     const city = locale === "ua" ? item.city : item.city_en
     

@@ -49,7 +49,7 @@ const CollapseEventsList = (props) => {
                         isOpen ? classes.open : undefined
                     )}
                 >
-                    <span>{new Date(events[0].date).getFullYear()}</span>
+                    <span>{new Date(events[0].date ? events[0].date : events[0].dates[0].date).getFullYear()}</span>
                     <span
                         style={{
                             display: "block",

@@ -18,8 +18,6 @@ const ThankyouPage = (props) => {
 
     const intl = useIntl()
 
-    console.log(paymentHash)
-
     useEffect(() => {
         if (paymentHash) {
             const decoded = JSON.parse(atob(paymentHash))
@@ -69,15 +67,20 @@ export const getServerSideProps = async ({ params, res }) => {
 
     paymentHash = await eventApi.getPayment(paymentId)
 
-    if (!paymentHash) {
-        paymentHash = null
+    if (!paymentHash.paymentHash) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false, // 307-redirect
+            },
+        }
     }
 
     res.setHeader('X-Robots-Tag', 'noindex')
     
     return {
         props: {
-            paymentHash
+            paymentHash: paymentHash ? paymentHash.paymentHash : null
         }
     }
 }
