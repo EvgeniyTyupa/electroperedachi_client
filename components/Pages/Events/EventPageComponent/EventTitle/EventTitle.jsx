@@ -11,7 +11,7 @@ import "aos/dist/aos.css"
 import Header from "../../../../UI/Text/Header/Header"
 import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
-import { humanizeDates, humanizeDatesWithDay } from "../../../../../utils/humanizeDate"
+import { humanizeDates } from "../../../../../utils/humanizeDate"
 
 const EventTitle = (props) => {
     const { event, isEnd, price, scrollToPayment, isShowBuy } = props
