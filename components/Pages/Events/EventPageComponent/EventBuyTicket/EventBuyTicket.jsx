@@ -80,6 +80,7 @@ const EventBuyTicket = (props) => {
     }, [discount])
 
     useEffect(() => {
+        plusCount(event.price[0])
         Aos.init({ duration: 1000 })
     }, [])
 
