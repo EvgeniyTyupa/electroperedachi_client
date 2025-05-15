@@ -82,9 +82,9 @@ export default function App({ Component, pageProps }) {
             })
             ttqInit();
         }
-        router.events.on('routeChangeComplete', handleRouteChange)
+        events.on('routeChangeComplete', handleRouteChange)
         return () => {
-            router.events.off('routeChangeComplete', handleRouteChange)
+            events.off('routeChangeComplete', handleRouteChange)
         }
     }, [events])
 
