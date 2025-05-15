@@ -126,6 +126,7 @@
     "event.date": "DATE",
     "event.place": "PLACE",
     "event.about": "About Event",
+    "event.howItWasSub": "Here are the memories of your youth. Emotions that will remain forever!",
     "event.ticketRules": "After payment, the ticket will be sent to your email specified when filling out the form.\n\nPlease note: for a person who has not reached the age of majority, the ticket loses its importance. If you have any questions or problems with purchasing/receiving a ticket/money - please contact us. All details on the contact page. We do not refund money due to a change in the visitor's decision, only if changes are made by the organizer.",
     "event.price": "Price",
     "event.from": "From",

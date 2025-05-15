@@ -12,7 +12,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { isValidYoutubeLink } from "../../../../utils/isValidYoutubeLink"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
-import { FB_PIXEL } from "../../../../utils/constants"
+import { FB_PIXEL, TIKTOK_PIXEL } from "../../../../utils/constants"
 import { ttqAddToCart } from "../../../../utils/tikTokTracker"
 import EventFaq from "./EventAbout/EventFaq/EventFaq"
 import { Button } from "@mui/material"
@@ -49,7 +49,12 @@ const EventPageComponent = (props) => {
                 ReactPixel.init(FB_PIXEL)
                 ReactPixel.track("AddToCart")
             })
-        ttqAddToCart()
+        import('tiktok-pixel')
+            .then(module => module.default)
+            .then(TiktokPixel => {
+                TiktokPixel.init(TIKTOK_PIXEL)
+                TiktokPixel.track("AddToCart")
+            })
     }
 
     useEffect(() => {

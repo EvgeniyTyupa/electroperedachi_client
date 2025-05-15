@@ -19,14 +19,12 @@ import { AppContextProvider } from "../context/AppContext"
 import poster_img from "/public/poster.jpg"
 import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
-import { FB_PIXEL } from "../utils/constants"
+import { FB_PIXEL, TIKTOK_PIXEL } from "../utils/constants"
 
 import Script from 'next/script'
-import { ttqInit, ttqPageView } from "../utils/tikTokTracker";
+import { ttqInit } from "../utils/tikTokTracker";
 
 const messages = { en, ua }
-
-const TIKTOK_PIXEL_ID = 'D08U1CRC77U9CBHGPIKG'
 
 export default function App({ Component, pageProps }) {
     const { locale, pathname, events } = useRouter()
@@ -52,7 +50,21 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         const handleRouteChange = () => {
             logPageView()
-            ttqPageView()
+
+            import('tiktok-pixel')
+            .then(module => module.default)
+            .then(TiktokPixel => {
+                TiktokPixel.init(TIKTOK_PIXEL)
+                TiktokPixel.pageView() 
+            })
+
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                // ReactPixel.init('573414703062456')
+                ReactPixel.init(FB_PIXEL)
+                ReactPixel.pageView()
+            })
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
@@ -80,7 +92,12 @@ export default function App({ Component, pageProps }) {
             ReactPixel.init(FB_PIXEL)
             ReactPixel.pageView()
         })
-        ttqInit();
+        import('tiktok-pixel')
+        .then(module => module.default)
+        .then(TiktokPixel => {
+            TiktokPixel.init(TIKTOK_PIXEL)
+            TiktokPixel.pageView() 
+        })
     }, [])
 
     return (
@@ -109,28 +126,6 @@ export default function App({ Component, pageProps }) {
                                 data-type="two"
                                 data-position="bottom-left"
                             /> */}
-                            {/* 1) Подключаем events.js с вашим ID */}
-                            <Script
-                                strategy="afterInteractive"
-                                src={`https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=${TIKTOK_PIXEL_ID}`}
-                            />
-
-                            {/* 2) Инициализируем пиксель и разово шлём page-view */}
-                            <Script
-                                id="tiktok-pixel-init"
-                                strategy="afterInteractive"
-                                dangerouslySetInnerHTML={{
-                                __html: `
-                                    window.ttq = window.ttq || [];
-                                    ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
-                                    ttq.setAndDefer = function(t,e){ t[e] = function(){ t.push([e].concat(Array.prototype.slice.call(arguments,0))); } };
-                                    for(var i=0;i<ttq.methods.length;i++){ ttq.setAndDefer(ttq, ttq.methods[i]); }
-                                    ttq.load = function(id){ ttq._i = ttq._i || {}; ttq._i[id] = []; ttq._t = ttq._t || {}; ttq._t[id] = +new Date; var s = document.createElement("script"); s.async = true; s.src = "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=" + id; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); };
-                                    ttq.load("${TIKTOK_PIXEL_ID}");
-                                    ttq.page();
-                                `
-                                }}
-                            />
                         </Head>
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <AnimatePresence

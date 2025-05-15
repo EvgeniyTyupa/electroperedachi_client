@@ -21,7 +21,7 @@ import moment from "moment"
 import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
-import { FB_PIXEL, USD_EQ } from "../../../../../../utils/constants"
+import { FB_PIXEL, TIKTOK_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 
 const EventBuyTicketForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart } = props
@@ -70,6 +70,16 @@ const EventBuyTicketForm = (props) => {
                         })
                     })
     
+                import('tiktok-pixel')
+                .then(module => module.default)
+                .then(TiktokPixel => {
+                    TiktokPixel.init(TIKTOK_PIXEL)
+                    TiktokPixel.track("InitiateCheckout", {
+                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
+                        currency: "USD"
+                    })
+                })
+                    
                 await eventApi.saveDataToGoogleSheet({
                     date: moment().format('DD/MM/YYYY HH:mm'),
                     email: data.email,

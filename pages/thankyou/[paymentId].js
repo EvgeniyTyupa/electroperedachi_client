@@ -9,8 +9,7 @@ import { useEffect } from "react"
 
 import atob from "atob"
 
-import { FB_PIXEL, USD_EQ } from "../../utils/constants"
-import { ttqPurchase } from "../../utils/tikTokTracker"
+import { FB_PIXEL, TIKTOK_PIXEL, USD_EQ } from "../../utils/constants"
 import { eventApi } from "../../api/api"
 
 const ThankyouPage = (props) => {
@@ -35,7 +34,15 @@ const ThankyouPage = (props) => {
                     })
                 })
 
-                ttqPurchase({ value: Number(total_price) / USD_EQ, currency: "USD" })
+                import('tiktok-pixel')
+                .then(module => module.default)
+                .then(TiktokPixel => {
+                    TiktokPixel.init(TIKTOK_PIXEL)
+                    TiktokPixel.track('Purchase', {
+                        value: Number(total_price) / USD_EQ,
+                        currency: "USD"
+                    })
+                })
             }
         }
 
