@@ -26,9 +26,10 @@ import { ttqInit } from "../utils/tikTokTracker";
 
 const messages = { en, ua }
 
+const TIKTOK_PIXEL_ID = 'D08U1CRC77U9CBHGPIKG'
+
 export default function App({ Component, pageProps }) {
     const { locale, pathname, events } = useRouter()
-
 
     const isBottom = (el) => {
         return el.getBoundingClientRect().bottom <= window.innerHeight;
@@ -71,15 +72,21 @@ export default function App({ Component, pageProps }) {
     }, [])
 
     useEffect(() => {
-        import('react-facebook-pixel')
-          .then(module => module.default)
-          .then(ReactPixel => {
-            // ReactPixel.init('573414703062456')
-            ReactPixel.init(FB_PIXEL)
-            ReactPixel.pageView()
-        })
-        ttqInit();
-    }, [])
+        const handleRouteChange = () => {
+            import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                // ReactPixel.init('573414703062456')
+                ReactPixel.init(FB_PIXEL)
+                ReactPixel.pageView()
+            })
+            ttqInit();
+        }
+        router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, [events])
 
     return (
         <>
@@ -107,37 +114,26 @@ export default function App({ Component, pageProps }) {
                                 data-type="two"
                                 data-position="bottom-left"
                             /> */}
+                            {/* 1) Подключаем events.js с вашим ID */}
                             <Script
-                                id="tiktok-pixel"
+                                strategy="afterInteractive"
+                                src={`https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=${TIKTOK_PIXEL_ID}`}
+                            />
+
+                            {/* 2) Инициализируем пиксель и разово шлём page-view */}
+                            <Script
+                                id="tiktok-pixel-init"
                                 strategy="afterInteractive"
                                 dangerouslySetInnerHTML={{
                                 __html: `
-                                    !function (w, d, t) {
-                                    w.TiktokAnalyticsObject = t;
-                                    var ttq = w[t] = w[t] || [];
+                                    window.ttq = window.ttq || [];
                                     ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
                                     ttq.setAndDefer = function(t,e){ t[e] = function(){ t.push([e].concat(Array.prototype.slice.call(arguments,0))); } };
-                                    for (var i = 0; i < ttq.methods.length; i++) {
-                                        ttq.setAndDefer(ttq, ttq.methods[i]);
-                                    }
-                                    ttq.instance = function(i){ var e = ttq._i[i] || []; for(var n = 0; n < ttq.methods.length; n++){
-                                        ttq.setAndDefer(e, ttq.methods[n]);
-                                    } return e; };
-                                    ttq.load = function(id, opt){
-                                        var u = "https://analytics.tiktok.com/i18n/pixel/events.js";
-                                        ttq._i = ttq._i || {}; ttq._i[id] = []; ttq._i[id]._u = u;
-                                        ttq._t = ttq._t || {}; ttq._t[id] = +new Date;
-                                        ttq._o = ttq._o || {}; ttq._o[id] = opt || {};
-                                        var s = document.createElement("script");
-                                        s.type = "text/javascript"; s.async = true;
-                                        s.src = u + "?sdkid=" + id + "&lib=" + t;
-                                        var x = document.getElementsByTagName("script")[0];
-                                        x.parentNode.insertBefore(s, x);
-                                    };
-                                    ttq.load('D08U1CRC77U9CBHGPIKG'); // ← ваш пиксель-ID
+                                    for(var i=0;i<ttq.methods.length;i++){ ttq.setAndDefer(ttq, ttq.methods[i]); }
+                                    ttq.load = function(id){ ttq._i = ttq._i || {}; ttq._i[id] = []; ttq._t = ttq._t || {}; ttq._t[id] = +new Date; var s = document.createElement("script"); s.async = true; s.src = "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=" + id; var x = document.getElementsByTagName("script")[0]; x.parentNode.insertBefore(s, x); };
+                                    ttq.load("${TIKTOK_PIXEL_ID}");
                                     ttq.page();
-                                    }(window, document, 'ttq');
-                                `,
+                                `
                                 }}
                             />
                         </Head>
