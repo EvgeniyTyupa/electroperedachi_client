@@ -52,6 +52,7 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         const handleRouteChange = () => {
             logPageView()
+            ttqInit()
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
@@ -72,21 +73,15 @@ export default function App({ Component, pageProps }) {
     }, [])
 
     useEffect(() => {
-        const handleRouteChange = () => {
-            import('react-facebook-pixel')
-            .then(module => module.default)
-            .then(ReactPixel => {
-                // ReactPixel.init('573414703062456')
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.pageView()
-            })
-            ttqInit();
-        }
-        events.on('routeChangeComplete', handleRouteChange)
-        return () => {
-            events.off('routeChangeComplete', handleRouteChange)
-        }
-    }, [events])
+        import('react-facebook-pixel')
+        .then(module => module.default)
+        .then(ReactPixel => {
+            // ReactPixel.init('573414703062456')
+            ReactPixel.init(FB_PIXEL)
+            ReactPixel.pageView()
+        })
+        ttqInit();
+    }, [])
 
     return (
         <>
