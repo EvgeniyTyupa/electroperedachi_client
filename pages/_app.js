@@ -22,7 +22,7 @@ import { useEffect } from "react"
 import { FB_PIXEL } from "../utils/constants"
 
 import Script from 'next/script'
-import { ttqInit } from "../utils/tikTokTracker";
+import { ttqInit, ttqPageView } from "../utils/tikTokTracker";
 
 const messages = { en, ua }
 
@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         const handleRouteChange = () => {
             logPageView()
-            ttqInit()
+            ttqPageView()
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
