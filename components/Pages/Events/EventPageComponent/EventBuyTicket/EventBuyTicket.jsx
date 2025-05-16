@@ -66,7 +66,25 @@ const EventBuyTicket = (props) => {
         ticketCart.forEach(el => {
             newTotalPrice += el.price * el.count
         })
-        setTotalPrice(newTotalPrice)
+
+        if (event.is_multi_buy) {
+            let totalTicketCount = 0
+            ticketCart.forEach(el => {
+                totalTicketCount += el.count
+            })
+
+            if (totalTicketCount === 2) {
+                setTotalPrice(newTotalPrice * 0.90)
+            } else if (totalTicketCount === 3) {
+                setTotalPrice(newTotalPrice * 0.85)
+            } else if (totalTicketCount >= 4) {
+                setTotalPrice(newTotalPrice * 0.80)
+            } else {
+                setTotalPrice(newTotalPrice)
+            }
+        } else {
+            setTotalPrice(newTotalPrice)
+        }
     }, [ticketCart])
 
     useEffect(() => {
