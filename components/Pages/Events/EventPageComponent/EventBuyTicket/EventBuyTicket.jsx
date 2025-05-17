@@ -74,14 +74,15 @@ const EventBuyTicket = (props) => {
             })
 
             if (totalTicketCount === 2) {
-                setTotalPrice(newTotalPrice * 0.90)
+                setTotalPriceDiscount(newTotalPrice * 0.90)
             } else if (totalTicketCount === 3) {
-                setTotalPrice(newTotalPrice * 0.85)
+                setTotalPriceDiscount(newTotalPrice * 0.85)
             } else if (totalTicketCount >= 4) {
-                setTotalPrice(newTotalPrice * 0.80)
+                setTotalPriceDiscount(newTotalPrice * 0.80)
             } else {
-                setTotalPrice(newTotalPrice)
+                setTotalPriceDiscount(newTotalPrice)
             }
+            setTotalPrice(newTotalPrice)
         } else {
             setTotalPrice(newTotalPrice)
         }
@@ -174,7 +175,10 @@ const EventBuyTicket = (props) => {
                         <label>
                             {intl.formatMessage({ id: "event.totalPrice" })}
                         </label>
-                        <span>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
+                        <div className={classes.priceBlock}>
+                            <span className={(ticketCart.reduce((sum, el) => sum + el.count, 0) > 1 && event.is_multi_buy) ? classes.oldPrice : ""}>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
+                            {(totalPriceDiscount && ticketCart.reduce((sum, el) => sum + el.count, 0) > 1) ? <span className={classes.discountPrice}>{totalPriceDiscount} {intl.formatMessage({ id: "event.currency" })}</span> : ""}
+                        </div>
                     </div>
                     <EventBuyTicketForm
                         ticketCart={ticketCart}
