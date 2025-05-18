@@ -5,10 +5,17 @@
     border-radius: 12px;
     overflow: hidden;
     height: 350px;
+    position: relative;
 }
 .main iframe {
     width: 100%;
     height: 100%;
+}
+.container {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    z-index: 1;
 }
 .main p {
     color: white;

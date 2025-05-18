@@ -99,14 +99,14 @@ export default function App({ Component, pageProps }) {
             TiktokPixel.pageView() 
         })
 
-        import('@microsoft/clarity')
-        .then((mod) => {
-            const Clarity = mod.default
-            Clarity.init(CLARITY_PROJECT_ID)
-        })
-        .catch((err) => {
-            console.error('Clarity init failed', err)
-        })
+        // import('@microsoft/clarity')
+        // .then((mod) => {
+        //     const Clarity = mod.default
+        //     Clarity.init(CLARITY_PROJECT_ID)
+        // })
+        // .catch((err) => {
+        //     console.error('Clarity init failed', err)
+        // })
     }, [])
 
     return (
@@ -136,16 +136,19 @@ export default function App({ Component, pageProps }) {
                                 data-position="bottom-left"
                             /> */}
                             <Script
-                                id="microsoft-clarity"
+                                id="hotjar"
                                 strategy="afterInteractive"
                                 dangerouslySetInnerHTML={{
-                                __html: `
-                                    (function(c,l,a,r,i,t,y){
-                                        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                                        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                                        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                                    })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");
-                                `,
+                                    __html: `
+                                      (function(h,o,t,j,a,r){
+                                        h.hj = h.hj || function(){(h.hj.q = h.hj.q || []).push(arguments)};
+                                        h._hjSettings = { hjid: 2742746, hjsv: 6 };
+                                        a = o.getElementsByTagName('head')[0];
+                                        r = o.createElement('script'); r.async = 1;
+                                        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+                                        a.appendChild(r);
+                                      })(window, document, 'https://static.hotjar.com/c/hotjar-','.js?sv=');
+                                    `,
                                 }}
                             />
                         </Head>

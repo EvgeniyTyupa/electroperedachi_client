@@ -32,6 +32,8 @@ const EventPageComponent = (props) => {
 
     const paymentBlockRef = useRef(null)
 
+    const moreBlockRef = useRef(null)
+
     const isEnd = event
         ? moment().startOf("day") > moment(event.dates ? event.dates[event.dates.length - 1].date : event.date)
         : true
@@ -40,6 +42,10 @@ const EventPageComponent = (props) => {
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
+    }
+
+    const scrollToMore = () => {
+        moreBlockRef.current.scrollIntoView()
     }
 
     const handleAddToCartClick = () => {
@@ -126,6 +132,7 @@ const EventPageComponent = (props) => {
                     price={price}
                     scrollToPayment={scrollToPayment}
                     isShowBuy={isShowBuy}
+                    scrollToMore={scrollToMore}
                 />
                 {isValidYoutubeLink(event.poster.video) && (
                     <iframe
@@ -141,6 +148,7 @@ const EventPageComponent = (props) => {
                 event={event}
                 scrollToPayment={scrollToPayment}
                 randomPhotos={randomPhotos}
+                moreBlockRef={moreBlockRef}
             />
             {!isEnd && isShowBuy && (
                 <EventBuyTicket

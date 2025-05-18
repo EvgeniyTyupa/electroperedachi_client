@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 170px;
+    margin-top: 0px;
     margin-bottom: 45px;
 }
 .container {
@@ -76,7 +76,6 @@
     }
     .main {
         padding: 0 0rem;
-        margin-top: 75px;
     }
     .withVideo {
         margin-top: 50px;

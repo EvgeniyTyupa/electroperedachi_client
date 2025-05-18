@@ -1,0 +1,13 @@
+.main {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.play {
+    position: absolute !important;
+    z-index: 1 !important;
+    color: white !important;
+    font-size: 48px !important;
+}

@@ -13,6 +13,7 @@ import { Button } from "@mui/material"
 import EventBuyTicketForm from "./EventBuyTicketForm/EventBuyTicketForm"
 
 import blue_liquid from "/public/images/blue_liquid.webp"
+import Video from "../../../../Common/Video/Video"
 
 const EventBuyTicket = (props) => {
     const { event, price, paymentBlockRef } = props
@@ -115,7 +116,13 @@ const EventBuyTicket = (props) => {
                     {/* <p className={classes.date}>
                         {moment(event.date).format("DD.MM.YY")}
                     </p> */}
-                    <Image
+                    <Video
+                        src="/video/16.mp4"
+                        poster={event.image_on_ticket_form}
+                        width={"100%"}
+                        height={220}
+                    />
+                    {/* <Image
                         src={
                             event.image_on_ticket_form
                                 ? event.image_on_ticket_form
@@ -124,7 +131,7 @@ const EventBuyTicket = (props) => {
                         alt={event.title}
                         fill
                         className={classes.liquid}
-                    />
+                    /> */}
                 </div>
                 <div
                     className={classes.right}

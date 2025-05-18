@@ -13,6 +13,9 @@
     box-sizing: border-box;
     z-index: 2;
 }
+.mobile {
+    display: none;
+}
 .main h4 {
     font-family: "NeueMachina";
     font-size: 36px;
@@ -161,7 +164,7 @@
         height: fit-content;
         justify-content: flex-start;
         padding: 0 1rem;
-        padding-top: 2rem;
+        padding-top: 4rem;
     }
     .removeBlur {
         background-blend-mode: overlay;
@@ -224,9 +227,120 @@
 }
 
 @media screen and (max-width: 568px) {
+    .main {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        position: relative;
+    }
+    .video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: -1;
+        opacity: .8;
+    }
+    .gradient {
+        position: absolute;
+        bottom: -1px;
+        z-index: 1;
+        transform: rotate(180deg);
+    }
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        z-index: 1;
+        padding-bottom: 3rem;
+    }
     .partners {
         top: unset !important;
         position: relative !important;
+        margin-top: 6rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .partners img {
+        width: 50px;
+    }
+    .eventInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .eventInfo h1 {
+        font-family: "NeueMachina";
+        text-transform: uppercase;
+        color: #FF5500;
+        opacity: .9;
+    }
+    .eventInfo h3 {
+        font-family: "NeueMachinaLight";
+        text-transform: uppercase;
+    }
+    .dates {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dates p {
+        font-family: "NeueMachinaLight";
+    }
+    .footer {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .buyTicket {
+        font-family: "NeueMachina";
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .buyTicket p {
+        text-transform: uppercase;
+        color: #FF5500;
+    }
+    .buyButt {
+        position: absolute !important;
+        right: 1.5rem !important;
+        border: 1px solid #ff550070 !important;
+        color: #ff550070 !important;
+        width: 70px !important;
+        height: 70px !important;
+        animation: shadowAnimation 1s infinite !important; 
+    }
+    .buyButt svg {
+        transform: rotate(180deg);
+    }
+    .more {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+    }
+    .more p {
+        font-family: "NeueMachinaLight";
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    .more svg {
+        position: relative;
+        transform: rotate(90deg);
+        font-size: 24px;
+        animation: arrowAnimation 1.5s infinite ease-in !important; 
     }
     /* .main {
         height: calc(100vh - 80px);
@@ -296,6 +410,12 @@
         width: 85px !important;
         height: 85px !important;
     }
+    .eventInfo h1 {
+        font-size: 30px !important;
+    }
+    .eventInfo h3, .dates p {
+        font-size: 16px !important;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -338,6 +458,21 @@
     .removeBlur {
         width: 100%;
     }
+    .eventInfo h1 {
+        font-size: 26px !important;
+    }
+    .eventInfo h3, .dates p {
+        font-size: 14px !important;
+    }
+    .buyTicket p {
+        font-size: 16px !important;
+    }
+    .buyButt {
+        right: .3rem !important;
+    }
+    .partners img {
+        width: 40px;
+    }
 }
 
 
@@ -347,5 +482,15 @@
     }
     50% {
         box-shadow: 0 0 20px -3px rgba(255, 85, 0, 1);
+    }
+}
+
+
+@keyframes arrowAnimation {
+    0%, 100% {
+        top: 0
+    }
+    50% {
+        top: 5px;
     }
 }

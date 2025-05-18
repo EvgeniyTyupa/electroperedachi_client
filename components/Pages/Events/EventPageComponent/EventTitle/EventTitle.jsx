@@ -12,9 +12,13 @@ import Header from "../../../../UI/Text/Header/Header"
 import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 import { humanizeDates } from "../../../../../utils/humanizeDate"
+import Container from "../../../../UI/Container/Container"
+import { IconButton } from "@mui/material"
+import { RiArrowRightLine } from "react-icons/ri"
+import gradient_img from "/public/images/gradient.png"
 
 const EventTitle = (props) => {
-    const { event, isEnd, price, scrollToPayment, isShowBuy } = props
+    const { event, isEnd, price, scrollToPayment, scrollToMore, isShowBuy } = props
 
     const { locale } = useRouter()
 
@@ -39,15 +43,11 @@ const EventTitle = (props) => {
 
     return (
         <div className={classes.body}>
+            {/* DESKTOP TMP */}
             <div
                 className={classes.main}
                 style={{ backgroundImage: `url(${event.poster.image})` }}
             >
-                {/* {!isEnd && (
-                    <h4 data-aos="fade-down" data-aos-duration="2000">
-                        {intl.formatMessage({ id: "event.hook" })}
-                    </h4>
-                )} */}
                 {event.partners && (
                     <div className={classes.partners}>
                         {event.partners.map((el) => (
@@ -73,7 +73,6 @@ const EventTitle = (props) => {
                         </h5>
                         <div className={classes.infoData}>
                             <p className={classes.important}>
-                                {/* {humanizeDatesWithDay(event.dates ? event.dates : event.date, locale)},{" "} */}
                                 {humanizeDates(event.dates ? event.dates : event.date)}
                             </p>
                             {!isEnd && (
@@ -93,9 +92,6 @@ const EventTitle = (props) => {
                                     {event.venue ? (`${event.venue.trim()},`) : ""} {city}
                                 </p>
                             </a>
-                            {/* <p className={classes.important}>
-                                {event.venue ? (`${event.venue.trim()},`) : ""} {city}
-                            </p> */}
                         </div>
                     </div>
                     {(!isEnd && isShowBuy) && (
@@ -123,6 +119,52 @@ const EventTitle = (props) => {
                         </div>
                     )}
                 </div>
+            </div>
+
+            {/* NEW MOBILE */}
+            <div className={classes.mobile}>
+                <video
+                    className={classes.video}
+                    src="/video/title.webm"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                />
+                <img src={gradient_img.src} alt="gradient" className={classes.gradient}/>
+                <Container className={classes.container}>
+                    {event.partners && (
+                        <div className={classes.partners}>
+                            {event.partners.map((el) => (
+                                <img key={el.name} src={el.image} alt={`${el.name} partner`} />
+                            ))}
+                        </div>
+                    )}
+                    <div className={classes.eventInfo}>
+                        <div className={classes.dates}>
+                            {event.dates ? event.dates.map((el, index) => (
+                                <p>{moment(el.date).format("DD.MM")}{index < event.dates.length - 1 ? "," : ""}&nbsp;</p>
+                            )) : <p>{event.date}</p>}
+                        </div>
+                        <h1>{event.title}</h1>
+                        <h3>{event.venue ? (`${event.venue.trim()}`) : ""}</h3>
+                    </div>
+                    <div className={classes.footer}>
+                        <div className={classes.buyTicket} onClick={scrollToPayment}>
+                            <p>{intl.formatMessage({ id: "event.buyTicket" })}</p>
+                            <IconButton
+                                className={classes.buyButt}
+                                onClick={scrollToPayment}
+                            >
+                                <RiArrowRightLine />
+                            </IconButton>
+                        </div>
+                        <div className={classes.more} onClick={scrollToMore}>
+                            <p>{intl.formatMessage({ id: "button.readMore" })}</p>
+                            <RiArrowRightLine />
+                        </div>
+                    </div>
+                </Container>
             </div>
         </div>
     )

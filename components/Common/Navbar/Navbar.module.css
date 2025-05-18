@@ -10,6 +10,7 @@
 }
 .absolute {
     position: absolute;
+    z-index: 3;
     /* display: none; */
 }
 .logo {

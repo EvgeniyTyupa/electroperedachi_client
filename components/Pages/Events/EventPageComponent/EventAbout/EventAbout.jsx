@@ -25,7 +25,7 @@ const EditerMarkdown = dynamic(
 )
 
 const EventAbout = (props) => {
-    const { event, scrollToPayment, randomPhotos } = props
+    const { event, scrollToPayment, randomPhotos, moreBlockRef } = props
 
     const [featuredMedia, setFeaturedMedia] = useState([])
     const [currentPhoto, setCurrentPhoto] = useState(null)
@@ -76,9 +76,35 @@ const EventAbout = (props) => {
     return (
         <div
             className={classes.main}
-            data-aos="fade-down"
-            data-aos-duration="2000"
+            ref={moreBlockRef}
         >
+            <Container className={cx(classes.container, classes.about)}>
+                <Header type="h2">{intl.formatMessage({ id: "event.about" })}</Header>
+                <div className={classes.textBlock}>
+                    <EditerMarkdown
+                        source={description}
+                        className={cx(classes.markdown, !main_keys ? classes.full : "")}
+                        style={{
+                            background: "transparent",
+                            color: "white",
+                            fontFamily: "Helvetica",
+                            whiteSpace: "pre-wrap"
+                        }}
+                    />
+                    {main_keys && (
+                        <EditerMarkdown
+                            source={main_keys}
+                            className={classes.markdown}
+                            style={{
+                                background: "transparent",
+                                color: "white",
+                                fontFamily: "Helvetica",
+                                whiteSpace: "pre-wrap"
+                            }}
+                        />
+                    )}
+                </div>
+            </Container>
             <EventLineUp
                 event={event}
                 disableMargin={true}
@@ -107,47 +133,6 @@ const EventAbout = (props) => {
                     </HozhoSlider>
                 </div>
             )}
-            <Container className={classes.container}>
-                <Header type="h2">{intl.formatMessage({ id: "event.about" })}</Header>
-                <div className={classes.textBlock}>
-                    <EditerMarkdown
-                        source={description}
-                        className={cx(classes.markdown, !main_keys ? classes.full : "")}
-                        style={{
-                            background: "transparent",
-                            color: "white",
-                            fontFamily: "Helvetica",
-                            whiteSpace: "pre-wrap"
-                        }}
-                    />
-                    {main_keys && (
-                        <EditerMarkdown
-                            source={main_keys}
-                            className={classes.markdown}
-                            style={{
-                                background: "transparent",
-                                color: "white",
-                                fontFamily: "Helvetica",
-                                whiteSpace: "pre-wrap"
-                            }}
-                        />
-                    )}
-                </div>
-                {/* <div
-                    className={classes.buyTicket}
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                >
-                    <Header type="h4">{intl.formatMessage({ id: "event.readyBuy" })}</Header>
-                    <ExploreButton
-                        onClick={scrollToPayment}
-                        className={classes.redirectBut}
-                        text={intl.formatMessage({
-                            id: "button.buyTicket"
-                        })}
-                    />
-                </div> */}
-            </Container>
             {(event.location_scheme && event.location_scheme.length > 0) && (
                 <div className={classes.locationScheme}>
                     <Container>

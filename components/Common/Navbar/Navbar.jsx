@@ -18,11 +18,7 @@ const Navbar = () => {
         <nav className={cx(
             classes.main,
             router.pathname === "/" ? classes.transparent : undefined,
-            router.pathname === "/events/circus" ? classes.absolute : undefined,
-            router.pathname === "/events/cyberpunk" ? classes.absolute : undefined,
-            router.pathname === "/events/vampire-carnival" ? classes.absolute : undefined,
-            router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
-            router.pathname === "/events/hozho" ? classes.absolute : undefined,
+            router.pathname.includes("/events/") ? classes.absolute : undefined
         )}>
             <Container className={classes.container}>
                 <Link href={routes.home}>
