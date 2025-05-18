@@ -15,6 +15,9 @@ import HozhoSlider from "../../Hozho/Slider/HozhoSlider"
 import YoutubeCard from "../../../../Common/YoutubeCard/YoutubeCard"
 import EventHowItWas from "../EventHowItWas/EventHowItWas"
 import Image from "next/image"
+import Video from "../../../../Common/Video/Video"
+
+// import light_thumb from "/images/light_thumb.png"
 
 const EditerMarkdown = dynamic(
     () =>
@@ -133,6 +136,20 @@ const EventAbout = (props) => {
                     </HozhoSlider>
                 </div>
             )}
+            {event.howItWas && (
+                <EventHowItWas event={event} />
+            )}
+            <div className={classes.lightShow}>
+                <Container className={classes.lightContainer}>
+                    <h5>LIGHTSHOW CONCEPTION</h5>
+                    <Video
+                        src="/video/3d.mp4"
+                        poster={"/images/light_thumb.png"}
+                        width={"100%"}
+                        height={"100%"}
+                    />
+                </Container>
+            </div>
             {(event.location_scheme && event.location_scheme.length > 0) && (
                 <div className={classes.locationScheme}>
                     <Container>
@@ -148,9 +165,6 @@ const EventAbout = (props) => {
                         ))}
                     </HozhoSlider>
                 </div>
-            )}
-            {event.howItWas && (
-                <EventHowItWas event={event} />
             )}
         </div>
     )

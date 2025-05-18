@@ -150,19 +150,19 @@ const EventTitle = (props) => {
                         <h3>{event.venue ? (`${event.venue.trim()}`) : ""}</h3>
                     </div>
                     <div className={classes.footer}>
-                        <div className={classes.buyTicket}>
-                            {/* <p></p> */}
-                            <Button
+                        <div className={classes.buyTicket} onClick={scrollToPayment}>
+                            <p>{intl.formatMessage({ id: "event.buyTicket" })}</p>
+                            <IconButton
                                 className={classes.buyButt}
                                 onClick={scrollToPayment}
                             >
-                                {intl.formatMessage({ id: "event.buyTicket" })}
-                            </Button>
+                                <RiArrowRightLine/>
+                            </IconButton>
                         </div>
-                        <div className={classes.more} onClick={scrollToMore}>
+                        {/* <div className={classes.more} onClick={scrollToMore}>
                             <p>{intl.formatMessage({ id: "button.readMore" })}</p>
                             <RiArrowRightLine />
-                        </div>
+                        </div> */}
                     </div>
                 </Container>
             </div>

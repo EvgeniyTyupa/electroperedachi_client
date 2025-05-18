@@ -6,10 +6,13 @@
     position: relative;
 }
 .about {
-    margin-top: 1rem;
+    margin-top: 100px
 }
 .container {
     display: flex;
+    flex-direction: column;
+}
+.lightContainer {
     flex-direction: column;
 }
 .textBlock {
@@ -89,6 +92,9 @@
     /* object-fit: contain; */
     border-radius: 12px;
 }
+.lightShow {
+    margin-top: 100px;
+}
 
 @media screen and (max-width: 1450px) {
     .locSchemeEl {
@@ -129,6 +135,12 @@
 }
 
 @media screen and (max-width: 568px) {
+    .about {
+        margin-top: 1rem;
+    }
+    .lightShow {
+        margin-top: 0
+    }
     .container {
         padding: 0 2rem !important;
     }
