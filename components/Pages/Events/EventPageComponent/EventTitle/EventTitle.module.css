@@ -283,6 +283,8 @@
         text-transform: uppercase;
         color: #FF5500;
         opacity: .9;
+        font-size: 30px;
+        text-align: center;
     }
     .eventInfo h3 {
         font-family: "NeueMachinaLight";
