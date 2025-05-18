@@ -260,7 +260,7 @@
         justify-content: space-between;
         height: 100vh;
         z-index: 1;
-        padding-bottom: 3rem;
+        padding-bottom: 5rem;
     }
     .partners {
         top: unset !important;
