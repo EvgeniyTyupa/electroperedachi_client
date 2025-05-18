@@ -13,7 +13,7 @@ import ExploreButton from "../../../../UI/Buttons/ExploreButton/ExploreButton"
 import useWindowDimensions from "../../../../../hooks/useWindowDimension"
 import { humanizeDates } from "../../../../../utils/humanizeDate"
 import Container from "../../../../UI/Container/Container"
-import { IconButton } from "@mui/material"
+import { Button, IconButton } from "@mui/material"
 import { RiArrowRightLine } from "react-icons/ri"
 import gradient_img from "/public/images/gradient.png"
 
@@ -150,14 +150,14 @@ const EventTitle = (props) => {
                         <h3>{event.venue ? (`${event.venue.trim()}`) : ""}</h3>
                     </div>
                     <div className={classes.footer}>
-                        <div className={classes.buyTicket} onClick={scrollToPayment}>
-                            <p>{intl.formatMessage({ id: "event.buyTicket" })}</p>
-                            <IconButton
+                        <div className={classes.buyTicket}>
+                            {/* <p></p> */}
+                            <Button
                                 className={classes.buyButt}
                                 onClick={scrollToPayment}
                             >
-                                <RiArrowRightLine />
-                            </IconButton>
+                                {intl.formatMessage({ id: "event.buyTicket" })}
+                            </Button>
                         </div>
                         <div className={classes.more} onClick={scrollToMore}>
                             <p>{intl.formatMessage({ id: "button.readMore" })}</p>

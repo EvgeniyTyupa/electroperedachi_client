@@ -301,7 +301,7 @@
     .footer {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
     }
     .buyTicket {
         font-family: "NeueMachina";
@@ -316,12 +316,11 @@
         color: #FF5500;
     }
     .buyButt {
-        position: absolute !important;
-        right: 1.5rem !important;
         border: 1px solid #ff550070 !important;
-        color: #ff550070 !important;
-        width: 70px !important;
-        height: 70px !important;
+        color: #ff5500 !important;
+        /* border-radius: 0 !important; */
+        font-size: 16px !important;
+        font-family: "Helvetica" !important;
         animation: shadowAnimation 1s infinite !important; 
     }
     .buyButt svg {
