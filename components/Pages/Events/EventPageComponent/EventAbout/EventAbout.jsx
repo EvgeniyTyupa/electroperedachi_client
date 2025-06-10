@@ -139,7 +139,7 @@ const EventAbout = (props) => {
             {event.howItWas && (
                 <EventHowItWas event={event} />
             )}
-            <div className={classes.lightShow}>
+            {/* <div className={classes.lightShow}>
                 <Container className={classes.lightContainer}>
                     <h5>LIGHTSHOW CONCEPTION</h5>
                     <Video
@@ -149,7 +149,7 @@ const EventAbout = (props) => {
                         height={"100%"}
                     />
                 </Container>
-            </div>
+            </div> */}
             {(event.location_scheme && event.location_scheme.length > 0) && (
                 <div className={classes.locationScheme}>
                     <Container>
