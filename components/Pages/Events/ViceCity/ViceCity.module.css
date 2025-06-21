@@ -217,6 +217,13 @@
     width: 600px;
     position: absolute;
 }
+.playButt {
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border: none;
+}
 
 /* LINEUP */
 
@@ -494,7 +501,8 @@
     align-items: center;
     gap: 48px;
     margin-top: 60px;
-
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* плавный тач-скролл в iOS/Safari */
     overscroll-behavior-x: contain;
 }
 .dressTypes::-webkit-scrollbar {
@@ -859,7 +867,8 @@
         position: relative;
         z-index: 1;
         font-family: "Pricedown";
-        margin-top: 40%;
+        margin-top: 35%;
+        height: calc(100% - 350px);
     }
     .vidosInfoMobile {
         display: flex;
@@ -898,7 +907,7 @@
     }
     .buyButtMobile {
         margin: 0 auto;
-        margin-top: 30%;
+        /* margin-top: 30%; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1087,6 +1096,9 @@
 }
 
 @media screen and (max-width: 375px) {
+    .vidosBlockMobile {
+        height: calc(100% - 300px)
+    }
     .viceCityLogoMobile {
         width: 60%;
     }
@@ -1097,11 +1109,11 @@
         font-size: 35px;
     }
     .buyButtMobile {
-        margin-top: 10%;
+        /* margin-top: 10%; */
     }
     .girl {
-        width: 71%;
-        right: -70px;
+        width: 78%;
+        right: -101px;
         top: 174px;
     }
     .introVidos {
@@ -1146,6 +1158,9 @@
 }
 
 @media screen and (max-width: 350px) {
+    .vidosBlockMobile {
+        height: fit-content;
+    }
     .home h1 {
         font-size: 30px;
     }
@@ -1167,7 +1182,7 @@
         width: 800px;
     }
     .buyButtMobile {
-        margin-top: 5%;
+        /* margin-top: 5%; */
     }
     .dressTypes {
         margin-top: 1rem;

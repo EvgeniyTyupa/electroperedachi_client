@@ -46,9 +46,14 @@ import useSocialLinks from "../../../../hooks/useSocialLinks"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { FB_PIXEL, TIKTOK_PIXEL } from "../../../../utils/constants"
+import ViceCityLocModal from "./ViceCityLocModal/ViceCityLocModal"
+
+const locVideo = "https://youtu.be/vqR6_TMrycg"
 
 const ViceCity = (props) => {
     const { event } = props
+
+    const touchData = useRef({ startX: 0, startY: 0, scrollStart: 0 });
 
     const { width } = useWindowDimensions()
 
@@ -69,6 +74,8 @@ const ViceCity = (props) => {
     const [isPlayIntroVideo, setIsPlayIntroVideo] = useState(false)
 
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
+
+    const [isOpenLocModal, setIsOpenLocModal] = useState(false)
 
     const faq = event.faq
 
@@ -388,8 +395,44 @@ const ViceCity = (props) => {
             }
         };
 
+        const onTouchStart = (e) => {
+            touchData.current.startX = e.touches[0].clientX;
+            touchData.current.startY = e.touches[0].clientY;
+            touchData.current.scrollStart = el.scrollLeft;
+        };
+      
+        const onTouchMove = (e) => {
+            const x = e.touches[0].clientX;
+            const y = e.touches[0].clientY;
+            const dx = touchData.current.startX - x;
+            const dy = touchData.current.startY - y;
+      
+                // если жест преимущественно по горизонтали
+            if (Math.abs(dx) > Math.abs(dy)) {
+                const { scrollStart } = touchData.current;
+                const { scrollWidth, clientWidth } = el;
+        
+                // проверяем, есть ли куда скроллить
+                if (
+                    (dx > 0 && scrollStart + clientWidth < scrollWidth) ||
+                    (dx < 0 && scrollStart > 0)
+                ) {
+                    e.preventDefault();              // не скроллим страницу
+                    el.scrollLeft = scrollStart + dx; // листаем галерею
+                }
+            }
+            // иначе — вертикальный жест, отпускаем и пускаем страницу
+        };
+
         window.addEventListener('wheel', onWheel, { passive: false });
-        return () => window.removeEventListener('wheel', onWheel);
+        el.addEventListener('touchstart', onTouchStart, { passive: true });
+        el.addEventListener('touchmove', onTouchMove, { passive: false });
+
+        return () => {
+            window.removeEventListener('wheel', onWheel);
+            el.removeEventListener('touchstart', onTouchStart);
+            el.removeEventListener('touchmove', onTouchMove);
+        };
     }, []);
 
     useEffect(() => {
@@ -400,6 +443,9 @@ const ViceCity = (props) => {
 
     return (
         <div className={classes.main}>
+            {isOpenLocModal && (
+                <ViceCityLocModal onClose={() => setIsOpenLocModal(false)}/>
+            )}
             {/* HOME */}
             <div className={classes.home} style={{
                 backgroundImage: `url(${home_bg.src})`
@@ -418,7 +464,7 @@ const ViceCity = (props) => {
                         <h4>KYIV, X-PARK</h4>
                         <h4>2-3 AUG</h4>
                         <div className={classes.vidosButtons}>
-                            <button>WaTCH</button>
+                            <button onClick={() => setIsOpenLocModal(true)}>WaTCH</button>
                             <button onClick={scrollToPayment}>BuY Ticket</button>
                         </div>
                     </div>
@@ -430,7 +476,7 @@ const ViceCity = (props) => {
                     </div>
                     <div className={classes.locVidos}>
                         <Image src={video_location_thumb} alt="location preview" fill/>
-                        <button>
+                        <button onClick={() => setIsOpenLocModal(true)}>
                             <GrPlayFill/>
                         </button>
                     </div>
