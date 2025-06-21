@@ -18,7 +18,7 @@ const Footer = () => {
 
     return (
         <>
-            {!router.pathname.includes("cyber") && (
+            {(!router.pathname.includes("cyber") && !router.pathname.includes("vice-city")) && (
                 <footer className={`${classes.main} ${router.pathname.includes("hozho") ? classes.black : ""}`}>
                     <Container className={classes.container}>
                         <div className={classes.links}>

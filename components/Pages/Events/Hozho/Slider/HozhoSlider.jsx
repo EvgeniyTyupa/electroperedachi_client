@@ -16,7 +16,7 @@ const PrevArrow = ({ onClick }) => (
 )
 
 const HozhoSlider = (props) => {
-    const { children, arrows } = props
+    const { children, arrows, nextArrow, prevArrow } = props
 
     const sliderRef = useRef(null)
 
@@ -27,8 +27,8 @@ const HozhoSlider = (props) => {
         autoplay: true,
         dots: false,
         arrows: arrows,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        nextArrow: nextArrow ?? <NextArrow />,
+        prevArrow: prevArrow ?? <PrevArrow />,
         responsive: [
             {
                 breakpoint: 769,

@@ -2,12 +2,12 @@ import { useState } from "react"
 import classes from "./YoutubeCard.module.css"
 
 const YoutubeCard = (props) => {
-    const { src, title } = props
+    const { src, title, className } = props
 
     const [isShowContainer, setIsShowContainer] = useState(true)
 
     return (
-        <div className={classes.main} onClick={() => setIsShowContainer(false)}>
+        <div className={`${classes.main} ${className}`} onClick={() => setIsShowContainer(false)}>
             {isShowContainer && <div className={classes.container}/>}
             <iframe 
                 src={src}

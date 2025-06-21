@@ -16,6 +16,9 @@
 .absoluteDef {
     z-index: 3;
 }
+.none {
+    display: none;
+}
 .logo {
     width: 280px;
 }
@@ -23,6 +26,7 @@
     display: flex;
     gap: 2rem;
     align-items: center;
+    margin-left: auto;
 }
 .container {
     width: 100%;

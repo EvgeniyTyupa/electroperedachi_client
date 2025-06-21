@@ -1,0 +1,223 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* margin-top: 180px; */
+}
+.container {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 74px;
+}
+.left {
+    width: 55%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+}
+.left h3 {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 57px;
+    letter-spacing: 0.015em;
+    color: #C4C4C4;
+}
+.date {
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 68px;
+    color: white;
+    font-family: 'NeueMachina';
+}
+.liquid {
+    bottom: 0;
+    position: relative !important;
+    object-fit: contain;
+    margin-bottom: auto;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+.right h3 {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 68px;
+    font-family: "Helvetica";
+    color: white;
+}
+.rules {
+    white-space: pre-wrap;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 25px;
+    color: white;
+    margin-top: 30px;
+}
+.ticketName {
+    color: white;
+}
+.price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    color: white;
+}
+.price br {
+    display: none;
+}
+.ticketsBlock {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+    border: 2px solid #FC99CC;
+    /* border-radius: 4px; */
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.ticketsCount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ticketsCount label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: white;
+}
+.countBut {
+    min-width: unset !important;
+    width: 32px;
+    height: 32px;
+    background-color: transparent !important;
+    border: 1px solid #FC99CC !important;
+    box-shadow: 0px 0px 10px 0px #FC99CC !important;
+    border-radius: 0 !important;
+    color: white !important;
+    font-size: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+}
+.ticketsCount span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: white;
+    width: 30px;
+    text-align: center;
+}
+.oldPrice {
+    text-decoration: line-through;
+    font-weight: 300;
+}
+.totalPrice {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    color: white;
+    margin-top: 2rem;
+}
+.priceBlock {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.totalPrice label {
+    font-size: 20px;
+}
+.totalPrice span {
+    font-size: 24px;
+    font-weight: 600;
+}
+.totalPrice .oldPrice {
+    font-weight: 400 !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column-reverse;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .left {
+        width: 100%;
+    }
+    .right {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .price br {
+        display: block;
+    }
+    .main {
+        margin-top: 0
+    }
+    .left {
+        min-height: unset;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .container {
+        padding-top: 45px;
+        padding-bottom: 45px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        gap: 45px;
+    }
+    .ticketsBlock {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .5rem;
+    }
+    .ticketType br {
+        display: none;
+    }
+    .ticketType {
+        width: 100%;
+    }
+    .date {
+        font-size: 40px;
+    }
+    .right h3 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .rules {
+        margin-top: 1rem;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+    .totalPrice {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .price br {
+        display: none;
+    }
+    .right h3 {
+        font-size: 30px;
+    }
+}
