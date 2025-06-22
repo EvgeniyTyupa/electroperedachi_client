@@ -29,6 +29,9 @@
     text-shadow: 4px 3px black;
     position: relative;
     z-index: 2;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+    -moz-osx-font-smoothing: grayscale; 
 }
 
 /* HOME */
@@ -46,6 +49,9 @@
 .home h1 {
     font-size: 70px;
     text-shadow: 4px 3px black;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+    -moz-osx-font-smoothing: grayscale; 
 }
 .vidosBlock {
     width: 50%;
@@ -78,6 +84,9 @@
 .vidosInfo h4 {
     text-shadow: 4px 3px black;
     font-size: 50px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+    -moz-osx-font-smoothing: grayscale; 
 }
 .vidosButtons {
     display: flex;
@@ -103,6 +112,9 @@
     text-shadow: 3px 2px black;
     font-size: 28px;
     width: 267px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+    -moz-osx-font-smoothing: grayscale; 
 }
 .vidosButtons button:hover {
     background-color: #f1b5d4;
@@ -564,6 +576,9 @@
     font-family: "Pricedown";
     font-size: 46px;
     margin-bottom: 14px;
+    text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+  -moz-osx-font-smoothing: grayscale; 
 }
 .dressInfoPoint {
     color: black;
@@ -869,6 +884,9 @@
         font-family: "Pricedown";
         margin-top: 35%;
         height: calc(100% - 350px);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+        -moz-osx-font-smoothing: grayscale; 
     }
     .vidosInfoMobile {
         display: flex;
@@ -884,7 +902,7 @@
     }
     .locVidos {
         width: 100%;
-        height: 30vh;
+        height: 250px;
         position: relative;
         transform: rotate(3deg);
         border: 10px solid white;
@@ -902,8 +920,8 @@
         z-index: 1;
         position: relative;
         font-size: 44px;
-        margin-top: auto;
-        margin-bottom: 1rem;
+        /* margin-top: auto; */
+        /* margin-bottom: 1rem; */
     }
     .buyButtMobile {
         margin: 0 auto;
@@ -934,7 +952,10 @@
             0% 95% /* bottom-left (pulled down) */
         );
         box-shadow: none;
-        filter: none
+        filter: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;      /* macOS, iOS */
+        -moz-osx-font-smoothing: grayscale; 
     }
     .shadow {
         position: absolute !important;
@@ -1093,9 +1114,15 @@
     .fat {
         width: 215px !important;
     }
+    .locVidos {
+        height: 230px;
+    }
 }
 
 @media screen and (max-width: 375px) {
+    .locVidos {
+        height: 210px;
+    }
     .vidosBlockMobile {
         height: calc(100% - 300px)
     }
@@ -1158,6 +1185,9 @@
 }
 
 @media screen and (max-width: 350px) {
+    .locVidos {
+        height: 180px;
+    }
     .vidosBlockMobile {
         height: fit-content;
     }
