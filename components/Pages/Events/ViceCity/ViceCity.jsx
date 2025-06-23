@@ -16,6 +16,7 @@ import club_icon from "/public/images/vice-city/club_icon.svg"
 import dress_icon from "/public/images/vice-city/dress_icon.svg"
 import time_icon from "/public/images/vice-city/time_icon.svg"
 import price_icon from "/public/images/vice-city/price_icon.svg"
+import service_icon from "/public/images/vice-city/service_icon.svg"
 import lineup_bg from "/public/images/vice-city/lineup_bg.jpg"
 import heads_img from "/public/images/vice-city/heads.png"
 import saturday_img from "/public/images/vice-city/saturday.png"
@@ -29,6 +30,7 @@ import dress3_img from "/public/images/vice-city/dress3.png"
 import dress4_img from "/public/images/vice-city/dress4.png"
 import dress5_img from "/public/images/vice-city/dress5.png"
 import dress6_img from "/public/images/vice-city/dress6.png"
+import light_img from "/public/images/vice-city/light.svg"
 
 import { GrPlayFill } from "react-icons/gr";
 import { useEffect, useRef, useState } from "react"
@@ -251,44 +253,44 @@ const ViceCity = (props) => {
     const dress = [
         {
             name: "RAVER",
-            dresscode: "Неон, світловідбивачі, спортивні окуляри, чорне, сітка, окуляри у темну пору",
-            phrase: "Моє паливо - це бас!",
-            mood: "Весь час біля сцени, глибоко в техно. Не зупиняється. Не говорить. Відданий танцю.",
+            dresscode: intl.formatMessage({ id: "vice.30" }),
+            phrase: intl.formatMessage({ id: "vice.31" }),
+            mood: intl.formatMessage({ id: "vice.32" }),
             img: dress1_img.src
         },
         {
             name: "LOUNGER",
-            dresscode: "Сорочка на розпашку, шорти, панамка",
-            phrase: "Не поспішаю, у мене два дні.",
-            mood: "Вічно з келихом, завжди з посмішкою. Спостерігає за вами, але не судить. на chill-зоні, біля води, на барі",
+            dresscode: intl.formatMessage({ id: "vice.33" }),
+            phrase: intl.formatMessage({ id: "vice.34" }),
+            mood: intl.formatMessage({ id: "vice.35" }),
             img: dress2_img.src
         },
         {
             name: "HUNTER",
-            dresscode: "Як справжній хантер, видає себе за LOUNGER і носить те саме",
-            phrase: "Ми вже десь бачились?",
-            mood: "Вічно з келихом, завжди з посмішкою. Спостерігає за вами, але не судить. на chill-зоні, біля води, на барі",
+            dresscode: intl.formatMessage({ id: "vice.36" }),
+            phrase: intl.formatMessage({ id: "vice.37" }),
+            mood: intl.formatMessage({ id: "vice.38" }),
             img: dress3_img.src
         },
         {
             name: "UNIKUM",
-            dresscode: "Поза жанрами. Сюр, театральність, стиль як меседж. абсурдні аксесуари, шарфи, перуки, драматичний макіяж",
-            phrase: "Мене тут не мало бути. Але я тут",
-            mood: "Вічно в образі, створює атмосферу",
+            dresscode: intl.formatMessage({ id: "vice.39" }),
+            phrase: intl.formatMessage({ id: "vice.40" }),
+            mood: intl.formatMessage({ id: "vice.41" }),
             img: dress4_img.src
         },
         {
             name: "ESCAPIST",
-            dresscode: "Тілесні відтінки, прозоре, легке",
-            phrase: "Я тут, бо хочу розвіятись, подихати свіжим повітрям.",
-            mood: "Втікає від рутини, хочу розчинитись у натовпі",
+            dresscode: intl.formatMessage({ id: "vice.42" }),
+            phrase: intl.formatMessage({ id: "vice.43" }),
+            mood: intl.formatMessage({ id: "vice.44" }),
             img: dress5_img.src
         },
         {
             name: "THE DRIFTER",
-            dresscode: "Вільний крій, натуральні тканини, лляні штани, відкриті плечі",
-            phrase: "Я не запізнився. Я приєднався в свій час",
-            mood: "Нікуди не поспішає. Всюди свій. Він не в центрі уваги — але всі запам’ятовують, як він з’явився і зник",
+            dresscode: intl.formatMessage({ id: "vice.45" }),
+            phrase: intl.formatMessage({ id: "vice.46" }),
+            mood: intl.formatMessage({ id: "vice.47" }),
             img: dress6_img.src
         }
     ]
@@ -484,12 +486,13 @@ const ViceCity = (props) => {
                 <div className={classes.buyButtMobile}>
                     <button onClick={scrollToPayment}>BuY Ticket</button>
                     <button onClick={scrollToPayment} className={classes.shadow}>BuY Ticket</button>
+                    <img src={light_img.src} alt="light"/>
                 </div>
                 <img data-aos="fade-left" data-aos-duration="2000" src={girl.src} alt="girl" className={classes.girl}/>
             </div>
             {/* ABOUT */}
             <div className={classes.about}>
-                <p className={classes.aboutIntro}>Важливо не те, що ти робиш — а що ти відчуваєш. Відчуй всесвіт Vice City на дводенному техно фестивалі у Х-Park</p>
+                <p className={classes.aboutIntro}>{intl.formatMessage({ id: "vice.1" })}</p>
                 <h2 data-aos="fade-down" data-aos-duration="2000">ABout FESTIVAL</h2>
                 <img data-aos="fade-left" data-aos-duration="2000" className={classes.palm1} src={palm1.src} alt="palm"/>
                 <img data-aos="fade-right" data-aos-duration="2000" className={classes.palm2} src={palm2.src} alt="palm"/>
@@ -511,26 +514,25 @@ const ViceCity = (props) => {
                         )}
                     </div>
                     <p>
-                        Є місця, в які їдуть, бо так треба. 
+                        {intl.formatMessage({ id: "vice.2" })} 
                         <br/><br/>
-                        А є місця, в які мрієш потрапити та повернутись — <span>Vice City</span>
+                        {intl.formatMessage({ id: "vice.3" })}<span>Vice City</span>
                         <br/><br/>
-                        Дводенний техно фестиваль,  Nakadia, Metodi Hristov, та понад 30 артистів на 2х сценах
+                        {intl.formatMessage({ id: "vice.4" })}
                         <br/><br/>
-                        На острові. Біля води. Місто спокуси, гри, сповільнених дотиків і зухвалих рішень. Для тих, хто хоче більше.
+                        {intl.formatMessage({ id: "vice.5" })}
                         <br/><br/>
-                        У Vice City не буває “запізно”. Немає плану — є маршрут.
+                        {intl.formatMessage({ id: "vice.6" })}
                         <br/><br/>
-                        Тут замість “як треба” — “як хочу”.
+                        {intl.formatMessage({ id: "vice.7" })}
                         <br/><br/>
-                        Це — повернення до того, ким ти був, перш ніж усе стало “як треба”.
+                        {intl.formatMessage({ id: "vice.8" })}
                         <br/><br/>
-                        У Vice City ти не відвідувач. 
-                        Ти — частина цього міста. Ти — головний герой.
+                        {intl.formatMessage({ id: "vice.9" })}
                         <br/><br/>
-                        Історя міста формується завдяки тобі: через твої рухи, твій стиль, твій настрій і дії
+                        {intl.formatMessage({ id: "vice.10" })}
                         <br/><br/>
-                        <span>Доповни цей всесвіт собою!</span>
+                        <span>{intl.formatMessage({ id: "vice.11" })}</span>
                     </p>
                 </div>
             </div>
@@ -541,7 +543,7 @@ const ViceCity = (props) => {
                 <h2 data-aos="fade-down" data-aos-duration="2000">Line Up</h2>
                 <img data-aos="fade-right" data-aos-duration="2000" src={heads_img.src} alt="headliners" className={classes.headlinersImg}/>
                 <div data-aos="fade-down" data-aos-duration="2000" className={classes.lineupInfo}>
-                    <p className={classes.lineupLyrics}>Діджеї у Vice City — це ті, хто формує простір і реальність міста через ритм і звук. Вони буквально створюють архітектуру міста з музики, з кожним треком задаючи нові закони, настрій та атмосферу. Vice City еволюціонує залежно від того, хто зараз за пультом.</p>
+                    <p className={classes.lineupLyrics}>{intl.formatMessage({ id: "vice.12" })}</p>
                     <div className={classes.djsBlock}>
                         {lineup.map((el, index) => (
                             <div
@@ -623,22 +625,22 @@ const ViceCity = (props) => {
                     <div className={classes.detailBlock}>
                         <div className={classes.detailHeader}>
                             <img src={club_icon.src} alt="location icon"/>
-                            <h6>ЛОКАЦІЯ</h6>
+                            <h6>{intl.formatMessage({ id: "vice.13" })}</h6>
                         </div>
-                        <p>X-Park - Найбільший актив-парк Європи. Це унікальне місце для відпочинку та релаксу, розташоване в Києві в зеленій зоні на Трухановому острові. Наш дводений фестиваль відбудеться на більшості території, яку відокремимо на схемі локації</p>
+                        <p>{intl.formatMessage({ id: "vice.14" })}</p>
                     </div>
                     <div className={classes.detailsSection}>
                         <div className={classes.detailBlock}>
                             <div className={classes.detailHeader}>
                                 <img src={dress_icon.src} alt="dress code icon"/>
-                                <h6>ДРЕС-КОД</h6>
+                                <h6>{intl.formatMessage({ id: "vice.15" })}</h6>
                             </div>
-                            <p>Дрескод не є вимогою! Було б круто, якщо одягнешся за референсом, який показуємо нижче за допомогою архетипів</p>
+                            <p>{intl.formatMessage({ id: "vice.16" })}</p>
                         </div>
                         <div className={classes.detailBlock}>
                             <div className={classes.detailHeader}>
                                 <img src={time_icon.src} alt="time icon"/>
-                                <h6>ЧАС</h6>
+                                <h6>{intl.formatMessage({ id: "vice.17" })}</h6>
                             </div>
                             {event.dates.map(el => (
                                 <p>{moment(el.date).format("DD.MM")} {el.start} - {el.end}</p>
@@ -648,16 +650,16 @@ const ViceCity = (props) => {
                     <div className={classes.detailBlock}>
                         <div className={classes.detailHeader}>
                             <img src={price_icon.src} alt="price icon"/>
-                            <h6>ЦІНА КВИТКІВ</h6>
+                            <h6>{intl.formatMessage({ id: "vice.18" })}</h6>
                         </div>
-                        <p>Вартість квитків залежить від етапу передпродажу. Кількість етапів: IV. Ціна на вході найдорожча. Ціна на вході за квиток коштуватиме значно менше, якщо прийти зранку до 13:00</p>
+                        <p>{intl.formatMessage({ id: "vice.19" })}</p>
                     </div>
                     <div className={classes.detailBlock}>
                         <div className={classes.detailHeader}>
-                            <img src={club_icon.src} alt="service icon"/>
-                            <h6>СЕРВІС</h6>
+                            <img src={service_icon.src} alt="service icon"/>
+                            <h6>{intl.formatMessage({ id: "vice.20" })}</h6>
                         </div>
-                        <p>На цій локації дійсно є, де розгулятись та зайняти себе різними активностями. Окрім комерційних ділянок, де ви можете придбати їжу\напої або щось на згадку - мерч\аксесуари\тощо, для вас також буде можливість відвідати пляж та поплавати (є душ та роздягальня); поплавати на вейкборді; зіграти в баскетбол або настольний теніс; зняти мотоцикл на прокат; замовити кальян; відвідати тир; навіть, прийти зранку на йогу!</p>
+                        <p>{intl.formatMessage({ id: "vice.21" })}</p>
                     </div>
                 </div>
             </div>
@@ -666,7 +668,7 @@ const ViceCity = (props) => {
                 backgroundImage: `url(${how_it_was_bg.src})`
             }} data-aos="fade-down" data-aos-duration="2000">
                 <h2>HOW IT WAS</h2>
-                <p>Here are the memories of your youth.<br/> Emotions that will remain forever!</p>
+                <p>{intl.formatMessage({ id: "vice.22" })}<br/> {intl.formatMessage({ id: "vice.23" })}</p>
             </div>
             <div className={classes.howItWasSlider}>
                 <HozhoSlider
@@ -698,8 +700,8 @@ const ViceCity = (props) => {
             {/* MEANWHILE */}
             <div className={classes.meanwhile}>
                 <div data-aos="fade-down" data-aos-duration="2000" className={classes.meanwhileText}>
-                    <p>Справжня версія тебе — не в Zoom, не в метро. Вона там, де дієш як хочеться, йдеш, куди вітер покличе</p>
-                    <p>Важливо не що ти робиш — <span>а що ти відчуваєш.</span></p>
+                    <p>{intl.formatMessage({ id: "vice.24" })}</p>
+                    <p>{intl.formatMessage({ id: "vice.25" })} <span>{intl.formatMessage({ id: "vice.26" })}</span></p>
                 </div>
                 <div className={classes.meanwhileImg} data-aos="fade" data-aos-duration="2000">
                     <Image src={strip_img} alt="strip" fill/>
@@ -713,26 +715,36 @@ const ViceCity = (props) => {
             >
                 <div className={classes.dressHeader}>
                     <h2>DRESSCODE</h2>
-                    <p>Якщо не маєш бажання - за дрескод можеш не паритись. Але якщо хочеш відповідати екосистемі і цікавить що одягти, можеш скористатися референсами! Ми підготували різні архетипи - найкращий спосіб пояснити дрес-код, вайб і навіть стилі поведінки без заборон і нудних інструкцій. Обирай одяг за станом, який найближче всього для тебе</p>
+                    <p>{intl.formatMessage({ id: "vice.27" })}</p>
                 </div>
                 <img src={palm3.src} alt="palm" className={classes.palm3}/>
                 <div className={classes.dressTypes} ref={containerRef}>
                     {dress.map((el, index) => (
                         <div className={classes.dressType}>
                             <div className={classes.dressBg}/>
-                            <img src={el.img} className={index === 2 ? classes.fat : ""}/>
+                            <img src={el.img} className={
+                                `
+                                    ${index === 0 ? classes.dress1 : ""} 
+                                    ${index === 1 ? classes.dress2 : ""} 
+                                    ${index === 2 ? classes.dress3 : ""} 
+                                    ${index === 3 ? classes.dress4 : ""} 
+                                    ${index === 4 ? classes.dress5 : ""} 
+                                    ${index === 5 ? classes.dress6 : ""}
+                                `
+                                
+                            }/>
                             <div className={classes.dressInfo}>
                                 <h5>{el.name}</h5>
                                 <div className={classes.dressInfoPoint}>
-                                    <h6>ДРЕС-КОД</h6>
+                                    <h6>{intl.formatMessage({ id: "vice.15" })}</h6>
                                     <p>{el.dresscode}</p>
                                 </div>
                                 <div className={classes.dressInfoPoint}>
-                                    <h6>ФРАЗА</h6>
+                                    <h6>{intl.formatMessage({ id: "vice.28" })}</h6>
                                     <p>{el.phrase}</p>
                                 </div>
                                 <div className={classes.dressInfoPoint}>
-                                    <h6>СТАН</h6>
+                                    <h6>{intl.formatMessage({ id: "vice.29" })}</h6>
                                     <p>{el.mood}</p>
                                 </div>
                             </div>

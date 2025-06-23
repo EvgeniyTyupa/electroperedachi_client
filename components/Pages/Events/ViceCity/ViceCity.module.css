@@ -417,8 +417,9 @@
 .how_it_was p {
     margin-top: 24px;
     color: black;
-    font-family: "ChaletMedium";
+    font-family: "ChaletMedium", "Helvetica";
     letter-spacing: 1.5px;
+    font-weight: 600;
 }
 .howItWasSlider {
     width: 100%;
@@ -553,11 +554,20 @@
     top: 0;
 }
 .dressType img {
-    width: 255px;
     position: absolute;
-    left: -80px;
+    /* left: -80px; */
     top: 100px;
     z-index: 2;
+}
+.dress1, .dress5 {
+    width: 160px;
+}
+.dress2, .dress6 {
+    width: 200px;
+    left: -40px;
+}
+.dress3, .dress4 {
+    width: 180px;
 }
 .dressInfo {
     position: relative;
@@ -977,6 +987,14 @@
         outline: none;
         border: none;
     }
+    .buyButtMobile img {
+        position: absolute;
+        top: -57px;
+        right: 0px;
+        z-index: 1;
+        width: 300px;
+        animation: fadeIn 1s ease-in infinite;
+    }
     .about {
         padding-top: 2rem;
         padding-left: 1rem;
@@ -1105,6 +1123,17 @@
     .youtubeCard {
         height: 200px !important;
     }
+    .dress1, .dress5 {
+        width: 160px;
+        left: -20px;
+    }
+    .dress2, .dress6 {
+        width: 190px;
+        left: -40px;
+    }
+    .dress3, .dress4 {
+        width: 170px;
+    }
 }
 
 @media screen and (max-width: 390px) {
@@ -1116,6 +1145,18 @@
     }
     .locVidos {
         height: 230px;
+    }
+    .dress1, .dress5 {
+        width: 140px;
+        left: -20px;
+    }
+    .dress2, .dress6 {
+        width: 170px;
+        left: -40px;
+    }
+    .dress3, .dress4 {
+        width: 150px;
+        left: -30px;
     }
 }
 
@@ -1168,9 +1209,9 @@
     .dressType {
         min-width: 400px;
     }
-    .dressType img {
+    /* .dressType img {
         width: 220px;
-    }
+    } */
     .dressInfo h5 {
         font-size: 36px;
     }
@@ -1218,3 +1259,16 @@
         margin-top: 1rem;
     }
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;   /* полностью прозрачный */
+    }
+    50% {
+        opacity: 1;   /* полностью непрозрачный */
+    }
+    100% {
+        opacity: 0;   /* полностью непрозрачный */
+    }
+}
+  
