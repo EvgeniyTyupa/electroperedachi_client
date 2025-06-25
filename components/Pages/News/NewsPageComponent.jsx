@@ -25,13 +25,13 @@ const NewsPageComponent = (props) => {
     const intl = useIntl()
 
     const fetchMore = async () => {
-        setPage((prev) => prev + 1)
-        const { news } = await newsApi.getNews(page + 1, pageSize)
+        const { news } = await newsApi.getNews(page + 1, pageSize, "desc")
         const tmp = totalNews.map(el => el)
         news.forEach(el => {
             tmp.push(el)
         })
         setTotalNews(tmp)
+        setPage((prev) => prev + 1)
     }
 
     useEffect(() => {

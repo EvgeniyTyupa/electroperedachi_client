@@ -451,7 +451,7 @@ const ViceCity = (props) => {
             {/* HOME */}
             <div className={classes.home} style={{
                 backgroundImage: `url(${home_bg.src})`
-            }}>
+            }} id="main">
                 <div className={classes.partners}>
                     {event.partners.map(el => (
                         <img src={el.image} alt={el.name}/>
@@ -491,7 +491,7 @@ const ViceCity = (props) => {
                 <img data-aos="fade-left" data-aos-duration="2000" src={girl.src} alt="girl" className={classes.girl}/>
             </div>
             {/* ABOUT */}
-            <div className={classes.about}>
+            <div className={classes.about} id="about">
                 <p className={classes.aboutIntro}>{intl.formatMessage({ id: "vice.1" })}</p>
                 <h2 data-aos="fade-down" data-aos-duration="2000">ABout FESTIVAL</h2>
                 <img data-aos="fade-left" data-aos-duration="2000" className={classes.palm1} src={palm1.src} alt="palm"/>
@@ -539,7 +539,7 @@ const ViceCity = (props) => {
             {/* LINEUP */}
             <div className={classes.lineup} style={{
                 backgroundImage: `url(${lineup_bg.src})`
-            }}>
+            }} id="lineup">
                 <h2 data-aos="fade-down" data-aos-duration="2000">Line Up</h2>
                 <img data-aos="fade-right" data-aos-duration="2000" src={heads_img.src} alt="headliners" className={classes.headlinersImg}/>
                 <div data-aos="fade-down" data-aos-duration="2000" className={classes.lineupInfo}>
@@ -614,7 +614,7 @@ const ViceCity = (props) => {
                 </HozhoSlider>
             </div>
             {/* PARTY DETAILS */}
-            <div className={classes.details}>
+            <div className={classes.details} id="details">
                 <h2 data-aos="fade-right" data-aos-duration="2000">PARTY DETAILS</h2>
                 <div className={classes.detailsImgContainer}>
                     <div className={classes.detailsImg} data-aos="fade" data-aos-duration="2000">
@@ -666,7 +666,7 @@ const ViceCity = (props) => {
             {/* HOW IT WAS */}
             <div className={classes.how_it_was} style={{
                 backgroundImage: `url(${how_it_was_bg.src})`
-            }} data-aos="fade-down" data-aos-duration="2000">
+            }} data-aos="fade-down" data-aos-duration="2000" id="how_it_was">
                 <h2>HOW IT WAS</h2>
                 <p>{intl.formatMessage({ id: "vice.22" })}<br/> {intl.formatMessage({ id: "vice.23" })}</p>
             </div>
@@ -712,6 +712,7 @@ const ViceCity = (props) => {
                 style={{
                     backgroundImage: `url(${home_bg.src})`
                 }}
+                id="dresscode"
             >
                 <div className={classes.dressHeader}>
                     <h2>DRESSCODE</h2>
@@ -752,14 +753,16 @@ const ViceCity = (props) => {
                     ))}
                 </div>
             </div>
-            <ViceCityForm
-                event={event}
-                price={price}
-                setPrice={setPrice}
-                paymentBlockRef={paymentBlockRef}
-            />
+            <div id="buy_ticket">
+                <ViceCityForm
+                    event={event}
+                    price={price}
+                    setPrice={setPrice}
+                    paymentBlockRef={paymentBlockRef}
+                />
+            </div>
             {/* FAQ */}
-            <div className={classes.faq}>
+            <div className={classes.faq} id="faq">
                 <h2>Faq</h2>
                 <div className={classes.questions}>
                     {faq.map((el, index) => (

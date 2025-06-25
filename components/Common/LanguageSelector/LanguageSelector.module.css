@@ -37,4 +37,7 @@
     .active {
         color: var(--main-orange) !important;
     }
+    .viceCity button .active {
+        color: #FC99CC !important
+    }
 }

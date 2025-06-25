@@ -66,7 +66,7 @@ const LanguageSelector = (props) => {
                     </MenuItem>
                 ))}
             </TextField>
-            <div className={classes.buttons}>
+            <div className={`${classes.buttons} ${router.pathname.includes("vice-city") ? classes.viceCity : ""}`}>
                 <Button onClick={handleOpen}>
                     <Link href={{ href: router.pathname, query: {...router.query} }} locale={"en"} className={cx(classes.langLink, locale === "en" ? classes.active : undefined)}>EN</Link>
                 </Button>

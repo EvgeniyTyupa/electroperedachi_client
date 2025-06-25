@@ -9,6 +9,7 @@ import CustomLink from "../../../UI/Text/CustomLink/CustomLink";
 import { cx } from "../../../../utils/classnames";
 import { useRouter } from "next/router";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
+import Link from "next/link";
 
 const Burger = () => {
     const [isOpenBurger, setIsOpenBurger] = useState(false)
@@ -34,7 +35,7 @@ const Burger = () => {
                 anchor={anchor}
                 open={isOpenBurger}
                 onClose={handleOpen}
-                classes={{ root: classes.root, paper: classes.paper }}
+                classes={{ root: classes.root, paper: router.pathname.includes("vice-city") ? classes.viceCity : classes.paper }}
                 sx={{ zIndex: 199999999 }}
             >
                 <div className={classes.header}>
@@ -46,15 +47,29 @@ const Burger = () => {
                     </IconButton>
                 </div>
                 <div className={classes.links}>
-                    {links.map(el => (
-                        <CustomLink
-                            onClick={() => setIsOpenBurger(false)}
-                            key={el.href}
-                            href={el.href}
-                            text={el.text}
-                            className={cx(classes.link, router.pathname == el.href ? classes.active : "")}
-                        />
-                    ))}
+                    {router.pathname.includes("vice-city") ? (
+                        <>
+                            <Link href={"#about"} onClick={() => setIsOpenBurger(false)}>About Festival</Link>
+                            <Link href={"#lineup"} onClick={() => setIsOpenBurger(false)}>Line up</Link>
+                            <Link href={"#details"} onClick={() => setIsOpenBurger(false)}>Party Details</Link>
+                            <Link href={"#how_it_was"} onClick={() => setIsOpenBurger(false)}>How it Was</Link>
+                            <Link href={"#dresscode"} onClick={() => setIsOpenBurger(false)}>Dresscode</Link>
+                            <Link href={"#faq"} onClick={() => setIsOpenBurger(false)}>FAQ</Link>
+                            <Link href={"#playlist"} onClick={() => setIsOpenBurger(false)}>Playlist</Link>
+                        </>
+                    ) : (
+                        <>
+                            {links.map(el => (
+                                <CustomLink
+                                    onClick={() => setIsOpenBurger(false)}
+                                    key={el.href}
+                                    href={el.href}
+                                    text={el.text}
+                                    className={cx(classes.link, router.pathname == el.href ? classes.active : "")}
+                                />
+                            ))}
+                        </>
+                    )}
                 </div>
                 <LanguageSelector handleOpen={handleOpen}/>
             </Drawer>

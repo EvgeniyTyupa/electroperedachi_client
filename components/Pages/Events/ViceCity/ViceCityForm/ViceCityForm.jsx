@@ -149,11 +149,11 @@ const ViceCityForm = (props) => {
                                     <p className={classes.price}>
                                         {intl.formatMessage({ id: "event.price" })}
                                         &nbsp;
-                                        <span className={classes.oldPrice}>2300</span>
+                                        <span className={classes.oldPrice}>{el.price[0]?.price}</span>
                                         &nbsp;
                                         <br/>
                                         {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
-                                        <span className={classes.discountPrice}>{el.price[0]?.price}</span>
+                                        {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
                                         {intl.formatMessage({ id: "event.currency" })}.
                                     </p>
                                 </div>

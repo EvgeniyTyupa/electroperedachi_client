@@ -10,12 +10,12 @@
 
 @font-face {
     font-family: 'Chalet';
-    src: url('../../../../public/fonts/ChaletLondonNineteenSixty.ttf');
+    src: url('../../../../public/fonts/chalet_londonnineteensixty.otf');
 }
 
 @font-face {
     font-family: 'ChaletMedium';
-    src: url('../../../../public/fonts/ChaletNewYorkNineteenSixty.ttf');
+    src: url('../../../../public/fonts/chalet_newyorknineteeneighty.otf');
 }
 
 .main {
@@ -374,6 +374,10 @@
     gap: 20px;
     width: 100%;
 }
+.detailBlock p {
+    font-family: "Chalet";
+    white-space: pre-wrap;
+}
 .detailHeader {
     display: flex;
     align-items: center;
@@ -383,6 +387,7 @@
     color: #FC99CC;
     text-shadow: #84ece3a4 1px 0 10px;
     font-size: 22px;
+    font-family: "ChaletMedium" !important;
 }
 .detailsSection {
     display: flex;
