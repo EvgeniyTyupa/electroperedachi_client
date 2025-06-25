@@ -10,6 +10,7 @@ import { cx } from "../../../../utils/classnames";
 import { useRouter } from "next/router";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 import Link from "next/link";
+import palm from "/public/images/vice-city/palm4.svg"
 
 const Burger = () => {
     const [isOpenBurger, setIsOpenBurger] = useState(false)
@@ -46,6 +47,9 @@ const Burger = () => {
                         <AiOutlineClose />
                     </IconButton>
                 </div>
+                {router.pathname.includes("vice-city") && (
+                    <img src={palm.src} alt="palm" className={classes.palm}/>
+                )}
                 <div className={classes.links}>
                     {router.pathname.includes("vice-city") ? (
                         <>

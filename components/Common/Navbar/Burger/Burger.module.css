@@ -29,6 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+    z-index: 1;
 }
 .header button {
     color: white !important;
@@ -43,6 +45,7 @@
     justify-content: center;
     gap: 2rem;
     height: 80%;
+    z-index: 1;
 }
 .links a {
     color: white;
@@ -53,6 +56,12 @@
     color: white !important;
     text-shadow: 3px 3px black !important;
     font-size: 26px !important;
+}
+.palm {
+    position: absolute;
+    right: 0;
+    z-index: 0;
+    width: 81%;
 }
 
 @media screen and (max-width: 468px) {
