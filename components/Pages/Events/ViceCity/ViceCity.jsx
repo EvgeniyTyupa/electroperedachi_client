@@ -32,6 +32,16 @@ import dress5_img from "/public/images/vice-city/dress5.png"
 import dress6_img from "/public/images/vice-city/dress6.png"
 import light_img from "/public/images/vice-city/light.svg"
 
+import loc1_img from "/public/images/vice-city/loc1.jpg"
+import loc2_img from "/public/images/vice-city/loc2.jpg"
+import loc3_img from "/public/images/vice-city/loc3.jpg"
+import loc4_img from "/public/images/vice-city/loc4.jpg"
+import loc5_img from "/public/images/vice-city/loc5.jpg"
+import loc6_img from "/public/images/vice-city/loc6.jpg"
+import loc7_img from "/public/images/vice-city/loc7.jpg"
+
+import playlist_img from "/public/images/vice-city/playlist.jpg"
+
 import { GrPlayFill } from "react-icons/gr";
 import { useEffect, useRef, useState } from "react"
 import HozhoSlider from "../Hozho/Slider/HozhoSlider"
@@ -295,6 +305,8 @@ const ViceCity = (props) => {
         }
     ]
 
+    const location = [loc1_img, loc2_img, loc3_img, loc4_img, loc5_img, loc6_img, loc7_img]
+
     const PrevArrow = ({ onClick }) => (
         <div className="hozho-arrow hozho-prev" onClick={onClick}>
             <img src={prev_arr.src} alt="prev arr"/>
@@ -536,6 +548,26 @@ const ViceCity = (props) => {
                     </p>
                 </div>
             </div>
+            <div className={classes.location} data-aos="fade-down" data-aos-duration="2000">
+                <h2>Location Demo</h2>
+                <HozhoSlider
+                    arrows={true}
+                    length={location.length}
+                    nextArrow={<NextArrow/>}
+                    prevArrow={<PrevArrow/>}
+                >
+                    {location.map((el, index) => (
+                        <div
+                            className={classes.sliderEl}
+                            key={index}
+                        >
+                            <div className={classes.locPhoto}>
+                                <Image fill src={el} alt={"location photo"}/>
+                            </div>
+                        </div>
+                    ))}
+                </HozhoSlider>
+            </div>
             {/* LINEUP */}
             <div className={classes.lineup} style={{
                 backgroundImage: `url(${lineup_bg.src})`
@@ -772,6 +804,23 @@ const ViceCity = (props) => {
                             index={index}
                         />
                     ))}
+                </div>
+            </div>
+            {/* PLAYLIST */}
+            <div className={classes.playlist}>
+                <h2>PlaYlist</h2>
+                <div className={classes.playlistContent}>
+                    <iframe
+                        src="https://open.spotify.com/embed/playlist/6qMmJpJDzF3wTcBmpMlwoC?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                    />
+                    <div className={classes.playlistImg}>
+                        <Image src={playlist_img} alt="playlist" fill/>
+                    </div>
                 </div>
             </div>
             {/* FOOTER */}

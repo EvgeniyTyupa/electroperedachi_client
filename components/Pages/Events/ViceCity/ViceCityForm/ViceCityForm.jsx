@@ -71,12 +71,12 @@ const ViceCityForm = (props) => {
             newTotalPrice += el.price * el.count
         })
 
-        if (event.is_multi_buy) {
-            let totalTicketCount = 0
-            ticketCart.forEach(el => {
-                totalTicketCount += el.count
-            })
+        let totalTicketCount = 0
+        ticketCart.forEach(el => {
+            totalTicketCount += el.count
+        })
 
+        if (event.is_multi_buy) {
             if (totalTicketCount === 2) {
                 setTotalPriceDiscount(newTotalPrice * 0.90)
             } else if (totalTicketCount === 3) {
@@ -88,7 +88,13 @@ const ViceCityForm = (props) => {
             }
             setTotalPrice(newTotalPrice)
         } else {
-            setTotalPrice(newTotalPrice)
+            if (totalTicketCount >= 5) {
+                setTotalPriceDiscount(newTotalPrice * 0.85)
+                setTotalPrice(newTotalPrice)
+            } else {
+                setTotalPriceDiscount(0)
+                setTotalPrice(newTotalPrice)
+            }
         }
     }, [ticketCart])
 
@@ -141,6 +147,7 @@ const ViceCityForm = (props) => {
                     <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
+                    <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15% Собівартість квитка зі знижкою = 1530 грн</p>
                     {event.price?.map((el, index) => (
                         el.price.length > 0 && (
                             <div key={index} className={classes.ticketsBlock}>
@@ -149,7 +156,7 @@ const ViceCityForm = (props) => {
                                     <p className={classes.price}>
                                         {intl.formatMessage({ id: "event.price" })}
                                         &nbsp;
-                                        <span className={classes.oldPrice}>{el.price[0]?.price}</span>
+                                        <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
                                         &nbsp;
                                         <br/>
                                         {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
@@ -183,7 +190,7 @@ const ViceCityForm = (props) => {
                             {intl.formatMessage({ id: "event.totalPrice" })}
                         </label>
                         <div className={classes.priceBlock}>
-                            <span className={(ticketCart.reduce((sum, el) => sum + el.count, 0) > 1 && event.is_multi_buy) ? classes.oldPrice : ""}>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
+                            <span className={(ticketCart.reduce((sum, el) => sum + el.count, 0) > 1 && (event.is_multi_buy || ticketCart.reduce((sum, el) => sum + el.count, 0)) >= 5) ? classes.oldPrice : ""}>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
                             {(totalPriceDiscount && ticketCart.reduce((sum, el) => sum + el.count, 0) > 1) ? <span className={classes.discountPrice}>{totalPriceDiscount} {intl.formatMessage({ id: "event.currency" })}</span> : ""}
                         </div>
                     </div>

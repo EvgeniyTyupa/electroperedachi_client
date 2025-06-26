@@ -143,6 +143,41 @@
 .totalPrice .oldPrice {
     font-weight: 400 !important;
 }
+.gradient {
+    background-image: linear-gradient(
+        to right,
+        #7068EB 0%,
+        #F163C4 27%,
+        #F6898F 49%,
+        #F79F6F 72%,
+        #FCC564 100%
+    );
+      /* make the gradient fill the text */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+      /* expand the background so movement is visible */
+    background-size: 200% 100%;
+
+      /* animate the background-position */
+    animation: slide-gradient 4s linear infinite;
+
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+@keyframes slide-gradient {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+      }
+  }
 
 @media screen and (max-width: 1024px) {
     .container {

@@ -237,6 +237,27 @@
     border: none;
 }
 
+/* LOCATION */
+
+.location {
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+.location h2 {
+    padding-left: 108px;
+    box-sizing: border-box;
+    margin-bottom: 4rem;
+}
+.locPhoto {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+.locPhoto img {
+    object-fit: cover;
+    object-position: center;
+}
+
 /* LINEUP */
 
 .lineup {
@@ -686,6 +707,45 @@
 .mini a:hover {
     text-decoration: underline;
 }
+.playlist {
+    width: 100%;
+    padding: 0 108px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin: 4rem 0;
+    margin-bottom: 10rem;
+}
+.playlistContent {
+    width: 100%;
+    padding: 2rem 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.playlistImg {
+    width: 60%;
+    height: 498px;
+    transform: rotate(-8deg);
+    position: absolute;
+    right: 0;
+    z-index: 0;
+}
+.playlistImg img {
+    object-fit: cover;
+    border: 10px solid white;
+}
+.playlistContent iframe {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+    margin-right: auto;
+    border-radius: 12px;
+}
 
 @media screen and (max-width: 1440px) {
     .vidosBlock {
@@ -703,6 +763,13 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .location h2 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .locPhoto {
+        height: 450px;
+    }
     .home {
         padding: 0 50px;
         padding-top: 66px;
@@ -846,6 +913,9 @@
         padding: 55px 50px;
         padding-top: 0;
     }
+    .playlist {
+        padding: 0 50px;
+    }
 }
 
 @media screen and (max-width: 864px) {
@@ -861,6 +931,14 @@
 }
 
 @media screen and (max-width: 568px) {
+    .location h2 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 5rem;
+    }
+    .locPhoto {
+        height: 350px;
+    }
     .home {
         padding-top: 20px;
         padding-left: 1rem;
@@ -1139,6 +1217,18 @@
     .dress3, .dress4 {
         width: 170px;
     }
+    .playlist {
+        padding: 0 1rem;
+        margin-top: 0rem;
+    }
+    .playlistImg {
+        width: 150%;
+        left: -20%;
+        right: unset;
+    }
+    .playlistContent iframe {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 390px) {
@@ -1231,6 +1321,9 @@
 }
 
 @media screen and (max-width: 350px) {
+    .locPhoto {
+        height: 300px;
+    }
     .locVidos {
         height: 180px;
     }
