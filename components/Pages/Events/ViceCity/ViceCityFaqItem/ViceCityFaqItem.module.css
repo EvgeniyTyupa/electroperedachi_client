@@ -37,6 +37,7 @@
 .textBlock p, .textBlock li, .textBlock span {
     color: white;
     font-size: 18px;
+    font-family: "Chalet" !important;
 }
 .textBlock a {
     color: var(--main-orange);

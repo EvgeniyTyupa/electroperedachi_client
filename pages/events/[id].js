@@ -62,6 +62,15 @@ export const getStaticPaths = async ({ locales }) => {
 }
 
 export async function getStaticProps(context) {
+    if (context.params.id === "summer-festival") {
+        return {
+            redirect: {
+                destination: '/events/vice-city',
+                permanent: true, // use false if it's a temporary redirect
+            },
+        };
+    }
+
     const locale = context.locale;
 
     const { event } = await eventApi.getEvent(context.params.id)
