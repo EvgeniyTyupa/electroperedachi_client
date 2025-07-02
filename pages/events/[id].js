@@ -62,7 +62,7 @@ export const getStaticPaths = async ({ locales }) => {
 }
 
 export async function getStaticProps(context) {
-    if (context.params.id === "summer-festival") {
+    if (context.params.id.includes("summer-festival")) {
         return {
             redirect: {
                 destination: '/events/vice-city',
