@@ -23,24 +23,13 @@ const ThankyouPage = (props) => {
             const { total_price } = decoded
             
             if (total_price) {
-                import('react-facebook-pixel')
-                .then(module => module.default)
-                .then(ReactPixel => {
-                    // ReactPixel.init('573414703062456')
-                    ReactPixel.init(FB_PIXEL)
-                    ReactPixel.track('Purchase', {
-                        value: Number(total_price) / USD_EQ,
-                        currency: "USD"
-                    })
-                })
-
                 import('tiktok-pixel')
                 .then(module => module.default)
                 .then(TiktokPixel => {
                     TiktokPixel.init(TIKTOK_PIXEL)
                     TiktokPixel.track('Purchase', {
-                        value: Number(total_price) / USD_EQ,
-                        currency: "USD"
+                        value: Number(total_price),
+                        currency: "UAH"
                     })
                 })
             }

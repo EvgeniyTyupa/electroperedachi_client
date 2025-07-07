@@ -147,7 +147,13 @@ const ViceCityForm = (props) => {
                     <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
-                    <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15% Собівартість квитка зі знижкою = 1530 грн</p>
+                    {event.is_multi_buy ? (
+                        <p className={classes.gradient}>Разом дешевше!<br/>
+                        Заощаджуй придбавши квиток на 2 дні одразу для себе і друзів<br/>
+                        2 квитки -10%, 3 квитки -15%, від 4 квітків - 20%. </p>
+                    ) : (
+                        <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15% Собівартість квитка зі знижкою = 1530 грн</p>
+                    )}
                     {event.price?.map((el, index) => (
                         el.price.length > 0 && (
                             <div key={index} className={classes.ticketsBlock}>

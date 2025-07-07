@@ -59,6 +59,8 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { FB_PIXEL, TIKTOK_PIXEL } from "../../../../utils/constants"
 import ViceCityLocModal from "./ViceCityLocModal/ViceCityLocModal"
+import { trackApi } from "../../../../api/api"
+import { getFbCookies } from "../../../../utils/getFbCookies"
 
 const locVideo = "https://youtu.be/vqR6_TMrycg"
 
@@ -323,13 +325,15 @@ const ViceCity = (props) => {
         paymentBlockRef.current.scrollIntoView()
     }
 
-    const handleAddToCartClick = () => {
-        import("react-facebook-pixel")
-            .then((module) => module.default)
-            .then((ReactPixel) => {
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.track("AddToCart")
-            })
+    const handleAddToCartClick = async () => {
+        const { fbp, fbc } = getFbCookies();
+
+        await trackApi.trackEvent('add_to_cart', {
+            url: window.location.href,
+            fbp,
+            fbc,
+            ua: navigator.userAgent,
+        });
         import('tiktok-pixel')
             .then(module => module.default)
             .then(TiktokPixel => {

@@ -13,7 +13,7 @@ import {
     Checkbox,
     Button
 } from "@mui/material"
-import { eventApi, userApi } from "../../../../../../api/api"
+import { eventApi, trackApi, userApi } from "../../../../../../api/api"
 import { useAppContext } from "../../../../../../context/AppContext"
 import { logEvent } from "../../../../../../utils/gtag"
 import { useRouter } from "next/router"
@@ -22,6 +22,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import Link from "next/link"
 import { FB_PIXEL, TIKTOK_PIXEL, USD_EQ } from "../../../../../../utils/constants"
+import { getFbCookies } from "../../../../../../utils/getFbCookies"
 
 const ViceCityBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart } = props
@@ -46,12 +47,17 @@ const ViceCityBuyForm = (props) => {
     const onSubmit = async (data) => {
         setIsFetchingContext(true)
         try {
+            const { fbp, fbc } = getFbCookies();
+
             const submitData = {
                 ...data,
                 ticketCart,
                 promo: query.promo || "",
                 eventId: event._id,
-                promocode: isAppliedPromo ? data.promocode : ""
+                promocode: isAppliedPromo ? data.promocode : "",
+                fbp,
+                fbc,
+                ua: navigator.userAgent
             }
 
             const response = await userApi.add(submitData)
@@ -59,24 +65,38 @@ const ViceCityBuyForm = (props) => {
             if (event.google_table_id) {
                 logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
     
-                import("react-facebook-pixel")
-                    .then((module) => module.default)
-                    .then((ReactPixel) => {
-                        // ReactPixel.init("573414703062456")
-                        ReactPixel.init(FB_PIXEL)
-                        ReactPixel.track("InitiateCheckout", {
-                            value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
-                            currency: "USD"
-                        })
-                    })
+                // import("react-facebook-pixel")
+                //     .then((module) => module.default)
+                //     .then((ReactPixel) => {
+                //         // ReactPixel.init("573414703062456")
+                //         ReactPixel.init(FB_PIXEL)
+                //         ReactPixel.track("InitiateCheckout", {
+                //             value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
+                //             currency: "USD"
+                //         })
+                //     })
+
+                const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
+
+                await trackApi.trackEvent("initiate_checkout", {
+                    url: window.location.href,
+                    value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                    currency: 'UAH',
+                    email: data.email,
+                    phone: data.phone,
+                    ua: navigator.userAgent,
+                    num_items: ticketsCount,
+                    fbp,
+                    fbc
+                })
     
                 import('tiktok-pixel')
                 .then(module => module.default)
                 .then(TiktokPixel => {
                     TiktokPixel.init(TIKTOK_PIXEL)
                     TiktokPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
-                        currency: "USD"
+                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                        currency: "UAH"
                     })
                 })
                     

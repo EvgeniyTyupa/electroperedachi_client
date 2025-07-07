@@ -181,3 +181,13 @@ export const contactApi = {
             .then((response) => response.data)
     }
 }
+
+export const trackApi = {
+    trackEvent(endpoint, data) {
+        try {
+            return instance.post(`/track/${endpoint}`, data);
+        } catch (error) {
+            console.error('Tracking error:', error);
+        }
+    }
+}

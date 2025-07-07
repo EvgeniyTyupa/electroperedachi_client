@@ -16,6 +16,8 @@ import { FB_PIXEL, TIKTOK_PIXEL } from "../../../../utils/constants"
 import { ttqAddToCart } from "../../../../utils/tikTokTracker"
 import EventFaq from "./EventAbout/EventFaq/EventFaq"
 import { Button } from "@mui/material"
+import { trackApi } from "../../../../api/api"
+import { getFbCookies } from "../../../../utils/getFbCookies"
 
 const EventPageComponent = (props) => {
     const { event, randomPhotos } = props
@@ -48,13 +50,16 @@ const EventPageComponent = (props) => {
         moreBlockRef.current.scrollIntoView()
     }
 
-    const handleAddToCartClick = () => {
-        import("react-facebook-pixel")
-            .then((module) => module.default)
-            .then((ReactPixel) => {
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.track("AddToCart")
-            })
+    const handleAddToCartClick = async () => {
+        const { fbp, fbc } = getFbCookies();
+
+        await trackApi.trackEvent('add_to_cart', {
+            url: window.location.href,
+            fbp,
+            fbc,
+            ua: navigator.userAgent,
+        });
+        
         import('tiktok-pixel')
             .then(module => module.default)
             .then(TiktokPixel => {
