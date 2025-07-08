@@ -62,7 +62,7 @@ import ViceCityLocModal from "./ViceCityLocModal/ViceCityLocModal"
 import { trackApi } from "../../../../api/api"
 import { getFbCookies } from "../../../../utils/getFbCookies"
 
-const locVideo = "https://youtu.be/vqR6_TMrycg"
+import { v4 as uuidv4 } from 'uuid';
 
 const ViceCity = (props) => {
     const { event } = props
@@ -327,6 +327,7 @@ const ViceCity = (props) => {
 
     const handleAddToCartClick = async () => {
         const { fbp, fbc } = getFbCookies();
+        const eventId = uuidv4(); 
 
         await trackApi.trackEvent('add_to_cart', {
             url: window.location.href,
@@ -334,6 +335,19 @@ const ViceCity = (props) => {
             fbc,
             ua: navigator.userAgent,
         });
+
+        import('react-facebook-pixel')
+            .then((module) => module.default)
+            .then((ReactPixel) => {
+                ReactPixel.init(FB_PIXEL); // 👈 вставь свой ID
+                ReactPixel.track('AddToCart', {
+                    eventID: eventId,
+                });
+            })
+            .catch((err) => {
+                console.error('Facebook Pixel error:', err);
+            });
+
         import('tiktok-pixel')
             .then(module => module.default)
             .then(TiktokPixel => {

@@ -50,7 +50,8 @@
     "slick-carousel": "^1.8.1",
     "soundcloud-scraper": "^5.0.3",
     "tiktok-pixel": "^2.0.3",
-    "tss-react": "^4.5.2"
+    "tss-react": "^4.5.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "18.11.17",

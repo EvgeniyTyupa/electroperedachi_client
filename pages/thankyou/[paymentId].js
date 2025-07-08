@@ -20,9 +20,22 @@ const ThankyouPage = (props) => {
     useEffect(() => {
         if (paymentHash) {
             const decoded = JSON.parse(atob(paymentHash))
-            const { total_price } = decoded
+            const { total_price, fb_event_id, count } = decoded
             
             if (total_price) {
+                import('react-facebook-pixel')
+                .then((module) => module.default)
+                .then((ReactPixel) => {
+                    ReactPixel.init(FB_PIXEL); // если не был инициализирован
+                    ReactPixel.track('Purchase', {
+                        value: total_price,
+                        currency: "UAH",
+                        eventID: fb_event_id,
+                        num_items: count || 1
+                    });
+                })
+                .catch((err) => console.error('FB Pixel error:', err));
+                
                 import('tiktok-pixel')
                 .then(module => module.default)
                 .then(TiktokPixel => {

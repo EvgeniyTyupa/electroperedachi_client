@@ -23,6 +23,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { FB_PIXEL, TIKTOK_PIXEL, USD_EQ } from "../../../../../../utils/constants"
 import { getFbCookies } from "../../../../../../utils/getFbCookies"
+import { v4 as uuidv4 } from 'uuid';
 
 const ViceCityBuyForm = (props) => {
     const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart } = props
@@ -48,6 +49,8 @@ const ViceCityBuyForm = (props) => {
         setIsFetchingContext(true)
         try {
             const { fbp, fbc } = getFbCookies();
+            const eventId = uuidv4(); 
+            const checkoutEventId = uuidv4();
 
             const submitData = {
                 ...data,
@@ -57,7 +60,8 @@ const ViceCityBuyForm = (props) => {
                 promocode: isAppliedPromo ? data.promocode : "",
                 fbp,
                 fbc,
-                ua: navigator.userAgent
+                ua: navigator.userAgent,
+                event_id: checkoutEventId
             }
 
             const response = await userApi.add(submitData)
@@ -65,18 +69,19 @@ const ViceCityBuyForm = (props) => {
             if (event.google_table_id) {
                 logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
     
-                // import("react-facebook-pixel")
-                //     .then((module) => module.default)
-                //     .then((ReactPixel) => {
-                //         // ReactPixel.init("573414703062456")
-                //         ReactPixel.init(FB_PIXEL)
-                //         ReactPixel.track("InitiateCheckout", {
-                //             value: isAppliedPromo ? totalPriceDiscount / USD_EQ : totalPrice / USD_EQ,
-                //             currency: "USD"
-                //         })
-                //     })
-
                 const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
+
+                import("react-facebook-pixel")
+                    .then((module) => module.default)
+                    .then((ReactPixel) => {
+                        ReactPixel.init(FB_PIXEL)
+                        ReactPixel.track("InitiateCheckout", {
+                            value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                            currency: "UAH",
+                            eventID: eventId,
+                            num_items: ticketsCount
+                        })
+                    })
 
                 await trackApi.trackEvent("initiate_checkout", {
                     url: window.location.href,
@@ -87,7 +92,8 @@ const ViceCityBuyForm = (props) => {
                     ua: navigator.userAgent,
                     num_items: ticketsCount,
                     fbp,
-                    fbc
+                    fbc,
+                    event_id: eventId
                 })
     
                 import('tiktok-pixel')

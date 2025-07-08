@@ -7,6 +7,7 @@ import moment from "moment"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useRef } from "react"
+import { v4 as uuidv4 } from 'uuid';
 
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -52,13 +53,27 @@ const EventPageComponent = (props) => {
 
     const handleAddToCartClick = async () => {
         const { fbp, fbc } = getFbCookies();
+        const eventId = uuidv4(); 
 
         await trackApi.trackEvent('add_to_cart', {
             url: window.location.href,
             fbp,
             fbc,
             ua: navigator.userAgent,
+            event_id: eventId,
         });
+
+        import('react-facebook-pixel')
+            .then((module) => module.default)
+            .then((ReactPixel) => {
+                ReactPixel.init(FB_PIXEL); // 👈 вставь свой ID
+                ReactPixel.track('AddToCart', {
+                    eventID: eventId,
+                });
+            })
+            .catch((err) => {
+                console.error('Facebook Pixel error:', err);
+            });
         
         import('tiktok-pixel')
             .then(module => module.default)
