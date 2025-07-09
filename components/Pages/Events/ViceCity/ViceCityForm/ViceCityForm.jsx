@@ -150,7 +150,7 @@ const ViceCityForm = (props) => {
                     {event.is_multi_buy ? (
                         <p className={classes.gradient}>Разом дешевше!<br/>
                         Заощаджуй придбавши квиток на 2 дні одразу для себе і друзів<br/>
-                        2 квитки -10%, 3 квитки -15%, від 4 квітків - 20%. </p>
+                        2 квитки -10%, 3 квитки -15%, від 4 квитків -20%. </p>
                     ) : (
                         <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15% Собівартість квитка зі знижкою = 1530 грн</p>
                     )}
@@ -196,7 +196,7 @@ const ViceCityForm = (props) => {
                             {intl.formatMessage({ id: "event.totalPrice" })}
                         </label>
                         <div className={classes.priceBlock}>
-                            <span className={(ticketCart.reduce((sum, el) => sum + el.count, 0) > 1 && (event.is_multi_buy || ticketCart.reduce((sum, el) => sum + el.count, 0)) >= 5) ? classes.oldPrice : ""}>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
+                            <span className={ticketCart.reduce((sum, el) => sum + el.count, 0) > 1 && (event.is_multi_buy || ticketCart.reduce((sum, el) => sum + el.count, 0) >= 5) ? classes.oldPrice : ""}>{totalPrice} {intl.formatMessage({ id: "event.currency" })}.</span>
                             {(totalPriceDiscount && ticketCart.reduce((sum, el) => sum + el.count, 0) > 1) ? <span className={classes.discountPrice}>{totalPriceDiscount} {intl.formatMessage({ id: "event.currency" })}</span> : ""}
                         </div>
                     </div>
