@@ -98,6 +98,43 @@ const ViceCity = (props) => {
             cocobongo: [
                 {
                     djs: [
+                        { name: "BSLV" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Latyshev" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Metodi Hristov" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Nadai" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Nakadia" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Neumateria (Live)" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "OTRAK" },
+                    ]
+                },
+            ],
+            malibu: [
+                {
+                    djs: [
                         { name: "Abradan" }
                     ]
                 },
@@ -138,47 +175,48 @@ const ViceCity = (props) => {
                         { name: "Sagan" },
                     ]
                 },
-            ],
-            malibu: [
-                {
-                    djs: [
-                        { name: "BSLV" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Latyshev" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Metodi Hristov" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Nadai" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Nakadia" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Neumateria (Live)" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "OTRAK" },
-                    ]
-                },
             ]
         },
         {
             cocobongo: [
+                {
+                    djs: [
+                        { name: "Feerica" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Marteli" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Nickolas Grace" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Noff" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Maria Rodina" },
+                        { name: "Sasha Storm" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Staylen" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Xenia Torino" },
+                    ]
+                },
+            ],
+            malibu: [
                 {
                     djs: [
                         { name: "Artem Sky (Live)" }
@@ -218,44 +256,6 @@ const ViceCity = (props) => {
                 {
                     djs: [
                         { name: "VadimoooV" },
-                    ]
-                },
-            ],
-            malibu: [
-                {
-                    djs: [
-                        { name: "Feerica" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Marteli" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Nickolas Grace" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Noff" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Maria Rodina" },
-                        { name: "Sasha Storm" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Staylen" },
-                    ]
-                },
-                {
-                    djs: [
-                        { name: "Xenia Torino" },
                     ]
                 },
             ]
