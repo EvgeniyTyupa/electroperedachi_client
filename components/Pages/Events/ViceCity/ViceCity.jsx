@@ -106,7 +106,7 @@ const ViceCity = (props) => {
             cocobongo: [
                 {
                     djs: [
-                        { name: "BSLV" },
+                        { name: "Larin" },
                     ]
                 },
                 {
@@ -139,6 +139,11 @@ const ViceCity = (props) => {
                         { name: "OTRAK" },
                     ]
                 },
+                {
+                    djs: [
+                        { name: "VadimoooV" },
+                    ]
+                }
             ],
             malibu: [
                 {
@@ -180,7 +185,12 @@ const ViceCity = (props) => {
                 },
                 {
                     djs: [
-                        { name: "Sagan" },
+                        { name: "Kyiv2c" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Voin Lubovi" }
                     ]
                 },
             ]
@@ -220,6 +230,11 @@ const ViceCity = (props) => {
                 },
                 {
                     djs: [
+                        { name: "TI:NA" },
+                    ]
+                },
+                {
+                    djs: [
                         { name: "Xenia Torino" },
                     ]
                 },
@@ -237,7 +252,12 @@ const ViceCity = (props) => {
                 },
                 {
                     djs: [
-                        { name: "Kyiv2c" },
+                        { name: "Fog" }
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Sagan" },
                     ]
                 },
                 {
@@ -260,12 +280,7 @@ const ViceCity = (props) => {
                         { name: "QKI:" },
                         { name: "Rave Mysterio" },
                     ]
-                },
-                {
-                    djs: [
-                        { name: "VadimoooV" },
-                    ]
-                },
+                }
             ]
         }
     ]
