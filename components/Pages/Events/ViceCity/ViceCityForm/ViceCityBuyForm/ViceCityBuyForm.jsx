@@ -67,7 +67,7 @@ const ViceCityBuyForm = (props) => {
             const response = await userApi.add(submitData)
 
             if (event.google_table_id) {
-                logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
+                // logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
     
                 const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
 

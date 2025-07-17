@@ -32,13 +32,21 @@ import dress5_img from "/public/images/vice-city/dress5.png"
 import dress6_img from "/public/images/vice-city/dress6.png"
 import light_img from "/public/images/vice-city/light.svg"
 
-import loc1_img from "/public/images/vice-city/loc1.jpg"
-import loc2_img from "/public/images/vice-city/loc2.jpg"
-import loc3_img from "/public/images/vice-city/loc3.jpg"
-import loc4_img from "/public/images/vice-city/loc4.jpg"
-import loc5_img from "/public/images/vice-city/loc5.jpg"
-import loc6_img from "/public/images/vice-city/loc6.jpg"
-import loc7_img from "/public/images/vice-city/loc7.jpg"
+import loc1_img from "/public/images/vice-city/1.webp"
+import loc2_img from "/public/images/vice-city/2.webp"
+import loc3_img from "/public/images/vice-city/3.webp"
+import loc4_img from "/public/images/vice-city/4.webp"
+import loc5_img from "/public/images/vice-city/5.webp"
+import loc6_img from "/public/images/vice-city/6.webp"
+import loc7_img from "/public/images/vice-city/7.webp"
+import loc8_img from "/public/images/vice-city/8.webp"
+import loc9_img from "/public/images/vice-city/9.webp"
+import loc10_img from "/public/images/vice-city/10.webp"
+import loc11_img from "/public/images/vice-city/11.webp"
+import loc12_img from "/public/images/vice-city/12.webp"
+import loc13_img from "/public/images/vice-city/13.webp"
+import loc14_img from "/public/images/vice-city/14.webp"
+import loc15_img from "/public/images/vice-city/15.webp"
 
 import playlist_img from "/public/images/vice-city/playlist.jpg"
 
@@ -307,7 +315,7 @@ const ViceCity = (props) => {
         }
     ]
 
-    const location = [loc1_img, loc2_img, loc3_img, loc4_img, loc5_img, loc6_img, loc7_img]
+    const location = [loc1_img, loc2_img, loc3_img, loc4_img, loc5_img, loc6_img, loc7_img, loc8_img, loc9_img, loc10_img, loc11_img, loc12_img, loc13_img, loc14_img, loc15_img]
 
     const PrevArrow = ({ onClick }) => (
         <div className="hozho-arrow hozho-prev" onClick={onClick}>
