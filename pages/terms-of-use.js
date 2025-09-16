@@ -29,7 +29,7 @@ const TermsOfUsePage = () => {
                         <p><strong>{intl.formatMessage({ id: "terms.1.4.bold" })}</strong>{intl.formatMessage({ id: "terms.1.4" })} <a href="mailto:electroperedachi@gmail.com">electroperedachi@gmail.com</a></p>
                         <p><strong>{intl.formatMessage({ id: "terms.1.5.bold" })}</strong>{intl.formatMessage({ id: "terms.1.5" })}</p>
                         <p><strong>{intl.formatMessage({ id: "terms.1.6.bold" })}</strong>{intl.formatMessage({ id: "terms.1.6" })}</p>
-                        <p><strong>{intl.formatMessage({ id: "terms.1.7.bold" })}</strong>{intl.formatMessage({ id: "terms.1.7" })}</p>
+                        <p><strong>{intl.formatMessage({ id: "terms.1.7.bold" })}</strong>{intl.formatMessage({ id: "terms.1.7.1" })}</p>
                         <p><strong>{intl.formatMessage({ id: "terms.1.8.bold" })}</strong>{intl.formatMessage({ id: "terms.1.8" })}</p>
                         <p><strong>{intl.formatMessage({ id: "terms.1.9.bold" })}</strong>{intl.formatMessage({ id: "terms.1.9" })}</p>
                     </div>

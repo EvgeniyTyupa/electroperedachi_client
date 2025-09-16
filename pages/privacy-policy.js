@@ -23,7 +23,7 @@ const PrivacyPolicyPage = () => {
                     <Header type="h2">{intl.formatMessage({ id: "footer.privacy" })}</Header>
                     <div className={classes.section}>
                         <Header type="h5">{intl.formatMessage({ id: "privacy.1" })}</Header>
-                        <p>{intl.formatMessage({ id: "privacy.1.1" })}</p>
+                        <p>{intl.formatMessage({ id: "privacy.1.1.1" })}</p>
                         <p>{intl.formatMessage({ id: "privacy.1.2" })}</p>
                         <p>{intl.formatMessage({ id: "privacy.1.3" })}</p>
                         <p>{intl.formatMessage({ id: "privacy.1.4" })}</p>
