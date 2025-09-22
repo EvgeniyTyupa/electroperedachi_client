@@ -43,6 +43,9 @@ import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 import Link from "next/link"
 import MasqueradeFaqItem from "./MasqueradeForm/MasqueradeFaqItem/MasqueradeFaqItem"
 
+import Aos from "aos"
+import "aos/dist/aos.css"
+
 const Masquerade = (props) => {
     const { event } = props
 
@@ -116,58 +119,58 @@ const Masquerade = (props) => {
         {
             name: "Vampire",
             img: d1,
-            dresscode: "Темний шик, костюми, плащі, червоні акценти, високі комірці, готичні прикраси.",
-            phrase: "Моє паливо — це ваша енергія",
-            mood: "Впевнений, магнетичний. Завжди у центрі уваги, ніби господар ночі."
+            dresscode: intl.formatMessage({ id: "masq.29" }),
+            phrase: intl.formatMessage({ id: "masq.30" }),
+            mood: intl.formatMessage({ id: "masq.31" })
         },
         {
             name: "WEREWOLF",
             img: d2,
-            dresscode: "Рвані тканини, хутро, шкіра, ланцюги. Енергія дикої стихії.",
-            phrase: "Коли виходить місяць — я справжній",
-            mood: "Нестримний, танцює до знемоги. Гучний, агресивний, але у вайбі з натовпом."
+            dresscode: intl.formatMessage({ id: "masq.32" }),
+            phrase: intl.formatMessage({ id: "masq.33" }),
+            mood: intl.formatMessage({ id: "masq.34" })
         },
         {
             name: "WITCH",
             img: d3,
-            dresscode: "Капелюхи, чорні сукні, мереживо, містичні аксесуари (магічні кулони, підвіски).",
-            phrase: "Ти під моїм закляттям.",
-            mood: "Таємнича, інтригуюча, створює ауру довкола себе. Вона на межі спокуси й небезпеки."
+            dresscode: intl.formatMessage({ id: "masq.35" }),
+            phrase: intl.formatMessage({ id: "masq.36" }),
+            mood: intl.formatMessage({ id: "masq.37" })
         },
         {
             name: "PHANTOM",
             img: d4,
-            dresscode: "Прозорі тканини, білий чи світлий одяг, маски-примари, легкість у деталях.",
-            phrase: "Я тут, але ти мене не впіймаєш",
-            mood: "Плинна, з’являється й зникає у натовпі. Танцює, наче тінь."
+            dresscode: intl.formatMessage({ id: "masq.38" }),
+            phrase: intl.formatMessage({ id: "masq.39" }),
+            mood: intl.formatMessage({ id: "masq.40" })
         },
         {
             name: "LOST SOUL",
             img: d5,
-            dresscode: "бліді тони, розмитий макіяж, костюми зі слідами “зносу”, потертість як стиль.",
-            phrase: "Я ще тут… але ненадовго.",
-            mood: "Меланхолійний, загадковий. Наче шукає щось серед натовпу."
+            dresscode: intl.formatMessage({ id: "masq.41" }),
+            phrase: intl.formatMessage({ id: "masq.42" }),
+            mood: intl.formatMessage({ id: "masq.43" })
         },
         {
             name: "TRICKSTER",
             img: d6,
-            dresscode: "Кольорові маски, венеційські костюми, яскраві контрасти, бубонці чи епатажні елементи.",
-            phrase: "Моя маска сміється гучніше за мене.",
-            mood: "Хаос у тілі. Тримає людей у напрузі, грає на контрастах, непередбачуваний."
+            dresscode: intl.formatMessage({ id: "masq.44" }),
+            phrase: intl.formatMessage({ id: "masq.45" }),
+            mood: intl.formatMessage({ id: "masq.46" })
         },
         {
             name: "RAVER",
             img: d7,
-            dresscode: "Неон, світловідбивачі, спортивні окуляри, чорне, сітка, окуляри у темну пору",
-            phrase: "Моє паливо - це бас!",
-            mood: "Весь час біля сцени, глибоко в техно. Не зупиняється. Не говорить. Відданий танцю."
+            dresscode: intl.formatMessage({ id: "masq.47" }),
+            phrase: intl.formatMessage({ id: "masq.48" }),
+            mood: intl.formatMessage({ id: "masq.49" })
         },
         {
             name: "Sorceress",
             img: d8,
-            dresscode: "Блиск, сяйво, елегантність. Золоті та срібні акценти, маска з дорогоцінним виглядом.",
-            phrase: "Моя магія — це твій захват.",
-            mood: "Заворожує, ніби з іншого виміру. Їхня присутність — як закляття."
+            dresscode: intl.formatMessage({ id: "masq.50" }),
+            phrase: intl.formatMessage({ id: "masq.51" }),
+            mood: intl.formatMessage({ id: "masq.52" })
         },
     ]
 
@@ -319,6 +322,10 @@ const Masquerade = (props) => {
         };
     }, []);
 
+    useEffect(() => {
+        Aos.init({ duration: 1000, offset: 100 })
+    }, [])
+
     return (
         <div className={classes.main}>
             <div className={classes.home}>
@@ -330,16 +337,16 @@ const Masquerade = (props) => {
                     muted
                     playsInline
                 />
-                <div className={classes.homeInfo}>
+                <div className={classes.homeInfo} data-aos="fade-down" data-aos-duration="2000">
                     <h1>MASQUERADE</h1>
                     <div className={classes.homeInfoSub}>
                         <h2>01.11</h2>
                         <h2>KYIV</h2>
                     </div>
                 </div>
-                <div className={classes.homeFoot}>
-                    <p>Маска приховує твоє обличчя, але відкриває справжню сутність</p>
-                    <button onClick={scrollToPayment} className={classes.buyButt}>Придбати квиток</button>
+                <div className={classes.homeFoot} data-aos="fade-down" data-aos-duration="2000">
+                    <p>{intl.formatMessage({ id: "masq.1" })}</p>
+                    <button onClick={scrollToPayment} className={classes.buyButt}>{intl.formatMessage({ id: "masq.2" })}</button>
                 </div>
                 <img src={shadowImg.src} alt="shadow" className={classes.homeShadow}/>
             </div>
@@ -351,8 +358,8 @@ const Masquerade = (props) => {
             >
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
                 <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
-                <h3>МИНУЛОГО РОКУ...</h3>
-                <div className={classes.afterVideo}>
+                <h3 data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "masq.3" })}</h3>
+                <div className={classes.afterVideo} data-aos="fade-down" data-aos-duration="2000">
                     <img src={svech.src} alt="svitlo" className={classes.svitlo}/>
                     <img src={svech.src} alt="svitlo" className={classes.svitlo}/>
                     {isPlayIntroVideo ? (
@@ -364,23 +371,23 @@ const Masquerade = (props) => {
                     ) :
                         <>
                             <Image className={classes.preview} src={after_thumb} alt="Aftermovie preview" fill/>
-                            <button className={classes.startMovieButt} onClick={() => setIsPlayIntroVideo(true)}>ПЕРЕГЛЯНУТИ ВІДЕО aftermovie</button>
+                            <button className={classes.startMovieButt} onClick={() => setIsPlayIntroVideo(true)}>{intl.formatMessage({ id: "masq.4" })}</button>
                         </>
                     }
                 </div>
-                <p>Дракула, лідер темних сил повернувся після сну і зібрав навколо себе нову фамілію. Сотні сміливців прийняли його виклик.</p>
+                <p data-aos="fade-down" data-aos-duration="2000">{intl.formatMessage({ id: "masq.5" })}</p>
             </div>
             {/* DETAILS */}
-            <div className={classes.details}>
+            <div className={classes.details} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.detailsHeader}>
-                    <h3>ДЕТАЛІ ВЕЧІРКИ</h3>
-                    <p className={classes.detailsSub}>Mаска - твій квиток у простір без правил і очікувань</p>
+                    <h3>{intl.formatMessage({ id: "masq.6" })}</h3>
+                    <p className={classes.detailsSub}>{intl.formatMessage({ id: "masq.7" })}</p>
                 </div>
                 <div className={classes.detailsWrapper}>
                     <div className={classes.detail}>
                         <div className={classes.detailText}>
                             <h4>PLACE</h4>
-                            <p>Жовтневий палац. Алея Героїв Небесної Сотні, 1.</p>
+                            <p>{intl.formatMessage({ id: "masq.8" })}</p>
                         </div>
                         <img src={det1.src} alt="place"/>
                     </div>
@@ -388,8 +395,8 @@ const Masquerade = (props) => {
                         <div className={classes.detailText}>
                             <h4>Price</h4>
                             <p><strong>1500 UAH</strong></p>
-                            <p>Кількість квитків лімітована - 2000 осіб.</p>
-                            <p>Вартість квитків залежить від етапу передпродажу.</p>
+                            <p>{intl.formatMessage({ id: "masq.9" })}</p>
+                            <p>{intl.formatMessage({ id: "masq.10" })}</p>
                         </div>
                         <img src={det2.src} alt="place"/>
                     </div>
@@ -398,12 +405,12 @@ const Masquerade = (props) => {
                             <h4>Duration</h4>
                             <p><strong>12:00 - 22:00</strong></p>
                             <h4>Service</h4>
-                            <p>На локації буде фуд-корт, великий бар, лаунж зона та гардероб</p>
+                            <p>{intl.formatMessage({ id: "masq.11" })}</p>
                         </div>
                         <img src={det3.src} alt="place"/>
                     </div>
                 </div>
-                <button onClick={scrollToPayment} className={classes.buyButt}>Придбати квиток</button>
+                <button onClick={scrollToPayment} className={classes.buyButt}>{intl.formatMessage({ id: "masq.2" })}</button>
             </div>
             {/* STORY */}
             <div className={classes.story}
@@ -414,28 +421,23 @@ const Masquerade = (props) => {
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
                 <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
                 <img src={gerb.src} alt="gerb" className={classes.gerb}/>
-                <div className={classes.paper}>
+                <div className={classes.paper} data-aos="fade-down" data-aos-duration="2000">
                     <Image src={paper} alt="paper" fill/>
-                    <p className={classes.topText}>Раз на рік, настає день, коли світ людей і тіней перетинаються. Реальність залишається за дверима, а час втрачає значення</p>
-                    <p>Це не просто вечірка. Це бал Masquerade, на який запрошені всі — вампіри, перевертні, примари й ті, хто наважиться стати одним із них. В цей день протистояння між добром і злом зникає: під дахом Жовтневого Палацу всі рівні, всі — в одному ритмі.</p>
-                    <p>Але у Дракули є й особистий задум: серед сотень масок він прагне знайти свою єдину — ту, чия загадковість і сміливість зможе підкорити його серце.</p>
+                    <p className={classes.topText}>{intl.formatMessage({ id: "masq.12" })}</p>
+                    <p>{intl.formatMessage({ id: "masq.13" })}</p>
+                    <p>{intl.formatMessage({ id: "masq.14" })}</p>
                 </div>
                 <img src={gerb.src} alt="gerb" className={classes.gerb}/>
             </div>
             {/* LINEUP */}
             <div className={classes.lineup}>
-                <h3>LINE UP</h3>
+                <h3 data-aos="fade-down" data-aos-duration="2000">LINE UP</h3>
                 <div className={classes.lineupWrapper}>
-                    <div className={classes.headliner}>
+                    <div className={classes.headliner} data-aos="fade-down" data-aos-duration="2000">
                         <div className={classes.headlinerText}>
-                            <p>Є ті, хто володіє таємницею оживлення масок. Їх називають Хранителі масок</p>
-                            <p>Вони — діджеї Маскараду, провідники ритмів,
-                                що пробуджують приховану сутність гостей. Їхні сети — закляття, яке стирає повсякденні обличчя й відкриває нові іпостасі. <br/>
-                                Саме завдяки Хранителям масок бал стає живим організмом, де тане межа між людським
-                                і міфічним. Їхнє мистецтво вплітає хаос
-                                у гармонію, тримаючи баланс між світами.
-                                Коли вони стають за пульти, маски оживають,
-                                і кожен танцюрист стає частиною таємниці.
+                            <p>{intl.formatMessage({ id: "masq.15" })}</p>
+                            <p>{intl.formatMessage({ id: "masq.16" })}<br/>
+                            {intl.formatMessage({ id: "masq.17" })}
                             </p>
                             <div className={classes.special}>
                                 <h4>special guest</h4>
@@ -446,7 +448,7 @@ const Masquerade = (props) => {
                             <Image src={dustyImg} alt="Dusty Kid" fill/>
                         </div>
                     </div>
-                    <div className={classes.stages}>
+                    <div className={classes.stages} data-aos="fade-right" data-aos-duration="2000">
                         <div className={classes.stage}>
                             <h4>MAIN</h4>
                             <div className={classes.djs}>
@@ -470,7 +472,7 @@ const Masquerade = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={classes.featured}>
+            <div className={classes.featured} data-aos="fade-down" data-aos-duration="2000">
                 <HozhoSlider
                     arrows={true}
                     length={featuredMedia.length}
@@ -503,43 +505,43 @@ const Masquerade = (props) => {
             >
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
                 <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
-                <div className={classes.saleText}>
-                    <p>Залиш реальність за дверима, </p>
+                <div className={classes.saleText} data-aos="fade-down" data-aos-duration="2000">
+                    <p>{intl.formatMessage({ id: "masq.18" })}</p>
                     <div className={classes.saleSub}>
-                        <p>одягай свою маску та поринь у світ</p>
+                        <p>{intl.formatMessage({ id: "masq.19" })}</p>
                         <h6>MASQUERADE</h6>
                     </div>
                     <button onClick={scrollToPayment} className={classes.buyButt}>Придбати квиток</button>
                 </div>
             </div>
             {/* POINTS */}
-            <div className={classes.points}>
+            <div className={classes.points} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.point}>
                     <div className={classes.pointImg}>
                         <Image src={p1} alt="Музика як алхімія" fill />
                     </div>
                     <div className={classes.pointText}>
-                        <h5>Музика як алхімія</h5>
-                        <p>Від темних ритмів, що змушують серце битися швидше, до світлих мелодій, що зцілюють душу. <br/>
-                        Це звук, який об’єднує протилежності.</p>
+                        <h5>{intl.formatMessage({ id: "masq.20" })}</h5>
+                        <p>{intl.formatMessage({ id: "masq.21" })}<br/>
+                        {intl.formatMessage({ id: "masq.22" })}</p>
                     </div>
                 </div>
                 <div className={classes.point}>
                     <div className={classes.pointImg}>
-                        <Image src={p2} alt="Маска — ключ до свободи" fill />
+                        <Image src={p2} alt={intl.formatMessage({ id: "masq.23" })} fill />
                     </div>
                     <div className={classes.pointText}>
-                        <h5>Маска — ключ до свободи</h5>
-                        <p>Вона дозволяє стати ким завгодно: героєм, міфічною істотою чи примарою ночі. Тут немає “правильно” чи “неправильно” — є лише твоє бажання бути собою.</p>
+                        <h5>{intl.formatMessage({ id: "masq.23" })}</h5>
+                        <p>{intl.formatMessage({ id: "masq.24" })}</p>
                     </div>
                 </div>
                 <div className={classes.point}>
                     <div className={classes.pointImg}>
-                        <Image src={p3} alt="Простір без правил" fill />
+                        <Image src={p3} alt={intl.formatMessage({ id: "masq.25" })} fill />
                     </div>
                     <div className={classes.pointText}>
-                        <h5>Простір без правил</h5>
-                        <p>Палац Дракули перетворюється на місце, де час втрачає значення. Тут кожна маска — це нова історія, кожна тінь — союзник, кожен рух — частина ритуалу.</p>
+                        <h5>{intl.formatMessage({ id: "masq.25" })}</h5>
+                        <p>{intl.formatMessage({ id: "masq.26" })}</p>
                     </div>
                 </div>
             </div>
@@ -548,10 +550,10 @@ const Masquerade = (props) => {
 
             </div>
             {/* DRESSCODE */}
-            <div className={classes.dresscode}>
+            <div className={classes.dresscode} data-aos="fade-down" data-aos-duration="2000">
                 <div className={classes.dressHeader}>
-                    <h3>ДРЕС-КОД</h3>
-                    <p>Ким бути на маскараді вирішуєш тільки ти</p>
+                    <h3>{intl.formatMessage({ id: "masq.27" })}</h3>
+                    <p>{intl.formatMessage({ id: "masq.28" })}</p>
                 </div>
                 <div className={classes.dressTypes} ref={containerRef}>
                     {dress.map((el, index) => (
@@ -589,6 +591,7 @@ const Masquerade = (props) => {
                 style={{
                     backgroundImage: `url(${faqBg.src})`
                 }}
+                data-aos="fade-down" data-aos-duration="2000"
             >
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
                 <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
