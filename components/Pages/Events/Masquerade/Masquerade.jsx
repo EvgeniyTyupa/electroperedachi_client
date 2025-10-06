@@ -42,6 +42,7 @@ import useSocialLinks from "../../../../hooks/useSocialLinks"
 import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 import Link from "next/link"
 import MasqueradeFaqItem from "./MasqueradeForm/MasqueradeFaqItem/MasqueradeFaqItem"
+import moment from 'moment'
 
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -323,7 +324,21 @@ const Masquerade = (props) => {
     }, []);
 
     useEffect(() => {
-        Aos.init({ duration: 1000, offset: 100 })
+        const now = moment()
+
+        // flatten all price-windows into one array
+        if (event.price) {
+            const allWindows = event.price.flatMap((t) => t.price)
+
+            const matching = allWindows.filter((el) => now.isBetween(moment(el.start), moment(el.end), null, "[]"))
+
+            if (matching.length > 0) {
+                const cheapest = matching.reduce((a, b) => (a.price < b.price ? a : b))
+                setPrice(cheapest.price)
+            }
+        }
+
+        Aos.init({ duration: 1000 })
     }, [])
 
     return (
@@ -394,7 +409,7 @@ const Masquerade = (props) => {
                     <div className={classes.detail}>
                         <div className={classes.detailText}>
                             <h4>Price</h4>
-                            <p><strong>1500 UAH</strong></p>
+                            <p><strong>{price} UAH</strong></p>
                             <p>{intl.formatMessage({ id: "masq.9" })}</p>
                             <p>{intl.formatMessage({ id: "masq.10" })}</p>
                         </div>

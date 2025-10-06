@@ -39,6 +39,7 @@
 .textBlock {
     padding: 0 100px;
     box-sizing: border-box;
+    padding-bottom: 20px;
 }
 
 @media screen and (max-width: 468px) {
