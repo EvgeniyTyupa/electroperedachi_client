@@ -418,7 +418,7 @@ const Masquerade = (props) => {
                     <div className={classes.detail}>
                         <div className={classes.detailText}>
                             <h4>Duration</h4>
-                            <p><strong>12:00 - 22:00</strong></p>
+                            <p><strong>13:00 - 22:00</strong></p>
                             <h4>Service</h4>
                             <p>{intl.formatMessage({ id: "masq.11" })}</p>
                         </div>
