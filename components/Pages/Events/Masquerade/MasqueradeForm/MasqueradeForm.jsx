@@ -145,51 +145,54 @@ const MasqueradeForm = (props) => {
                     <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
-                    {event.is_multi_buy ? (
+                    <h2 className={classes.soldout}>Доступних квитків більше немає. <br/><br/>SOLD OUT.</h2>
+                    {/* {event.is_multi_buy ? (
                         <p className={classes.gradient}>Разом дешевше!<br/>
                         Заощаджуй придбавши квиток на 2 дні одразу для себе і друзів<br/>
                         2 квитки -10%, 3 квитки -15%, від 4 квитків -20%. </p>
                     ) : (
                         <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15%</p>
-                    )}
-                    {event.price?.map((el, index) => (
-                        el.price.length > 0 && (
-                            <div key={index} className={classes.ticketsBlock}>
-                                <div className={classes.ticketType}>
-                                    <p className={classes.ticketName}>{el.name}</p>
-                                    <p className={classes.price}>
-                                        {intl.formatMessage({ id: "event.price" })}
-                                        &nbsp;
-                                        <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
-                                        &nbsp;
-                                        <br/>
-                                        {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
-                                        {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
-                                        {intl.formatMessage({ id: "event.currency" })}.
-                                    </p>
-                                </div>
-                                <div className={classes.ticketsCount}>
-                                    <label>
-                                        {intl.formatMessage({ id: "event.tickets" })}
-                                    </label>
-                                    <Button
-                                        className={classes.countBut}
-                                        onClick={() => minusCount(el)}
-                                    >
-                                        <TfiMinus/>
-                                    </Button>
-                                    <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
-                                    <Button
-                                        className={classes.countBut}
-                                        onClick={() => plusCount(el)}
-                                    >
-                                        <TfiPlus/>
-                                    </Button>
-                                </div>
-                            </div>
-                        )
-                    ))}
-                    <div className={classes.totalPrice}>
+                    )} */}
+                        {event.price?.map((el, index) => (
+                            <></>
+                            // el.price.length > 0 && (
+                            //     <div key={index} className={classes.ticketsBlock}>
+                            //         <div className={classes.ticketType}>
+                            //             <p className={classes.ticketName}>{el.name}</p>
+                            //             <p className={classes.price}>
+                            //                 {intl.formatMessage({ id: "event.price" })}
+                            //                 &nbsp;
+                            //                 <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
+                            //                 &nbsp;
+                            //                 <br/>
+                            //                 {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
+                            //                 {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
+                            //                 {intl.formatMessage({ id: "event.currency" })}.
+                            //             </p>
+                            //         </div>
+                            //         <div className={classes.ticketsCount}>
+                            //             <label>
+                            //                 {intl.formatMessage({ id: "event.tickets" })}
+                            //             </label>
+                            //             <Button
+                            //                 className={classes.countBut}
+                            //                 onClick={() => minusCount(el)}
+                            //             >
+                            //                 <TfiMinus/>
+                            //             </Button>
+                            //             <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
+                            //             <Button
+                            //                 className={classes.countBut}
+                            //                 onClick={() => plusCount(el)}
+                            //             >
+                            //                 <TfiPlus/>
+                            //             </Button>
+                            //         </div>
+                            //     </div>
+                            // )
+                        ))}
+                    
+                    {/* <div className={classes.totalPrice}>
                         <label>
                             {intl.formatMessage({ id: "event.totalPrice" })}
                         </label>
@@ -206,7 +209,7 @@ const MasqueradeForm = (props) => {
                         price={price}
                         setDiscount={setDiscount}
                         totalPriceDiscount={totalPriceDiscount}
-                    />
+                    /> */}
                 </div>
             </Container>
         </div>

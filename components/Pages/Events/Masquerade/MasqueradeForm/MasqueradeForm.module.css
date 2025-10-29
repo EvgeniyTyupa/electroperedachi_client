@@ -164,6 +164,9 @@
     box-sizing: border-box;
     text-align: center;
 }
+.soldout {
+    margin-top: 1rem;
+}
 
 @keyframes slide-gradient {
     0% {
