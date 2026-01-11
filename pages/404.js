@@ -1,37 +1,55 @@
 import Head from "next/head"
+import { useEffect, useState } from "react"
 import { useIntl } from "react-intl"
+
 import { eventApi } from "../api/api"
 import NotFound from "../components/Pages/NotFound/NotFound"
 
-function NotFoundPage(props) {
-    const { upcomingEvent } = props
+export default function NotFoundPage() {
+  const intl = useIntl()
 
-    const intl = useIntl()
+  const [upcomingEvent, setUpcomingEvent] = useState(null)
+  const [loadingEvent, setLoadingEvent] = useState(true)
 
-    return (
-        <>
-            <Head>
-                <title>{intl.formatMessage({ id: "notfound.title" })}</title>
-                <meta
-                    name="description"
-                    content={intl.formatMessage({ id: "notfound.text1" })}
-                    key="desc"
-                />
-            </Head>
-            <NotFound upcomingEvent={upcomingEvent}/>
-        </>
-    )
-}
+  useEffect(() => {
+    let alive = true
 
-export async function getStaticProps() {
-    const { upcomingEvents } = await eventApi.getUpcomingEvents()
+    async function loadUpcomingEvent() {
+      try {
+        setLoadingEvent(true)
 
-    return {
-        props: {
-            upcomingEvent: upcomingEvents[0] ? upcomingEvents[0] : null,
-        },
-        revalidate: 1800
+        const { upcomingEvents } = await eventApi.getUpcomingEvents()
+        const first = upcomingEvents?.[0] ?? null
+
+        if (alive) setUpcomingEvent(first)
+      } catch (e) {
+        if (alive) setUpcomingEvent(null)
+      } finally {
+        if (alive) setLoadingEvent(false)
+      }
     }
-}
 
-export default NotFoundPage
+    loadUpcomingEvent()
+
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  return (
+    <>
+      <Head>
+        <title>{intl.formatMessage({ id: "notfound.title" })}</title>
+        <meta
+          name="description"
+          content={intl.formatMessage({ id: "notfound.text1" })}
+        />
+      </Head>
+
+      <NotFound
+        upcomingEvent={upcomingEvent}
+        loadingEvent={loadingEvent}
+      />
+    </>
+  )
+}
