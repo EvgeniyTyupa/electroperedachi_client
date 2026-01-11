@@ -23,7 +23,7 @@ import d8 from "/public/images/masquerade/d8.webp"
 import r1 from "/public/images/masquerade/r1.webp"
 import r2 from "/public/images/masquerade/r2.webp"
 import faqBg from "/public/images/masquerade/faq_bg.webp"
-import listBg from "/public/images/masquerade/list_bg.webp"
+// import listBg from "/public/images/masquerade/list_bg.webp"
 import gerb from "/public/images/masquerade/gerb.webp"
 import paper from "/public/images/masquerade/paper.webp"
 import Image from "next/image"
@@ -430,7 +430,7 @@ const Masquerade = (props) => {
             {/* STORY */}
             <div className={classes.story}
                 style={{
-                    backgroundImage: `url(${listBg.src})`
+                    // backgroundImage: `url(${listBg.src})`
                 }}
             >
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
