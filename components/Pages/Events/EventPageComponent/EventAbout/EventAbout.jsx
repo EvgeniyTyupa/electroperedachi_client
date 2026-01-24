@@ -136,7 +136,7 @@ const EventAbout = (props) => {
                     </HozhoSlider>
                 </div>
             )}
-            {event.howItWas && (
+            {(event.howItWas && !event.title_code.includes("dusty") )&& (
                 <EventHowItWas event={event} />
             )}
             {/* <div className={classes.lightShow}>
