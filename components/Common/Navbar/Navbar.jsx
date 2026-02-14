@@ -24,9 +24,10 @@ const Navbar = () => {
             router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
             router.pathname === "/events/masquerade" ? classes.absolute : undefined,
             router.pathname === "/events/vice-city" ? classes.none : undefined,
+            router.pathname === "/events/techno-fashion" ? classes.none : undefined
         )}>
             <Container className={classes.container}>
-                {router.pathname != "/events/vice-city" && (
+                {(router.pathname != "/events/vice-city" && router.pathname != "/events/techno-fashion") && (
                     <Link href={routes.home}>
                         <img src={logo.src} alt="logo" className={classes.logo}/>
                     </Link>
@@ -37,7 +38,8 @@ const Navbar = () => {
                     router.pathname !== "/events/vampire-carnival" &&
                     router.pathname !== "/events/cyber-christmas" &&
                     router.pathname !== "/events/hozho" &&
-                    router.pathname !== "/events/vice-city"
+                    router.pathname !== "/events/vice-city" && 
+                    router.pathname === "/events/techno-fashion"
                     ) && (
                         links.map(el => (
                             <CustomLink

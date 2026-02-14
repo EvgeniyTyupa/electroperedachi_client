@@ -23,6 +23,9 @@
     right: 0px;
     width: fit-content;
 }
+.hide {
+    display: none;
+}
 .logo {
     width: 280px;
 }
