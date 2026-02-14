@@ -11,7 +11,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Button } from "@mui/material"
 
-import form_img from "/public/images/techno_fashion/form.png"
+import form_img from "/public/images/techno_fashion/form.webp"
 
 import { TfiMinus, TfiPlus } from "react-icons/tfi";
 import TechnoFashionBuyForm from "./TechnoFashionBuyForm/TechnoFashionBuyForm"
