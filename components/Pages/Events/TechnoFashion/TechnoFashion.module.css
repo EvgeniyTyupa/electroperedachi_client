@@ -426,6 +426,262 @@
     height: 100%;
 }
 
+/* MEZHDU */
+.mezhdu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+}
+.mezhduImgContainer {
+    width: 100%;
+    position: relative;
+    height: 90vh;
+    z-index: 0;
+}
+.mezhduImgContainer img {
+    object-fit: contain;
+}
+.mezdhuContent {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+.mezdhuContent p {
+    font-size: 55px;
+    font-weight: 500;
+    line-height: normal;
+}
+.mezhdu .buyBut {
+    background-color: transparent;
+    border: 1px solid #D2FF1E;
+    color: white;
+    position: absolute;
+    bottom: 2rem;
+}
+.mezhdu .buyBut:hover {
+    background-color: #D2FF1E;
+    color: black
+}
+
+/* HOW IT WAS */
+.howItWas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 100px 145px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    position: relative;
+}
+.howItWas h5, .howItWas p {
+    position: relative;
+    z-index: 1;
+}
+.howItWas h5 {
+    font-size: 48px;
+    font-weight: 700;
+}
+.howItWas p {
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.shadowTop {
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    position: absolute;
+}
+.shadowBot {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    position: absolute;
+}
+.howItWasSlider {
+    position: relative;
+    top: -150px
+}
+
+/* DRESSCODE */
+.dresscode {
+    width: 100%;
+}
+.dresscode .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.dresscodeText {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 300;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #474747;
+}
+.dresscodeText p {
+    max-width: 40%
+}
+.dresscodeText p + p {
+    text-align: right;
+}
+.dresscodeSlider {
+    width: 100%;
+    margin-bottom: 135px;
+}
+.dresscodeItem {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+.dresscodeImg {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100% !important;
+    overflow: hidden;
+}
+.dresscodeItem p {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 18px;
+}
+.dresscodeItem h5 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #A8C4CF;
+    text-transform: uppercase;
+}
+.dresscodeSlider div {
+    height: fit-content !important;
+}
+.dresscodeSlider .dresscodeCit {
+    width: 100%;
+    background-color: white;
+    height: 55px !important;
+    font-style: italic;
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.dresscodeSlider :global(.slick-track) {
+  display: flex !important;
+  align-items: stretch;
+}
+
+.dresscodeSlider :global(.slick-slide) {
+  height: auto !important;
+}
+
+.dresscodeSlider :global(.slick-slide > div) {
+  height: 100%;
+}
+
+.dresscodeCit label {
+    position: absolute;
+    font-size: 58px;
+    color: #D2FF1E;
+    top: -15px;
+    left: 0px;
+    z-index: 1;
+}
+.dresscodeCit label + label {
+    right: 5px;
+    left: unset;
+    top: unset;
+    bottom: -40px;
+}
+
+/* FAQ */
+.faq {
+    width: 100%;
+}
+
+/* FOOTER */
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.link {
+    font-family: "Helvetica" !important;
+    font-weight: 400;
+}
+.link:hover {
+    color: #b7de1a !important;
+}
+.social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 35px;
+}
+.social a {
+    border-radius: 50%;
+    background-color: #A8C4CF;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .3s;
+}
+.social a:hover {
+    background-color: #b7de1a;
+}
+.social svg {
+    font-size: 20px;
+}
+.mini {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+.mini a {
+    font-weight: 100;
+    font-size: 14px;
+    font-family: "Helvetica" !important;
+}
+.mini a:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1366px) {
     .homeTitle {
         margin-bottom: 2%;
@@ -651,9 +907,42 @@
     .lineupLeft, .lineupRight {
         width: 100%;
     }
+    .howItWas {
+        height: 40vh;
+    }
+    .dresscodeText {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .dresscodeText p {
+        max-width: 90%;
+    }
+    .dresscode .container {
+        padding-top: 0;
+    }
+    .dresscodeText p + p {
+        margin-left: auto;
+    }
+    .dresscodeSlider {
+        margin-bottom: 50px;
+    }
+    .howItWas {
+        padding: 100px 50px;
+    }
+    .mezdhuContent p {
+        font-size: 32px;
+    }
 }
 
 @media screen and (max-width: 468px) {
+    .footer {
+        z-index: 2;
+        position: relative;
+    }
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     .homeMobileContent {
         padding: 50px 20px;
     }
@@ -728,6 +1017,47 @@
     .leftText h5 {
         font-size: 56px;
     }
+    .howItWas {
+        height: 43vh;
+        padding: 70px 20px;
+    }
+    .howItWas h5 {
+        font-size: 32px;
+    }
+    .mezhduImgContainer img {
+        object-fit: cover;
+    }
+    .mezdhuContent {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .mezhdu .buyBut {
+        width: 50% !important; 
+    }
+    .mezdhuContent p {
+        font-size: 24px;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+    .dresscodeText p {
+        font-size: 15px;
+    }
+    .dresscodeItem p {
+        font-size: 15px;
+    }
+    .dresscodeItem h5 {
+        font-size: 24px;
+    }
+    .dresscodeCit {
+        font-size: 13px;
+    }
+    .howItWasSlider {
+        top: -100px;
+    }
+    .dresscode .container {
+        gap: 2rem;
+    }
 }
 
 @media screen and (max-width: 380px) {
@@ -740,9 +1070,28 @@
     .partners img {
         width: 40px;
     }
+    .mini {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .mini a {
+        font-size: 14px;
+    }
+    .dresscodeText {
+        font-size: 15px;
+    }
+    .howItWas {
+        height: 60vh;
+    }
 }
 
 @media screen and (max-width: 350px) {
+    .footer {
+        padding: 0 1rem;
+        box-sizing: border-box;
+        padding-bottom: 1rem;
+    }
     .detailsAnnotation {
         padding: 0 16px;
     }

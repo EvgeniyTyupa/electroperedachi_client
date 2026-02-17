@@ -13,6 +13,16 @@ import p3 from "/public/images/techno_fashion/p3.webp"
 import m1 from "/public/images/techno_fashion/m1.webp"
 import m2 from "/public/images/techno_fashion/m2.webp"
 import m3 from "/public/images/techno_fashion/m3.webp"
+import is from "/public/images/techno_fashion/is.webp"
+import howMob from "/public/images/techno_fashion/howMob.webp"
+import d1 from "/public/images/techno_fashion/d1.webp"
+import d2 from "/public/images/techno_fashion/d2.webp"
+import d3 from "/public/images/techno_fashion/d3.webp"
+import d4 from "/public/images/techno_fashion/d4.webp"
+import d5 from "/public/images/techno_fashion/d5.webp"
+import d6 from "/public/images/techno_fashion/d6.webp"
+import shadowImg from "/public/images/masquerade/shadow.webp"
+import shadowImgTop from "/public/images/masquerade/shadowTop.webp"
 import aerea_photo from "/public/images/techno_fashion/aerea_photo.webp"
 import play_icon from "/public/images/techno_fashion/play.svg"
 import details from "/public/images/techno_fashion/details.webp"
@@ -21,6 +31,8 @@ import jaga from "/public/images/techno_fashion/jaga.png"
 import rent4dj from "/public/images/techno_fashion/rent4dj.png"
 import drug from "/public/images/techno_fashion/drug.png"
 import kyiv from "/public/images/techno_fashion/kyiv.svg"
+import mezhdu from "/public/images/techno_fashion/mezhdu.webp"
+import mezhduMob from "/public/images/techno_fashion/mezhduMob.webp"
 import { IoArrowDownSharp } from "react-icons/io5";
 import Image from "next/image"
 import HozhoSlider from "../Hozho/Slider/HozhoSlider"
@@ -35,6 +47,10 @@ import { getFbCookies } from "../../../../utils/getFbCookies"
 import { v4 as uuidv4 } from 'uuid';
 import { trackApi } from "../../../../api/api"
 import { FB_PIXEL, TIKTOK_PIXEL } from "../../../../utils/constants"
+import TechnoFashionFaqItem from "./TechnoFashionFaqItem/TechnoFashionFaqItem"
+import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
+import Link from "next/link"
+import useWindowDimensions from "../../../../hooks/useWindowDimension"
 
 const TechnoFashion = (props) => {
     const { event } = props
@@ -50,10 +66,51 @@ const TechnoFashion = (props) => {
 
     const [price, setPrice] = useState(0)
 
+    const { width } = useWindowDimensions()
+
     const links = useNavLinks()
     const socialLinks = useSocialLinks()
 
     const faq = event.faq
+
+    const dresscode = [
+        {
+            img: d1.src,
+            title: "Essence",
+            desc: "Природність. Людина як 'сутність', позбавлена соціальних масок та одягу. Абсолютна свобода та вразливість, що стає силою",
+            cit: "мені не потрібен одяг, щоб показати стиль"
+        },
+        {
+            img: d2.src,
+            title: "THE ICON",
+            desc: "High Fashion, сміливі силуети, латекс, шкіра, паєтки або ідеальний костюм. Твій образ кричить: 'Дивіться на мене'",
+            cit: "Я не позую, я так живу"
+        },
+        {
+            img: d3.src,
+            title: "RAVER",
+            desc: "чорне, сітка, окуляри у темну пору, партупеі, футуристичні кросівки, неон або холодний металік. Одяг, який 'дихає' і рухається разом з тобою",
+            cit: "Моє паливо - це бас! Мій подіум — це танцпол"
+        },
+        {
+            img: d4.src,
+            title: "MUSE",
+            desc: "Авангард, прозорі тканини, сітка, нестандартні форми, боді-арт або складний макіяж. Естетика 'скла та оголених емоцій'.",
+            cit: "Мій стиль — це моя сповідь, яку не треба озвучувати"
+        },
+        {
+            img: d5.src,
+            title: "Designer",
+            desc: "Total Black, архітектурний крій, концептуальний мінімалізм, незвичні аксесуари (масивні прикраси, рукавички). Строгість, яка виглядає дорого.",
+            cit: "Мода — це не те, що ти носиш, а те, як ти це подаєш"
+        },
+        {
+            img: d6.src,
+            title: "Observer",
+            desc: "Smart Casual з родзинкою, зручний, але стильний одяг (тренчі, оверсайз піджаки), можливо, з елементами tech-wear. Ти маєш виглядати як 'свій' за лаштунками показу.",
+            cit: "Найцікавіше відбувається не в світлі софітів, а в тіні"
+        }
+    ]
 
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
@@ -181,7 +238,7 @@ const TechnoFashion = (props) => {
             <div className={classes.homeMobile}>
                 <video
                     className={classes.videoHome}
-                    src="/images/techno_fashion/vid.mp4"
+                    src="/images/techno_fashion/vid2.mp4"
                     autoPlay
                     loop
                     muted
@@ -313,7 +370,7 @@ const TechnoFashion = (props) => {
                                 <div className={classes.detail}>
                                     <div className={classes.detailHeader}>
                                         <h3>ЦІНА</h3>
-                                        <h3>1500 UAH</h3>
+                                        <h3>{price} UAH</h3>
                                     </div>
                                     <p>Вартість квитків залежить від етапу передпродажу. Кількість етапів: IV. Ціна на вході найдорожча. </p>
                                 </div>
@@ -415,12 +472,147 @@ const TechnoFashion = (props) => {
                     ))}
                 </HozhoSlider>
             </div>
+            {/* MEZHDU */}
+            <div className={classes.mezhdu}>
+                <div className={classes.mezhduImgContainer}>
+                    <Image src={width > 468 ? mezhdu : mezhduMob} alt="mezhdu" fill/>
+                </div>
+                <div className={classes.mezdhuContent}>
+                    <p>Мода — це не одяг. Мода — це енергія</p>
+                    <p>Одягни енергію. Зніми стандарти</p>
+                </div>
+                <button className={classes.buyBut} onClick={scrollToPayment}>
+                    <p>ПРИДБАТИ КВИТОК</p>
+                    <IoArrowDownSharp/>
+                </button>
+            </div>
+            {/* HOW IT WAS */}
+            <div className={classes.howItWas} style={{
+                backgroundImage: `url(${width > 468 ? is.src : howMob.src})`
+            }}>
+                <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
+                <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
+                <h5>electroperedachi is</h5>
+                <p>
+                    спогади твоєї молодості. <br/>
+                    Емоції, що залишаться назавжди
+                </p>
+            </div>
+            <div className={classes.howItWasSlider}>
+                <HozhoSlider
+                    arrows={true}
+                    length={event.howItWas?.content?.length}
+                    // nextArrow={<NextArrow/>}
+                    // prevArrow={<PrevArrow/>}
+                >
+                    {event.howItWas?.content?.map((el, index) => (
+                        <div
+                            className={classes.sliderEl}
+                            key={index}
+                        >
+                            {el.photo ? (
+                                <div className={classes.photoSlider}>
+                                    <Image fill src={el.photo} alt={el.title ? el.title : "How it Was"}/>
+                                </div>
+                            ) : (
+                                <YoutubeCard
+                                    src={el.youtubeUrl}
+                                    title={el.title}
+                                    className={classes.youtubeCard}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </HozhoSlider>
+            </div>
+            {/* DRESSCODE */}
+            <div className={classes.dresscode}>
+                <div className={classes.container}>
+                    <h2>DRESS-CODE</h2>
+                    <div className={classes.dresscodeText}>
+                        <p>Якщо не маєш бажання - за дрескод можеш не паритись. Але якщо хочеш відповідати екосистемі і цікавить що одягти, можеш скористатися референсами!</p>
+                        <p>Ми підготували різні архетипи - найкращий спосіб пояснити дрес-код, вайб і навіть стилі поведінки без заборон і нудних інструкцій. Обирай одяг за станом який найближче всього для тебе</p>
+                    </div>
+                </div>
+                <div className={classes.dresscodeSlider}>
+                    <HozhoSlider
+                        arrows={true}
+                        length={dresscode.length}
+                        slidesToShow={width > 1024 ? 4.2 : 1.5}
+                        // nextArrow={<NextArrow/>}
+                        // prevArrow={<PrevArrow/>}
+                    >
+                        {dresscode.map(el => (
+                            <div className={classes.dresscodeItem}>
+                                <div className={classes.dresscodeImg}>
+                                    <Image src={el.img} alt={el.title} fill/>
+                                </div>
+                                <h5>{el.title}</h5>
+                                <p>{el.desc}</p>
+                                <div className={classes.dresscodeCit}>
+                                    <label>"</label>
+                                    <label>"</label>
+                                    <span>{el.cit}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </HozhoSlider>
+                </div>
+            </div>
             <TechnoFashionForm
                 event={event}
                 price={price}
                 setPrice={setPrice}
                 paymentBlockRef={paymentBlockRef}
             />
+            {/* FAQ */}
+            <div className={classes.container}>
+                <div className={classes.faq} id="faq">
+                    <h2>Q&A</h2>
+                    <div className={classes.questions}>
+                        {faq.map((el, index) => (
+                            <TechnoFashionFaqItem
+                                key={el.title}
+                                item={el}
+                                index={index}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            {/* FOOTER */}
+            <footer className={classes.footer}>
+                <div className={classes.links}>
+                    {links.map((el) => (
+                        <CustomLink
+                            key={el.href}
+                            href={el.href}
+                            text={el.text}
+                            className={classes.link}
+                        />
+                    ))}
+                </div>
+                <div className={classes.social}>
+                    {socialLinks.map((el) => (
+                        <a
+                            href={el.url}
+                            key={el.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {el.icon}
+                        </a>
+                    ))}
+                </div>
+                <div className={classes.mini}>
+                    <Link href="/terms-of-use">
+                        {intl.formatMessage({ id: "footer.terms" })}
+                    </Link>
+                    <Link href="/privacy-policy">
+                        {intl.formatMessage({ id: "footer.privacy" })}
+                    </Link>
+                </div>
+            </footer>
         </div>
     )
 }
