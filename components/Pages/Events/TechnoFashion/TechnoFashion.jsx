@@ -66,6 +66,8 @@ const TechnoFashion = (props) => {
 
     const [price, setPrice] = useState(0)
 
+    const [isPlayIntroVideo, setIsPlayIntroVideo] = useState(false)
+
     const { width } = useWindowDimensions()
 
     const links = useNavLinks()
@@ -266,7 +268,7 @@ const TechnoFashion = (props) => {
                     </button>
                 </div>
             </div>
-            <div className={classes.container}>
+            <div className={classes.container} ref={moreBlockRef}>
                 <h2>LEGEND</h2>
                 <div className={classes.legendContainer}>
                     <div className={classes.masonry}>
@@ -282,14 +284,23 @@ const TechnoFashion = (props) => {
                     </div>
                     <div className={classes.masonryRight}>
                         <div className={classes.video}>
-                            <div className={classes.videoPreview}
-                                style={{
-                                    backgroundImage: `url(${video_preview.src})`
-                                }}
-                            >
-                                <p>[ АНОНС ВІДЕО ]</p>
-                                <img src={play_icon.src} alt="play icon"/>
-                            </div>
+                            {isPlayIntroVideo ? (
+                                <video
+                                    className={classes.videoA}
+                                    controls
+                                    src={"/images/techno_fashion/trailer.mp4"}
+                                />
+                            ) : (
+                                <div className={classes.videoPreview}
+                                    style={{
+                                        backgroundImage: `url(${video_preview.src})`
+                                    }}
+                                    onClick={() => setIsPlayIntroVideo(true)}
+                                >
+                                    <p>[ АНОНС ВІДЕО ]</p>
+                                    <img src={play_icon.src} alt="play icon"/>
+                                </div>
+                            )}
                         </div>
                         <div className={classes.masonryRightContent}>
                             <img src={l4.src} alt="l4"/>
@@ -322,14 +333,23 @@ const TechnoFashion = (props) => {
                     </div>
                     <div className={classes.masonryRight}>
                         <div className={classes.video}>
-                            <div className={classes.videoPreview}
-                                style={{
-                                    backgroundImage: `url(${video_preview.src})`
-                                }}
-                            >
-                                <p>Ви коли-небудь мріяли стати кращою версією себе? </p>
-                                <img src={play_icon.src} alt="play icon"/>
-                            </div>
+                            {isPlayIntroVideo ? (
+                                <video
+                                    className={classes.videoA}
+                                    controls
+                                    src={"/images/techno_fashion/trailer.mp4"}
+                                />
+                            ) : (
+                                <div className={classes.videoPreview}
+                                    style={{
+                                        backgroundImage: `url(${video_preview.src})`
+                                    }}
+                                    onClick={() => setIsPlayIntroVideo(true)}
+                                >
+                                    <p>Ви коли-небудь мріяли стати кращою версією себе? </p>
+                                    <img src={play_icon.src} alt="play icon"/>
+                                </div>
+                            )}
                         </div>
                         <div className={classes.short}>
                             <h5>Не змінюй себе!</h5>
