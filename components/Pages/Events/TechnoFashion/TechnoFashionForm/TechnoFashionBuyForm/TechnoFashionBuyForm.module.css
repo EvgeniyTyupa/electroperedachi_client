@@ -139,6 +139,12 @@
     .confirm span, .adornment p, .promoBut, .title {
         color: white;
     }
+    .adornment p {
+        color: white !important;
+    }
+    .promoBut {
+        color: white !important;
+    }
 }
 
 @media screen and (max-width: 468px) {

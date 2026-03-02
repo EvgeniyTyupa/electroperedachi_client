@@ -152,16 +152,50 @@
     font-weight: 400 !important;
 }
 .gradient {
-    color: black;
+    /* color: black; */
     font-family: "Helvetica";
     font-weight: 700;
     font-size: 18px;
     margin-top: 1rem;
-    background-color: #D2FF1E;
+    /* background-color: #D2FF1E; */
     padding: .5rem 1rem;
     box-sizing: border-box;
     text-align: center;
 }
+.gradient {
+    background-image: linear-gradient(
+        to right,
+        #FFFFFF 0%,
+        #A8C4CF 37%,
+        #90BBE0 60%,
+        #FFFFFF 100%
+    );
+      /* make the gradient fill the text */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+      /* expand the background so movement is visible */
+    background-size: 200% 100%;
+
+      /* animate the background-position */
+    animation: slide-gradient 4s linear infinite;
+
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+@keyframes slide-gradient {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+      }
+  }
 .soldout {
     margin-top: 1rem;
 }

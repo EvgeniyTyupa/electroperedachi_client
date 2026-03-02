@@ -226,6 +226,7 @@ const TechnoFashionBuyForm = (props) => {
             marginLeft: 0,
             marginTop: "5px",
             fontFamily: "Helvetica",
+            color: "red",
             "@media screen and (max-width: 468px)": {
                 fontSize: "12px"
             }
@@ -336,6 +337,9 @@ const TechnoFashionBuyForm = (props) => {
                                     "& .MuiInputBase-root": {
                                         paddingRight: 0,
                                         color: "black",
+                                        "@media screen and (max-width: 1024px)": {
+                                            color: "white",
+                                        },
                                     }
                                 }}
                                 label={intl.formatMessage({ id: "event.form.promocode" })}

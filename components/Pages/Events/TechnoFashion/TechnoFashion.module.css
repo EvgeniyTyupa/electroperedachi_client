@@ -4,7 +4,12 @@
     flex-direction: column;
     font-family: 'Helvetica';
     background-color: black;
+    overflow-y: auto;
 }
+.main::-webkit-scrollbar-thumb {
+    background: #D2FF1E;
+}
+
 .main h2 {
     font-size: 28px;
     color: white;
@@ -764,7 +769,7 @@
         font-size: 24px;
         font-weight: 300;
         text-transform: uppercase;
-        max-width: 60%;
+        max-width: 90%;
     }
     .more {
         position: relative;

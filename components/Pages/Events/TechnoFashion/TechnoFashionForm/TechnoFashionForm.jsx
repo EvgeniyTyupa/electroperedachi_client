@@ -112,13 +112,9 @@ const TechnoFashionForm = (props) => {
     }, [])
 
     return (
-        <div className={classes.main} ref={paymentBlockRef}>
+        <div className={classes.main}>
             <Container className={classes.container}>
-                <div
-                    className={classes.left}
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
-                >
+                <div className={classes.left}>
                     {/* <h3>electroperedachi</h3> */}
                     {/* <p className={classes.date}>
                         {moment(event.date).format("DD.MM.YY")}
@@ -190,7 +186,7 @@ const TechnoFashionForm = (props) => {
                             )
                         ))}
                     
-                    <div className={classes.totalPrice}>
+                    <div className={classes.totalPrice} ref={paymentBlockRef}>
                         <label>
                             {intl.formatMessage({ id: "event.totalPrice" })}
                         </label>

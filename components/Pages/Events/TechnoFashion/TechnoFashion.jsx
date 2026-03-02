@@ -7,6 +7,11 @@ import l1 from "/public/images/techno_fashion/l1.webp"
 import l2 from "/public/images/techno_fashion/l2.webp"
 import l3 from "/public/images/techno_fashion/l3.webp"
 import l4 from "/public/images/techno_fashion/l4.webp"
+import l1_1 from "/public/images/techno_fashion/l1_1.jpg"
+import l2_1 from "/public/images/techno_fashion/l2_1.jpg"
+import l2_2 from "/public/images/techno_fashion/l2_2.jpg"
+import l3_1 from "/public/images/techno_fashion/l3_1.jpg"
+import l3_2 from "/public/images/techno_fashion/l3_2.jpg"
 import p1 from "/public/images/techno_fashion/p1.webp"
 import p2 from "/public/images/techno_fashion/p2.webp"
 import p3 from "/public/images/techno_fashion/p3.webp"
@@ -51,6 +56,7 @@ import TechnoFashionFaqItem from "./TechnoFashionFaqItem/TechnoFashionFaqItem"
 import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 import Link from "next/link"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
+import RotateImage from "../../../Common/RotateImage/RotateImage"
 
 const TechnoFashion = (props) => {
     const { event } = props
@@ -240,7 +246,7 @@ const TechnoFashion = (props) => {
             <div className={classes.homeMobile}>
                 <video
                     className={classes.videoHome}
-                    src="/images/techno_fashion/vid2.mp4"
+                    src="/images/techno_fashion/vid3.mp4"
                     autoPlay
                     loop
                     muted
@@ -261,7 +267,7 @@ const TechnoFashion = (props) => {
                     <p>Світ, натхненний естетикою «Vogue» перенесений у вимір рейву
                     <br/><br/>
                     Не дивись на показ. Будь показом!</p>
-                    <button className={classes.more} onClick={scrollToMore}>[ ДІЗНАТИСЬ БІЛЬШЕ ]</button>
+                    {/* <button className={classes.more} onClick={scrollToMore}>[ ДІЗНАТИСЬ БІЛЬШЕ ]</button> */}
                     <button className={classes.buyBut} onClick={scrollToPayment}>
                         <p>ПРИДБАТИ КВИТОК</p>
                         <IoArrowDownSharp/>
@@ -272,15 +278,18 @@ const TechnoFashion = (props) => {
                 <h2>LEGEND</h2>
                 <div className={classes.legendContainer}>
                     <div className={classes.masonry}>
-                        <img src={l1.src} alt="l1"/>
+                        {/* <img src={l1.src} alt="l1"/> */}
+                        <RotateImage images={[l1, l1_1]} intervalMs={5500}/>
                         <p>
                             МОДА ЕВОЛЮЦІОНУВАЛА<br/>
                             ВОНА ПЕРЕСТАЛА БУТИ<br/>
                             МОНОЛОГОМ БРЕНДІВ<br/>
                             ВОНА СТАЛА ДІАЛОГОМ
                         </p>
-                        <img src={l2.src} alt="l2"/>
-                        <img src={l3.src} alt="l3"/>
+                        {/* <img src={l2.src} alt="l2"/> */}
+                        <RotateImage images={[l2, l2_1, l2_2]} intervalMs={2500}/>
+                        {/* <img src={l3.src} alt="l3"/> */}
+                        <RotateImage images={[l3, l3_1, l3_2]} intervalMs={8500}/>
                     </div>
                     <div className={classes.masonryRight}>
                         <div className={classes.video}>
@@ -314,7 +323,8 @@ const TechnoFashion = (props) => {
                 <div className={classes.legendContainerMobile}>
                     <div className={classes.masonry}>
                         <div className={classes.block}>
-                            <img src={m1.src} alt="l1"/>
+                            {/* <img src={l1.src} alt="l1"/> */}
+                            <RotateImage images={[l1, l1_1]} intervalMs={5500}/>
                             <p>
                                 МОДА ЕВОЛЮЦІОНУВАЛА,
                                 ВОНА ПЕРЕСТАЛА БУТИ
@@ -323,11 +333,13 @@ const TechnoFashion = (props) => {
                             </p>
                         </div>
                         <div className={classes.block}>
-                            <img src={m2.src} alt="m2"/>
+                            {/* <img src={l2.src} alt="m2"/> */}
+                            <RotateImage images={[l2, l2_1, l2_2]} intervalMs={3500}/>
                             <p>Ми відкриваємо двері у простір people-driven естетики. Тут не оцінюють твою зовнішність за стандартами індустрії — тут сканують твою енергію.</p>
                         </div>
                         <div className={classes.block}>
-                            <img src={m3.src} alt="m2"/>
+                            {/* <img src={l3.src} alt="m2"/> */}
+                            <RotateImage images={[l3, l3_1, l3_2]} intervalMs={4500}/>
                             <p>Ти — головний герой об'єктива, який бачить те, чого не помічають інші.</p>
                         </div>
                     </div>
@@ -399,7 +411,7 @@ const TechnoFashion = (props) => {
                                         <h3>ЧАС</h3>
                                         <h3>15:00 - 22:30</h3>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet consectetur. Maecenas congue</p>
+                                    {/* <p>Lorem ipsum dolor sit amet consectetur. Maecenas congue</p> */}
                                 </div>
                                 <div className={classes.detail}>
                                     <div className={classes.detailHeader}>
