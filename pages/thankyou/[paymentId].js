@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useIntl } from "react-intl"
 import Container from "../../components/UI/Container/Container"
 import classes from "../../styles/Thankyou.module.css"
+import Link from "next/link"
 
 import thankyou_img from "/public/images/thankyou.svg"
 import { AiFillCheckCircle } from "react-icons/ai"
@@ -62,6 +63,13 @@ const ThankyouPage = (props) => {
                         <AiFillCheckCircle/>
                         <p>{intl.formatMessage({ id: "thankyou.text" })}</p>
                     </div>
+                    <div className={classes.after}>
+                        <h3>{intl.formatMessage({ id: "thankyou.afterTitle" })}</h3>
+                        <p>{intl.formatMessage({ id: "thankyou.after" })}</p>
+                        <Link href="https://t.me/+U96uaLrjwEllNTcy">
+                            {intl.formatMessage({ id: "thankyou.cta" })}
+                        </Link>
+                    </div>
                     {/* <HozhoThankyou/> */}
                 </Container>
             </div>
@@ -74,16 +82,16 @@ export const getServerSideProps = async ({ params, res }) => {
 
     let paymentHash
 
-    paymentHash = await eventApi.getPayment(paymentId)
+    // paymentHash = await eventApi.getPayment(paymentId)
 
-    if (!paymentHash.paymentHash) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false, // 307-redirect
-            },
-        }
-    }
+    // if (!paymentHash.paymentHash) {
+    //     return {
+    //         redirect: {
+    //             destination: '/',
+    //             permanent: false, // 307-redirect
+    //         },
+    //     }
+    // }
 
     res.setHeader('X-Robots-Tag', 'noindex')
     

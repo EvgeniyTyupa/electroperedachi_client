@@ -35,6 +35,18 @@
 .thankyouImg {
     width: 50%;
 }
+.after {
+    margin-top: 2rem;
+    text-align: center;
+    max-width: 50%;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.after a {
+    background-color: var(--main-orange);
+    padding: 1rem 1.5rem;
+}
 
 @media screen and (max-width: 468px) {
     .thankyouImg {
@@ -45,5 +57,8 @@
     }
     .text svg {
         display: none;
+    }
+    .after {
+        max-width: 100%;
     }
 }

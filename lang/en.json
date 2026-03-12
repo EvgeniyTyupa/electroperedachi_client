@@ -158,6 +158,8 @@
 
     "thankyou.title": "Thank you!",
     "thankyou.text": "Tickets were sent to your e-mail! See you at the party.\n Have a nice time.",
+    "thankyou.afterTitle": "The night doesn’t end here",
+    "thankyou.after": "An afterparty awaits you after the event. If you're interested — follow the link to see all the details.",
 
     "coop.error": "Something went wrong. Please try again.",
     "coop.done": "Success! We contact you soon.",
