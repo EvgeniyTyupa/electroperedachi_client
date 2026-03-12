@@ -38,6 +38,7 @@ import drug from "/public/images/techno_fashion/drug.png"
 import kyiv from "/public/images/techno_fashion/kyiv.svg"
 import mezhdu from "/public/images/techno_fashion/mezhdu.webp"
 import mezhduMob from "/public/images/techno_fashion/mezhduMob.webp"
+import preview_3d from "/public/images/techno_fashion/preview_3d.webp"
 import { IoArrowDownSharp } from "react-icons/io5";
 import Image from "next/image"
 import HozhoSlider from "../Hozho/Slider/HozhoSlider"
@@ -73,6 +74,7 @@ const TechnoFashion = (props) => {
     const [price, setPrice] = useState(0)
 
     const [isPlayIntroVideo, setIsPlayIntroVideo] = useState(false)
+    const [isPlay3DVideo, setIsPlay3DVideo] = useState(false)
 
     const { width } = useWindowDimensions()
 
@@ -274,6 +276,32 @@ const TechnoFashion = (props) => {
                     </button>
                 </div>
             </div>
+            {/* 3D */}
+            <div className={classes.d3}>
+                <div className={classes.d3Container}>
+                    <h2>SHOW IS WAITING FOR YOU</h2>
+                    <p>це візуалізація нашого шоу. переглянь і уяви, як це буде круто побачити це наживо</p>
+                </div>
+                <div className={classes.video}>
+                    {isPlay3DVideo ? (
+                        <video
+                            className={classes.videoA}
+                            controls
+                            preload="none"
+                            src={"/images/techno_fashion/3d_fin.webm"}
+                        />
+                    ) : (
+                        <div className={classes.videoPreview}
+                            style={{
+                                backgroundImage: `url(${preview_3d.src})`
+                            }}
+                            onClick={() => setIsPlay3DVideo(true)}
+                        >
+                        </div>
+                    )}
+                </div>
+            </div>
+            {/* LEGEND */}
             <div className={classes.container} ref={moreBlockRef}>
                 <h2>LEGEND</h2>
                 <div className={classes.legendContainer}>
@@ -297,6 +325,7 @@ const TechnoFashion = (props) => {
                                 <video
                                     className={classes.videoA}
                                     controls
+                                    preload="none"
                                     src={"/images/techno_fashion/trailer.mp4"}
                                 />
                             ) : (
@@ -443,13 +472,13 @@ const TechnoFashion = (props) => {
                         <Image src={p2} alt="world" fill/>
                     </div>
                     <h4>всесвіт</h4>
-                    <p>Це світ епатажу, де спалахи камер замінюють сонце. простір без осуду можна бути ким завгодно Або взагалі ніким бо тобі це у кайф!</p>
+                    <p>Це світ епатажу, де спалахи камер замінюють сонце, а ритм диктує стиль.</p>
                 </div>
                 <div className={classes.whyEl}>
                     <div className={classes.whyElImg}>
                         <Image src={p3} alt="podium" fill/>
                     </div>
-                    <h4>community ПОДІУМ</h4>
+                    <h4>ПОДІУМ</h4>
                     <p>Ми зробимо власний подіум для комʼюніті. Ти заходиш у Blockbuster Mall, але потрапляєш за лаштунки власного зіркового життя.</p>
                 </div>
             </div>
@@ -479,7 +508,7 @@ const TechnoFashion = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={classes.featured}>
+            {/* <div className={classes.featured}>
                 <HozhoSlider
                     arrows={true}
                     length={featuredMedia.length}
@@ -503,9 +532,9 @@ const TechnoFashion = (props) => {
                         </div>
                     ))}
                 </HozhoSlider>
-            </div>
+            </div> */}
             {/* MEZHDU */}
-            <div className={classes.mezhdu}>
+            {/* <div className={classes.mezhdu}>
                 <div className={classes.mezhduImgContainer}>
                     <Image src={width > 468 ? mezhdu : mezhduMob} alt="mezhdu" fill/>
                 </div>
@@ -517,7 +546,7 @@ const TechnoFashion = (props) => {
                     <p>ПРИДБАТИ КВИТОК</p>
                     <IoArrowDownSharp/>
                 </button>
-            </div>
+            </div> */}
             {/* HOW IT WAS */}
             <div className={classes.howItWas} style={{
                 backgroundImage: `url(${width > 468 ? is.src : howMob.src})`

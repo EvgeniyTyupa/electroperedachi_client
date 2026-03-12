@@ -134,8 +134,6 @@ const TechnoFashionForm = (props) => {
                 </div>
                 <div
                     className={classes.right}
-                    data-aos="fade-down"
-                    data-aos-duration="2000"
                 >
                     <h3>electroperedachi</h3>
                     <p className={classes.rules} ref={paymentBlockRef}>

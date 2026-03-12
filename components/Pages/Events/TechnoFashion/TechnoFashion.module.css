@@ -129,6 +129,11 @@
     text-decoration: underline;
 }
 
+/* 3D */
+.d3 {
+    display: none;
+}
+
 /* LEGEND */
 .legendContainer {
     width: 100%;
@@ -945,6 +950,25 @@
 }
 
 @media screen and (max-width: 468px) {
+    .d3 {
+        display: flex;
+        flex-direction: column;
+    }
+    .d3Container {
+        flex-direction: column;
+        display: flex;
+        gap: 1rem;
+        padding: 2rem 1rem;
+        padding-bottom: 1rem
+    }
+    .d3 .videoPreview {
+        width: 100%;
+        background-position: center;
+    }
+    .d3 p {
+        text-transform: uppercase;
+        font-weight: 300;
+    }
     .footer {
         z-index: 2;
         position: relative;
