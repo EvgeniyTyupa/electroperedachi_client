@@ -26,12 +26,15 @@ import d3 from "/public/images/techno_fashion/d3.webp"
 import d4 from "/public/images/techno_fashion/d4.webp"
 import d5 from "/public/images/techno_fashion/d5.webp"
 import d6 from "/public/images/techno_fashion/d6.webp"
+import spain_flag from "/public/images/techno_fashion/spain.png"
 import shadowImg from "/public/images/masquerade/shadow.webp"
 import shadowImgTop from "/public/images/masquerade/shadowTop.webp"
-import aerea_photo from "/public/images/techno_fashion/aerea_photo.webp"
+import headliner from "/public/images/techno_fashion/headliner.webp"
 import play_icon from "/public/images/techno_fashion/play.svg"
 import details from "/public/images/techno_fashion/details.webp"
 import video_preview from "/public/images/techno_fashion/preview.webp"
+import scheme from "/public/images/techno_fashion/scheme.webp"
+import enjoyImg from "/public/images/techno_fashion/enjoy.webp"
 import jaga from "/public/images/techno_fashion/jaga.png"
 import rent4dj from "/public/images/techno_fashion/rent4dj.png"
 import drug from "/public/images/techno_fashion/drug.png"
@@ -58,6 +61,7 @@ import CustomLink from "../../../UI/Text/CustomLink/CustomLink"
 import Link from "next/link"
 import useWindowDimensions from "../../../../hooks/useWindowDimension"
 import RotateImage from "../../../Common/RotateImage/RotateImage"
+import { cx } from "../../../../utils/classnames"
 
 const TechnoFashion = (props) => {
     const { event } = props
@@ -303,12 +307,13 @@ const TechnoFashion = (props) => {
                     <div className={classes.artistContainer}>
                         <span>AEREA</span>
                         <div className={classes.flag}>
-                            <label>🇪🇸</label>
                             <label>LIVE</label>
+                            <img src={spain_flag.src} alt="spain flag"/>
                         </div>
                     </div>
-                    <p>Fashion-подіум крізь танцпол</p>
-                    <p>28 БЕРЕЗНЯ, КИЇВ, BLOCKBUSTER MALL</p>
+                    <p><label className={classes.color}>28 БЕРЕЗНЯ</label>, КИЇВ. BLOCKBUSTER MALL</p>
+                    <p><label className={classes.color}>Fashion-подіум</label> крізь танцпол</p>
+                    <p>ВЕЛИКА СЦЕНА, <label className={classes.color}>3 тис квитків</label></p>
                     <br/>
                     {/* <p>Світ, натхненний естетикою «Vogue» перенесений у вимір рейву
                     <br/><br/>
@@ -316,38 +321,18 @@ const TechnoFashion = (props) => {
                     {/* <button className={classes.more} onClick={scrollToMore}>[ ДІЗНАТИСЬ БІЛЬШЕ ]</button> */}
                     <button className={classes.buyBut} onClick={scrollToPayment}>
                         <p>ПРИДБАТИ КВИТОК</p>
-                        {/* <IoArrowDownSharp/> */}
+                        <IoArrowDownSharp/>
                     </button>
                 </div>
-            </div>
-            {/* 3D */}
-            <div className={classes.d3} ref={d3Ref}>
-                <div className={classes.d3Container}>
-                    <h2>SHOW IS WAITING FOR YOU</h2>
-                    <p>це візуалізація нашого шоу. переглянь і уяви, як це буде круто побачити це наживо</p>
-                </div>
-                <div className={classes.video}>
-                    {isPlay3DVideo ? (
-                        <video
-                            className={classes.videoA}
-                            controls
-                            preload="none"
-                            src={"/images/techno_fashion/3d_fin.webm"}
-                        />
-                    ) : (
-                        <div className={classes.videoPreview}
-                            style={{
-                                backgroundImage: `url(${preview_3d.src})`
-                            }}
-                            onClick={() => setIsPlay3DVideo(true)}
-                        >
-                        </div>
-                    )}
-                </div>
+                <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
             </div>
             {/* LEGEND */}
-            <div className={classes.container} ref={moreBlockRef}>
-                <h2>LEGEND</h2>
+            <div className={cx(classes.container, classes.legendTmp)} ref={moreBlockRef}>
+                <h2>Ви коли-небудь мріяли стати кращою версією себе? </h2>
+                <div className={classes.short}>
+                    <h5>Не змінюй себе!</h5>
+                    <p>Зміни масштаб своєї сміливості</p>
+                </div>
                 <div className={classes.legendContainer}>
                     <div className={classes.masonry}>
                         {/* <img src={l1.src} alt="l1"/> */}
@@ -393,68 +378,35 @@ const TechnoFashion = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.legendContainerMobile}>
-                    <div className={classes.masonry}>
-                        <div className={classes.block}>
-                            {/* <img src={l1.src} alt="l1"/> */}
-                            <RotateImage images={[l1, l1_1]} intervalMs={5500}/>
-                            <p>
-                                МОДА ЕВОЛЮЦІОНУВАЛА,
-                                ВОНА ПЕРЕСТАЛА БУТИ
-                                МОНОЛОГОМ БРЕНДІВ.
-                                ВОНА СТАЛА ДІАЛОГОМ
-                            </p>
-                        </div>
-                        <div className={classes.block}>
-                            {/* <img src={l2.src} alt="m2"/> */}
-                            <RotateImage images={[l2, l2_1, l2_2]} intervalMs={3500}/>
-                            <p>Ми відкриваємо двері у простір people-driven естетики. Тут не оцінюють твою зовнішність за стандартами індустрії — тут сканують твою енергію.</p>
-                        </div>
-                        <div className={classes.block}>
-                            {/* <img src={l3.src} alt="m2"/> */}
-                            <RotateImage images={[l3, l3_1, l3_2]} intervalMs={4500}/>
-                            <p>Ти — головний герой об'єктива, який бачить те, чого не помічають інші.</p>
-                        </div>
-                    </div>
-                    <div className={classes.masonryRight}>
-                        <div className={classes.video}>
-                            {isPlayIntroVideo ? (
-                                <video
-                                    className={classes.videoA}
-                                    controls
-                                    src={"/images/techno_fashion/trailer.mp4"}
-                                />
-                            ) : (
-                                <div className={classes.videoPreview}
-                                    style={{
-                                        backgroundImage: `url(${video_preview.src})`
-                                    }}
-                                    onClick={() => setIsPlayIntroVideo(true)}
-                                >
-                                    <p>Ви коли-небудь мріяли стати кращою версією себе? </p>
-                                    <img src={play_icon.src} alt="play icon"/>
-                                </div>
-                            )}
-                        </div>
-                        <div className={classes.short}>
-                            <h5>Не змінюй себе!</h5>
-                            <p>Зміни масштаб своєї сміливості</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-            {/* ALARM */}
-            <div className={classes.alarm}>
-                <div className={classes.alarmTrack}>
-                    <p>Бажаєш пройти по подіуму? Ти дизайнер і хочеш заявити про себе? Маєш магазин одягу і хочеш взяти участь у показі? Напиши у наш instagram @electroperedachi</p>
-                    <p>Бажаєш пройти по подіуму? Ти дизайнер і хочеш заявити про себе? Маєш магазин одягу і хочеш взяти участь у показі? Напиши у наш instagram @electroperedachi</p>
+            <div className={classes.legendContainerMobile} ref={d3Ref}>
+                <div className={classes.masonryRight}>
+                    <div className={classes.video}>
+                        {isPlayIntroVideo ? (
+                            <video
+                                className={classes.videoA}
+                                controls
+                                src={"/images/techno_fashion/trailer.mp4"}
+                            />
+                        ) : (
+                            <div className={classes.videoPreview}
+                                style={{
+                                    backgroundImage: `url(${video_preview.src})`
+                                }}
+                                onClick={() => setIsPlayIntroVideo(true)}
+                            >
+                                <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
+                                <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
+                                <img className={classes.play} src={play_icon.src} alt="play icon"/>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
             {/* DETAILS */}
             <div className={classes.detailsWrp}>
                 <div className={classes.container}>
                     <div className={classes.details}>
-                        <h2>Деталі вечірки</h2>
                         <div className={classes.detailsAnnotation}>
                             <p>
                                 Мода — це не тільки те,<br/>
@@ -467,18 +419,12 @@ const TechnoFashion = (props) => {
                                 Твоя енергія
                             </p>
                         </div>
+                        <h2>Деталі вечірки</h2>
                         <div className={classes.detailsMain}>
                             <div className={classes.detailsImg}>
                                 <Image src={details} alt="details aerea" fill/>
                             </div>
                             <div className={classes.detailsInfo}>
-                                <div className={classes.detail}>
-                                    <div className={classes.detailHeader}>
-                                        <h3>ЦІНА</h3>
-                                        <h3>{price} UAH</h3>
-                                    </div>
-                                    <p>Вартість квитків залежить від етапу передпродажу. Кількість етапів: IV. Ціна на вході найдорожча. </p>
-                                </div>
                                 <div className={classes.detail}>
                                     <div className={classes.detailHeader}>
                                         <h3>ЧАС</h3>
@@ -491,57 +437,49 @@ const TechnoFashion = (props) => {
                                         <h3>МІСЦЕ</h3>
                                         <h3>BLOCKBASTER MALL</h3>
                                     </div>
-                                    <p>
-                                        Ми створюємо простір, 
-                                        де реальність стає подіумом. Світ, натхненний естетикою «Vogue», але перенесений у вимір рейву.
-                                    </p>
-                                    <button className={classes.buy} onClick={scrollToPayment}>[ ПРИДБАТИ КВИТОК ]</button>
+                                    <p>Під час події буде показ мод від екслюзивних дизайнерів на побудованому у глиб танцполу подіумі з проєкцією показу на екран</p>
+                                    <div className={classes.whyElImg}>
+                                        <Image src={p3} alt="podium" fill/>
+                                    </div>
+                                    {/* <button className={classes.buy} onClick={scrollToPayment}>[ ПРИДБАТИ КВИТОК ]</button> */}
+                                </div>
+                                <div className={classes.detail}>
+                                    <div className={classes.detailHeader}>
+                                        <h3>ЦІНА</h3>
+                                        <h3>{price} UAH</h3>
+                                    </div>
+                                    <p>Вартість квитків залежить від етапу передпродажу. Кількість етапів: IV. Ціна на вході найдорожча. </p>
+                                </div>
+                                <div className={classes.detail}>
+                                    <div className={classes.detailHeader}>
+                                        <h3>СХЕМА ЛОКАЦІЇ</h3>
+                                    </div>
+                                    <img src={scheme.src} alt="scheme" className={classes.scheme}/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* WHY */}
-            <div className={classes.why}>
-                <div className={classes.whyEl}>
-                    <div className={classes.whyElImg}>
-                        <Image src={p1} alt="atmosphere" fill/>
-                    </div>
-                    <h4>АТМОСФЕРА</h4>
-                    <p>тут панує естетика скла, прозорості емоцій, мерехтіння світлового шоу і камер та холодного блакитного сяйва.</p>
+            <div className={classes.lineupLeft}
+                style={{
+                    backgroundImage: `url(${headliner.src})`
+                }}
+            >
+                <h2>ВПЕРШЕ В УКРАЇНІ!</h2>
+                <div className={classes.leftText}>
+                    <h5>AEREA</h5>
+                    <img src={spain_flag.src} alt="spain flag"/>
                 </div>
-                <div className={classes.whyEl}>
-                    <div className={classes.whyElImg}>
-                        <Image src={p2} alt="world" fill/>
-                    </div>
-                    <h4>всесвіт</h4>
-                    <p>Це світ епатажу, де спалахи камер замінюють сонце, а ритм диктує стиль.</p>
-                </div>
-                <div className={classes.whyEl}>
-                    <div className={classes.whyElImg}>
-                        <Image src={p3} alt="podium" fill/>
-                    </div>
-                    <h4>ПОДІУМ</h4>
-                    <p>Ми зробимо власний подіум для комʼюніті. Ти заходиш у Blockbuster Mall, але потрапляєш за лаштунки власного зіркового життя.</p>
-                </div>
+                <iframe data-testid="embed-iframe" style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/artist/34ut5kAp6DfnW79Dp3P4CA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
             </div>
-            <div className={classes.container}>
+            <div className={cx(classes.container, classes.lineupContainer)}>
                 <div className={classes.lineup}>
-                    <h2>LINE UP</h2>
                     <div className={classes.lineupWrapper}>
-                        <div className={classes.lineupLeft}>
-                            <div className={classes.photoContainer}>
-                                <Image src={aerea_photo} alt="AEREA" fill/>
-                            </div>
-                            <div className={classes.leftText}>
-                                <p>special guest 🇪🇸</p>
-                                <h5>AEREA</h5>
-                            </div>
-                        </div>
                         <div className={classes.lineupRight}>
-                            <iframe data-testid="embed-iframe" style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/artist/34ut5kAp6DfnW79Dp3P4CA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                            <p className={classes.lineupText}>Якщо світ — це показ мод, то артисти — це Audio Couturiers (Аудіо-Кутюр’є).  Вони не просто грають музику — вони "шиють" звукове полотно вечора.  Вони керують "показом", змушуючи відвідувачів рухатися синхронно, як на найкращих дефіле світу Вони відчувають натовп і змінюють ритм так, як дизайнер змінює тканину: від невагомих мелодій до щільного, фактурного техно.</p>
+                            <h2>LINE UP</h2>
+                            <p className={classes.lineupText}>Якщо світ — це показ мод, то артисти — це Audio Couturiers (Аудіо-Кутюр’є).  Вони не просто грають музику — вони "шиють" звукове полотно вечора. </p>
                             <div className={classes.djs}>
                                 <p>AEREA (Live)</p>
                                 <p>ABRADAN</p>
@@ -549,6 +487,7 @@ const TechnoFashion = (props) => {
                                 <p>STAYLEN</p>
                                 <p>PAUL MEISE (Live)</p>
                             </div>
+                            <p className={classes.lineupText}>Вони керують "показом", змушуючи відвідувачів рухатися синхронно, як на найкращих дефіле світу</p>
                         </div>
                     </div>
                 </div>
@@ -632,6 +571,24 @@ const TechnoFashion = (props) => {
                     ))}
                 </HozhoSlider>
             </div>
+            <div className={classes.now}>
+                <div className={classes.container}>
+                    <p>БРОНЮЙ КВИТОК <span>ВЖЕ ЗАРАЗ</span></p>
+                </div>
+                <div className={classes.enjoyImg}>
+                    <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
+                    <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
+                    <Image src={enjoyImg} alt="enjoy" fill/>
+                    <div className={classes.container}>
+                        <p>
+                            1300+
+                            <br/>
+                            ВЖЕ <br/>
+                            ПРИЄДНАЛИСЬ
+                        </p>
+                    </div>
+                </div>
+            </div>
             {/* DRESSCODE */}
             <div className={classes.dresscode}>
                 <div className={classes.container}>
@@ -664,6 +621,31 @@ const TechnoFashion = (props) => {
                             </div>
                         ))}
                     </HozhoSlider>
+                </div>
+            </div>
+            {/* 3D */}
+            <div className={classes.d3}>
+                <div className={classes.d3Container}>
+                    <h2>SHOW IS WAITING FOR YOU!</h2>
+                    <p>це візуалізація нашого шоу. переглянь і уяви, як це буде круто побачити це наживо</p>
+                </div>
+                <div className={classes.video}>
+                    {isPlay3DVideo ? (
+                        <video
+                            className={classes.videoA}
+                            controls
+                            preload="none"
+                            src={"/images/techno_fashion/3d_fin.webm"}
+                        />
+                    ) : (
+                        <div className={classes.videoPreview}
+                            style={{
+                                backgroundImage: `url(${preview_3d.src})`
+                            }}
+                            onClick={() => setIsPlay3DVideo(true)}
+                        >
+                        </div>
+                    )}
                 </div>
             </div>
             <TechnoFashionForm

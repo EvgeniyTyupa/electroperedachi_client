@@ -139,10 +139,14 @@
 }
 
 /* LEGEND */
+.legendTmp {
+    display: none;
+}
 .legendContainer {
     width: 100%;
     display: flex;
     gap: 8px;
+    display: none;
 }
 .legendContainerMobile {
     display: none;
@@ -186,6 +190,7 @@
     background-size: cover;
     justify-content: center;
     position: relative;
+    background-position: center;
 }
 .videoPreview img {
     transition-duration: .3s;
@@ -262,6 +267,7 @@
     display: flex;
     flex-direction: column;
     gap: 60px;
+    display: none;
 }
 .detailsAnnotation {
     display: flex;
@@ -368,10 +374,12 @@
 }
 
 /* LINEUP */
+
 .lineup {
     width: 100%;
     display: flex;
     flex-direction: column;
+    display: none;
 }
 .lineupWrapper {
     width: 100%;
@@ -384,6 +392,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    display: none;
 }
 .photoContainer {
     width: 100%;
@@ -723,6 +732,16 @@
 .mini a:hover {
     text-decoration: underline;
 }
+.now {
+    display: none;
+}
+.dresscode {
+    display: none;
+}
+.howItWas, .howItWasSlider {
+    display: none;
+}
+
 
 @media screen and (max-width: 1366px) {
     .homeTitle {
@@ -757,24 +776,86 @@
 }
 
 @media screen and (max-width: 1024px) {
+
+    .howItWas, .howItWasSlider {
+        display: block;
+    }
+    .dresscode {
+        display: block;
+    }
+    /* NOW */
+    .now {
+        width: 100%;
+        margin-bottom: 3rem;
+        display: block;
+    }
+    .now .container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .now p {
+        font-size: 44px;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .now span {
+        color: #D2FF1E;
+    }
+    .enjoyImg {
+        width: 100%;
+        position: relative;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .enjoyImg .shadowTop {
+        z-index: 1;
+    }
+    .enjoyImg img {
+        object-fit: cover;
+        object-position: right;
+    }
+    .enjoyImg .container {
+        position: relative;
+        z-index: 2;
+        margin-top: auto; 
+        margin-bottom: 2rem;
+    }
+    .enjoyImg p {
+        font-size: 45px;
+    }
+    .legendTmp {
+        display: block;
+    }
+    .legendContainer {
+        display: flex;
+    }
+    .details {
+        display: flex;
+    }
+    .lineup {
+        display: flex;
+    }
     .home {
         display: none;
     }
-    .homeMobileContent span {
-        font-size: 32px;
-    }
     .artistContainer {
-        color: #D2FF1E;
         display: flex;
-        align-items: flex-end;
-        gap: 4px;
+        align-items: center;
+        gap: 10px;
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
+    }
+    .artistContainer span {
+        color: white;
+        font-size: 44px;
+        font-weight: 700;
     }
     .artistContainer label {
         font-size: 18px;
         position: relative;
         top: -4px;
+        color: #D2FF1E;
     }
     .flag {
         display: flex;
@@ -785,13 +866,15 @@
         line-height: 16px;
         font-size: 14px !important;
     }
+    .flag img {
+        width: 30px;
+    }
     .homeMobile {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 100vh;
         position: relative;
-        text-align: center;
     }
     .videoHome {
         width: 100%;
@@ -805,17 +888,8 @@
         object-fit: cover;
         object-position: center;
     }
-    .buyBut {
-        border-radius: 4px;
-        width: 100% !important;
-        aspect-ratio: unset !important;
-        padding: 1rem 0 !important;
-    }
-    .buyBut p {
-        font-weight: 700 !important;
-    }
     .homeMobileTitle {
-        width: 100%;
+        width: fit-content;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -834,10 +908,6 @@
     .homeMobileContent h1 {
         font-size: 125px;
         font-weight: 500;
-        text-align: center;
-    }
-    .homeMobileContent img {
-        width: 60%;
     }
     .homeMobileContent p {
         font-size: 24px;
@@ -858,6 +928,11 @@
         width: 30%;
         aspect-ratio: 1 / 1;
         height: auto;
+        justify-content: flex-end;
+        padding-bottom: 10%
+    }
+    .color {
+        color: #D2FF1E;
     }
     .buyBut p {
         max-width: 100% !important;
@@ -925,8 +1000,9 @@
     .videoPreview {
         width: 100%;
         object-position: center;
+        height: 100%;
     }
-    .videoPreview img {
+    .play {
         width: 160px;
     }
     .videoPreview p {
@@ -992,6 +1068,46 @@
     }
     .lineupLeft, .lineupRight {
         width: 100%;
+        display: flex;
+    }
+    .lineupLeft {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 20px;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+        height: 95vh;
+        margin-top: 3rem;
+    }
+    .lineupLeft h2 {
+        color: black;
+    }
+    .leftText {
+        position: relative;
+        bottom: unset;
+        left: unset;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: auto;
+        margin-bottom: 1rem;
+    }
+    .lineupLeft iframe {
+        z-index: 1;
+        position: relative;
+    }
+    .leftText h5 {
+        font-weight: 600;
+    }
+    .lineupRight h2 {
+        color: black;
+    }
+    .leftText img {
+        width: 50px;
     }
     .howItWas {
         height: 40vh;
@@ -1018,9 +1134,21 @@
     .mezdhuContent p {
         font-size: 32px;
     }
+    .djs {
+        text-align: left;
+        margin: 1.5rem 0;
+        padding-left: .8rem;
+        box-sizing: border-box;
+    }
+    .lineupContainer {
+        padding-top: 1rem !important;
+    }
 }
 
 @media screen and (max-width: 468px) {
+    .video {
+        height: 80vh;
+    }
     .stickyBuyButton {
         display: block;
         position: fixed;
@@ -1088,7 +1216,7 @@
         width: 50px;
     }
     .buyBut {
-        width: 35%;
+        width: 50%;
     }
     .homeMobileTitle h2 {
         font-size: 32px;
@@ -1099,14 +1227,14 @@
     .block p {
         font-size: 15px;
     }
-    .video {
+    /* .video {
         height: 70vh;
-    }
+    } */
     .videoA {
         width: 100%;
         height: 100%;
     }
-    .videoPreview img {
+    .play {
         width: 80px;
     }
     .videoPreview p {
@@ -1126,6 +1254,7 @@
     }
     .details {
         gap: 2rem;
+        margin-top: 0;
     }
     .detailsInfo {
         padding: 0 20px;
@@ -1190,6 +1319,9 @@
     }
     .dresscode .container {
         gap: 2rem;
+    }
+    .detailsWrp .container {
+        padding-bottom: 0;
     }
 }
 

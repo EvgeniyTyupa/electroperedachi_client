@@ -135,7 +135,7 @@ const TechnoFashionForm = (props) => {
                 <div
                     className={classes.right}
                 >
-                    <h3>electroperedachi</h3>
+                    <h3>КВИТКИ</h3>
                     <p className={classes.rules}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>

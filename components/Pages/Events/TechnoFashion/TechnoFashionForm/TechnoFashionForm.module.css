@@ -258,6 +258,7 @@
     }
     .left {
         min-height: unset;
+        display: none;
     }
 }
 
