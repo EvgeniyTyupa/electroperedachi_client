@@ -82,16 +82,16 @@ export const getServerSideProps = async ({ params, res }) => {
 
     let paymentHash
 
-    // paymentHash = await eventApi.getPayment(paymentId)
+    paymentHash = await eventApi.getPayment(paymentId)
 
-    // if (!paymentHash.paymentHash) {
-    //     return {
-    //         redirect: {
-    //             destination: '/',
-    //             permanent: false, // 307-redirect
-    //         },
-    //     }
-    // }
+    if (!paymentHash.paymentHash) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false, // 307-redirect
+            },
+        }
+    }
 
     res.setHeader('X-Robots-Tag', 'noindex')
     
