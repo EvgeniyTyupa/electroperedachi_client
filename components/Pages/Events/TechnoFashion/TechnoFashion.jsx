@@ -64,10 +64,12 @@ const TechnoFashion = (props) => {
 
     const paymentBlockRef = useRef(null)
     const moreBlockRef = useRef(null)
+    const d3Ref = useRef(null)
 
     const intl = useIntl()
 
     const [featuredMedia, setFeaturedMedia] = useState([])
+    const [showStickyBuy, setShowStickyBuy] = useState(false)
 
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
 
@@ -222,8 +224,40 @@ const TechnoFashion = (props) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [paymentBlockRef])
 
+    useEffect(() => {
+        const handleStickyBuyVisibility = () => {
+            const d3El = d3Ref.current
+            const paymentEl = paymentBlockRef.current
+
+            if (!d3El || !paymentEl) return
+
+            const d3Top = d3El.getBoundingClientRect().top
+            const paymentTop = paymentEl.getBoundingClientRect().top
+
+            const reachedD3 = d3Top <= 100
+            const reachedPayment = paymentTop <= window.innerHeight * 0.8
+
+            setShowStickyBuy(reachedD3 && !reachedPayment)
+        }
+
+        handleStickyBuyVisibility()
+
+        window.addEventListener("scroll", handleStickyBuyVisibility)
+        window.addEventListener("resize", handleStickyBuyVisibility)
+
+        return () => {
+            window.removeEventListener("scroll", handleStickyBuyVisibility)
+            window.removeEventListener("resize", handleStickyBuyVisibility)
+        }
+    }, [])
+    
     return (
         <div className={classes.main}>
+            {showStickyBuy && (
+                <button className={classes.stickyBuyButton} onClick={scrollToPayment}>
+                    ПРИДБАТИ КВИТОК
+                </button>
+            )}
             <div className={classes.home}
                 style={{
                     backgroundImage: `url(${home_bg.src})`
@@ -248,7 +282,7 @@ const TechnoFashion = (props) => {
             <div className={classes.homeMobile}>
                 <video
                     className={classes.videoHome}
-                    src="/images/techno_fashion/vid3.mp4"
+                    src="/images/techno_fashion/title.webm"
                     autoPlay
                     loop
                     muted
@@ -257,27 +291,37 @@ const TechnoFashion = (props) => {
                 <div className={classes.homeMobileContent}>
                     <div className={classes.homeMobileTitle}>
                         <h2>electroperedachi</h2>
-                        <div className={classes.partners}>
+                        {/* <div className={classes.partners}>
                             <img src={jaga.src} alt="jagermeister logo"/>
                             <img src={rent4dj.src} alt="rent4dj logo"/>
                             <img src={drug.src} alt="drugstore logo"/>
                             <img src={kyiv.src} alt="ty_kyiv logo"/>
+                        </div> */}
+                    </div>
+                    {/* <img className={classes.aerea_logo} src={aerea_live.src} alt="aerea"/> */}
+                    <h1>TECHNO<br/>FASHION</h1>
+                    <div className={classes.artistContainer}>
+                        <span>AEREA</span>
+                        <div className={classes.flag}>
+                            <label>🇪🇸</label>
+                            <label>LIVE</label>
                         </div>
                     </div>
-                    <img className={classes.aerea_logo} src={aerea_live.src} alt="aerea"/>
-                    <h1>TECHNO<br/>FASHION</h1>
-                    <p>Світ, натхненний естетикою «Vogue» перенесений у вимір рейву
+                    <p>Fashion-подіум крізь танцпол</p>
+                    <p>28 БЕРЕЗНЯ, КИЇВ, BLOCKBUSTER MALL</p>
+                    <br/>
+                    {/* <p>Світ, натхненний естетикою «Vogue» перенесений у вимір рейву
                     <br/><br/>
-                    Не дивись на показ. Будь показом!</p>
+                    Не дивись на показ. Будь показом!</p> */}
                     {/* <button className={classes.more} onClick={scrollToMore}>[ ДІЗНАТИСЬ БІЛЬШЕ ]</button> */}
                     <button className={classes.buyBut} onClick={scrollToPayment}>
                         <p>ПРИДБАТИ КВИТОК</p>
-                        <IoArrowDownSharp/>
+                        {/* <IoArrowDownSharp/> */}
                     </button>
                 </div>
             </div>
             {/* 3D */}
-            <div className={classes.d3}>
+            <div className={classes.d3} ref={d3Ref}>
                 <div className={classes.d3Container}>
                     <h2>SHOW IS WAITING FOR YOU</h2>
                     <p>це візуалізація нашого шоу. переглянь і уяви, як це буде круто побачити це наживо</p>
@@ -491,11 +535,12 @@ const TechnoFashion = (props) => {
                                 <Image src={aerea_photo} alt="AEREA" fill/>
                             </div>
                             <div className={classes.leftText}>
-                                <p>special guest</p>
+                                <p>special guest 🇪🇸</p>
                                 <h5>AEREA</h5>
                             </div>
                         </div>
                         <div className={classes.lineupRight}>
+                            <iframe data-testid="embed-iframe" style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/artist/34ut5kAp6DfnW79Dp3P4CA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             <p className={classes.lineupText}>Якщо світ — це показ мод, то артисти — це Audio Couturiers (Аудіо-Кутюр’є).  Вони не просто грають музику — вони "шиють" звукове полотно вечора.  Вони керують "показом", змушуючи відвідувачів рухатися синхронно, як на найкращих дефіле світу Вони відчувають натовп і змінюють ритм так, як дизайнер змінює тканину: від невагомих мелодій до щільного, фактурного техно.</p>
                             <div className={classes.djs}>
                                 <p>AEREA (Live)</p>
@@ -548,7 +593,7 @@ const TechnoFashion = (props) => {
                 </button>
             </div> */}
             {/* HOW IT WAS */}
-            <div className={classes.howItWas} style={{
+            {/* <div className={classes.howItWas} style={{
                 backgroundImage: `url(${width > 468 ? is.src : howMob.src})`
             }}>
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
@@ -558,8 +603,8 @@ const TechnoFashion = (props) => {
                     спогади твоєї молодості. <br/>
                     Емоції, що залишаться назавжди
                 </p>
-            </div>
-            <div className={classes.howItWasSlider}>
+            </div> */}
+            {/* <div className={classes.howItWasSlider}>
                 <HozhoSlider
                     arrows={true}
                     length={event.howItWas?.content?.length}
@@ -585,7 +630,7 @@ const TechnoFashion = (props) => {
                         </div>
                     ))}
                 </HozhoSlider>
-            </div>
+            </div> */}
             {/* DRESSCODE */}
             <div className={classes.dresscode}>
                 <div className={classes.container}>

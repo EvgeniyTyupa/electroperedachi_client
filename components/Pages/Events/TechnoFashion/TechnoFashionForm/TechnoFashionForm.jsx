@@ -136,9 +136,10 @@ const TechnoFashionForm = (props) => {
                     className={classes.right}
                 >
                     <h3>electroperedachi</h3>
-                    <p className={classes.rules} ref={paymentBlockRef}>
+                    <p className={classes.rules}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
+                    <div ref={paymentBlockRef}></div>
                     {event.is_multi_buy ? (
                         <p className={classes.gradient}>Разом дешевше!<br/>
                         Заощаджуй придбавши квиток на 2 дні одразу для себе і друзів<br/>
