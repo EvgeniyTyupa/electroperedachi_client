@@ -444,8 +444,28 @@
     margin-bottom: 3rem;
 }
 .sliderEl {
+    /* margin: 0 1rem; */
+    height: 250px;
+    position: relative;
+    width: 100%;
+}
+.sliderEl img {
+    object-fit: cover;
+}
+.howItWasSlider :global(.slick-slide) {
     margin: 0 1rem;
-    height: 100%;
+}
+.howItWasSlider :global(.slick-track) {
+  display: flex !important;
+  align-items: stretch;
+}
+
+.howItWasSlider :global(.slick-slide) {
+  height: auto !important;
+}
+
+.howItWasSlider :global(.slick-slide > div) {
+  height: 100%;
 }
 
 /* MEZHDU */

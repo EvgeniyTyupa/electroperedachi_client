@@ -593,7 +593,7 @@ const TechnoFashion = (props) => {
                 </button>
             </div> */}
             {/* HOW IT WAS */}
-            {/* <div className={classes.howItWas} style={{
+            <div className={classes.howItWas} style={{
                 backgroundImage: `url(${width > 468 ? is.src : howMob.src})`
             }}>
                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
@@ -603,11 +603,12 @@ const TechnoFashion = (props) => {
                     спогади твоєї молодості. <br/>
                     Емоції, що залишаться назавжди
                 </p>
-            </div> */}
-            {/* <div className={classes.howItWasSlider}>
+            </div>
+            <div className={classes.howItWasSlider}>
                 <HozhoSlider
                     arrows={true}
                     length={event.howItWas?.content?.length}
+                    slidesToShow={width > 1024 ? 4.2 : 1.5}
                     // nextArrow={<NextArrow/>}
                     // prevArrow={<PrevArrow/>}
                 >
@@ -630,7 +631,7 @@ const TechnoFashion = (props) => {
                         </div>
                     ))}
                 </HozhoSlider>
-            </div> */}
+            </div>
             {/* DRESSCODE */}
             <div className={classes.dresscode}>
                 <div className={classes.container}>
