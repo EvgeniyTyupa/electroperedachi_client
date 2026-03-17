@@ -292,7 +292,7 @@ const TechnoFashion = (props) => {
             <div className={classes.homeMobile}>
                 <video
                     className={classes.videoHome}
-                    src="/images/techno_fashion/title_a.webm"
+                    src="/images/techno_fashion/title.webm"
                     autoPlay
                     loop
                     muted
