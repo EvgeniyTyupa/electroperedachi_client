@@ -1031,7 +1031,8 @@
         width: 100%;
         object-position: center;
         height: 100%;
-        padding: 0 20px;
+        padding: 1rem 20px;
+        padding-bottom: 0;
         box-sizing: border-box;
         justify-content: space-between;
         position: relative;
@@ -1232,6 +1233,9 @@
 }
 
 @media screen and (max-width: 468px) {
+    .legendTmp {
+        padding-bottom: 2rem !important;
+    }
     .youtubeCard {
         height: 100%;
     }
@@ -1297,7 +1301,7 @@
     }
     .homeMobileContent {
         padding: 50px 20px;
-        padding-top: 20px;
+        padding-top: 60px;
     }
     .homeMobileContent h1 {
         font-size: 65px;
@@ -1315,7 +1319,7 @@
         width: 50%;
     }
     .homeMobileTitle h2 {
-        font-size: 32px;
+        font-size: 44px;
     }
     .container {
         padding: 59px 20px;
@@ -1426,7 +1430,7 @@
         font-size: 40px;
     }
     .homeMobileTitle h2 {
-        font-size: 24px;
+        font-size: 38px
     }
     .partners img {
         width: 40px;
