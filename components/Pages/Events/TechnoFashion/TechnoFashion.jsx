@@ -12,6 +12,7 @@ import l2_1 from "/public/images/techno_fashion/l2_1.jpg"
 import l2_2 from "/public/images/techno_fashion/l2_2.jpg"
 import l3_1 from "/public/images/techno_fashion/l3_1.jpg"
 import l3_2 from "/public/images/techno_fashion/l3_2.jpg"
+import price_r from "/public/images/techno_fashion/price_r.webp"
 import p1 from "/public/images/techno_fashion/p1.webp"
 import p2 from "/public/images/techno_fashion/p2.webp"
 import p3 from "/public/images/techno_fashion/p3.webp"
@@ -32,10 +33,15 @@ import shadowImgTop from "/public/images/masquerade/shadowTop.webp"
 import headliner from "/public/images/techno_fashion/headliner.webp"
 import play_icon from "/public/images/techno_fashion/play.svg"
 import details from "/public/images/techno_fashion/details.webp"
-import video_preview from "/public/images/techno_fashion/preview.webp"
+import video_preview from "/public/images/techno_fashion/mod.webp"
 import scheme from "/public/images/techno_fashion/scheme.webp"
 import enjoyImg from "/public/images/techno_fashion/enjoy.webp"
 import jaga from "/public/images/techno_fashion/jaga.png"
+import kyiv_a from "/public/images/techno_fashion/kyiv_a.svg"
+import par1 from "/public/images/techno_fashion/par1.svg"
+import par2 from "/public/images/techno_fashion/par2.svg"
+import par3 from "/public/images/techno_fashion/par3.svg"
+import par4 from "/public/images/techno_fashion/par4.svg"
 import rent4dj from "/public/images/techno_fashion/rent4dj.png"
 import drug from "/public/images/techno_fashion/drug.png"
 import kyiv from "/public/images/techno_fashion/kyiv.svg"
@@ -286,7 +292,7 @@ const TechnoFashion = (props) => {
             <div className={classes.homeMobile}>
                 <video
                     className={classes.videoHome}
-                    src="/images/techno_fashion/title.webm"
+                    src="/images/techno_fashion/title_a.webm"
                     autoPlay
                     loop
                     muted
@@ -295,26 +301,36 @@ const TechnoFashion = (props) => {
                 <div className={classes.homeMobileContent}>
                     <div className={classes.homeMobileTitle}>
                         <h2>electroperedachi</h2>
-                        {/* <div className={classes.partners}>
-                            <img src={jaga.src} alt="jagermeister logo"/>
-                            <img src={rent4dj.src} alt="rent4dj logo"/>
-                            <img src={drug.src} alt="drugstore logo"/>
-                            <img src={kyiv.src} alt="ty_kyiv logo"/>
-                        </div> */}
-                    </div>
-                    {/* <img className={classes.aerea_logo} src={aerea_live.src} alt="aerea"/> */}
-                    <h1>TECHNO<br/>FASHION</h1>
-                    <div className={classes.artistContainer}>
-                        <span>AEREA</span>
-                        <div className={classes.flag}>
-                            <label>LIVE</label>
-                            <img src={spain_flag.src} alt="spain flag"/>
+                        <div className={classes.sub}>
+                            <div className={classes.parts}>
+                                <img src={jaga.src} alt="jagermeister logo"/>
+                                <img src={rent4dj.src} alt="rent4dj logo"/>
+                            </div>
+                            <div className={classes.subText}>
+                                <h3>28.03</h3>
+                                <img src={kyiv_a.src} alt="kyiv"/>
+                            </div>
+                            <div className={classes.parts}>
+                                <img src={drug.src} alt="drugstore logo"/>
+                                <img src={kyiv.src} alt="ty_kyiv logo"/>
+                            </div>
                         </div>
                     </div>
-                    <p><label className={classes.color}>28 БЕРЕЗНЯ</label>, КИЇВ. BLOCKBUSTER MALL</p>
-                    <p><label className={classes.color}>Fashion-подіум</label> крізь танцпол</p>
-                    <p>ВЕЛИКА СЦЕНА, <label className={classes.color}>3 тис квитків</label></p>
-                    <br/>
+                    {/* <img className={classes.aerea_logo} src={aerea_live.src} alt="aerea"/> */}
+                    {/* <h1>TECHNO<br/>FASHION</h1> */}
+                    <div className={classes.artText}>
+                        <div className={classes.artistContainer}>
+                            <span>AEREA</span>
+                            <div className={classes.flag}>
+                                <label>LIVE</label>
+                                <img src={spain_flag.src} alt="spain flag"/>
+                            </div>
+                        </div>
+                        <p><label className={classes.color}>ВЕЛИКА СЦЕНА, </label>BLOCKBUSTER MALL</p>
+                        <p>Fashion-шоу, <label className={classes.color}>Подіум крізь танцпол</label></p>
+                        <p><label className={classes.color}>3 тис квитків</label></p>
+                    </div>
+                    {/* <br/> */}
                     {/* <p>Світ, натхненний естетикою «Vogue» перенесений у вимір рейву
                     <br/><br/>
                     Не дивись на показ. Будь показом!</p> */}
@@ -354,6 +370,7 @@ const TechnoFashion = (props) => {
                                 <video
                                     className={classes.videoA}
                                     controls
+                                    // autoPlay
                                     preload="none"
                                     src={"/images/techno_fashion/trailer.mp4"}
                                 />
@@ -395,9 +412,16 @@ const TechnoFashion = (props) => {
                                 }}
                                 onClick={() => setIsPlayIntroVideo(true)}
                             >
+                                <h3>TECHNO <label>FASHION</label></h3>
                                 <img src={shadowImgTop.src} alt="shadow" className={classes.shadowTop}/>
                                 <img src={shadowImg.src} alt="shadow" className={classes.shadowBot}/>
                                 <img className={classes.play} src={play_icon.src} alt="play icon"/>
+                                <div className={classes.disBrands}>
+                                    <img src={par1.src} alt="partner"/>
+                                    <img src={par2.src} alt="partner"/>
+                                    <img src={par3.src} alt="partner"/>
+                                    <img src={par4.src} alt="partner"/>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -449,6 +473,32 @@ const TechnoFashion = (props) => {
                                         <h3>{price} UAH</h3>
                                     </div>
                                     <p>Вартість квитків залежить від етапу передпродажу. Кількість етапів: IV. Ціна на вході найдорожча. </p>
+                                    <div className={classes.priceRises}
+                                        style={{
+                                            backgroundImage: `url(${price_r.src})`
+                                        }}
+                                    >
+                                        <div className={cx(classes.etap, classes.past)}>
+                                            <p>EARLY BIRDS</p>
+                                            <label>SOLD OUT</label>
+                                        </div>
+                                        <div className={cx(classes.etap, classes.past)}>
+                                            <p>1200₴</p>
+                                            <label>SOLD OUT</label>
+                                        </div>
+                                        <div className={cx(classes.etap, classes.past)}>
+                                            <p>1500₴</p>
+                                            <label>SOLD OUT</label>
+                                        </div>
+                                        <div className={cx(classes.etap, classes.cur)}>
+                                            <p>1800₴</p>
+                                            <label>ЦІНА ЗАРАЗ</label>
+                                        </div>
+                                        <div className={cx(classes.etap, classes.future)}>
+                                            <p>2000₴</p>
+                                            <label>ЦІНА НА ВХОДІ</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className={classes.detail}>
                                     <div className={classes.detailHeader}>
@@ -581,7 +631,7 @@ const TechnoFashion = (props) => {
                     <Image src={enjoyImg} alt="enjoy" fill/>
                     <div className={classes.container}>
                         <p>
-                            1300+
+                            1600+
                             <br/>
                             ВЖЕ <br/>
                             ПРИЄДНАЛИСЬ

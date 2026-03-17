@@ -551,14 +551,14 @@
 }
 .shadowTop {
     width: 100%;
-    top: 0;
+    top: -1px;
     left: 0;
     z-index: 0;
     position: absolute;
 }
 .shadowBot {
     width: 100%;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     z-index: 0;
     position: absolute;
@@ -844,7 +844,13 @@
         align-items: center;
         gap: 10px;
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+    .artText {
+        display: flex;
+        flex-direction: column;
+        margin: auto 0;
     }
     .artistContainer span {
         color: white;
@@ -872,10 +878,29 @@
     .homeMobile {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 100%;
         height: 100vh;
         position: relative;
+        flex-grow: 1;
     }
+    .sub {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .parts {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .subText h3 {
+        font-size: 44px;
+        font-weight: 700;
+        color: #D2FF1E;
+    }
+
     .videoHome {
         width: 100%;
         z-index: 0;
@@ -893,6 +918,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
     .homeMobileContent {
         position: relative;
@@ -900,10 +926,14 @@
         padding: 50px;
         box-sizing: border-box;
         padding-top: 100px;
-        margin: auto 0;
+        /* margin: auto 0; */
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
+        text-align: center;
+        width: 100%;
+        height: 100%;
     }
     .homeMobileContent h1 {
         font-size: 125px;
@@ -1001,6 +1031,10 @@
         width: 100%;
         object-position: center;
         height: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        justify-content: space-between;
+        position: relative;
     }
     .play {
         width: 160px;
@@ -1014,6 +1048,26 @@
         font-weight: 300;
         text-transform: uppercase;
         color: white;
+    }
+    .videoPreview label {
+        color: #D2FF1E;
+    }
+    .videoPreview h3 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 44px;
+        position: relative;
+        z-index: 1;
+    }
+    .disBrands {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+        position: relative;
+        z-index: 1;
     }
     .short {
         display: flex;
@@ -1143,9 +1197,50 @@
     .lineupContainer {
         padding-top: 1rem !important;
     }
+    .priceRises {
+        width: 100%;
+        padding: 30px 18px;
+        box-sizing: border-box;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+    .etap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #D2FF1E;
+        padding-bottom: 11px;
+        font-size: 21px;
+        font-weight: 700
+    }
+    .etap p {
+        color: #D2FF1E;
+        font-size: 21px;
+        font-weight: 700
+    }
+    .past {
+        opacity: .5;
+        text-decoration: line-through;
+    }
+    .future {
+        opacity: .5;
+    }
 }
 
 @media screen and (max-width: 468px) {
+    .youtubeCard {
+        height: 100%;
+    }
+    .short h5 {
+        font-size: 20px;
+    }
+    .short p {
+        font-size: 16px;
+    }
     .video {
         height: 80vh;
     }
@@ -1202,6 +1297,7 @@
     }
     .homeMobileContent {
         padding: 50px 20px;
+        padding-top: 20px;
     }
     .homeMobileContent h1 {
         font-size: 65px;
