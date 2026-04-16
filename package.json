@@ -44,6 +44,7 @@
     "react-intl": "^6.2.5",
     "react-lines-ellipsis": "^0.15.3",
     "react-slick": "^0.30.3",
+    "react-social-media-embed": "^2.5.18",
     "react-typewriter-hook": "^1.0.2",
     "sharp": "^0.32.1",
     "sitemap": "^7.1.1",
