@@ -411,6 +411,8 @@
 }
 .location .sliderEl {
     border: none;
+    /* background-color: transparent !important; */
+    /* margin: 0 !important; */
 }
 
 /* DETAILS */
@@ -1275,7 +1277,7 @@
         position: relative;
     }
     .howItWasSlider {
-        height: 100px;
+        height: 300px;
         top: -100px;
     }
     .meanwhileImg {
@@ -1320,10 +1322,10 @@
         justify-content: center;
     }
     .photoSlider {
-        height: 200px;
+        height: 350px;
     }
     .youtubeCard {
-        height: 200px !important;
+        height: 350px !important;
     }
     .dress1, .dress5 {
         width: 160px;
