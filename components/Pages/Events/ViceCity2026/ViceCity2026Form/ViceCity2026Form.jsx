@@ -12,6 +12,8 @@ import { useState } from "react"
 import { Button } from "@mui/material"
 
 import form_img from "/public/images/vice-city/form.png"
+import standart from "/public/images/vice-city/standart.png"
+import full_pass from "/public/images/vice-city/full_pass.png"
 
 import Video from "../../../../Common/Video/Video"
 
@@ -143,7 +145,7 @@ const ViceCityForm = (props) => {
                     data-aos="fade-down"
                     data-aos-duration="2000"
                 >
-                    <h3>electroperedachi</h3>
+                    {/* <h3>electroperedachi</h3> */}
                     <p className={classes.rules} ref={paymentBlockRef}>
                         {intl.formatMessage({ id: "event.ticketRules" })}
                     </p>
@@ -152,41 +154,58 @@ const ViceCityForm = (props) => {
                         Заощаджуй придбавши квиток на 2 дні одразу для себе і друзів<br/>
                         2 квитки -10%, 3 квитки -15%, від 4 квитків -20%. </p>
                     ) : (
-                        <p className={classes.gradient}>При придбанні від 5-ти квитків - знижка 15%. Вартість квитка зі знижкою = 1487грн</p>
+                        <p className={classes.gradient}>{intl.formatMessage({ id: "vice.50" })}</p>
                     )}
                     {event.price?.map((el, index) => (
                         el.price.length > 0 && (
-                            <div key={index} className={classes.ticketsBlock}>
-                                <div className={classes.ticketType}>
-                                    <p className={classes.ticketName}>{el.name}</p>
-                                    <p className={classes.price}>
-                                        {intl.formatMessage({ id: "event.price" })}
-                                        &nbsp;
-                                        <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
-                                        &nbsp;
-                                        <br/>
-                                        {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
-                                        {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
-                                        {intl.formatMessage({ id: "event.currency" })}.
-                                    </p>
-                                </div>
-                                <div className={classes.ticketsCount}>
-                                    <label>
-                                        {intl.formatMessage({ id: "event.tickets" })}
-                                    </label>
-                                    <Button
-                                        className={classes.countBut}
-                                        onClick={() => minusCount(el)}
-                                    >
-                                        <TfiMinus/>
-                                    </Button>
-                                    <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
-                                    <Button
-                                        className={classes.countBut}
-                                        onClick={() => plusCount(el)}
-                                    >
-                                        <TfiPlus/>
-                                    </Button>
+                            <div key={index} className={`${classes.ticketsBlockContainer} ${classes[`block${index}`]}`}>
+                                <div className={classes.ticketsBlock}>
+                                    <div className={classes.ticketType}>
+                                        <div className={classes.ticketTitle}>
+                                            {el.name.toLowerCase() === "standart" ? (
+                                                <img src={standart.src} alt="standart"/>
+                                            ) : <img src={full_pass.src} alt="full_pass"/>}
+                                            <p className={classes.price}>
+                                                {/* {intl.formatMessage({ id: "event.price" })} */}
+                                                &nbsp;
+                                                <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
+                                                &nbsp;
+                                                <br/>
+                                                {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
+                                                {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
+                                                UAH
+                                            </p>
+                                        </div>
+                                        {/* <p className={classes.ticketName}>{el.name}</p> */}
+                                    </div>
+                                    <div className={classes.ticketsCount}>
+                                        {el.name.toLowerCase() === "standart" ? (
+                                            <label>
+                                                <strong>31.07, 01.08</strong> (Пт, Сб)<br/> У доступі 1500 шт.
+                                                {/* {intl.formatMessage({ id: "event.tickets" })} */}
+                                            </label>
+                                        ) : (
+                                            <label>
+                                                <strong>3 дні</strong>,
+                                                а також доступ на <strong>епілог фестивалю — 08.08</strong><br/>
+                                            </label>
+                                        )}
+                                        <div className={classes.buttons}>
+                                            <Button
+                                                className={classes.countBut}
+                                                onClick={() => minusCount(el)}
+                                            >
+                                                <TfiMinus/>
+                                            </Button>
+                                            <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
+                                            <Button
+                                                className={classes.countBut}
+                                                onClick={() => plusCount(el)}
+                                            >
+                                                <TfiPlus/>
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )

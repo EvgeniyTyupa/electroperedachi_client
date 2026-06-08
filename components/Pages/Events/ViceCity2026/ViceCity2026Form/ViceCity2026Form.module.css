@@ -8,7 +8,7 @@
 }
 .container {
     position: relative;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     padding-bottom: 80px;
     gap: 74px;
 }
@@ -62,37 +62,108 @@
 }
 .ticketName {
     color: white;
+    font-family: "Rage Italic";
+    
+  color: white;
+
+  -webkit-text-stroke: 5px #f48ac6;
+  paint-order: stroke fill;
+  font-size: 32px;
+
+  text-shadow:
+    16px 18px 0 #000;
+}
+.buttons {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
 }
 .price {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 29px;
     color: white;
+    font-family: "Pricedown";
+    text-shadow: 2px 2px 2px black
 }
 .price br {
     display: none;
+}
+.ticketsBlockContainer {
+    padding: 2px;
+
+    box-sizing: border-box;
+    margin-top: 30px;
 }
 .ticketsBlock {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-top: 30px;
-    border: 2px solid #FC99CC;
-    /* border-radius: 4px; */
-    padding: 1rem;
+    padding: 2.5rem;
     box-sizing: border-box;
+    
+    box-sizing: border-box;
+}
+.block0 {
+    background:
+    radial-gradient(
+      circle at 58% 35%,
+      rgba(255, 255, 180, 0.45),
+      transparent 8%
+    ),
+    linear-gradient(
+      180deg,
+      #dc8b44 0%,
+      #d86d5b 35%,
+      #ca68b4 70%,
+      #3320b6 100%
+    );
+
+  clip-path: polygon(
+    4% 6%,
+    96% 0%,
+    92% 92%,
+    0% 80%
+  );
+  padding-bottom: 1rem;
+}
+.block1 {
+    background: white;
+    clip-path: polygon(
+        0% 3%,   /* верхний левый */
+        92% 0%,  /* верхний правый */
+        99% 92%, /* нижний правый */
+        8% 99%   /* нижний левый */
+    );
+}
+.block1 .ticketsBlock {
+    background: black;
+    clip-path: polygon(
+        0% 3%,   /* верхний левый */
+        92% 0%,  /* верхний правый */
+        99% 92%, /* нижний правый */
+        8% 99%   /* нижний левый */
+    );
+    /* border: 2px solid #FC99CC; */
+    /* border-radius: 4px; */
 }
 .ticketsCount {
     display: flex;
     align-items: center;
     gap: 10px;
+    justify-content: space-between;
+    width: 100%
 }
 .ticketsCount label {
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 300;
+    font-size: 16px;
     line-height: 26px;
     color: white;
+    font-family: "Chalet"
+}
+.ticketsCount label strong {
+    font-family: "ChaletMedium"
 }
 .countBut {
     min-width: unset !important;
@@ -207,7 +278,7 @@
 
 @media screen and (max-width: 468px) {
     .container {
-        padding-top: 45px;
+        /* padding-top: 45px; */
         padding-bottom: 45px;
         padding-left: 1rem;
         padding-right: 1rem;
@@ -223,6 +294,11 @@
     }
     .ticketType {
         width: 100%;
+    }
+    .ticketTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .date {
         font-size: 40px;

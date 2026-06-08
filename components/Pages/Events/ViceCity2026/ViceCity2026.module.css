@@ -179,6 +179,7 @@
 }
 .aboutIntro {
     display: none;
+    text-align: center;
 }
 .aboutInfo {
     display: flex;
@@ -263,13 +264,23 @@
     box-sizing: border-box;
     margin-bottom: 4rem;
 }
+.location p {
+    padding-left: 108px;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+}
+.locationText {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
 .locPhoto {
     position: relative;
     width: 100%;
     height: 500px;
 }
 .locPhoto img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
 }
 
@@ -297,6 +308,10 @@
     margin-left: 40%;
     position: relative;
     z-index: 2;
+}
+.artists {
+    padding: 0 2rem;
+    box-sizing: border-box
 }
 .dayHeader {
     font-family: "RageItalic";
@@ -331,18 +346,134 @@
     font-size: 16px;
     opacity: .6;
 }
+.dayLineup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+    position: relative;
+    margin-top: 1rem;
+}
+.dayLineup2 p {
+    color: black
+}
+.stageHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+.stageHeader h6 {
+    font-family: "ChaletMedium";
+    color: #FC99CC;
+    font-size: 20px;
+    text-shadow: 0px 0px 4px #FC99CC;
+}
 .stage {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 12px;
+    position: relative;
+    z-index: 1
 }
-
+.stageContainer {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
 .stage h5 {
     font-family: "ChaletMedium";
     font-size: 24px;
     text-transform: uppercase;
     z-index: 2;
     transition-duration: .5s;
+}
+.stageContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+.slot {
+    display: flex;
+}
+.dj {
+    display: flex;
+}
+.dayHeader {
+    width: 90%;
+    position: relative;
+    z-index: 1
+}
+.stageHeader h6 {
+    position: relative;
+    top: 2px;
+}
+.shape {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    height: 110%;
+}
+.shape1 {
+    background: linear-gradient(
+    135deg,
+    #d8945a,
+    #a45cb4,
+    #2fb7c7
+  );
+
+  clip-path: polygon(
+    0% 4%,
+    97% 0%,
+    100% 98%,
+    6% 90%
+  );
+}
+.shape2 {
+    clip-path: polygon(
+    0% 4%,
+    97% 0%,
+    100% 98%,
+    6% 90%
+  );
+  background-color: white;
+}
+.shape3 {
+    clip-path: polygon(
+    5% 0%,
+    100% 4%,
+    96% 90%,
+    2% 98%
+  );
+
+  background:
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255, 255, 180, 0.35) 0%,
+      rgba(255, 255, 180, 0.15) 8%,
+      transparent 20%
+    ),
+    linear-gradient(
+      180deg,
+      #4428a5 0%,
+      #d05d96 35%,
+      #d96b33 75%,
+      #dca44d 100%
+    );
+}
+.lineupTextBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+.lineupTextBlock p {
+    white-space: pre-wrap;
 }
 .djs {
     display: flex;
@@ -435,6 +566,14 @@
     position: relative;
     z-index: 2;
 }
+.schemeImg {
+    position: relative;
+    width: 100%;
+    height: 215px;
+}
+.schemeImg img {
+    object-position: center;
+}
 .detailBlock {
     display: flex;
     flex-direction: column;
@@ -444,6 +583,14 @@
 .detailBlock p {
     font-family: "Chalet";
     white-space: pre-wrap;
+}
+.detailBlock span {
+    font-weight: 600;
+    font-family: "ChaletMedium";
+}
+.detailBlock ul {
+    padding-left: 1rem;
+    box-sizing: border-box;
 }
 .locationBlock {
     display: flex;
@@ -483,6 +630,7 @@
     text-shadow: #84ece3a4 1px 0 10px;
     font-size: 22px;
     font-family: "ChaletMedium" !important;
+    text-transform: uppercase;
 }
 .detailsSection {
     display: flex;
@@ -502,7 +650,64 @@
 .detailsImg img {
     object-fit: contain;
 }
+.compareBlock {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .1rem;
+}
+.compareOld {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.compareInfo {
+  position: relative;
+  background: white;
+  padding: 4px;
 
+  clip-path: polygon(
+    8% 3%,   /* верхний левый */
+    92% 0%,  /* верхний правый */
+    99% 92%, /* нижний правый */
+    8% 99%   /* нижний левый */
+  );
+}
+.compareInfoInner {
+    width: 100%;
+  height: 100%;
+
+  background: black;
+
+  clip-path: polygon(
+    8% 3%,
+    92% 0%,
+    99% 92%,
+    8% 99%
+  );
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+.compareNew .compareInfoInner {
+    background: white;
+    color: black;
+}
+.compareInfoInner span {
+    font-family: "ChaletMedium" !important
+}
+.compareYear {
+    font-size: 40px;
+    font-family: "ChaletMedium" !important;
+}
+.comparePointBlock {
+    display: flex;
+    align-items: center;
+    gap: .4rem
+}
 /* HOW IT WAS */
 
 .how_it_was {
@@ -513,6 +718,7 @@
     padding-left: 108px;
     padding-top: 150px;
     box-sizing: border-box;
+    margin-top: 50px
 }
 .how_it_was p {
     margin-top: 24px;
@@ -820,6 +1026,22 @@
     margin-right: auto;
     border-radius: 12px;
 }
+.tickets {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 50px;
+    box-sizing: border-box;
+    margin-top: 2rem;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.tickets span {
+    color: #FC99CC;
+}
+
 
 @media screen and (max-width: 1440px) {
     .vidosBlock {
@@ -843,7 +1065,7 @@
         padding-top: 0;
         margin-top: 2.5rem;
     }
-    .location h2 {
+    .location h2, .location p {
         padding-left: 50px;
         padding-right: 50px;
     }
@@ -926,6 +1148,13 @@
     }
     .lineup h2 {
         text-align: center;
+    }
+    .artists {
+        padding: 0 1rem;
+    }
+    .artists span {
+        color: #FC99CC;
+        font-weight: 600
     }
     .headlinersImg {
         width: 100%;
@@ -1043,6 +1272,16 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin-bottom: 5rem;
+    }
+    .tickets {
+        padding: 0 1rem;   
+    }
+    .location p {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .location span {
+        font-family: "ChaletMedium";
     }
     .locPhoto {
         height: 350px;
@@ -1212,11 +1451,18 @@
         height: 100%;
     }
     .aboutIntro {
+        font-size: 18px;
         display: block;
         margin-bottom: 1rem;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 4rem
     }
     .aboutInfo {
         margin-top: 2rem;
+    }
+    .aboutIntro span {
+        color: #FC99CC;
     }
     .palm2 {
         width: 70%;
@@ -1230,13 +1476,21 @@
     }
     .headlinersImg {
         left: 0;
-        width: 137%;
+        width: 100%;
+    }
+    .lineupHeader {
+        position: relative;
+        z-index: 2;
+        width: 60%
     }
     .djsBlock {
         margin-top: 0;
     }
     .lineupInfo {
-        margin-top: 80%;
+        margin-top: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .day {
         padding-left: 1rem;
@@ -1326,6 +1580,9 @@
     }
     .youtubeCard {
         height: 350px !important;
+    }
+    .youtubeCardLine {
+        height: 255px !important;
     }
     .dress1, .dress5 {
         width: 160px;
