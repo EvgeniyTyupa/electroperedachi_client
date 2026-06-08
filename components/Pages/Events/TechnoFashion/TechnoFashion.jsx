@@ -134,6 +134,17 @@ const TechnoFashion = (props) => {
         }
     ]
 
+    const isOld = (dates) => {
+        const lastDate = dates.at(-1);
+
+        const eventEndDate = new Date(lastDate.date);
+        const [hours, minutes] = lastDate.end.split(':');
+
+        eventEndDate.setUTCHours(+hours, +minutes, 0, 0);
+
+        return Date.now() > eventEndDate.getTime();
+    }
+
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
     }
@@ -698,12 +709,14 @@ const TechnoFashion = (props) => {
                     )}
                 </div>
             </div>
-            <TechnoFashionForm
-                event={event}
-                price={price}
-                setPrice={setPrice}
-                paymentBlockRef={paymentBlockRef}
-            />
+            {!isOld(event.dates) && (
+                <TechnoFashionForm
+                    event={event}
+                    price={price}
+                    setPrice={setPrice}
+                    paymentBlockRef={paymentBlockRef}
+                />
+            )}
             {/* FAQ */}
             <div className={classes.container}>
                 <div className={classes.faq} id="faq">
