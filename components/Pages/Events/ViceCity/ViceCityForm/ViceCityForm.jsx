@@ -54,12 +54,13 @@ const ViceCityForm = (props) => {
         } else {
             newTicketCart.push({
                 _id: ticketType._id,
-                price: discount ? Math.round(ticketType.price[0].price - (Number(ticketType.price[0].price) / 100 * Number(discount))) : ticketType.price[0].price,
+                price: discount ? Math.round(ticketType.price[0].price - (Number(ticketType.price[0].price) / 100 * Number(discount))) : ticketType.price[0]?.price,
                 count: 1
             })
         }
         setTicketCart(newTicketCart)
     }
+    
 
     useEffect(() => {
         setTotalPrice(price * count)

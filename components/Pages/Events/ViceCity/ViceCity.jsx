@@ -344,6 +344,17 @@ const ViceCity = (props) => {
         </div>
     )
 
+    const isOld = (dates) => {
+        const lastDate = dates.at(-1);
+
+        const eventEndDate = new Date(lastDate.date);
+        const [hours, minutes] = lastDate.end.split(':');
+
+        eventEndDate.setUTCHours(+hours, +minutes, 0, 0);
+
+        return Date.now() > eventEndDate.getTime();
+    }
+
     const scrollToPayment = () => {
         paymentBlockRef.current.scrollIntoView()
     }
@@ -827,12 +838,14 @@ const ViceCity = (props) => {
                 </div>
             </div>
             <div id="buy_ticket">
-                <ViceCityForm
-                    event={event}
-                    price={price}
-                    setPrice={setPrice}
-                    paymentBlockRef={paymentBlockRef}
-                />
+                {!isOld(event.dates) && (
+                    <ViceCityForm
+                        event={event}
+                        price={price}
+                        setPrice={setPrice}
+                        paymentBlockRef={paymentBlockRef}
+                    />
+                )}
             </div>
             {/* FAQ */}
             <div className={classes.faq} id="faq">
