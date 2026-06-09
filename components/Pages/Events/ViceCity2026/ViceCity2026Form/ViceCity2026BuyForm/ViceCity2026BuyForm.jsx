@@ -26,7 +26,7 @@ import { getFbCookies } from "../../../../../../utils/getFbCookies"
 import { v4 as uuidv4 } from 'uuid';
 
 const ViceCityBuyForm = (props) => {
-    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart } = props
+    const { totalPrice, count, event, price, setDiscount, totalPriceDiscount, ticketCart, isIncludeCamping } = props
 
     const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
@@ -111,7 +111,8 @@ const ViceCityBuyForm = (props) => {
                     email: data.email,
                     phone: data.phone,
                     totalPrice: "",
-                    userURL: currentURL
+                    userURL: currentURL,
+                    isIncludeCamping: isIncludeCamping
                 }, event.google_table_id, "sheet1")
             }
 

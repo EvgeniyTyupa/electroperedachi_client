@@ -9,11 +9,12 @@ import "aos/dist/aos.css"
 import { useIntl } from "react-intl"
 import { useEffect } from "react"
 import { useState } from "react"
-import { Button } from "@mui/material"
+import { Button, Checkbox, FormControlLabel } from "@mui/material"
 
 import form_img from "/public/images/vice-city/form.png"
 import standart from "/public/images/vice-city/standart.png"
 import full_pass from "/public/images/vice-city/full_pass.png"
+import camping_title from "/public/images/vice-city/camping_title.png"
 
 import Video from "../../../../Common/Video/Video"
 
@@ -21,7 +22,7 @@ import { TfiMinus, TfiPlus } from "react-icons/tfi";
 import ViceCityBuyForm from "./ViceCity2026BuyForm/ViceCity2026BuyForm"
 
 const ViceCityForm = (props) => {
-    const { event, price, paymentBlockRef } = props
+    const { event, price, paymentBlockRef, isIncludeCamping, setIsIncludeCamping } = props
 
     const [count, setCount] = useState(1)
     const [totalPrice, setTotalPrice] = useState(0)
@@ -158,58 +159,96 @@ const ViceCityForm = (props) => {
                     )}
                     {event.price?.map((el, index) => (
                         el.price.length > 0 && (
-                            <div key={index} className={`${classes.ticketsBlockContainer} ${classes[`block${index}`]}`}>
-                                <div className={classes.ticketsBlock}>
-                                    <div className={classes.ticketType}>
-                                        <div className={classes.ticketTitle}>
-                                            {el.name.toLowerCase() === "standart" ? (
-                                                <img src={standart.src} alt="standart"/>
-                                            ) : <img src={full_pass.src} alt="full_pass"/>}
-                                            <p className={classes.price}>
-                                                {/* {intl.formatMessage({ id: "event.price" })} */}
-                                                &nbsp;
-                                                <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
-                                                &nbsp;
-                                                <br/>
-                                                {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
-                                                {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
-                                                UAH
-                                            </p>
+                            <div key={index} style={{ position: "relative" }}>
+                                {el.name.toLowerCase() === "full pass" && (
+                                    <p className={classes.recomend}>{intl.formatMessage({ id: "vice.86" })}</p>
+                                )}
+                                <div className={`${classes.ticketsBlockContainer} ${classes[`block${index}`]}`}>
+                                    <div className={classes.ticketsBlock}>
+                                        <div className={classes.ticketType}>
+                                            <div className={classes.ticketTitle}>
+                                                {el.name.toLowerCase() === "standart" ? (
+                                                    <img src={standart.src} alt="standart"/>
+                                                ) : <img src={full_pass.src} alt="full_pass"/>}
+                                                <p className={classes.price}>
+                                                    {/* {intl.formatMessage({ id: "event.price" })} */}
+                                                    &nbsp;
+                                                    <span className={discount ? classes.oldPrice : ""}>{el.price[0]?.price}</span>
+                                                    &nbsp;
+                                                    <br/>
+                                                    {discount ? <span className={classes.discountPrice}>{Math.round(el.price[0]?.price - (el.price[0]?.price / 100 * discount))}{" "}</span> : ""}
+                                                    {/* <span className={classes.discountPrice}>{el.price[0]?.price}</span> */}
+                                                    UAH
+                                                </p>
+                                            </div>
+                                            {/* <p className={classes.ticketName}>{el.name}</p> */}
                                         </div>
-                                        {/* <p className={classes.ticketName}>{el.name}</p> */}
-                                    </div>
-                                    <div className={classes.ticketsCount}>
-                                        {el.name.toLowerCase() === "standart" ? (
-                                            <label>
-                                                <strong>31.07, 01.08</strong> (Пт, Сб)<br/> У доступі 1500 шт.
-                                                {/* {intl.formatMessage({ id: "event.tickets" })} */}
-                                            </label>
-                                        ) : (
-                                            <label>
-                                                <strong>3 дні</strong>,
-                                                а також доступ на <strong>епілог фестивалю — 08.08</strong><br/>
-                                            </label>
-                                        )}
-                                        <div className={classes.buttons}>
-                                            <Button
-                                                className={classes.countBut}
-                                                onClick={() => minusCount(el)}
-                                            >
-                                                <TfiMinus/>
-                                            </Button>
-                                            <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
-                                            <Button
-                                                className={classes.countBut}
-                                                onClick={() => plusCount(el)}
-                                            >
-                                                <TfiPlus/>
-                                            </Button>
+                                        <div className={classes.ticketsCount}>
+                                            {el.name.toLowerCase() === "standart" ? (
+                                                <label>
+                                                    <strong>31.07, 01.08</strong> (Пт, Сб)<br/> У доступі 1500 шт.
+                                                    {/* {intl.formatMessage({ id: "event.tickets" })} */}
+                                                </label>
+                                            ) : (
+                                                <label>
+                                                    <strong>3 дні</strong>,
+                                                    а також доступ на <strong>епілог фестивалю — 08.08</strong><br/>
+                                                </label>
+                                            )}
+                                            <div className={classes.buttons}>
+                                                <Button
+                                                    className={classes.countBut}
+                                                    onClick={() => minusCount(el)}
+                                                >
+                                                    <TfiMinus/>
+                                                </Button>
+                                                <span>{ticketCart.find(type => type._id === el._id)?.count ?? 0}</span>
+                                                <Button
+                                                    className={classes.countBut}
+                                                    onClick={() => plusCount(el)}
+                                                >
+                                                    <TfiPlus/>
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )
                     ))}
+                    <div className={classes.camping}>
+                        <p>{intl.formatMessage({ id: "vice.87" })}</p>
+                        <div className={`${classes.ticketsBlockContainer} ${classes.block1}`}>
+                            <div className={classes.ticketsBlock}>
+                                <div className={classes.ticketType}>
+                                    <div className={classes.ticketTitle}>
+                                        <img src={camping_title.src} alt="camping"/>
+                                        <p className={classes.price}>
+                                            &nbsp;
+                                            <span>1000</span>
+                                            &nbsp;
+                                            <br/>
+                                            UAH
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className={classes.ticketsCount}>
+                                    <label>
+                                        <strong>{intl.formatMessage({ id: "vice.88" })}</strong><br/>
+                                        <span className={classes.opacity}>{intl.formatMessage({ id: "vice.89" })}</span>
+                                    </label>
+                                    <div className={classes.check}>
+                                        <FormControlLabel
+                                            sx={{
+                                                fontFamily: "ChaletMedium"
+                                            }}
+                                            control={<Checkbox checked={isIncludeCamping} size="medium" onChange={() => setIsIncludeCamping(!isIncludeCamping)} />}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className={classes.totalPrice}>
                         <label>
                             {intl.formatMessage({ id: "event.totalPrice" })}
@@ -227,6 +266,7 @@ const ViceCityForm = (props) => {
                         price={price}
                         setDiscount={setDiscount}
                         totalPriceDiscount={totalPriceDiscount}
+                        isIncludeCamping={isIncludeCamping}
                     />
                 </div>
             </Container>

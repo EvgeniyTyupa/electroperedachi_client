@@ -41,6 +41,8 @@ import dress4_img from "/public/images/vice-city/dress4.png"
 import dress5_img from "/public/images/vice-city/dress5.png"
 import dress6_img from "/public/images/vice-city/dress6.png"
 import light_img from "/public/images/vice-city/light.svg"
+import camping_img from "/public/images/vice-city/camping.webp"
+import dots_img from "/public/images/vice-city/dots.svg"
 
 import loc1_img from "/public/images/vice-city/loc1.webp"
 import loc2_img from "/public/images/vice-city/loc2.webp"
@@ -55,6 +57,7 @@ import loc10_img from "/public/images/vice-city/loc10.webp"
 import scheme_img from "/public/images/vice-city/scheme.webp"
 import img340 from "/public/images/vice-city/340.png"
 import tickets_bg from "/public/images/vice-city/tickets.webp"
+import price_img from "/public/images/vice-city/price.webp"
 
 import playlist_img from "/public/images/vice-city/playlist.jpg"
 
@@ -84,6 +87,8 @@ import { getFbCookies } from "../../../../utils/getFbCookies"
 import { v4 as uuidv4 } from 'uuid';
 
 import dynamic from 'next/dynamic';
+import ViceCity2026CampingItem from "./ViceCity2026CampingItem/ViceCity2026CampingItem"
+import { Checkbox, FormControlLabel } from "@mui/material"
 
 const InstagramEmbed = dynamic(
   () =>
@@ -98,6 +103,8 @@ const ViceCity = (props) => {
     const touchData = useRef({ startX: 0, startY: 0, scrollStart: 0 });
 
     const { width } = useWindowDimensions()
+
+    const [isIncludeCamping, setIsIncludeCamping] = useState(false)
 
     const intl = useIntl()
 
@@ -383,6 +390,52 @@ const ViceCity = (props) => {
             phrase: intl.formatMessage({ id: "vice.46" }),
             mood: intl.formatMessage({ id: "vice.47" }),
             img: dress6_img.src
+        }
+    ]
+
+    const campingQuestions = [
+        {
+            title: intl.formatMessage({ id: "vice.69" }),
+            info: [
+                {
+                    title: intl.formatMessage({ id: "vice.73" }),
+                    text: intl.formatMessage({ id: "vice.70" })
+                },
+                {
+                    title: intl.formatMessage({ id: "vice.74" }),
+                    text: intl.formatMessage({ id: "vice.75" })
+                }
+            ]
+        },
+        {
+            title: intl.formatMessage({ id: "vice.71" }),
+            info: [
+                {
+                    title: intl.formatMessage({ id: "vice.76" }),
+                    text: intl.formatMessage({ id: "vice.77" })
+                },
+                {
+                    title: "",
+                    text: intl.formatMessage({ id: "vice.78" })
+                },
+                {
+                    title: "",
+                    text: intl.formatMessage({ id: "vice.79" })
+                },
+                {
+                    title: intl.formatMessage({ id: "vice.80" }),
+                    text: intl.formatMessage({ id: "vice.81" })
+                }
+            ]
+        },
+        {
+            title: intl.formatMessage({ id: "vice.72" }),
+            info: [
+                {
+                    title: "",
+                    text: intl.formatMessage({ id: "vice.82" })
+                }
+            ]
         }
     ]
 
@@ -844,7 +897,8 @@ const ViceCity = (props) => {
                 backgroundImage: `url(${how_it_was_bg.src})`
             }} data-aos="fade-down" data-aos-duration="2000" id="how_it_was">
                 <h2>HOW IT WAS</h2>
-                <p>{intl.formatMessage({ id: "vice.22" })}<br/> {intl.formatMessage({ id: "vice.23" })}</p>
+                <p><span>{intl.formatMessage({ id: "vice.23.0.1" })}</span></p>
+                <p>{intl.formatMessage({ id: "vice.23.0.2" })} <span>{intl.formatMessage({ id: "vice.23.0.3" })}</span></p>
             </div>
             <div className={classes.howItWasSlider}>
                 <HozhoSlider
@@ -998,12 +1052,93 @@ const ViceCity = (props) => {
                             <h6>{intl.formatMessage({ id: "vice.18" })}</h6>
                         </div>
                         <p>{intl.formatMessage({ id: "vice.19.1" })}</p>
+                        <img src={price_img.src} alt="price rises"/>
                     </div>
                 </div>
                 <div className={classes.buyButtMobile} style={{ marginTop: "1rem", width: "100%" }}>
                     <button onClick={scrollToPayment} style={{ width: "100%" }}>BuY Ticket</button>
                     {/* <button onClick={scrollToPayment} className={classes.shadow}>BuY Ticket</button> */}
                     {/* <img src={light_img.src} alt="light"/> */}
+                </div>
+            </div>
+            <div className={classes.camping}>
+                <div className={classes.campingImgContainer}>
+                    <Image src={camping_img} alt="camping" fill/>
+                </div>
+                <div className={classes.campingContent}>
+                    <div className={classes.campingMiniHeader}>
+                        <div/>
+                        <p>{intl.formatMessage({ id: "vice.51" })}</p>
+                    </div>
+                    <h3>{intl.formatMessage({ id: "vice.52" })}</h3>
+                    <div className={classes.campingPadding}>
+                        <p>{intl.formatMessage({ id: "vice.53" })}</p>
+                        <p><span>{intl.formatMessage({ id: "vice.54" })}</span></p>
+                        <p>{intl.formatMessage({ id: "vice.55" })}</p>
+                    </div>
+                    <div className={classes.campingDay}>
+                        <label>// {intl.formatMessage({ id: "vice.56" })}</label>
+                        <p>{intl.formatMessage({ id: "vice.57" })}</p>
+                    </div>
+                    <div className={classes.campingPoints}>
+                        <img src={dots_img.src} alt="dots"/>
+                        <div className={classes.campingPointsContent}>
+                            <div className={classes.point}>
+                                <span>{intl.formatMessage({ id: "vice.58" })}</span>
+                                <p>{intl.formatMessage({ id: "vice.59" })}</p>
+                            </div>
+                            <div className={classes.point}>
+                                <span>{intl.formatMessage({ id: "vice.60" })}</span>
+                                <p>{intl.formatMessage({ id: "vice.61" })} <label>{intl.formatMessage({ id: "vice.62" })}</label></p>
+                            </div>
+                            <div className={classes.point}>
+                                <span>{intl.formatMessage({ id: "vice.63" })}</span>
+                                <p>{intl.formatMessage({ id: "vice.64" })}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={classes.campingProgress}>
+                        <div className={classes.campingProgressHead}>
+                            <p>{intl.formatMessage({ id: "vice.65" })}</p>
+                            <span>{intl.formatMessage({ id: "vice.66" })}</span>
+                        </div>
+                        <div className={classes.progress}>
+                            <div className={classes.active}/>
+                            <div className={classes.active}/>
+                            <div/>
+                            <div/>
+                            <div/>
+                            <div/>
+                            <div/>
+                            <div/>
+                        </div>
+                        <div className={classes.campingData}>
+                            <p><span>70-80</span> {intl.formatMessage({ id: "vice.67" })}</p>
+                            <p><span>200</span> {intl.formatMessage({ id: "vice.68" })}</p>
+                        </div>
+                    </div>
+                    <div className={classes.campingCollapse}>
+                        {campingQuestions.map((el, index) => (
+                            <ViceCity2026CampingItem index={index} item={el}/>
+                        ))}
+                    </div>
+                    <div className={classes.campingCheck}>
+                        <h4>{intl.formatMessage({ id: "vice.83" })}</h4>
+                        <div className={classes.check}>
+                            <FormControlLabel
+                                sx={{
+                                    fontFamily: "ChaletMedium"
+                                }}
+                                control={<Checkbox checked={isIncludeCamping} size="medium" onChange={() => setIsIncludeCamping(!isIncludeCamping)} />}
+                                label={
+                                    <div className={classes.checkText}>
+                                        <h4>{intl.formatMessage({ id: "vice.84" })}</h4>
+                                        <p>{intl.formatMessage({ id: "vice.85" })}</p>
+                                    </div>
+                                }
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* MEANWHILE */}
@@ -1101,6 +1236,8 @@ const ViceCity = (props) => {
                     price={price}
                     setPrice={setPrice}
                     paymentBlockRef={paymentBlockRef}
+                    isIncludeCamping={isIncludeCamping}
+                    setIsIncludeCamping={setIsIncludeCamping}
                 />
             </div>
             {/* FAQ */}

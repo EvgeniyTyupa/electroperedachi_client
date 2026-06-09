@@ -1,0 +1,61 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, .15);
+    transition-duration: .3s;
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    font-family: "Chalet";
+}
+.header p {
+    font-size: 14px;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+}
+.header span {
+    font-size: 19px !important;
+    color: white;
+}
+.active .header p {
+    color: #FC99CC !important;
+    text-shadow: 0 0 3px #FC99CC;
+}
+.points {
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.points div {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    font-family: "Chalet";
+}
+.points span {
+    min-width: 100px;
+    color: #FC99CC;
+}
+.points p {
+    white-space: pre-wrap;
+    color: #DAD7D0;
+}
+.active {
+    border: 1px solid #FC99CC;
+}

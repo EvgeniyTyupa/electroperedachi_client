@@ -91,9 +91,8 @@
 }
 .ticketsBlockContainer {
     padding: 2px;
-
+    position: relative;
     box-sizing: border-box;
-    margin-top: 30px;
 }
 .ticketsBlock {
     display: flex;
@@ -121,29 +120,29 @@
     );
 
   clip-path: polygon(
-    4% 6%,
-    96% 0%,
-    92% 92%,
-    0% 80%
-  );
+        4% 8%,
+        96% 3%,
+        94% 92%,
+        1% 92%
+);
   padding-bottom: 1rem;
 }
 .block1 {
     background: white;
     clip-path: polygon(
-        0% 3%,   /* верхний левый */
-        92% 0%,  /* верхний правый */
-        99% 92%, /* нижний правый */
-        8% 99%   /* нижний левый */
+        4% 8%,
+        96% 3%,
+        94% 92%,
+        1% 92%
     );
 }
 .block1 .ticketsBlock {
     background: black;
     clip-path: polygon(
-        0% 3%,   /* верхний левый */
-        92% 0%,  /* верхний правый */
-        99% 92%, /* нижний правый */
-        8% 99%   /* нижний левый */
+        4% 8%,
+        96% 3%,
+        94% 92%,
+        1% 92%
     );
     /* border: 2px solid #FC99CC; */
     /* border-radius: 4px; */
@@ -160,10 +159,18 @@
     font-size: 16px;
     line-height: 26px;
     color: white;
-    font-family: "Chalet"
+    font-family: "Chalet";
+    margin-right: 0 !important;
 }
 .ticketsCount label strong {
     font-family: "ChaletMedium"
+}
+.ticketsCount span {
+    font-size: 14px !important;
+    line-height: 14px !important;
+}
+.opacity {
+    opacity: .5;
 }
 .countBut {
     min-width: unset !important;
@@ -215,6 +222,7 @@
     font-weight: 400 !important;
 }
 .gradient {
+    margin-bottom: 1rem;
     background-image: linear-gradient(
         to right,
         #7068EB 0%,
@@ -236,6 +244,32 @@
 
     font-size: 16px;
     margin-top: 1rem;
+}
+.recomend {
+    position: absolute;
+    left: 25px;
+    background-color: white;
+    padding: .3rem 1rem;
+    z-index: 1;
+    color: black;
+    font-family: "ChaletMedium";
+    font-size: 16px;
+}
+.check label {
+    align-items: flex-start !important;
+    gap: 1rem;
+}
+.check span {
+    font-weight: 500;
+    color: white;
+    padding: 0;
+}
+.check p {
+    color: #8D8A84;
+    font-family: "Chalet";
+}
+.check svg {
+    color: #FC99CC;
 }
 
 @keyframes slide-gradient {

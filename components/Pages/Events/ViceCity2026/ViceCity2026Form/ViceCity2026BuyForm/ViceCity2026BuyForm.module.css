@@ -123,15 +123,6 @@
 .adornment p {
     color: white !important;
 }
-.confirm span{
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
-    color: white;
-}
-.confirm svg{
-    color: #FC99CC;
-}
 
 @media screen and (max-width: 1440px) {
     .phoneInput input{

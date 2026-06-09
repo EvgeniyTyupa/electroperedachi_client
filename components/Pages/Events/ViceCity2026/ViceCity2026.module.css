@@ -708,6 +708,223 @@
     align-items: center;
     gap: .4rem
 }
+
+/* CAMPING */
+
+.camping {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.campingImgContainer {
+    width: 100%;
+    position: relative;
+    height: 270px;
+}
+.campingContent {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+.campingMiniHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+.campingMiniHeader div {
+    width: 26px;
+    height: 3px;
+    background-color: #FC99CC;
+    box-shadow: 0 0 6px #FC99CC;
+}
+.campingMiniHeader p {
+    font-family: "ChaletMedium";
+    font-size: 12px;
+    color: #FC99CC;
+    text-transform: uppercase;
+}
+.campingContent h3 {
+    font-family: "ChaletMedium";
+    font-size: 40px;
+    margin-top: 12px;
+}
+.campingPadding {
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, .15);
+    margin-top: 24px;
+    font-family: "Chalet";
+    font-size: 16px;
+    color: #DAD7D0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.campingPadding span {
+    color: #FC99CC;
+    font-family: "ChaletMedium";
+    text-shadow: 0 0 9px #FC99CC;
+    font-size: 17px;
+}
+.campingDay {
+    width: 100%;
+    margin-top: 26px;
+}
+.campingDay label {
+    font-family: "Chalet";
+    font-size: 12px;
+    display: block;
+    margin-bottom: 6px;
+}
+.campingDay p {
+    font-size: 16px;
+    color: #A4A199;
+    font-family: "Chalet";
+}
+.campingPoints {
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.campingPointsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.check span{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: white;
+}
+.check svg{
+    color: #FC99CC;
+}
+.point {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.point span {
+    font-family: "Chalet";
+    font-size: 12px;
+    color: #FC99CC;
+}
+.point p {
+    font-size: 16px;
+    font-family: "Chalet";
+}
+.point label {
+    font-size: 16px;
+    opacity: .5;
+}
+.campingProgress {
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, .15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 26px;
+}
+.campingProgressHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.campingProgressHead p {
+    font-family: "Chalet";
+    font-size: 14px;
+    color: white;
+}
+.campingProgressHead span {
+    font-family: "Chalet";
+    font-size: 14px;
+    color: #FC99CC;
+    text-transform: uppercase;
+}
+.progress {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.progress div {
+    width: 100%;
+    height: 12px;
+    background-color: rgba(255, 255, 255, .14);
+}
+.active {
+    background-color: #FC99CC !important;
+    box-shadow: 0 0 3px #FC99CC;
+}
+.campingData {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px
+}
+.campingData p {
+    font-family: "ChaletMedium";
+}
+.campingData span {
+    font-size: 32px;
+    font-family: "Chalet" !important;
+}
+.campingCollapse {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.campingCheck {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.campingCheck h4 {
+    font-family: "ChaletMedium";
+    font-size: 18px;
+}
+.check {
+    margin-top: 24px;
+    border: 1px solid #FC99CC;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+}
+.check label {
+    align-items: flex-start !important;
+    gap: 1rem;
+}
+.check span {
+    font-weight: 500;
+    color: white;
+    padding: 0;
+}
+.check p {
+    color: #8D8A84;
+    font-family: "Chalet";
+}
+.check svg {
+    color: #FC99CC;
+}
+.campingCheck {
+    /* display: flex; */
+}
+.checkText {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
 /* HOW IT WAS */
 
 .how_it_was {
@@ -721,11 +938,18 @@
     margin-top: 50px
 }
 .how_it_was p {
-    margin-top: 24px;
+    /* margin-top: 24px; */
     color: black;
-    font-family: "ChaletMedium", "Helvetica";
+    font-family: "Chalet", "Helvetica";
     letter-spacing: 1.5px;
     font-weight: 600;
+    white-space: pre-wrap;
+}
+.how_it_was h2 {
+    margin-bottom: 24px;
+}
+.how_it_was span {
+    font-family: "ChaletMedium";
 }
 .howItWasSlider {
     width: 100%;
@@ -1196,7 +1420,7 @@
     .details {
         padding-left: 50px;
         padding-right: 50px;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
     }
     .detailsInfo {
         max-width: 100%;
@@ -1522,7 +1746,7 @@
         padding-top: 2rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        height: 340px;
+        height: 440px;
     }
     .meanwhile {
         padding-left: 1rem;

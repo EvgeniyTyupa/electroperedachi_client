@@ -532,55 +532,208 @@
     "hozho.55": "You can remove the mask. Or put on any other.",
     "hozho.56": "'Your look is your message. Create it so it speaks louder than words.'",
 
-    "vice.1": "It’s not about what you do — it’s about what you feel. Experience the universe of Vice City at a two-day techno festival in X-Park",
-    "vice.2": "Some places you go because you have to.",
-    "vice.3": "And then there are places you dream of arriving at and returning to —",
-    "vice.4": "A two-day techno festival, featuring",
-    "vice.4.1": "and over 40 artists across two stages",
-    "vice.5": "On an island. By the water. A city of temptations, games, slow touches, and daring decisions. For those who want more.",
-    "vice.6": "In Vice City, you’re never “too late.” There’s no plan — only a route.",
-    "vice.7": "Here, it’s not “because you should” — it’s “because you want to.”",
-    "vice.8": "It’s a return to who you were before everything became “how it should be.”",
-    "vice.9": "In Vice City, you’re not a visitor. You’re part of the city. You’re the main character.",
-    "vice.10": "The city’s story is shaped by you: by your moves, your style, your mood, and your actions",
-    "vice.11": "Complete this universe with yourself!",
-    "vice.11.1": "The lineup is still being formed, but there is already a list of approved artists that you will hear over the course of 3 days. 40+ artists, 7 foreigners, 2 stages, 3 days, more details TBA",
-    "vice.12": "DJs in Vice City are the architects of space and reality, using rhythm and sound. They literally build the city’s architecture with music, each track setting new rules, moods, and atmosphere. Vice City evolves depending on who’s at the decks.",
+    "vice.1": "What matters is not what you do — but what you feel. Experience the Vice City universe at a two-day techno festival in X-Park",
+    "vice.1.1": "What matters is not what you do — but what you feel. Experience the Vice City universe at a",
+    "vice.1.2": "three-day",
+    "vice.1.3": "techno festival in X-Park",
+
+    "vice.2": "There are places people go because they have to.",
+    "vice.3": "And there are places you dream of reaching and returning to.",
+
+    "vice.4": "A two-day techno festival,",
+    "vice.4.0": "A three-day techno festival featuring stars",
+    "vice.4.1": "and more than 40 artists across 2 stages",
+    "vice.4.2": "and 40+ artists.\nCamping and countless activities throughout the venue.",
+
+    "vice.5": "On an island. By the water. A city of temptation, playfulness, lingering touches, and bold decisions. For those who want more.",
+
+    "vice.6": "In Vice City, it's never too late. There is no plan — only the route.",
+
+    "vice.7": "Here, instead of 'what I should do' — it's 'what I want to do.'",
+
+    "vice.8": "This is a return to who you were before everything became 'the way it should be.'",
+
+    "vice.9": "In Vice City, you're not a visitor. You're part of this city. You're the main character.",
+
+    "vice.10": "The city's story is shaped by you: through your movements, your style, your mood, and your actions.",
+
+    "vice.11": "Complete this universe with your presence!",
+
+    "vice.11.1": "The lineup is still being finalized, but we already have a list of approved artists you'll hear throughout all three days. 40+ artists, 7 international acts, 2 stages, 3 days. More details TBA.",
+
+    "vice.11.2": "We've curated 40+ artists",
+    "vice.11.3": "so that every day has its own unique",
+    "vice.11.4": "emotional journey and its own headliners. No day repeats itself.",
+
+    "vice.11.5": "The true Vice City experience",
+    "vice.11.6": "can only be felt when you live it from the very first note to the very last.",
+
+    "vice.11.7": "Thinking about skipping Friday because it's a workday and three days of partying sounds too intense? That would be your biggest mistake.",
+
+    "vice.11.8": "Friday is the transition. Just imagine:",
+
+    "vice.11.9": "The final meeting of the week ends, your laptop shuts down, and an hour later you're already on the island, leaving routine behind.\n\nToday you switch from 'what I should do' to 'what I want to do.'\n\nThe shoulders of the person next to you start moving to the same rhythm as yours.\n\nYou feel relieved, energized, and realize there are still two more days ahead.",
+
+    "vice.11.10": "Saturday is a return to yourself and the epicenter of the energy.",
+
+    "vice.11.11": "Friday changed your state of mind. Today you're the person you were before Excel, before the news, before schedules. Before everything became 'the way it should be.'\n\nThis is the most intense day of Vice City.\n\nTwo stages at full power. The connections that started on Friday night have already become a crew.\n\nToday you're not a guest of the city. Today you're a resident.",
+
+    "vice.11.12": "Sunday is a deep and emotional finale that will leave goosebumps on your skin until next summer.\n\nThe sun's shadow mirrors your movements, and the music becomes less about dancing and more about memories. Thousands of hearts united by music, vibes, and the energy they shared.\n\nYou leave the festival inspired to make this world a better place.",
+
+    "vice.12": "The DJs of Vice City are the ones who shape the city's space and reality through rhythm and sound. They literally build the city's architecture with music, setting new rules, moods, and atmospheres with every track. Vice City evolves depending on who's behind the decks.",
+
     "vice.13": "LOCATION",
-    "vice.14": "X-Park – the largest active park in Europe. A unique spot for relaxation, located on Trukhaniv Island in Kyiv. Our two-day festival will span most of the park area, as shown on the venue map",
+
+    "vice.14": "X-Park — Europe's largest active recreation park.\n\nA unique destination for leisure and relaxation, located in Kyiv's green zone on Trukhaniv Island.\n\nOur festival will take place across most of the venue's territory, which will be highlighted on the festival map.",
+
     "vice.15": "DRESS CODE",
-    "vice.16": "Dress code isn’t mandatory! But it’s epic if you dress according to the references we’ll show below via archetypes",
+
+    "vice.16": "The dress code is not mandatory. But it would be great if you dressed according to the references below, presented through different archetypes.",
+
     "vice.17": "TIME",
-    "vice.18": "TICKET PRICE",
-    "vice.19": "Ticket prices depend on the presale stage. There are four phases. Door price is highest.",
-    "vice.20": "AMENITIES",
-    "vice.21": "There’s plenty to keep you busy here. Beyond food/drink and merch stalls, you can hit the beach (showers and changing rooms available), go wakeboarding, play basketball or table tennis, rent a motorcycle, order a hookah, visit the shooting range, or even join a morning yoga session!",
-    "vice.22": "Here are the memories of your youth.",
-    "vice.23": "Emotions that will last forever!",
-    "vice.24": "The real you isn’t in Zoom or the subway. It’s where you act on impulse and follow the wind",
-    "vice.25": "What matters isn’t what you do —",
-    "vice.26": "it’s what you feel.",
-    "vice.27": "If you don’t feel like dressing up, don’t stress about the code. But if you want to vibe with the ecosystem and need outfit inspo, use our archetypes! They explain dress code, vibe, and behavior style without bans or boring rules. Choose your look based on the mood closest to you",
-    "vice.28": "PHRASE",
+
+    "vice.18": "TICKET PRICES",
+
+    "vice.19": "Ticket prices depend on the current presale stage. There are four stages in total. Tickets are most expensive at the door.",
+
+    "vice.19.1": "Ticket prices depend on the current presale stage. There are four stages in total. A camping option can be added to any ticket.",
+
+    "vice.20": "FACILITIES & MAP",
+
+    "vice.21": "There is truly plenty to do at this venue",
+
+    "vice.21.1": "and countless ways to keep yourself entertained.",
+
+    "vice.21.2": "In addition to commercial areas",
+
+    "vice.21.3": "where you can buy food, drinks, merchandise, accessories, and more,",
+
+    "vice.21.4": "you will also have the opportunity to:",
+
+    "vice.21.5": "visit the beach and go swimming",
+
+    "vice.21.6": "(showers and changing rooms available);",
+
+    "vice.21.7": "try wakeboarding;",
+
+    "vice.21.8": "play basketball or table tennis;",
+
+    "vice.21.9": "rent a motorcycle;",
+
+    "vice.21.10": "order a hookah;",
+
+    "vice.21.11": "visit the shooting range;",
+
+    "vice.21.12": "or even join a morning yoga session.",
+
+    "vice.21.13": "This year we're doing something we've never done before —",
+
+    "vice.21.14": "launching an official camping village",
+
+    "vice.21.15": "right on the festival grounds. More details below.",
+
+    "vice.022.1": "The festival is evolving",
+
+    "vice.022.2": "2 Days\n\n2 Stages\n\n33 Artists\n\n2 International Guests\n\n3500 Visitors\n\nActivities Across the Venue",
+
+    "vice.022.3": "3 Days",
+
+    "vice.022.4": "2 Stages",
+
+    "vice.022.4.1": "(bigger than ever)",
+
+    "vice.022.5": "40+ Artists",
+
+    "vice.022.6": "5 International",
+
+    "vice.022.6.1": "Guests",
+
+    "vice.022.7": "5000 Visitors",
+
+    "vice.022.7.1": "(more space than ever)",
+
+    "vice.022.8": "Activities Across the Venue",
+
+    "vice.022.9": "Camping!",
+
+    "vice.022.10": "(covered in a dedicated section)",
+
+    "vice.022.11": "Last summer",
+
+    "vice.022.12": "Vice City became exactly the kind of place you miss and dream of returning to.",
+
+    "vice.022.13": "We realized:",
+
+    "vice.022.14": "we shouldn't just repeat the festival",
+
+    "vice.022.15": "— we need to expand this universe on a much larger scale.",
+    "vice.22": "These are the memories of your youth.",
+    "vice.23": "Emotions that will stay with you forever!",
+    "vice.23.0.1": "This wasn't from a movie.\nThis wasn't from a video game.\nThis was our summer.",
+    "vice.23.0.2": "3500 people. One island. Two days that became a legend.",
+    "vice.23.0.3": "In 2026 — more scale, more music, more of you.",
+    "vice.23.1": "OPENING HOURS",
+    "vice.23.2": "Starting",
+    "vice.23.3": "Friday from 14:00",
+    "vice.23.4": "Saturday and Sunday",
+    "vice.23.5": "gates open from 12:00",
+    "vice.23.6": "Camping guests can check in as early as 12:00 on Friday.",
+    "vice.23.7": "Each day ends at 22:30. Camping residents can gather around the campfire and reflect together in a private area. More details below.",
+    "vice.23.8": "Here, instead of 'what I should do' — it's 'what I want to do.'\n\nIn Vice City, you're not a visitor.\nYou're part of the city.",
+    "vice.23.9": "You're the main character.",
+    "vice.23.10": "The city's story is shaped by you: through your mood, your style, and your movements.",
+    "vice.23.11": "Complete this universe with your presence!",
+    "vice.24": "The real version of you isn't in Zoom meetings or on the subway. It's where you follow your instincts and go wherever the wind takes you.",
+    "vice.25": "What matters is not what you do —",
+
+    "vice.26": "but what you feel.",
+
+    "vice.27": "If you don't feel like following a dress code, don't worry about it. But if you'd like to fit into the ecosystem and are wondering what to wear, use the references below. We've prepared a variety of archetypes — the best way to explain the dress code, the vibe, and even behavioral styles without rules or boring instructions. Choose the look that matches the state of mind closest to you.",
+
+    "vice.28": "QUOTE",
+
     "vice.29": "MOOD",
-    "vice.30": "Neon, reflective gear, sporty shades, black, mesh, night-vision goggles",
-    "vice.31": "My fuel is bass!",
-    "vice.32": "Always by the stage, deep in techno. Never stops. Never speaks. Dedicated to the dance.",
-    "vice.33": "Unbuttoned shirt, shorts, bucket hat",
-    "vice.34": "No rush — I’ve got two days.",
-    "vice.35": "Always with a drink, always smiling. Watching you but never judging. At the chill zone, by the water, at the bar",
-    "vice.36": "The true hunter in disguise as a LOUNGER, rocking the same gear",
-    "vice.37": "Have we met before?",
-    "vice.38": "Always with a drink, always smiling. Watching you but never judging. At the chill zone, by the water, at the bar",
-    "vice.39": "Beyond genres. Surreal, theatrical, style as a message. Absurd accessories, scarves, wigs, dramatic makeup",
-    "vice.40": "I wasn’t meant to be here. But here I am.",
-    "vice.41": "Constantly in character, creating the atmosphere",
-    "vice.42": "Skin-tone shades, sheer fabrics, light materials",
-    "vice.43": "I’m here to unwind and breathe fresh air.",
-    "vice.44": "Escaping the routine, ready to merge with the crowd",
-    "vice.45": "Loose cuts, natural fabrics, linen trousers, bare shoulders",
-    "vice.46": "I’m not late. I joined on my time.",
-    "vice.47": "No rush. He’s everywhere. Not the center of attention — but everyone remembers how he appeared and disappeared",
+
+    "vice.30": "Neon, reflective elements, sporty sunglasses, black outfits, mesh fabrics, sunglasses after dark",
+
+    "vice.31": "Bass is my fuel.",
+
+    "vice.32": "Always near the stage, deep in techno. Never stops. Never talks. Completely devoted to the dance.",
+    "vice.33": "Open shirt, shorts, bucket hat",
+
+    "vice.34": "No rush. I've got two days.",
+
+    "vice.35": "Always holding a drink, always smiling. Observes everyone but judges no one. Usually found in the chill zone, by the water, or at the bar.",
+
+    "vice.36": "Like a true hunter, disguises themselves as a LOUNGER and dresses accordingly.",
+
+    "vice.37": "Haven't we met somewhere before?",
+
+    "vice.38": "Always holding a drink, always smiling. Observes everyone but judges no one. Usually found in the chill zone, by the water, or at the bar.",
+
+    "vice.39": "Beyond genres. Surreal, theatrical, style as a message. Absurd accessories, scarves, wigs, dramatic makeup.",
+
+    "vice.40": "I wasn't supposed to be here. Yet here I am.",
+
+    "vice.41": "Always in character. Creates the atmosphere.",
+
+    "vice.42": "Skin tones, transparent fabrics, lightweight materials",
+
+    "vice.43": "I'm here because I want to unwind and breathe some fresh air.",
+
+    "vice.44": "Escaping routine. Wants to disappear into the crowd.",
+
+    "vice.45": "Loose fits, natural fabrics, linen trousers, bare shoulders",
+
+    "vice.46": "I'm not late. I arrived exactly when I was meant to.",
+
+    "vice.47": "Never in a hurry. Feels at home everywhere. Not the center of attention, yet everyone remembers how they appeared and disappeared.",
+
+    "vice.48": "BOOK YOUR TICKET",
+
+    "vice.49": "RIGHT NOW",
+
+    "vice.50": "Get 15% off when purchasing 5 or more tickets.\nDiscounted ticket price = 2210 UAH (2 days) or 2805 UAH (3 days).",
 
     "masq.1": "A mask hides your face, but reveals your true essence",
     "masq.2": "Buy ticket",
