@@ -366,7 +366,8 @@
     font-family: "ChaletMedium";
     color: #FC99CC;
     font-size: 20px;
-    text-shadow: 0px 0px 4px #FC99CC;
+    /* text-shadow: 0px 0px 4px #FC99CC; */
+    filter: drop-shadow(0 0 3px #FC99CC);
 }
 .stage {
     display: flex;
@@ -627,7 +628,7 @@
 }
 .detailHeader h6 {
     color: #FC99CC;
-    text-shadow: #84ece3a4 1px 0 10px;
+    filter: drop-shadow(1px 0 6px rgba(132,236,227,.65));
     font-size: 22px;
     font-family: "ChaletMedium" !important;
     text-transform: uppercase;
@@ -1571,6 +1572,7 @@
         position: absolute;
         right: 30px;
         top: 0;
+        z-index: 2;
     }
     .vidosBlockMobile h4 {
         text-shadow: 6px 6px black;
@@ -1809,15 +1811,19 @@
         height: 255px !important;
     }
     .dress1, .dress5 {
-        width: 160px;
-        left: -20px;
+        width: 200px;
+        left: -30px;
     }
     .dress2, .dress6 {
-        width: 190px;
-        left: -40px;
+        width: 210px;
+        left: -50px;
     }
-    .dress3, .dress4 {
-        width: 170px;
+    .dress3 {
+        width: 150px;
+    }
+    .dress4 {
+        width: 230px;
+        left: -50px;
     }
     .playlist {
         padding: 0 1rem;

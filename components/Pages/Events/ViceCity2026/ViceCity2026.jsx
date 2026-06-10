@@ -357,10 +357,10 @@ const ViceCity = (props) => {
             img: dress1_img.src
         },
         {
-            name: "LOUNGER",
-            dresscode: intl.formatMessage({ id: "vice.33" }),
-            phrase: intl.formatMessage({ id: "vice.34" }),
-            mood: intl.formatMessage({ id: "vice.35" }),
+            name: "UNIKUM",
+            dresscode: intl.formatMessage({ id: "vice.39" }),
+            phrase: intl.formatMessage({ id: "vice.40" }),
+            mood: intl.formatMessage({ id: "vice.41" }),
             img: dress2_img.src
         },
         {
@@ -371,25 +371,18 @@ const ViceCity = (props) => {
             img: dress3_img.src
         },
         {
-            name: "UNIKUM",
-            dresscode: intl.formatMessage({ id: "vice.39" }),
-            phrase: intl.formatMessage({ id: "vice.40" }),
-            mood: intl.formatMessage({ id: "vice.41" }),
-            img: dress4_img.src
-        },
-        {
-            name: "ESCAPIST",
-            dresscode: intl.formatMessage({ id: "vice.42" }),
-            phrase: intl.formatMessage({ id: "vice.43" }),
-            mood: intl.formatMessage({ id: "vice.44" }),
-            img: dress5_img.src
-        },
-        {
-            name: "THE DRIFTER",
+            name: "DRIFTER",
             dresscode: intl.formatMessage({ id: "vice.45" }),
             phrase: intl.formatMessage({ id: "vice.46" }),
             mood: intl.formatMessage({ id: "vice.47" }),
-            img: dress6_img.src
+            img: dress4_img.src
+        },
+        {
+            name: "LOUNGER",
+            dresscode: intl.formatMessage({ id: "vice.33" }),
+            phrase: intl.formatMessage({ id: "vice.34" }),
+            mood: intl.formatMessage({ id: "vice.35" }),
+            img: dress5_img.src
         }
     ]
 

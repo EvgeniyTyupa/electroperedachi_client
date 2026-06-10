@@ -148,7 +148,7 @@ export async function getServerSideProps(context) {
             event: event,
             script,
             lang: locale,
-        },
+        }
     }
 }
 

@@ -149,6 +149,10 @@ export async function getServerSideProps(context) {
             script,
             lang: locale,
         },
+        redirect: {
+            destination: "/events/vice-city-2026",
+            permanent: true, // 308
+        },
     }
 }
 
