@@ -319,6 +319,7 @@ const ViceCityBuyForm = (props) => {
                                             <Button
                                                 className={classes.promoBut}
                                                 onClick={checkPromocode}
+                                                type="button"
                                                 disabled={isLoadingPromocode}
                                             >
                                                 {isLoadingPromocode ? (
