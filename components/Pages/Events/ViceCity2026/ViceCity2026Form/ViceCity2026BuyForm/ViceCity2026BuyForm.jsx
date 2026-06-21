@@ -71,17 +71,17 @@ const ViceCityBuyForm = (props) => {
     
                 const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
 
-                import("react-facebook-pixel")
-                    .then((module) => module.default)
-                    .then((ReactPixel) => {
-                        ReactPixel.init(FB_PIXEL)
-                        ReactPixel.track("InitiateCheckout", {
-                            value: isAppliedPromo ? totalPriceDiscount : totalPrice,
-                            currency: "UAH",
-                            eventID: eventId,
-                            num_items: ticketsCount
-                        })
-                    })
+                // import("react-facebook-pixel")
+                //     .then((module) => module.default)
+                //     .then((ReactPixel) => {
+                //         ReactPixel.init(FB_PIXEL)
+                //         ReactPixel.track("InitiateCheckout", {
+                //             value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                //             currency: "UAH",
+                //             eventID: eventId,
+                //             num_items: ticketsCount
+                //         })
+                //     })
 
                 await trackApi.trackEvent("initiate_checkout", {
                     url: window.location.href,
