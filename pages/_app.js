@@ -46,24 +46,55 @@ export default function App({ Component, pageProps }) {
         }
     };
 
+    // Инициализация пикселей — СТРОГО один раз за всё время жизни вкладки.
+    // Раньше это дублировалось ещё одним отдельным useEffect ниже — убрано,
+    // потому что повторный ReactPixel.init() на каждый маунт + на каждый
+    // routeChangeComplete создавал гонку и задваивал события.
+    useEffect(() => {
+        import('react-facebook-pixel')
+            .then(module => module.default)
+            .then(ReactPixel => {
+                ReactPixel.init(FB_PIXEL)
+                ReactPixel.pageView()
+            })
+
+        import('tiktok-pixel')
+            .then(module => module.default)
+            .then(TiktokPixel => {
+                TiktokPixel.init(TIKTOK_PIXEL)
+                TiktokPixel.pageView()
+            })
+
+        initGA()
+        logPageView()
+
+        // import('@microsoft/clarity')
+        // .then((mod) => {
+        //     const Clarity = mod.default
+        //     Clarity.init(CLARITY_PROJECT_ID)
+        // })
+        // .catch((err) => {
+        //     console.error('Clarity init failed', err)
+        // })
+    }, [])
+
+    // На смену роута — ТОЛЬКО pageView(), без повторного init().
+    // Пиксель уже инициализирован выше, повторный init не нужен.
     useEffect(() => {
         const handleRouteChange = () => {
             logPageView()
 
             import('tiktok-pixel')
-            .then(module => module.default)
-            .then(TiktokPixel => {
-                TiktokPixel.init(TIKTOK_PIXEL)
-                TiktokPixel.pageView() 
-            })
+                .then(module => module.default)
+                .then(TiktokPixel => {
+                    TiktokPixel.pageView()
+                })
 
             import('react-facebook-pixel')
-            .then(module => module.default)
-            .then(ReactPixel => {
-                // ReactPixel.init('573414703062456')
-                ReactPixel.init(FB_PIXEL)
-                ReactPixel.pageView()
-            })
+                .then(module => module.default)
+                .then(ReactPixel => {
+                    ReactPixel.pageView()
+                })
         }
         events.on("routeChangeComplete", handleRouteChange)
         return () => {
@@ -76,37 +107,6 @@ export default function App({ Component, pageProps }) {
         return () => {
             document.removeEventListener('scroll', trackScrolling);
         }
-    }, [])
-
-    useEffect(() => {
-        initGA()
-        logPageView()
-    }, [])
-
-    useEffect(() => {
-        import('react-facebook-pixel')
-        .then(module => module.default)
-        .then(ReactPixel => {
-            // ReactPixel.init('573414703062456')
-            ReactPixel.init(FB_PIXEL)
-            ReactPixel.pageView()
-        })
-
-        import('tiktok-pixel')
-        .then(module => module.default)
-        .then(TiktokPixel => {
-            TiktokPixel.init(TIKTOK_PIXEL)
-            TiktokPixel.pageView() 
-        })
-
-        // import('@microsoft/clarity')
-        // .then((mod) => {
-        //     const Clarity = mod.default
-        //     Clarity.init(CLARITY_PROJECT_ID)
-        // })
-        // .catch((err) => {
-        //     console.error('Clarity init failed', err)
-        // })
     }, [])
 
     return (

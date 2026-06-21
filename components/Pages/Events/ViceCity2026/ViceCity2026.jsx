@@ -461,17 +461,17 @@ const ViceCity = (props) => {
             ua: navigator.userAgent,
         });
 
-        import('react-facebook-pixel')
-            .then((module) => module.default)
-            .then((ReactPixel) => {
-                ReactPixel.init(FB_PIXEL); // 👈 вставь свой ID
-                ReactPixel.track('AddToCart', {
-                    eventID: eventId,
-                });
-            })
-            .catch((err) => {
-                console.error('Facebook Pixel error:', err);
-            });
+        // import('react-facebook-pixel')
+        //     .then((module) => module.default)
+        //     .then((ReactPixel) => {
+        //         ReactPixel.init(FB_PIXEL); // 👈 вставь свой ID
+        //         ReactPixel.track('AddToCart', {
+        //             eventID: eventId,
+        //         });
+        //     })
+        //     .catch((err) => {
+        //         console.error('Facebook Pixel error:', err);
+        //     });
 
         import('tiktok-pixel')
             .then(module => module.default)
