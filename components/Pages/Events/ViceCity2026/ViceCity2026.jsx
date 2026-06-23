@@ -259,7 +259,7 @@ const ViceCity = (props) => {
                 },
                 {
                     djs: [
-                        { name: "Cruz" },
+                        { name: "Dimitri Cruz" },
                     ]
                 },
                 {
@@ -342,6 +342,11 @@ const ViceCity = (props) => {
                 {
                     djs: [
                         { name: "barma" },
+                    ]
+                },
+                {
+                    djs: [
+                        { name: "Paul Meise" },
                     ]
                 }
             ]
