@@ -49,8 +49,9 @@ const ViceCityBuyForm = (props) => {
         setIsFetchingContext(true)
         try {
             const { fbp, fbc } = getFbCookies();
-            const eventId = uuidv4(); 
-            const checkoutEventId = uuidv4();
+            const eventId = uuidv4();          // для InitiateCheckout
+            const checkoutEventId = uuidv4();  // для IC на бэке
+            const purchaseEventId = uuidv4();  // для Purchase — новое
 
             const submitData = {
                 ...data,
@@ -61,14 +62,13 @@ const ViceCityBuyForm = (props) => {
                 fbp,
                 fbc,
                 ua: navigator.userAgent,
-                event_id: checkoutEventId
+                event_id: checkoutEventId,
+                fb_purchase_event_id: purchaseEventId  // новое — прокидываем на бэк
             }
 
             const response = await userApi.add(submitData)
 
             if (event.google_table_id) {
-                // logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
-    
                 const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
 
                 import("react-facebook-pixel")
@@ -95,17 +95,17 @@ const ViceCityBuyForm = (props) => {
                     fbc,
                     event_id: eventId
                 })
-    
+
                 import('tiktok-pixel')
-                .then(module => module.default)
-                .then(TiktokPixel => {
-                    TiktokPixel.init(TIKTOK_PIXEL)
-                    TiktokPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
-                        currency: "UAH"
+                    .then(module => module.default)
+                    .then(TiktokPixel => {
+                        TiktokPixel.init(TIKTOK_PIXEL)
+                        TiktokPixel.track("InitiateCheckout", {
+                            value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                            currency: "UAH"
+                        })
                     })
-                })
-                    
+
                 await eventApi.saveDataToGoogleSheet({
                     date: moment().format('DD/MM/YYYY HH:mm'),
                     email: data.email,
