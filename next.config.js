@@ -6,7 +6,8 @@ const nextConfig = {
   reactStrictMode: true,
   i18n: {
     locales: ["en", "ua"],
-    defaultLocale: "ua"
+    defaultLocale: "ua",
+    localeDetection: false
   },
   images: {
     domains: ['localhost', "89.116.236.29", "api.electroperedachi.com"]

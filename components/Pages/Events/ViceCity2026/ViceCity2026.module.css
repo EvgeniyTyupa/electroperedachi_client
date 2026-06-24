@@ -176,6 +176,7 @@
     padding-top: 160px;
     box-sizing: border-box;
     position: relative;
+    display: none;
 }
 .aboutIntro {
     display: none;
@@ -258,6 +259,7 @@
 .location {
     box-sizing: border-box;
     margin-top: 100px;
+    display: none;
 }
 .location h2 {
     padding-left: 108px;
@@ -298,6 +300,10 @@
     position: relative;
     padding-right: 135px;
     overflow: hidden;
+    display: none;
+}
+.artist {
+    display: none;
 }
 .headlinersImg {
     position: absolute;
@@ -311,7 +317,8 @@
 }
 .artists {
     padding: 0 2rem;
-    box-sizing: border-box
+    box-sizing: border-box;
+    display: none;
 }
 .dayHeader {
     font-family: "RageItalic";
@@ -556,6 +563,7 @@
     margin-top: 100px;
     position: relative;
     padding-bottom: 200px;
+    display: none;
 }
 .detailsInfo {
     max-width: 50%;
@@ -717,6 +725,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    display: none;
 }
 .campingImgContainer {
     width: 100%;
@@ -936,7 +945,8 @@
     padding-left: 108px;
     padding-top: 150px;
     box-sizing: border-box;
-    margin-top: 50px
+    margin-top: 50px;
+    display: none;
 }
 .how_it_was p {
     /* margin-top: 24px; */
@@ -956,6 +966,7 @@
     width: 100%;
     position: relative;
     top: -200px;
+    display: none;
 }
 .photoSlider {
     width: 100%;
@@ -1012,6 +1023,7 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    display: none;
 }
 .dressHeader {
     display: flex;
@@ -1262,6 +1274,7 @@
     height: 300px;
     background-size: contain;
     background-repeat: no-repeat;
+    display: none;
 }
 .tickets span {
     color: #FC99CC;
@@ -1284,11 +1297,17 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .camping {
+        display: flex;
+    }
     .djsDescription {
         padding: 1rem 20px;
         box-sizing: border-box;
         padding-top: 0;
         margin-top: 2.5rem;
+    }
+    .location {
+        display: block;
     }
     .location h2, .location p {
         padding-left: 50px;
@@ -1369,13 +1388,15 @@
     .lineup {
         padding-right: 0px;
         padding-left: 0px;
-        height: fit-content
+        height: fit-content;
+        display: block;
     }
     .lineup h2 {
         text-align: center;
     }
     .artists {
         padding: 0 1rem;
+        display: block;
     }
     .artists span {
         color: #FC99CC;
@@ -1422,6 +1443,7 @@
         padding-left: 50px;
         padding-right: 50px;
         padding-bottom: 50px;
+        display: block;
     }
     .detailsInfo {
         max-width: 100%;
@@ -1435,6 +1457,7 @@
         padding-right: 50px;
         padding-top: 100px;
         height: 500px;
+        display: block;
     }
     .meanwhile {
         flex-direction: column;
@@ -1452,6 +1475,7 @@
     .dress {
         padding-bottom: 50px;
         height: fit-content;
+        display: block;
     }
     .dressHeader {
         padding-left: 50px;
@@ -1463,6 +1487,9 @@
     }
     .playlist {
         padding: 0 50px;
+    }
+    .tickets {
+        display: flex;
     }
 }
 
@@ -1759,6 +1786,7 @@
     .howItWasSlider {
         height: 300px;
         top: -100px;
+        display: block;
     }
     .meanwhileImg {
         position: absolute;
