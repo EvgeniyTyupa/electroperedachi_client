@@ -15,17 +15,23 @@ const ViceCity2026Page = (props) => {
         return <Preloader/>
     }
 
+    console.log(event.poster.image)
+
     return (
         <>
             <Head>
                 <title>{event.title || "Event"}</title>
-                {lang === "ua" ? (
-                    <meta name="description" lang="ua" content={removeHtmlAndMarkdown(event.description)}/>
-                ) : (
-                    <meta name="description" lang="en" content={removeHtmlAndMarkdown(event.description_en)}/>
-                )}
-                <meta name="keywords" content={`electroperedachi, events, події, вечірка, party, rave, ${event.keywords}`}/>
+                <meta property="og:title" content={event.title || "Event"}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:url" content={`https://electroperedachi.com/events/${event.title_code}`}/>
                 <meta property="og:image" content={event.poster.image}/>
+                <meta property="og:image:width" content="1200"/>
+                <meta property="og:image:height" content="630"/>
+                <meta property="og:description" content={
+                    lang === "ua" 
+                        ? removeHtmlAndMarkdown(event.description) 
+                        : removeHtmlAndMarkdown(event.description_en)
+                }/>
                 <link
                     rel="canonical"
                     href={`https://electroperedachi.com/events/${event.title_code}`}
