@@ -3,3 +3,4 @@ export const USD_EQ = 42
 export const FB_PIXEL = "573414703062456"
 export const TIKTOK_PIXEL = "D08U1CRC77U9CBHGPIKG"
 export const CLARITY_PROJECT_ID = "rkwkczhc44"
+export const GTM_ID = "GTM-N4X9GHZ"

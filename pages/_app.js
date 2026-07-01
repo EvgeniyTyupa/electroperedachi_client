@@ -7,6 +7,7 @@ import { IntlProvider } from "react-intl"
 import { useRouter } from "next/router"
 import Layout from "../components/UI/Layout/Layout"
 import Head from "next/head"
+import Script from "next/script"
 import "moment/locale/uk"
 import "moment/locale/en-sg"
 
@@ -19,7 +20,7 @@ import { AppContextProvider } from "../context/AppContext"
 import poster_img from "/public/poster.jpg"
 import { initGA, logPageView } from "../utils/gtag"
 import { useEffect } from "react"
-import { CLARITY_PROJECT_ID, FB_PIXEL, TIKTOK_PIXEL } from "../utils/constants"
+import { CLARITY_PROJECT_ID, FB_PIXEL, TIKTOK_PIXEL, GTM_ID } from "../utils/constants"
 
 import Script from 'next/script'
 
@@ -51,6 +52,12 @@ export default function App({ Component, pageProps }) {
     // потому что повторный ReactPixel.init() на каждый маунт + на каждый
     // routeChangeComplete создавал гонку и задваивал события.
     useEffect(() => {
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({
+            event: 'pageview',
+            page: window.location.pathname,
+        })
+
         import('react-facebook-pixel')
             .then(module => module.default)
             .then(ReactPixel => {
@@ -84,6 +91,12 @@ export default function App({ Component, pageProps }) {
         const handleRouteChange = () => {
             logPageView()
 
+            window.dataLayer = window.dataLayer || []
+            window.dataLayer.push({
+                event: 'pageview',
+                page: window.location.pathname,
+            })
+
             import('tiktok-pixel')
                 .then(module => module.default)
                 .then(TiktokPixel => {
@@ -111,6 +124,15 @@ export default function App({ Component, pageProps }) {
 
     return (
         <>
+            <Script id="gtm-script" strategy="afterInteractive">
+                {`
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','${GTM_ID}');
+                `}
+            </Script>
             <IntlProvider locale={locale} messages={messages[locale]}>
                 <AppContextProvider>
                     <Layout>
