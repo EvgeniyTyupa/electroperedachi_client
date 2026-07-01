@@ -7,7 +7,7 @@ import { IntlProvider } from "react-intl"
 import { useRouter } from "next/router"
 import Layout from "../components/UI/Layout/Layout"
 import Head from "next/head"
-import Script from "next/script"
+
 import "moment/locale/uk"
 import "moment/locale/en-sg"
 
