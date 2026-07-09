@@ -23,7 +23,7 @@ const Navbar = () => {
             router.pathname === "/events/vampire-carnival" ? classes.absolute : undefined,
             router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
             router.pathname === "/events/masquerade" ? classes.absolute : undefined,
-            router.pathname.includes("/events/vice-city") ? classes.none : undefined,
+            router.pathname.includes("/events/vice-city") ? classes.fixed : undefined,
             router.pathname === "/events/techno-fashion" ? classes.none : undefined
         )}>
             <Container className={classes.container}>

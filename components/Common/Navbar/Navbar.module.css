@@ -43,6 +43,13 @@
 .burger {
     display: none;
 }
+.fixed {
+    position: fixed !important;
+    padding-right: 0px !important;
+    z-index: 3 !important;
+    right: 0px;
+    width: fit-content;
+}
 
 @media screen and (max-width: 1000px) {
     .main {
@@ -69,7 +76,7 @@
     .absoluteDef {
         position: absolute;
     }
-    .none .container {
+    .none .container, .fixed .container {
         padding: 0 1rem;
     }
 }

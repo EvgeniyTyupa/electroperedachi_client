@@ -63,7 +63,8 @@ const ViceCityBuyForm = (props) => {
                 fbc,
                 ua: navigator.userAgent,
                 event_id: checkoutEventId,
-                fb_purchase_event_id: purchaseEventId  // новое — прокидываем на бэк
+                fb_purchase_event_id: purchaseEventId,
+                isIncludeCamping: isIncludeCamping ? 1 : 0 
             }
 
             const response = await userApi.add(submitData)

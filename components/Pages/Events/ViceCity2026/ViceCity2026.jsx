@@ -88,7 +88,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import dynamic from 'next/dynamic';
 import ViceCity2026CampingItem from "./ViceCity2026CampingItem/ViceCity2026CampingItem"
-import { Checkbox, FormControlLabel } from "@mui/material"
+import { Button, Checkbox, FormControlLabel } from "@mui/material"
 
 const InstagramEmbed = dynamic(
   () =>
@@ -125,6 +125,8 @@ const ViceCity = (props) => {
     const [isAddToCartEventSend, setIsAddToCartEventSend] = useState(false)
 
     const [isOpenLocModal, setIsOpenLocModal] = useState(false)
+
+    const [isShowBuyButt, setIsShowButt] = useState(false)
 
     const faq = event.faq
 
@@ -516,6 +518,12 @@ const ViceCity = (props) => {
     useEffect(() => {
         const handleScroll = () => {
             if(paymentBlockRef && paymentBlockRef.current) {
+                const { y } = paymentBlockRef.current.getBoundingClientRect()
+                 if (y <= 0 || y >= 13300) {
+                    setIsShowButt(false)
+                } else {
+                    setIsShowButt(true)
+                }
                 if (paymentBlockRef.current.getBoundingClientRect().top <= 150) {
                     if (!isAddToCartEventSend) {
                         setIsAddToCartEventSend(true)
@@ -605,6 +613,14 @@ const ViceCity = (props) => {
 
     return (
         <div className={classes.main}>
+            {isShowBuyButt && (
+                    <Button
+                        onClick={scrollToPayment}
+                        className={classes.buyTicketMobSticky}
+                    >
+                        Buy Ticket
+                    </Button>
+                )}
             {isOpenLocModal && (
                 <ViceCityLocModal item={isOpenLocModal} onClose={() => setIsOpenLocModal(null)}/>
             )}
@@ -618,7 +634,6 @@ const ViceCity = (props) => {
                     ))}
                 </div>
                 <h1>electroperedachi</h1>
-                <img src={vice_city_logo.src} alt={"vice city logo"} className={classes.viceCityLogoMobile}/>
                 <div className={classes.vidosBlock}>
                     <img src={vice_city_logo.src} alt={"vice city logo"} className={classes.viceCityLogo}/>
                     <Image src={video_location_thumb} alt="location preview" fill/>
@@ -632,13 +647,14 @@ const ViceCity = (props) => {
                     </div>
                 </div>
                 <div className={classes.vidosBlockMobile} data-aos="fade-down" data-aos-duration="2000">
+                    <img src={vice_city_logo.src} alt={"vice city logo"} className={classes.viceCityLogoMobile}/>
                     <div className={classes.vidosInfoMobile}>
                         <h4>31 JUL <label className={classes.amp}>&amp;</label><br/> 1-2 AUG</h4>
                         <h4>X-PARK</h4>
                     </div>
                     <div className={classes.locVidos}>
                         <Image src={video_location_thumb} alt="location preview" fill/>
-                        <button onClick={() => setIsOpenLocModal(true)}>
+                        <button onClick={() => setIsOpenLocModal("https://www.youtube.com/embed/yqarjI0Ewag?si=-vJWAzbmDoNXLBHR")}>
                             <GrPlayFill/>
                         </button>
                     </div>
