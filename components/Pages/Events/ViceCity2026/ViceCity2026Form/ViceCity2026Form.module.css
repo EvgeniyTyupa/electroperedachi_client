@@ -128,7 +128,7 @@
 );
   padding-bottom: 1rem;
 }
-.block1 {
+.block1, .block2 {
     background: white;
     clip-path: polygon(
         4% 8%,
@@ -137,7 +137,7 @@
         1% 92%
     );
 }
-.block1 .ticketsBlock {
+.block1 .ticketsBlock, .block2 .ticketsBlock {
     background: black;
     clip-path: polygon(
         4% 8%,

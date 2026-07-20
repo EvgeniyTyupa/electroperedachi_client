@@ -14,6 +14,7 @@ import { Button, Checkbox, FormControlLabel } from "@mui/material"
 import form_img from "/public/images/vice-city/form.png"
 import standart from "/public/images/vice-city/standart.png"
 import full_pass from "/public/images/vice-city/full_pass.png"
+import weekend_pass from "/public/images/vice-city/weekend.svg"
 import camping_title from "/public/images/vice-city/camping_title.png"
 
 import Video from "../../../../Common/Video/Video"
@@ -168,8 +169,10 @@ const ViceCityForm = (props) => {
                                         <div className={classes.ticketType}>
                                             <div className={classes.ticketTitle}>
                                                 {el.name.toLowerCase() === "standart" ? (
-                                                    <img src={standart.src} alt="standart"/>
-                                                ) : <img src={full_pass.src} alt="full_pass"/>}
+                                                <img src={standart.src} alt="standart"/> 
+                                                ) : el.name.toLowerCase() === "weekend" ? 
+                                                <img src={weekend_pass.src} alt="weekend_pass"/>
+                                                : <img src={full_pass.src} alt="full_pass"/>}
                                                 <p className={classes.price}>
                                                     {/* {intl.formatMessage({ id: "event.price" })} */}
                                                     &nbsp;
@@ -186,10 +189,14 @@ const ViceCityForm = (props) => {
                                         <div className={classes.ticketsCount}>
                                             {el.name.toLowerCase() === "standart" ? (
                                                 <label>
-                                                    <strong>31.07, 01.08</strong> (Пт, Сб)<br/> У доступі 1500 шт.
+                                                    <strong>31.07, 01.08</strong> (Пт, Сб)<br/>
                                                     {/* {intl.formatMessage({ id: "event.tickets" })} */}
                                                 </label>
-                                            ) : (
+                                            ) : el.name.toLowerCase() === "weekend" ? 
+                                            <label>
+                                                <strong>01.08, 02.08</strong> (Сб, Нд)<br/>
+                                            </label>
+                                            : (
                                                 <label>
                                                     <strong>3 дні</strong>,
                                                     а також доступ на <strong>епілог фестивалю — 08.08</strong><br/>
