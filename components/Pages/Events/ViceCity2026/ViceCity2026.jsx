@@ -1066,7 +1066,7 @@ const ViceCity = (props) => {
                             <h6>{intl.formatMessage({ id: "vice.18" })}</h6>
                         </div>
                         <p>{intl.formatMessage({ id: "vice.19.1" })}</p>
-                        <img src={price_img.src} alt="price rises"/>
+                        {/* <img src={price_img.src} alt="price rises"/> */}
                     </div>
                 </div>
                 <div className={classes.buyButtMobile} style={{ marginTop: "1rem", width: "100%" }}>
@@ -1075,7 +1075,7 @@ const ViceCity = (props) => {
                     {/* <img src={light_img.src} alt="light"/> */}
                 </div>
             </div>
-            <div className={classes.camping}>
+            {/* <div className={classes.camping}>
                 <div className={classes.campingImgContainer}>
                     <Image src={camping_img} alt="camping" fill/>
                 </div>
@@ -1154,7 +1154,7 @@ const ViceCity = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* MEANWHILE */}
             {/* <div className={classes.meanwhile}>
                 <div data-aos="fade-down" data-aos-duration="2000" className={classes.meanwhileText}>

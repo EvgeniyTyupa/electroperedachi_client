@@ -223,7 +223,7 @@ const ViceCityForm = (props) => {
                             </div>
                         )
                     ))}
-                    <div className={classes.camping}>
+                    {/* <div className={classes.camping}>
                         <p>{intl.formatMessage({ id: "vice.87" })}</p>
                         <div className={`${classes.ticketsBlockContainer} ${classes.block1}`}>
                             <div className={classes.ticketsBlock}>
@@ -255,7 +255,7 @@ const ViceCityForm = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className={classes.totalPrice}>
                         <label>
                             {intl.formatMessage({ id: "event.totalPrice" })}
