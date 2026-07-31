@@ -189,7 +189,7 @@ const ViceCityForm = (props) => {
                                         <div className={classes.ticketsCount}>
                                             {el.name.toLowerCase() === "standart" ? (
                                                 <label>
-                                                    <strong>31.07, 01.08</strong> (Пт, Сб)<br/>
+                                                    <strong>1 день</strong><br/>
                                                     {/* {intl.formatMessage({ id: "event.tickets" })} */}
                                                 </label>
                                             ) : el.name.toLowerCase() === "weekend" ? 
