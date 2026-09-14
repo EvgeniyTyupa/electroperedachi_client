@@ -108,10 +108,10 @@ const EventAbout = (props) => {
                     )}
                 </div>
             </Container>
-            <EventLineUp
+            {/* <EventLineUp
                 event={event}
                 disableMargin={true}
-            />
+            /> */}
             {featuredMedia.length > 0 && (
                 <div className={classes.featured}>
                     <Container className={classes.container}>
