@@ -6,6 +6,12 @@ import { SliderNav } from "./SliderNav";
 const techno = "/images/need_for_speed/rail-techno-fashion.webp";
 const technoDesk = "/images/need_for_speed/rail-techno-fashion-desktop.webp";
 const hozho = "/images/need_for_speed/rail-hozho.webp";
+const f1 = "/images/need_for_speed/f1.webp";
+const f2 = "/images/need_for_speed/f2.webp";
+const f3 = "/images/need_for_speed/f3.webp";
+const f4 = "/images/need_for_speed/f4.webp";
+const f5 = "/images/need_for_speed/f5.webp";
+const f6 = "/images/need_for_speed/f6.webp";
 
 const VIDEOS = [
   { kind: "youtube", videoId: "SWeMV1zZiY0", title: "electroperedachi — відео 1" },
@@ -27,7 +33,36 @@ export const RAIL_MOBILE = [
     alt: "HOZHO 2025 · Dovzhenko studio",
     cap: "HOZHO 2025 · Dovzhenko studio",
   },
-  ...VIDEOS,
+  {
+    kind: "photo",
+    src: f1,
+    alt: "VICE CITY 2026 · X-Park",
+    cap: "VICE CITY 2026 · X-Park",
+  },
+  {
+    kind: "photo",
+    src: f2,
+    alt: "VICE CITY 2026 · X-Park",
+    cap: "VICE CITY 2026 · X-Park",
+  },
+  {
+    kind: "photo",
+    src: f3,
+    alt: "Vampire Halloween 2024 · Mala Opera",
+    cap: "Vampire Halloween 2024 · Mala Opera",
+  },
+  {
+    kind: "photo",
+    src: f4,
+    alt: "Khortytsia Island 2019 · Historical Museum",
+    cap: "Khortytsia Island 2019 · Historical Museum",
+  },
+  {
+    kind: "photo",
+    src: f5,
+    alt: "Sedova 2018 · Factory",
+    cap: "Sedova 2018 · Factory",
+  },
 ];
 
 export const RAIL_DESKTOP = [
@@ -43,7 +78,36 @@ export const RAIL_DESKTOP = [
     alt: "Techno fashion 2026",
     cap: "Techno fashion 2026",
   },
-  ...VIDEOS,
+    {
+    kind: "photo",
+    src: f1,
+    alt: "VICE CITY 2026 · X-Park",
+    cap: "VICE CITY 2026 · X-Park",
+  },
+  {
+    kind: "photo",
+    src: f2,
+    alt: "VICE CITY 2026 · X-Park",
+    cap: "VICE CITY 2026 · X-Park",
+  },
+  {
+    kind: "photo",
+    src: f3,
+    alt: "Vampire Halloween 2024 · Mala Opera",
+    cap: "Vampire Halloween 2024 · Mala Opera",
+  },
+  {
+    kind: "photo",
+    src: f4,
+    alt: "Khortytsia Island 2019 · Historical Museum",
+    cap: "Khortytsia Island 2019 · Historical Museum",
+  },
+  {
+    kind: "photo",
+    src: f5,
+    alt: "Sedova 2018 · Factory",
+    cap: "Sedova 2018 · Factory",
+  },
 ];
 
 const GAP = 16;

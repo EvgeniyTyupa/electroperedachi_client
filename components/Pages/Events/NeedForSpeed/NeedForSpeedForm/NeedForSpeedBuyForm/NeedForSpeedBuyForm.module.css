@@ -6,3 +6,44 @@
 .promoButton:disabled { opacity: .5; cursor: wait; }
 
 .fields { display: contents; border: 0; margin: 0; padding: 0; min-width: 0; }
+.promoInputWrap {
+    position: relative;
+    width: 100%;
+}
+
+.promoInputWrap .promoInput {
+    width: 100%;
+    padding-right: 145px;
+}
+
+.promoInputButton {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 36px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 4px;
+
+    background: var(--acid);
+    color: var(--on-acid) !important;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.promoInputButton:hover:not(:disabled) {
+    filter: brightness(0.9);
+}
+
+.promoInputButton:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}

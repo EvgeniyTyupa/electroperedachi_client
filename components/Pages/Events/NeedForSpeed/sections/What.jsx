@@ -1,6 +1,7 @@
 import { CurrentPrice } from '../NeedForSpeedContext'
 import classes from "../NeedForSpeed.module.css";
 import { cx } from "../needForSpeedClasses";
+const entrance1 = "/images/need_for_speed/what-entrance-desktop.webp";
 const scene = "/images/need_for_speed/what-scene.webp";
 const entrance = "/images/need_for_speed/what-entrance.webp";
 import { PhotoStory } from '../components/PhotoStory';
@@ -8,7 +9,7 @@ import { FactList } from '../components/FactList';
 import { TicketCta } from '../components/TicketCta';
 import { LINKS } from '../content';
 const FRAMES = [{
-  src: scene,
+  src: entrance1,
   alt: 'Танцпол у підземному паркінгу: натовп, дві автівки і діджей-пульт у червоному світлі'
 }, {
   src: entrance,

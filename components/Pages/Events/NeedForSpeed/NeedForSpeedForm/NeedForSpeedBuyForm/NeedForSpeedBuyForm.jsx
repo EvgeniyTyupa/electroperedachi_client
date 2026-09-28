@@ -88,55 +88,105 @@ const NeedForSpeedBuyForm = ({ event, desktop, ticketCart, totalPrice, setDiscou
     return (
         <form className={cx(desktop ? 'buy buy--d' : 'buy')} id="buy" onSubmit={handleSubmit(onSubmit)} noValidate aria-busy={submitting}>
             <fieldset disabled={submitting} className={classes.fields}>
-            <p className={cx('kicker')}>Квитки</p>
-            <h3 className={cx('h3')}>Купити квиток</h3>
-            <p className={cx(desktop ? 'body-d dim' : 'body-sm dim')}>
-                Після оплати квиток буде висланий на Ваш email, вказаний при заповненні форми.<br /><br />
-                <span className={cx('buy__note')}>Зверніть увагу: </span>
-                для особи, яка не досягла повнолітнього віку, квиток втрачає свою важливість. Якщо у вас є якісь питання чи проблеми з придбанням/отриманням квитка/грошей — будь ласка, зв’яжіться з нами. Ми не повертаємо кошти внаслідок зміни рішення відвідувача, лише за умови змін від організатора.
-            </p>
-            {controls}
-            <label className={cx('field')}>
-                <span className={cx('field__label hud-label')}>Телефон</span>
-                <input className={cx('field__input')} type="tel" autoComplete="tel" placeholder="+380" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'nfs-phone-error' : undefined} {...register('phone', {
-                    required: 'Вкажіть телефон',
-                    validate: value => /^(?:380|0)\d{9}$/.test(value.replace(/\D/g, '')) || 'Вкажіть номер у форматі 0XXXXXXXXX або +380XXXXXXXXX'
-                })} />
-                {errors.phone && <span className={classes.error} id="nfs-phone-error">{errors.phone.message}</span>}
-            </label>
-            <label className={cx('field')}>
-                <span className={cx('field__label hud-label')}>Email</span>
-                <input className={cx('field__input')} type="email" autoComplete="email" placeholder="you@mail.com" aria-invalid={!!errors.email} aria-describedby={errors.email ? 'nfs-email-error' : undefined} {...register('email', {
-                    required: 'Вкажіть email', pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Перевірте email' }, setValueAs: value => value.trim()
-                })} />
-                {errors.email && <span className={classes.error} id="nfs-email-error">{errors.email.message}</span>}
-            </label>
-            {hasPromo && <div className={cx('stack stack--16')}>
+                <p className={cx('kicker')}>Квитки</p>
+                <h3 className={cx('h3')}>Купити квиток</h3>
+                <p className={cx(desktop ? 'body-d dim' : 'body-sm dim')}>
+                    Після оплати квиток буде висланий на Ваш email, вказаний при заповненні форми.<br /><br />
+                    <span className={cx('buy__note')}>Зверніть увагу: </span>
+                    для особи, яка не досягла повнолітнього віку, квиток втрачає свою важливість. Якщо у вас є якісь питання чи проблеми з придбанням/отриманням квитка/грошей — будь ласка, зв’яжіться з нами. Ми не повертаємо кошти внаслідок зміни рішення відвідувача, лише за умови змін від організатора.
+                </p>
+                {controls}
                 <label className={cx('field')}>
-                    <span className={cx('field__label hud-label')}>Промокод</span>
-                    <input className={cx('field__input')} readOnly={!!appliedPromo} {...register('promocode')} />
+                    <span className={cx('field__label hud-label')}>Телефон</span>
+                    <input className={cx('field__input')} type="tel" autoComplete="tel" placeholder="+380" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? 'nfs-phone-error' : undefined} {...register('phone', {
+                        required: 'Вкажіть телефон',
+                        validate: value => /^(?:380|0)\d{9}$/.test(value.replace(/\D/g, '')) || 'Вкажіть номер у форматі 0XXXXXXXXX або +380XXXXXXXXX'
+                    })} />
+                    {errors.phone && <span className={classes.error} id="nfs-phone-error">{errors.phone.message}</span>}
                 </label>
-                {appliedPromo ? <p role="status">Промокод застосовано <button type="button" className={classes.promoButton} onClick={() => { setAppliedPromo(null); setDiscount(0) }}>Скасувати</button></p> : <button type="button" className={classes.promoButton} disabled={checkingPromo || submitting} onClick={checkPromocode}>{checkingPromo ? 'Перевіряємо…' : 'Застосувати'}</button>}
-                {promoError && <p className={classes.error} role="alert">{promoError}</p>}
-            </div>}
-            <p className={cx('body-sm muted')}>Хочеш заїхати своєю тачкою в експо-зону? Місць обмежено — контакт разом із квитком.</p>
-            <label className={classes.consent}>
-                <input type="checkbox" {...register('terms', { required: true })} />
-                <span>Погоджуюсь з <Link href="/terms-of-use" target="_blank">умовами користування</Link> та <Link href="/privacy-policy" target="_blank">політикою конфіденційності</Link>.</span>
-            </label>
-            {errors.terms && <p role="alert" className={classes.error}>Підтвердіть згоду з умовами.</p>}
-            <label className={classes.consent}>
-                <input type="checkbox" {...register('rules', { required: true })} />
-                <span>Погоджуюсь з <a href="/Terms_and_rules_at_electroperedachi_events.pdf" target="_blank" rel="noreferrer">правилами заходів electroperedachi</a>.</span>
-            </label>
-            {errors.rules && <p role="alert" className={classes.error}>Підтвердіть згоду з правилами.</p>}
-            {submitError && <p role="alert" className={classes.error}>{submitError}</p>}
-            <hr className={cx('rule')} />
-            <p className={cx('lead muted')}>Вмикай двигун — той, що в тебе в грудях!</p>
-            <button className={cx('cta cta--lg cta--block pay')} type="submit" disabled={submitting || checkingPromo || !ticketCart.length || totalPrice <= 0}>
-                <span className={cx('cta__label')}>{submitting ? 'Переходимо до оплати…' : 'До сплати'}</span>
-                <span>{totalPrice.toLocaleString('uk-UA')} ₴ →</span>
-            </button>
+                <label className={cx('field')}>
+                    <span className={cx('field__label hud-label')}>Email</span>
+                    <input className={cx('field__input')} type="email" autoComplete="email" placeholder="you@mail.com" aria-invalid={!!errors.email} aria-describedby={errors.email ? 'nfs-email-error' : undefined} {...register('email', {
+                        required: 'Вкажіть email', pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Перевірте email' }, setValueAs: value => value.trim()
+                    })} />
+                    {errors.email && <span className={classes.error} id="nfs-email-error">{errors.email.message}</span>}
+                </label>
+                {hasPromo && (
+                    <div className={cx('stack stack--16')}>
+                        <div className={cx('field')}>
+                            <label
+                                htmlFor="nfs-promocode"
+                                className={cx('field__label hud-label')}
+                            >
+                                Промокод
+                            </label>
+
+                            <div className={classes.promoInputWrap}>
+                                <input
+                                    id="nfs-promocode"
+                                    className={`${cx('field__input')} ${classes.promoInput}`}
+                                    readOnly={!!appliedPromo || checkingPromo}
+                                    aria-invalid={!!promoError}
+                                    aria-describedby={promoError ? 'nfs-promo-error' : undefined}
+                                    {...register('promocode')}
+                                />
+
+                                <button
+                                    type="button"
+                                    className={classes.promoInputButton}
+                                    disabled={checkingPromo || submitting}
+                                    onClick={
+                                        appliedPromo
+                                            ? () => {
+                                                setAppliedPromo(null)
+                                                setDiscount(0)
+                                                setPromoError('')
+                                            }
+                                            : checkPromocode
+                                    }
+                                >
+                                    {checkingPromo
+                                        ? 'Перевіряємо…'
+                                        : appliedPromo
+                                            ? 'Скасувати'
+                                            : 'Застосувати'}
+                                </button>
+                            </div>
+                        </div>
+
+                        {appliedPromo && (
+                            <p role="status">Промокод застосовано</p>
+                        )}
+
+                        {promoError && (
+                            <p
+                                id="nfs-promo-error"
+                                className={classes.error}
+                                role="alert"
+                            >
+                                {promoError}
+                            </p>
+                        )}
+                    </div>
+                )}
+                <p className={cx('body-sm muted')}>Хочеш заїхати своєю тачкою в експо-зону? Місць обмежено — контакт разом із квитком.</p>
+                <label className={classes.consent}>
+                    <input type="checkbox" {...register('terms', { required: true })} />
+                    <span>Погоджуюсь з <Link href="/terms-of-use" target="_blank">умовами користування</Link> та <Link href="/privacy-policy" target="_blank">політикою конфіденційності</Link>.</span>
+                </label>
+                {errors.terms && <p role="alert" className={classes.error}>Підтвердіть згоду з умовами.</p>}
+                <label className={classes.consent}>
+                    <input type="checkbox" {...register('rules', { required: true })} />
+                    <span>Погоджуюсь з <a href="/Terms_and_rules_at_electroperedachi_events.pdf" target="_blank" rel="noreferrer">правилами заходів electroperedachi</a>.</span>
+                </label>
+                {errors.rules && <p role="alert" className={classes.error}>Підтвердіть згоду з правилами.</p>}
+                {submitError && <p role="alert" className={classes.error}>{submitError}</p>}
+                <hr className={cx('rule')} />
+                <p className={cx('lead muted')}>Вмикай двигун — той, що в тебе в грудях!</p>
+                <button className={cx('cta cta--lg cta--block pay')} type="submit" disabled={submitting || checkingPromo || !ticketCart.length || totalPrice <= 0}>
+                    <span className={cx('cta__label')}>{submitting ? 'Переходимо до оплати…' : 'BUY TICKETS →'}</span>
+                    <span>{totalPrice.toLocaleString('uk-UA')} ₴</span>
+                </button>
             </fieldset>
         </form>
     )

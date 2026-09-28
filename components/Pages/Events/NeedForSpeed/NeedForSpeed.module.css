@@ -141,7 +141,7 @@
   font-variation-settings: "CRSV" 0, "SHRP" 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .main h1,.main  h2,.main  h3,.main  p,.main  figure,.main  ul { margin: 0; }
@@ -947,4 +947,11 @@ a.rail__card--video { text-decoration: none; cursor: pointer; }
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
+}
+
+.what-d__aside {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  height: fit-content;
 }
