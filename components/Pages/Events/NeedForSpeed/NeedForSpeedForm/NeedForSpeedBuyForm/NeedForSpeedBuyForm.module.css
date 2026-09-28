@@ -1,0 +1,8 @@
+.error { color: #ff8278; font-size: 14px; }
+.consent { display: flex; align-items: flex-start; gap: 12px; color: var(--ink-muted); font-size: 13px; line-height: 1.5; }
+.consent input { margin-top: 4px; accent-color: var(--acid); flex-shrink: 0; }
+.consent a { color: var(--link); text-decoration: underline; }
+.promoButton { border: 1px solid var(--hairline); padding: 10px 16px; background: var(--panel); color: var(--ink); cursor: pointer; }
+.promoButton:disabled { opacity: .5; cursor: wait; }
+
+.fields { display: contents; border: 0; margin: 0; padding: 0; min-width: 0; }

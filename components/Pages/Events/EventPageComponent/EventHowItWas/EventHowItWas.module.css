@@ -59,7 +59,7 @@
 @media screen and (max-width: 568px) {
     .main {
         height: 450px;
-        padding-top: 0px;
+        padding-top: 50px;
     }
 }
 

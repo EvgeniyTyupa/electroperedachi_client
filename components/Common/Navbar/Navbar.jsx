@@ -24,10 +24,11 @@ const Navbar = () => {
             router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
             router.pathname === "/events/masquerade" ? classes.absolute : undefined,
             router.pathname.includes("/events/vice-city") ? classes.fixed : undefined,
-            router.pathname === "/events/techno-fashion" ? classes.none : undefined
+            router.pathname === "/events/techno-fashion" ? classes.none : undefined,
+            router.pathname === "/events/need-for-speed" ? classes.none : undefined
         )}>
             <Container className={classes.container}>
-                {(!router.pathname.includes("/events/vice-city") && router.pathname != "/events/techno-fashion") && (
+                {(!router.pathname.includes("/events/vice-city") && router.pathname != "/events/techno-fashion" && router.pathname != "/events/need-for-speed") && (
                     <Link href={routes.home}>
                         <img src={logo.src} alt="logo" className={classes.logo}/>
                     </Link>

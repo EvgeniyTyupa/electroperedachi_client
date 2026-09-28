@@ -16,7 +16,6 @@ import Container from "../../../../UI/Container/Container"
 import { Button, IconButton } from "@mui/material"
 import { RiArrowRightLine } from "react-icons/ri"
 import gradient_img from "/public/images/gradient.png"
-import need_for_bg from "/public/images/need_for_speed/for_need.webp"
 
 const EventTitle = (props) => {
     const { event, isEnd, price, scrollToPayment, scrollToMore, isShowBuy } = props
@@ -123,27 +122,25 @@ const EventTitle = (props) => {
             </div>
 
             {/* NEW MOBILE */}
-            <div className={classes.mobile}
-                style={{ backgroundImage: `url(${need_for_bg.src})` }}
-            >
-                {/* <video
+            <div className={classes.mobile}>
+                <video
                     className={classes.video}
                     src="/video/title.webm"
                     autoPlay
                     loop
                     muted
                     playsInline
-                /> */}
+                />
                 <img src={gradient_img.src} alt="gradient" className={classes.gradient}/>
                 <Container className={classes.container}>
-                    {/* {event.partners && (
+                    {event.partners && (
                         <div className={classes.partners}>
                             {event.partners.map((el) => (
                                 <img key={el.name} src={el.image} alt={`${el.name} partner`} />
                             ))}
                         </div>
-                    )} */}
-                    {/* <div className={classes.eventInfo}>
+                    )}
+                    <div className={classes.eventInfo}>
                         <div className={classes.dates}>
                             {event.dates ? event.dates.map((el, index) => (
                                 <p>{moment(el.date).format("DD.MM")}{index < event.dates.length - 1 ? "," : ""}&nbsp;</p>
@@ -151,9 +148,9 @@ const EventTitle = (props) => {
                         </div>
                         <h1>{event.title}</h1>
                         <h3>{event.venue ? (`${event.venue.trim()}`) : ""}</h3>
-                    </div> */}
+                    </div>
                     <div className={classes.footer}>
-                        {/* <div className={classes.buyTicket} onClick={scrollToPayment}>
+                        <div className={classes.buyTicket} onClick={scrollToPayment}>
                             <p>{intl.formatMessage({ id: "event.buyTicket" })}</p>
                             <IconButton
                                 className={classes.buyButt}
@@ -161,7 +158,7 @@ const EventTitle = (props) => {
                             >
                                 <RiArrowRightLine/>
                             </IconButton>
-                        </div> */}
+                        </div>
                         {/* <div className={classes.more} onClick={scrollToMore}>
                             <p>{intl.formatMessage({ id: "button.readMore" })}</p>
                             <RiArrowRightLine />

@@ -33,8 +33,8 @@ const EventHowItWas = (props) => {
                 backgroundImage: `url(${event.howItWas.backgroundImg})`
             }}
         >
-            {/* <img src={gradient_img.src} alt="gradient" className={classes.gradient}/> */}
-            {/* <img src={gradient_img.src} alt="gradient" className={classes.gradient}/> */}
+            <img src={gradient_img.src} alt="gradient" className={classes.gradient}/>
+            <img src={gradient_img.src} alt="gradient" className={classes.gradient}/>
             <Container className={classes.container}>
                 <div className={classes.text}>
                     <Header type="h2">How it was</Header>

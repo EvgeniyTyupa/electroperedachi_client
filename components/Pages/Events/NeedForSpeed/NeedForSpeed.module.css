@@ -1,0 +1,950 @@
+/* Geologica (variable: wght, slnt, CRSV, SHRP) loads from Google Fonts in index.html. */
+@font-face { font-family: "NFS Stylish UA"; src: url("../../../../public/fonts/NFSStylishUA.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../../../../public/fonts/JetBrainsMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../../../../public/fonts/JetBrainsMono-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* Redline tokens — copied from peredachi-motion/tokens.css (the Need for Speed design system).
+ * @font-face rules live in fonts.css; the type classes are replaced by the mobile scale in base.css. */
+.main,.main  [data-theme="night"] {
+  --asphalt: #05060a;
+  --underdeck: #0b0e14;
+  --panel: #141922;
+  --panel-raised: #1d2430;
+  --concrete: #333c48;
+  --hairline: #2b3441;
+  --edge: #77828f;
+  --ink: #f2f5f9;
+  --ink-muted: #a8b2bf;
+  --ink-dim: #818c9a;
+  --redline: #e51c0a;
+  --redline-ink: #ff6a5e;
+  --on-redline: #ffffff;
+  --sodium: #ffb020;
+  --sodium-ink: #ffc44d;
+  --on-sodium: #1c1200;
+  --acid: #c9ff2e;
+  --acid-ink: #c9ff2e;
+  --on-acid: #0a1400;
+  --xenon: #2e86ff;
+  --xenon-ink: #74acff;
+  --magenta: #d81b93;
+  --magenta-ink: #fc5b9e;
+  --on-magenta: #ffffff;
+  --cta-fill: #c9ff2e;
+  --cta-label: #0a1400;
+  --focus: #c9ff2e;
+  --scrim-heavy: #05060af2;
+  --scrim-mid: #05060acc;
+  --scrim-soft: #05060a80;
+  --glow-acid: 0 0 4px #c9ff2e, 0 0 28px #c9ff2e59;
+  --glow-redline: 0 0 4px #ff3124, 0 0 28px #ff312459;
+  --glow-sodium: 0 0 4px #ffb020, 0 0 28px #ffb02059;
+  --glow-magenta: 0 0 4px #ff2e88, 0 0 28px #ff2e8859;
+  --glow-xenon: 0 0 6px #2e86ff, 0 0 32px #2e86ff4d;
+  --lift: 0 18px 40px -12px #000000b3;
+}
+.main [data-theme="daylight"] {
+  --asphalt: #ffffff;
+  --underdeck: #eef1f4;
+  --panel: #f6f8fa;
+  --panel-raised: #e8ecf0;
+  --concrete: #cbd1d8;
+  --hairline: #dce0e5;
+  --edge: #6e7884;
+  --ink: #0a0c10;
+  --ink-muted: #49545f;
+  --ink-dim: #5e6975;
+  --redline: #e51c0a;
+  --redline-ink: #c41100;
+  --on-redline: #ffffff;
+  --sodium: #ffb020;
+  --sodium-ink: #8a5300;
+  --on-sodium: #1c1200;
+  --acid: #c9ff2e;
+  --acid-ink: #4a6b00;
+  --on-acid: #0a1400;
+  --xenon: #2e86ff;
+  --xenon-ink: #0b5bd3;
+  --magenta: #d81b93;
+  --magenta-ink: #b30066;
+  --on-magenta: #ffffff;
+  --cta-fill: #0a0c10;
+  --cta-label: #c9ff2e;
+  --focus: #0b5bd3;
+  --scrim-heavy: #fffffff2;
+  --scrim-mid: #ffffffd9;
+  --scrim-soft: #ffffff8c;
+  --glow-acid: 0 2px 10px #7aa50040;
+  --glow-redline: 0 2px 10px #c4110040;
+  --glow-sodium: 0 2px 10px #8a530040;
+  --glow-magenta: 0 2px 10px #b3006640;
+  --glow-xenon: 0 2px 10px #0b5bd340;
+  --lift: 0 18px 40px -16px #0a0c1026;
+}
+.main {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --canvas-margin-post: 72px;
+  --canvas-margin-story: 88px;
+  --canvas-safe-top: 250px;
+  --canvas-safe-bottom: 320px;
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+  --chamfer: 14px;
+  --font-display: "Geologica Cut", "Arial Black", sans-serif;
+  --font-sans: "Geologica", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-stunt: "NFS Stylish UA", "Geologica Cut", sans-serif;
+}
+/* Figma "peredachi-events" · Mobile — values the final design overrides in Night. */
+.main,.main  [data-theme="night"] {
+  --asphalt: #000001;
+  --ink: #ffffff;
+  --ink-muted: #e8ebef;
+}
+.main {
+  /* Color/Semantic/Link in Figma — inline text links. */
+  --link: #3b92f3;
+  --font-sans: "Geologica", system-ui, sans-serif;
+  --font-wordmark: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --gutter: 16px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base + the mobile type scale (Figma styles "Redline/Web 393/*").
+ * Figma letter-spacing is in %, so 18 → 0.18em.
+ * ------------------------------------------------------------------ */
+
+.main *,.main  *::before,.main  *::after { box-sizing: border-box; }
+
+.main { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+.main {
+  margin: 0;
+  min-width: 320px;
+  background: var(--asphalt);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.main h1,.main  h2,.main  h3,.main  p,.main  figure,.main  ul { margin: 0; }
+.main ul { padding: 0; list-style: none; }
+.main img { display: block; }
+.main button { font: inherit; color: inherit; }
+.main a { color: inherit; }
+
+/* A themed section re-reads its own tokens. */
+.main [data-theme] { color: var(--ink); }
+
+.main :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* --- Layout -------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: 50px; background: var(--asphalt); }
+
+.stack { display: flex; flex-direction: column; align-items: stretch; }
+.stack--16 { gap: 16px; }
+.stack--20 { gap: 20px; }
+.stack--32 { gap: 32px; }
+.stack--48 { gap: 48px; }
+
+/* --- Type ---------------------------------------------------------- */
+
+/* Redline/Desktop/Stunt MD */
+.stunt-md {
+  font-family: var(--font-stunt);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Redline/Web 393/H2 */
+.h2 {
+  font-weight: 900;
+  /* 30px from 349px up; narrower phones scale so "ELECTROPEREDACHI" still fits. */
+  font-size: min(30px, 8.6vw);
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+/* Redline/Web 393/H3 */
+.h3 {
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+/* Redline/Desktop/Kicker */
+.kicker {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--redline-ink);
+}
+
+/* Redline/Web 393/Lead */
+.lead { font-size: 17px; line-height: 1.5; }
+/* Redline/Web 393/Body */
+.body { font-size: 15px; line-height: 1.6; }
+/* Redline/Mobile/Body */
+.body-m { font-size: 15px; line-height: 1.55; }
+/* Redline/Mobile/Body SM */
+.body-sm { font-size: 14px; line-height: 1.5; }
+
+/* Redline/Web 393/Lights Word, Marquee — Geologica Black Italic (CRSV 1) */
+.black-italic {
+  font-weight: 900;
+  font-style: oblique 12deg;
+  font-variation-settings: "CRSV" 1, "SHRP" 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Redline/Web 393/Readout */
+.readout { font-family: var(--font-mono); font-weight: 700; font-size: 22px; line-height: 1.05; }
+
+/* Redline/Desktop/HUD Label */
+.hud-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Redline/Desktop/HUD Tag */
+.hud-tag {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.muted { color: var(--ink-muted); }
+.dim { color: var(--ink-dim); }
+.accent { color: var(--redline-ink); }
+.main strong,.main  b { font-weight: 700; }
+
+.textlink { color: var(--link); text-decoration: none; }
+.textlink:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.rule { height: 1px; border: 0; margin: 0; background: var(--hairline); }
+
+/* ------------------------------------------------------------------ *
+ * Та частина руху, що лишається чистим CSS.
+ *
+ * Це переходи на зміну атрибута — React лише перемикає data-*, а браузер
+ * анімує сам. Писати під них хуки не треба.
+ * ------------------------------------------------------------------ */
+
+/* --- 1 · Sticky HUD bar ------------------------------------------- */
+
+.hudbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  /* 101%, а не 100% — щоб верхня межа теж пішла за край
+     і не світилась смужкою. */
+  transform: translateY(101%);
+  transition: transform .22s ease-out;
+}
+.hudbar[data-shown='true'] { transform: translateY(0); }
+
+/* --- 2 · Лампи світлофора ----------------------------------------- */
+
+.lens, .signal__lamp {
+  transition: background .18s ease-out, box-shadow .18s ease-out;
+}
+.signal__lamp[data-on='stop']  { background: var(--redline); box-shadow: var(--glow-redline); }
+.signal__lamp[data-on='ready'] { background: var(--sodium);  box-shadow: var(--glow-sodium); }
+.signal__lamp[data-on='go']    { background: var(--acid);    box-shadow: var(--glow-acid); }
+
+/* --- 3 · Бігучий рядок -------------------------------------------- */
+
+.marquee { overflow: hidden; }
+.marquee__track {
+  display: flex; width: max-content;
+  animation: rl-slide linear infinite;   /* тривалість ставить компонент */
+}
+.marquee__run { display: flex; }
+@keyframes rl-slide { to { transform: translateX(-50%); } }
+
+/* --- 4 · Кросфейд фото і курсор автотайпу ------------------------- */
+
+.signal__photo img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .5s ease-in-out;
+}
+.signal__photo img[data-on='true'] { opacity: 1; }
+
+.signal__line::after { content: '_'; color: var(--redline-ink); animation: rl-blink 1s steps(2) infinite; }
+.signal__line[data-done='true']::after { content: ''; }
+@keyframes rl-blink { 50% { opacity: 0; } }
+
+/* Смужки прогресу: ширину жене хук, тут тільки геометрія. */
+.signal__bar { flex: 1 1 0; height: 3px; background: var(--scrim-heavy); overflow: hidden; }
+.signal__bar > i { display: block; height: 100%; width: 0; background: var(--ink); }
+
+/* --- 5 · Рейка ----------------------------------------------------- */
+
+.rail { position: relative; overflow: hidden; }
+.rail__track { display: flex; gap: 16px; transition: transform .8s ease-in-out; }
+
+/* --- 6 · Слайдери на scroll-snap ---------------------------------- */
+
+.slider__track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 340px);
+  gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+}
+.slider__track > * { scroll-snap-align: start; }
+
+/* --- 7 · FAQ ------------------------------------------------------- */
+
+.faq summary::after {
+  content: ''; flex: 0 0 auto; width: 14px; height: 14px;
+  border-right: 2px solid var(--xenon); border-bottom: 2px solid var(--xenon);
+  transform: rotate(45deg) translate(-3px, -3px);
+  transition: transform .15s ease-out;
+}
+.faq details[open] summary::after { transform: rotate(225deg) translate(-3px, -3px); }
+
+/* --- Якорі --------------------------------------------------------- */
+
+.main { scroll-behavior: smooth; }
+
+/* ================================================================== *
+ * Один вимикач на все. Хуки теж це читають — тут лише те,
+ * що живе в CSS.
+ * ================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .main { scroll-behavior: auto; }
+  .hudbar,
+  .lens, .signal__lamp,
+  .signal__photo img,
+  .rail__track,
+  .faq summary::after { transition: none; }
+  .marquee__track { animation: none; }
+  .signal__line::after { animation: none; content: ''; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Components — geometry from the Figma mobile frame (1071:368).
+ * ------------------------------------------------------------------ */
+
+/* --- TicketCta ----------------------------------------------------- */
+.cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 32px;
+  border: 0; border-radius: var(--radius-pill);
+  background: var(--cta-fill); 
+  color: var(--cta-label) !important;
+  font-family: var(--font-sans); font-weight: 700; font-size: 16px; line-height: normal; letter-spacing: 0.02em;
+  text-decoration: none; cursor: pointer;
+  /* Static glow — never pulses. */
+  box-shadow: 0 0 14px rgba(201, 255, 46, 0.35), 0 0 2px #c9ff2e;
+  -webkit-tap-highlight-color: transparent;
+}
+.cta:active { filter: brightness(0.94); }
+.cta--lg { font-size: 18px; padding: 16px 40px; gap: 12px; }
+.cta--block { display: flex; width: 100%; }
+.cta__arrow { flex: none; width: 19px; height: 12.8284px; margin: -0.41px 0 -0.41px -1px; }
+
+/* --- TrafficLight -------------------------------------------------- */
+.traffic {
+  padding: 16px;
+  background: var(--asphalt);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+}
+.traffic__housing {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 134px; height: 50px; padding: 0 8px;
+  background: var(--panel-raised); border-radius: 4px;
+}
+.traffic__lens { width: 34px; height: 34px; border-radius: 50%; background: var(--concrete); }
+.traffic__lens[data-lit='stop']  { background: var(--redline); box-shadow: var(--glow-redline); }
+.traffic__lens[data-lit='ready'] { background: var(--sodium);  box-shadow: var(--glow-sodium); }
+.traffic__lens[data-lit='go']    { background: var(--acid);    box-shadow: var(--glow-acid); }
+
+/* --- Wordmark (5 × overlay) --------------------------------------- */
+.wordmark {
+  display: grid; justify-items: center;
+  font-family: Helvetica; font-weight: 700;
+  font-size: min(40px, 10.2vw); line-height: normal;
+  color: #fff; white-space: nowrap;
+}
+.wordmark__layer { grid-area: 1 / 1; mix-blend-mode: overlay; }
+
+/* --- FactList ------------------------------------------------------ */
+.facts { display: flex; flex-direction: column; margin: 0; }
+.facts__row {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid var(--hairline);
+}
+.facts__row[data-first] { border-top: 0; }
+.facts__row--tight { gap: 4px; }
+.facts__mark {
+  font-family: var(--font-stunt); font-size: 17px; line-height: 1.2; letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--acid);
+  text-shadow: 0 0 4px #c9ff2e, 0 0 28px rgba(201, 255, 46, 0.35);
+}
+.facts__value { margin: 0; color: var(--ink); }
+.facts__flag { color: var(--sodium); }
+
+/* --- PhotoStory ---------------------------------------------------- */
+.story { position: relative; height: 220px; overflow: hidden; cursor: pointer; background: var(--panel); }
+.story__photo { position: absolute; inset: 0; }
+.story__bars { position: absolute; top: 12px; left: 12px; right: 11px; display: flex; gap: 6px; }
+.story__bar { background: var(--scrim-mid); }
+.story__cap {
+  position: absolute; left: 16px; bottom: 16px; max-width: calc(100% - 32px);
+  padding: 4px 8px; background: var(--scrim-mid); color: var(--ink);
+}
+
+/* --- Rail ---------------------------------------------------------- */
+.rail { overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.rail__card {
+  position: relative; flex: none; margin: 0; overflow: hidden;
+  width: min(308px, 85.3%); aspect-ratio: 308 / 220;
+  background: var(--panel);
+}
+.rail__card img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none; -webkit-user-drag: none;
+}
+.rail__cap { position: absolute; left: 16px; bottom: 16px; padding: 4px 8px; background: var(--scrim-mid); color: var(--ink); }
+.rail__card--video {
+  width: min(260px, 72%); aspect-ratio: 260 / 195;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  background: var(--panel-raised); border: 1px solid var(--edge);
+}
+.rail__card--video img { position: static; width: 56px; height: 56px; }
+.rail__video-cap { align-items: center; gap: 12px; color: var(--ink); }
+/* Faster slide than MOTION.md's .8s to match the 2.2s step. */
+.rail__track { transition-duration: .6s; }
+a.rail__card--video { text-decoration: none; cursor: pointer; }
+
+/* --- SliderNav + TurnArrow ---------------------------------------- */
+.slider-nav { display: flex; align-items: center; justify-content: space-between; }
+.slider-nav__btn {
+  display: flex; padding: 12px 16px;
+  background: none; border: 0; border-radius: 2px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity .15s ease-out;
+}
+.slider-nav__btn:disabled { opacity: 0.4; cursor: default; }
+.slider-nav__count { color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+
+.turn { display: flex; gap: 4px; }
+.turn__chevron { position: relative; width: 20px; height: 34px; }
+.turn__chevron > img { position: absolute; left: 0; top: 0; width: 20px; height: 34px; max-width: none; }
+.turn__chevron > .turn__glow { width: 81.548px; height: 95.6523px; top: -30.83px; }
+.turn[data-dir='left']  .turn__glow { left: -30.72px; }
+.turn[data-dir='right'] .turn__glow { left: -30.83px; }
+
+/* While autoplay runs, the "next" chevrons chase outward like a turn signal. */
+.slider-nav__btn[data-playing] .turn__chevron {
+  animation: turn-chase 1.1s ease-in-out infinite;
+  animation-delay: calc(var(--k) * 160ms);
+}
+@keyframes turn-chase { 0%, 70%, 100% { opacity: 0.35; } 30% { opacity: 1; } }
+
+/* --- RpmDial ------------------------------------------------------- */
+.dial { position: relative; width: 100%; }
+.dial__stage {
+  position: absolute; top: 0; left: max(0px, calc((100% - 361px) / 2));
+  width: 361px; height: 288px; padding: 24px 0;
+  transform-origin: top left;
+}
+.dial__face { position: relative; width: 240px; height: 240px; margin: 0 auto; }
+.dial__svg { position: absolute; left: -32px; top: -10.1px; width: 300px; height: 300px; max-width: none; }
+.dial__centre {
+  position: absolute; left: -32px; top: -10.1px; width: 300px; height: 300px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+}
+.dial__value { font-family: var(--font-mono); font-weight: 700; font-size: 44px; line-height: 0.95; letter-spacing: -0.02em; }
+.dial__mark {
+  position: absolute; display: flex; flex-direction: column; gap: 4px;
+  font-family: var(--font-mono); font-weight: 700; white-space: nowrap; color: var(--ink-dim);
+}
+.dial__mark[data-align='end'] { align-items: flex-end; }
+.dial__mark[data-align='center'] { align-items: center; }
+.dial__mark[data-align='start'] { align-items: flex-start; }
+.dial__price { font-size: 20px; line-height: 1.05; letter-spacing: -0.01em; }
+.dial__phase-name { font-size: 9px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; }
+.dial__mark--sold .dial__price { text-decoration: line-through; }
+.dial__mark--sold .dial__phase-name,
+.dial__mark--now .dial__phase-name { color: var(--redline-ink); }
+.dial__mark--now .dial__price { color: var(--ink); }
+.dial__mark--last .dial__price { color: var(--redline-ink); }
+.dial__phase { position: absolute; left: 50%; top: 188px; transform: translateX(-50%); white-space: nowrap; color: var(--ink-muted); }
+
+/* --- Meter --------------------------------------------------------- */
+.meter { display: flex; flex-direction: column; gap: 12px; }
+.meter__title { color: var(--sodium-ink); }
+.meter__track { display: flex; align-items: center; height: 10px; background: var(--concrete); }
+.meter__fill {
+  flex: none; height: 10px; width: 0; background: var(--sodium);
+  transition: width var(--fill-ms, 1.4s) cubic-bezier(.22, .61, .36, 1);
+}
+.meter__fill[data-run='true'] { width: calc((100% - 29px) * var(--sold)); }
+.meter__knob { flex: none; width: 29px; height: 29px; }
+
+/* --- Form ---------------------------------------------------------- */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field__label { color: var(--ink-muted); transition: color .15s ease-out; }
+.field:focus-within .field__label { color: var(--acid-ink); }
+.field__input {
+  width: 100%; margin: 0; appearance: none; -webkit-appearance: none;
+  padding: 14px 16px;
+  background: var(--panel-raised); border: 1px solid var(--edge); border-radius: 2px;
+  font-family: var(--font-sans); font-size: 16px; line-height: 1.4; color: var(--ink);
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}
+.field__input::placeholder { color: var(--ink-muted); opacity: 1; }
+.field__input:focus { outline: none; border-color: var(--focus); color: var(--acid-ink); }
+.field__input:focus::placeholder { color: var(--acid-ink); }
+.field__input:user-invalid { border-color: var(--redline-ink); }
+
+.check { position: relative; display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.check__input { position: absolute; top: 0; left: 0; width: 18px; height: 18px; margin: 0; opacity: 0; cursor: pointer; }
+.check__box {
+  position: relative; flex: none; width: 18px; height: 18px;
+  background: var(--panel-raised); border: 1px solid var(--edge); border-radius: 2px;
+}
+.check__input:checked + .check__box { border-color: var(--ink-muted); }
+.check__input:checked + .check__box::after {
+  content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px;
+  border: solid var(--ink); border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.check__input:focus-visible + .check__box { outline: 2px solid var(--focus); outline-offset: 2px; }
+.check > span:last-child { flex: 1; min-width: 0; }
+
+.qty { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.qty__label { color: var(--ink-dim); letter-spacing: 0.14em; }
+.qty__ctrl { display: flex; align-items: center; gap: 12px; }
+.qty__btn {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0;
+  background: var(--panel-raised); border: 1px solid var(--acid-ink); border-radius: 2px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 20px; line-height: 1.05; letter-spacing: -0.01em;
+  color: var(--acid-ink); cursor: pointer;
+}
+.qty__btn::after { content: ''; position: absolute; inset: -8px; }
+.qty__btn:disabled { color: var(--ink-dim); cursor: default; }
+.qty__val { min-width: 2ch; text-align: center; color: var(--ink); }
+
+.pay { justify-content: space-between; }
+.pay__left { display: flex; align-items: center; gap: 8px; }
+.pay__sum {
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 22px; line-height: 1.05; letter-spacing: 0;
+}
+.pay__was { color: var(--ink-dim); opacity: 0.6; }
+.pay__now { color: var(--cta-label); }
+.pay__now--off { color: var(--magenta-ink); }
+
+/* --- FAQ ----------------------------------------------------------- */
+.qa { border-top: 1px solid var(--hairline); }
+.qa__item { border-bottom: 1px solid var(--hairline); }
+.qa__q {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0; list-style: none; cursor: pointer;
+  font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--ink);
+}
+.qa__q::-webkit-details-marker { display: none; }
+.qa__iconbox { position: relative; flex: none; width: 14px; height: 12px; }
+.qa__icon {
+  position: absolute; left: -1.41px; top: -1.41px; width: 15.4142px; height: 13.4142px; max-width: none;
+  /* Flip around the chevron's own centre line so "open" lands where Figma draws it. */
+  transform-origin: 50% 4.414px;
+  transition: transform .15s ease-out;
+}
+.qa__item[open] .qa__icon { transform: scaleY(-1); }
+.qa__a { padding-bottom: 24px; }
+
+/* --- DriverCard ---------------------------------------------------- */
+.driver {
+  flex: none; width: min(320px, 88.6%);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--panel); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+  box-shadow: var(--lift);
+  scroll-snap-align: start;
+}
+.driver__media { position: relative; height: 220px; background: var(--concrete); overflow: hidden; }
+.driver__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.driver__stamp {
+  position: absolute; top: 12px; right: 12px; padding: 4px 8px;
+  background: var(--scrim-heavy); border-radius: var(--radius-sm); color: var(--ink);
+}
+.driver__body { display: flex; flex-direction: column; gap: 12px; padding: 24px; }
+.driver__name { font-weight: 700; font-size: 32px; line-height: 1.02; letter-spacing: -0.01em; text-transform: uppercase; overflow-wrap: anywhere; }
+.driver__time { font-family: var(--font-mono); font-weight: 700; font-size: 20px; line-height: 1.05; letter-spacing: -0.01em; }
+.driver__tags { display: flex; gap: 8px; }
+.driver__tag { padding: 4px 8px; border: 1px solid var(--edge); border-radius: var(--radius-sm); color: var(--ink-muted); }
+
+/* --- Sticky HUD bar (motion lives in motion.css .hudbar) ---------- */
+.hudbar { background: var(--underdeck); padding-bottom: env(safe-area-inset-bottom); }
+/* 101% + room for the CTA's glow, so no lime halo peeks over the edge while hidden. */
+.hudbar:not([data-shown='true']) { transform: translateY(calc(101% + 16px)); }
+.hudbar__rail { display: flex; gap: 4px; }
+.hudbar__rail > span { flex: 1; height: 9px; background: var(--concrete); }
+.hudbar__rail > [data-state='sold'] { background: var(--redline-ink); opacity: 0.4; }
+.hudbar__rail > [data-state='now'] { background: var(--acid); box-shadow: var(--glow-acid); }
+.hudbar__inner { display: flex; flex-direction: column; gap: 12px; max-width: 520px; margin-inline: auto; padding: 16px var(--gutter); }
+.hudbar__left { gap: 6px; }
+.hudbar__phase { color: var(--acid); }
+.hudbar__link { color: var(--xenon-ink); text-underline-offset: 2px; }
+.hudbar__right { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .qa__icon, .field__label, .meter__fill, .slider-nav__btn { transition: none; }
+  .slider-nav__btn[data-playing] .turn__chevron { animation: none; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Sections, top to bottom as in the Figma mobile frame.
+ * ------------------------------------------------------------------ */
+
+/* 1 · Hero */
+.hero { position: relative; min-height: 623px; overflow: hidden; background: var(--asphalt); }
+.hero__plate { position: absolute; inset: 0; overflow: hidden; }
+.hero__plate img {
+  /* Assets/Hero Background Mobile.jpg is already the exported 393×623 frame (@3x) — no extra crop. */
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0;
+}
+.hero__fade { position: absolute; left: 0; bottom: 0; width: 100%; height: 578px; pointer-events: none; }
+.hero__mark { position: absolute; top: 18px; left: 0; right: 0; }
+.hero__body {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  padding-top: 182px; padding-bottom: 64px;
+  text-align: center;
+}
+.hero__title { font-size: min(36px, 9.2vw); }
+.hero__lead { max-width: 361px; }
+.lights { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.lights__word { font-size: 20px; color: var(--redline-ink); transition: color .18s ease-out; }
+.lights__word[data-at='ready'] { color: var(--sodium-ink); }
+.lights__word[data-at='go'] { color: var(--acid-ink); }
+
+/* 1b · Partners */
+.partners { background: var(--asphalt); }
+.partners .marquee__run { align-items: center; gap: 40px; height: 41px; padding-right: 40px; }
+.partners img { flex: none; object-fit: contain; }
+
+/* 2 · Що це — aside */
+.phase { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--edge); }
+
+/* 3 · Локація */
+.place { position: relative; overflow: hidden; background: var(--asphalt); }
+.place__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.place__inner { position: relative; display: flex; flex-direction: column; min-height: 586px; padding-top: 50px; padding-bottom: 9px; }
+/* One line, as in Figma (it runs ~5px into the gutter at 393); shrinks on narrower phones. */
+.place__punch { color: var(--ink); white-space: nowrap; font-size: min(1em, calc((100vw - 26px) / 21.6)); }
+.signal { margin-top: auto; padding: 20px 0; display: flex; flex-direction: column; gap: 24px; }
+.signal__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.signal__label { font-size: 26px; color: var(--redline-ink); transition: color .18s ease-out; }
+.signal__label[data-at='ready'] { color: var(--sodium-ink); }
+.signal__label[data-at='go'] { color: var(--acid-ink); }
+.signal__lamps { display: flex; gap: 12px; }
+.signal__lamp {
+  flex: none; width: 39px; height: 39px; padding: 0;
+  border: 0; border-radius: 50%; background: var(--concrete); cursor: pointer;
+}
+/* Reserve three lines so typing never shifts the block. */
+.signal__text { min-height: calc(15px * 1.6 * 3); }
+
+/* 4 · 10 років */
+.ten__kicker { color: var(--redline); }
+
+/* 5 · Лайнап */
+.lineup { background: var(--underdeck); }
+.lineup__track {
+  display: flex; gap: 16px;
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* room for the cards' lift shadow inside the scroller */
+  padding-bottom: 24px; margin-bottom: -24px;
+}
+.lineup__track::-webkit-scrollbar { display: none; }
+
+/* 6 · Квитки */
+.buy { display: flex; flex-direction: column; gap: 20px; }
+.buy__note { color: var(--sodium); }
+.buy__promo { color: var(--sodium); text-shadow: 0 0 4px #ffb020, 0 0 28px rgba(255, 176, 32, 0.35); }
+
+/* Running lines */
+.run { padding-block: 20px; background: var(--asphalt); }
+.run--b { padding-block: 16px; }
+.run__text { font-size: 26px; white-space: pre; color: var(--ink); }
+.run__steady { color: var(--sodium); }
+.run__go { color: var(--acid); }
+.run--b .run__ready { color: var(--redline-ink); }
+
+/* 9 · Фінальний CTA */
+.final { position: relative; overflow: hidden; background: var(--asphalt); }
+.final__bg { position: absolute; top: 0; left: -22.74%; width: 210.66%; height: 100%; max-width: none; object-fit: cover; }
+.final__scrim { position: absolute; inset: 0; background: var(--asphalt); opacity: 0.61; }
+.final__inner {
+  position: relative; min-height: 552px;
+  display: flex; flex-direction: column; justify-content: center; gap: 32px;
+  padding-top: 56px; padding-bottom: 40px;
+}
+
+/* 8 · FAQ */
+.faq-section { padding-block: 72px; background: var(--underdeck); }
+.faq-section__kicker { color: var(--sodium-ink); }
+
+/* Footer */
+.foot {
+  display: flex; flex-direction: column; align-items: center;
+  /* Room for the fixed HUD bar (137px) so the wordmark is never covered. */
+  padding-bottom: calc(137px + env(safe-area-inset-bottom));
+  background: var(--asphalt);
+}
+.foot__logo { width: min(321px, 82vw); height: auto; }
+.foot__mark { font-family: Helvetica; font-weight: 700; font-size: min(40px, 10.2vw); line-height: normal; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lights__word, .signal__label { transition: none; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Desktop — Figma "03 · Landing · 1440" (1071:256), from 1024px.
+ * Everything is scoped under .desk; the mobile styles stay untouched.
+ * Content column is 1192px (124px gutters at 1440) and never wider.
+ * ------------------------------------------------------------------ */
+
+.meter__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+
+.desk { --gutter-d: max(32px, calc((100% - 1192px) / 2)); }
+
+.desk .wrap-d { width: 100%; padding-inline: var(--gutter-d); }
+.desk .section-d { padding-top: 90px; padding-bottom: 100px; background: var(--asphalt); }
+
+/* Web 1440 type scale */
+.desk .h2 { font-size: clamp(46px, 4.3vw, 62px); }
+.desk .lead-d { font-size: 21px; line-height: 1.5; }
+.desk .body-d { font-size: 16.5px; line-height: 1.6; }
+.desk .readout { font-size: 30px; }
+
+/* --- 1 · Hero ------------------------------------------------------ */
+.hero-d { position: relative; min-height: 810px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--asphalt); }
+.hero-d__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-d__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(5, 6, 10, .95) 0%, rgba(5, 6, 10, .95) 13.692%, rgba(5, 6, 10, .8) 21.812%, rgba(5, 6, 10, 0) 68%);
+}
+.hero-d__body {
+  position: relative; width: min(1192px, 100% - 64px);
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  padding-block: 40px; text-align: center;
+}
+.hero-d .wordmark { font-size: 40px; }
+.hero-d .traffic { background: var(--panel); }
+.hero-d .lights__word { font-size: 32px; }
+.hero-d__title {
+  font-family: var(--font-stunt); font-weight: 400;
+  font-size: clamp(68px, 6.95vw, 100px); line-height: 1.02; letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.hero-d__lead { max-width: 628px; }
+
+/* --- 1b · Partners ------------------------------------------------- */
+.partners--d { padding-block: 20px; }
+.partners--d .marquee__run { gap: 96px; padding-right: 96px; height: 87px; }
+
+/* --- 2 · Що це ----------------------------------------------------- */
+.what-d {
+  display: grid; align-items: start;
+  grid-template-columns: minmax(0, 653fr) minmax(0, 467fr);
+  column-gap: 72px;
+}
+.what-d__photo .story { height: auto; aspect-ratio: 652 / 398; }
+.what-d__photo .story__bars { top: 11px; right: 23px; }
+.what-d__photo .story__cap { bottom: 27px; }
+/* "Sticky section aligned to the left main section" */
+.what-d__aside { position: sticky; top: 32px; }
+.what-d__aside .cta { align-self: flex-start; }
+
+.desk .facts__row { flex-direction: row; align-items: center; gap: 40px; }
+.desk .facts__mark { flex: none; min-width: 129px; }
+.desk .facts__value { font-size: 16.5px; line-height: 1.6; }
+
+/* --- 4 · 10 років (Night on desktop) ------------------------------- */
+.ten-d { position: relative; overflow: hidden; padding-bottom: 48px; background: var(--asphalt); }
+.ten-d__bg { position: absolute; left: 0; right: 0; top: 0; height: 537px; }
+.ten-d__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 92%; }
+.ten-d__scrim { position: absolute; inset: 0; background: var(--scrim-soft); }
+.ten-d__inner { position: relative; display: flex; flex-direction: column; gap: 32px; padding-top: 96px; }
+.ten-d__kicker { color: var(--acid); }
+.ten-d__title { max-width: 714px; }
+.ten-d__cols { display: grid; grid-template-columns: minmax(0, 471fr) minmax(0, 685fr); gap: 36px; color: var(--ink); }
+.ten-d__left { color: var(--ink-muted); }
+.ten-d__hi { color: var(--acid); }
+.ten-d__show { margin-top: 32px; }
+.ten-d .rail__card { width: min(399px, 33.5%); aspect-ratio: 399 / 285; }
+.ten-d .rail__card--video { width: min(260px, 21.8%); aspect-ratio: 260 / 195; }
+.ten-d .rail__cap { left: 16px; bottom: 32px; }
+
+/* --- 6 · Квитки ---------------------------------------------------- */
+.tix-d { display: grid; align-items: start; grid-template-columns: minmax(0, 467fr) minmax(0, 653fr); column-gap: 72px; }
+.buy--d { gap: 20px; }
+.buy--d .buy__promo { font-size: 21px; }
+.buy-d__pay { align-self: flex-start; }
+.qty--d { flex-wrap: wrap; row-gap: 12px; }
+.qty--d .qty__btn { width: 40px; height: 40px; border-color: var(--focus); color: var(--ink); }
+.qty--d .qty__btn:disabled { color: var(--ink-dim); }
+.qty--d .qty__btn::after { inset: -4px; }
+.qty--d .qty__val { font-size: 30px; min-width: 2ch; }
+.qty__sum { display: flex; align-items: baseline; gap: 12px; margin: 0; white-space: nowrap; }
+.qty__was { color: var(--ink-dim); opacity: 0.6; font-size: 22px; }
+.desk .check .body-d { line-height: 1.6; }
+
+/* --- 8 · FAQ ------------------------------------------------------- */
+.desk .faq-section { padding: 90px var(--gutter-d) 100px; }
+.desk .faq-section > .wrap { max-width: none; padding-inline: 0; }
+.desk .qa__q { font-size: 21px; }
+.desk .qa__a { font-size: 16.5px; max-width: 700px; }
+
+/* --- 9 · Фінальний CTA --------------------------------------------- */
+.final-d { position: relative; overflow: hidden; background: var(--asphalt); }
+.final-d__bg { position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 100%; height: 178%; object-fit: cover; object-position: 50% 100%; }
+.final-d__scrim { position: absolute; inset: 0; background: var(--scrim-soft); }
+.final-d__inner {
+  position: relative; min-height: 537px;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32px;
+  padding-top: 96px; padding-bottom: 64px;
+}
+.final-d__title { max-width: 609px; }
+
+/* --- Running line (Web 393/Stunt at 34px) -------------------------- */
+.desk .run { padding-block: 16px; margin-bottom: 97px; /* room for the fixed HUD bar */ }
+.desk .run__text { font-size: 34px; line-height: 0.92; letter-spacing: 0.02em; }
+
+/* --- Sticky HUD bar · 1440 (Figma 1248:633) ------------------------ */
+.hudbar--d, .hudbar--desk { border-top: 1px solid var(--edge); }
+.hudbar--desk .hudbar__inner {
+  flex-direction: row; align-items: center; justify-content: space-between;
+  max-width: none; padding: 16px var(--gutter-d);
+}
+.hudbar--desk .hudbar__mid { gap: 6px; align-items: flex-end; text-align: right; }
+.hudbar__deal { color: var(--sodium-ink); }
+.hudbar--desk .hudbar__right { gap: 32px; }
+.hudbar__price { gap: 6px; }
+
+/* Figma: the tickets heading block is 514px wide, overhanging its 467px column. */
+.tix-d > .stack > header { margin-right: calc(-47 / 467 * 100%); }
+.desk .field__input::placeholder { color: var(--ink-dim); }
+
+.main { width: 100%; isolation: isolate; }
+
+.railVideoPreview {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
+}
+
+.railVideoPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.railVideoPlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 48px;
+  padding-left: 4px;
+  border-radius: 12px;
+  background: #f00;
+  color: #fff;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s, scale 0.2s;
+  pointer-events: none;
+}
+
+.railVideoPreview:hover .railVideoPlay,
+.railVideoPreview:focus-visible .railVideoPlay {
+  background: #c00;
+  scale: 1.08;
+}
+
+.railYoutube {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.railVideoClose {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #ffffff60;
+  border-radius: 50%;
+  background: #000c;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}

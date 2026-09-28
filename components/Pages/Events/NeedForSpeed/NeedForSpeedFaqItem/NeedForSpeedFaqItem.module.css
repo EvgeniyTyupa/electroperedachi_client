@@ -1,0 +1,3 @@
+.answer { font-family: inherit; overflow-wrap: anywhere; }
+.answer p { margin-bottom: 12px; }
+.answer p:last-child { margin-bottom: 0; }

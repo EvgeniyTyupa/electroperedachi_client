@@ -1,0 +1,6 @@
+.form { min-width: 0; }
+.total { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; font-family: var(--font-mono); }
+.total s { color: var(--ink-dim); font-size: 14px; }
+.total strong { color: var(--acid); }
+.sold { display: grid; gap: 12px; font-family: var(--font-mono); }
+.sold progress { width: 100%; accent-color: var(--acid); }

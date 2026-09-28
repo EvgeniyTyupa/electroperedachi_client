@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="face">
+<path id="Vector" d="M51.95 232.28C36.287 213.615 26.2768 190.868 23.0956 166.71C19.9144 142.553 23.6944 117.99 33.9914 95.9062C44.2884 73.823 60.6746 55.1375 81.2244 42.0455C101.774 28.9534 125.634 21.9988 150 21.9988C174.366 21.9988 198.226 28.9534 218.776 42.0455C239.325 55.1375 255.712 73.823 266.009 95.9062C276.306 117.99 280.086 142.553 276.904 166.71C273.723 190.868 263.713 213.615 248.05 232.28" stroke="#333C48" stroke-width="10"/>
+<path id="Vector_2" d="M237.84 56.9C261.595 79.3128 275.884 109.958 277.782 142.562C279.68 175.166 269.043 207.262 248.05 232.28" stroke="#E51C0A" stroke-width="10"/>
+<path id="Vector_3" d="M61.998 56.8999C38.2434 79.3127 23.9544 109.958 22.0563 142.562C20.1582 175.166 30.7946 207.262 51.788 232.28" stroke="url(#paint0_linear_0_176)" stroke-width="10"/>
+<path id="Vector_4" d="M33.01 165.4L40.94 164.36" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_5" d="M43.06 100.13L50.31 103.51" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_6" d="M150 32V40" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_7" d="M230.98 64.17L225.49 69.99" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_8" d="M262.01 187.12L254.42 184.6" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
+<path id="Vector_9" d="M91.6375 85.3818L70.4131 64.178" stroke="white" stroke-width="4" stroke-linecap="square"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_176" x1="21.8398" y1="232.28" x2="44.0228" y2="56.6604" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFB020"/>
+<stop offset="0.72" stop-color="#C9FF2E"/>
+<stop offset="1" stop-color="#C9FF2E"/>
+</linearGradient>
+</defs>
+</svg>
