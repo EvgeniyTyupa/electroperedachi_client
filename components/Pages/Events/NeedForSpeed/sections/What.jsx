@@ -22,11 +22,12 @@ const FACTS = [{
   value: '14 листопада, субота 16:00 до 00:30'
 }, {
   mark: 'Лайнап',
-  value: <>
-        Nadai · Paul Meise · Noff · Staylen<br />
-        🇮🇹<strong>Lorenzo Raganzini</strong>{' '}
-        <a className={classes["textlink"]} href={LINKS.lineup}>→ Дізнайся про них</a>
-      </>
+  value: 'TBA'
+  //  <>
+  //       Nadai · Paul Meise · Noff · Staylen<br />
+  //       🇮🇹<strong>Lorenzo Raganzini</strong>{' '}
+  //       <a className={classes["textlink"]} href={LINKS.lineup}>→ Дізнайся про них</a>
+  //     </>
 }, {
   mark: 'Локація',
   value: 'Підземний паркінг — це укриття'
