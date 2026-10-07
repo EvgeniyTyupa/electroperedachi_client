@@ -1,79 +1,78 @@
-import { CurrentPrice } from '../NeedForSpeedContext'
+import { useNfsCopy } from "../useNfsCopy";
+import { CurrentPrice } from "../NeedForSpeedContext";
 import classes from "../NeedForSpeed.module.css";
 import { cx } from "../needForSpeedClasses";
 const entrance1 = "/images/need_for_speed/what-entrance-desktop.webp";
 const scene = "/images/need_for_speed/what-scene.webp";
 const entrance = "/images/need_for_speed/what-entrance.webp";
-import { PhotoStory } from '../components/PhotoStory';
-import { FactList } from '../components/FactList';
-import { TicketCta } from '../components/TicketCta';
-import { LINKS } from '../content';
-const FRAMES = [{
+import { PhotoStory } from "../components/PhotoStory";
+import { FactList } from "../components/FactList";
+import { TicketCta } from "../components/TicketCta";
+import { LINKS } from "../content";
+const getFRAMES = nfsCopy => [{
   src: entrance1,
-  alt: 'Танцпол у підземному паркінгу: натовп, дві автівки і діджей-пульт у червоному світлі'
+  alt: nfsCopy("Танцпол у підземному паркінгу: натовп, дві автівки і діджей-пульт у червоному світлі")
 }, {
   src: entrance,
-  alt: 'Вхід у паркінг'
+  alt: nfsCopy("Вхід у паркінг")
 }, {
   src: scene,
-  alt: 'Танцпол у підземному паркінгу'
+  alt: nfsCopy("Танцпол у підземному паркінгу")
 }];
-const FACTS = [{
-  mark: 'Дата та час',
-  value: '14 листопада, субота 16:00 до 00:30'
+const getFACTS = nfsCopy => [{
+  mark: nfsCopy("Дата та час"),
+  value: nfsCopy("14 листопада, субота 16:00 до 00:30")
 }, {
-  mark: 'Лайнап',
-  value: 'TBA'
+  mark: nfsCopy("Лайнап"),
+  value: "TBA"
   //  <>
   //       Nadai · Paul Meise · Noff · Staylen<br />
   //       🇮🇹<strong>Lorenzo Raganzini</strong>{' '}
   //       <a className={classes["textlink"]} href={LINKS.lineup}>→ Дізнайся про них</a>
   //     </>
 }, {
-  mark: 'Локація',
-  value: 'Підземний паркінг — це укриття'
+  mark: nfsCopy("Локація"),
+  value: nfsCopy("Підземний паркінг — це укриття")
 }, {
-  mark: 'Expo зона',
-  value: <span className={classes["facts__flag"]}>Можна заїхати своєю тачкою. Місць обмежено</span>
+  mark: nfsCopy("Expo зона"),
+  value: <span className={classes["facts__flag"]}>{" " + nfsCopy("Можна заїхати своєю тачкою. Місць обмежено") + " "}</span>
 }, {
-  mark: 'Дрес-код',
-  value: <>Рейв або гонка. Не обовʼязковий <a className={classes["textlink"]} href={LINKS.dressCode}>→ Обрати образ</a></>
+  mark: nfsCopy("Дрес-код"),
+  value: <>{" " + nfsCopy("Рейв або гонка. Не обовʼязковий") + " "}<a className={classes["textlink"]} href={LINKS.dressCode}>{" " + nfsCopy("→ Обрати образ") + " "}</a></>
 }, {
-  mark: 'FC',
-  value: 'Фейс-контроль на вході. 18+, документ при собі'
+  mark: "FC",
+  value: nfsCopy("Фейс-контроль на вході. 18+, документ при собі")
 }, {
-  mark: 'Квитки',
-  value: 'Вхід за сканом QR Коду та списками.',
+  mark: nfsCopy("Квитки"),
+  value: nfsCopy("Вхід за сканом QR Коду та списками."),
   tight: true
 }, {
-  mark: 'Про нас',
+  mark: nfsCopy("Про нас"),
   tight: true,
-  value: <>
-        Атмосферні івенти електронної музики в особливих локаціях. 10 років. Одна спільнота<br />
-        <a className={classes["textlink"]} href={LINKS.about}>→ Детальніше про electroperedachi</a>
+  value: <>{" " + nfsCopy("Атмосферні івенти електронної музики в особливих локаціях. 10 років. Одна спільнота") + " "}<br />
+        <a className={classes["textlink"]} href={LINKS.about}>{" " + nfsCopy("→ Детальніше про electroperedachi") + " "}</a>
       </>
 }];
 /** 2 · Що це */
 export function What() {
+  const nfsCopy = useNfsCopy();
   return <section className={classes["section"]} id="what" data-theme="night">
       <div className={[classes["wrap"], classes["stack"], classes["stack--32"]].join(" ")}>
         <header className={[classes["stack"], classes["stack--20"]].join(" ")}>
-          <p className={classes["kicker"]}>Що це</p>
-          <h2 className={classes["h2"]}>Тачки, ритм,<br />безпечна локація</h2>
+          <p className={classes["kicker"]}>{" " + nfsCopy("Що це") + " "}</p>
+          <h2 className={classes["h2"]}>{" " + nfsCopy("Тачки, ритм,") + " "}<br />{" " + nfsCopy("безпечна локація") + " "}</h2>
         </header>
 
-        <PhotoStory frames={FRAMES} caption="Одна сцена · танцпол без лімітів і правил" />
+        <PhotoStory frames={getFRAMES(nfsCopy)} caption={nfsCopy("Одна сцена · танцпол без лімітів і правил")} />
 
-        <FactList items={FACTS} />
+        <FactList items={getFACTS(nfsCopy)} />
 
-        <aside className={classes["phase"]} aria-label="Квитки продажу">
-          <p className={classes["kicker"]}>Квитки</p>
+        <aside className={classes["phase"]} aria-label={nfsCopy("Квитки продажу")}>
+          <p className={classes["kicker"]}>{" " + nfsCopy("Квитки") + " "}</p>
           <p className={classes["readout"]}><CurrentPrice /></p>
-          <p className={[classes["body-sm"], classes["muted"]].join(" ")}>
-            Ціна змінюється протягом продажу. Актуальна вартість — у формі нижче.
-          </p>
+          <p className={[classes["body-sm"], classes["muted"]].join(" ")}>{" " + nfsCopy("Ціна змінюється протягом продажу. Актуальна вартість — у формі нижче.") + " "}</p>
           <hr className={classes["rule"]} />
-          <TicketCta href={LINKS.tickets} block>Купити квиток</TicketCta>
+          <TicketCta href={LINKS.tickets} block>{" " + nfsCopy("Купити квиток") + " "}</TicketCta>
         </aside>
       </div>
     </section>;

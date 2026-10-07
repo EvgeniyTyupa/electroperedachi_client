@@ -1,13 +1,18 @@
+import { useNfsCopy } from "../useNfsCopy";
 import classes from "../NeedForSpeed.module.css";
 import { cx } from "../needForSpeedClasses";
 const locationBg = "/images/need_for_speed/location-bg.webp";
-import { useSignal } from '../motion/hooks';
-import { SIGNAL_STATES } from '../content';
+import { useSignal } from "../motion/hooks";
+import { useNfsContent } from "../content";
 /**
  * 3 · Локація — the signal: lamp, label and auto-typed line advance together
  * (MOTION.md §4). 16ms/char, 2600ms hold, tap a lamp to take over.
  */
 export function Location() {
+  const {
+    SIGNAL_STATES
+  } = useNfsContent();
+  const nfsCopy = useNfsCopy();
   const {
     index,
     typed,
@@ -19,17 +24,16 @@ export function Location() {
       <img className={classes["place__bg"]} src={locationBg} alt="" loading="lazy" />
       <div className={[classes["wrap"], classes["place__inner"]].join(" ")}>
         <header className={[classes["stack"], classes["stack--20"]].join(" ")}>
-          <h2 className={classes["h2"]}>Агов.<br />Ти живеш<br />на високих обертах</h2>
-          <p className={[classes["lead"], classes["muted"]].join(" ")}>
-            Робота, новини, сирени, обмеження.<br />
-            <strong className={classes["place__punch"]}>Час перемкнутися на наступну передачу!</strong>
+          <h2 className={classes["h2"]}>{" " + nfsCopy("Агов.") + " "}<br />{" " + nfsCopy("Ти живеш") + " "}<br />{" " + nfsCopy("на високих обертах") + " "}</h2>
+          <p className={[classes["lead"], classes["muted"]].join(" ")}>{" " + nfsCopy("Робота, новини, сирени, обмеження.") + " "}<br />
+            <strong className={classes["place__punch"]}>{" " + nfsCopy("Час перемкнутися на наступну передачу!") + " "}</strong>
           </p>
         </header>
 
         <div className={classes["signal"]}>
           <div className={classes["signal__head"]}>
             <p className={[classes["signal__label"], classes["black-italic"]].join(" ")} data-at={current.at} aria-live="polite">{current.label}</p>
-            <div className={classes["signal__lamps"]} role="group" aria-label="Перемкнути світлофор">
+            <div className={classes["signal__lamps"]} role="group" aria-label={nfsCopy("Перемкнути світлофор")}>
               {SIGNAL_STATES.map((s, i) => <button key={s.at} type="button" className={classes["signal__lamp"]} data-on={i === index ? s.at : undefined} aria-label={s.label} aria-pressed={i === index} onClick={() => pick(i)} />)}
             </div>
           </div>

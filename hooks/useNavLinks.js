@@ -11,6 +11,7 @@ const useNavLinks = () => {
         { text: intl.formatMessage({ id: "navbar.events" }), href: routes.events },
         { text: intl.formatMessage({ id: "navbar.news" }), href: routes.news },
         { text: intl.formatMessage({ id: "navbar.contacts" }), href: routes.contacts },
+        { text: intl.formatMessage({ id: "navbar.account" }), href: "/account", account: true },
     ]
 
     return links

@@ -44,7 +44,7 @@ const NewsPageComponent = (props) => {
                 <div data-aos="fade-down" data-aos-duration="2000" className={classes.header}>
                     <Header type="h2">{intl.formatMessage({ id: "news.title" })}</Header>
                 </div>
-                <LastPost post={news[0]}/>
+                {news[0] && <LastPost post={news[0]}/>}
                 <InfiniteScroll
                     dataLength={totalNews.length}
                     hasMore={total > totalNews.length}

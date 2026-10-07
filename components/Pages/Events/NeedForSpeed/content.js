@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+import { useNfsCopy } from './useNfsCopy'
 /* ------------------------------------------------------------------ *
  * Copy and data for the page. Text is taken verbatim from the Figma
  * mobile frame; FAQ answers and signal lines 2–3 come from the Claude
@@ -51,3 +53,12 @@ export const SIGNAL_STATES = [{
 }];
 export const FAQ = [['Де саме це буде?', 'Підземний паркінг, центр міста, Київ. Точна адреса і схема заїзду прийдуть у день події.'], ['Чи це безпечно?', 'Паркінг сам по собі є укриттям. Саме тому ми обрали цей формат.'], ['Як це працює вдень?', 'Стартуємо о 16:00 і граємо до 00:30.'], ['Чи можна купити квиток на вході?', 'Так, але це буде найдорожча ціна вечора.'], ['Як заїхати своєю машиною в експо-зону?', 'Разом із квитком прийде контакт — напиши, і ми розкажемо умови. Місць обмежена кількість.'], ['Чи є паркування для гостей?', 'Назовні є великий паркінг.'], ['Дрес-код обовʼязковий?', 'Ні. Архетипи — це підказка, а не вимога. Але вечір виглядатиме так, як ви його вдягнете.'], ['Чи буде бар і їжа?', 'Так, працюють весь вечір.'], ['Гардероб?', 'Так. Листопад, без цього ніяк.'], ['Я не отримав квиток на пошту.', 'Перевір спам. Якщо за 10 хвилин не прийшов — напиши нам, контакти внизу сторінки.']];
 export const formatUah = n => n.toLocaleString('uk-UA').replace(/\s/g, ' ');
+
+export function useNfsContent() {
+  const copy = useNfsCopy()
+  return useMemo(() => ({
+    LINEUP: LINEUP.map(item => ({ ...item, role: item.role ? copy(item.role) : undefined })),
+    SIGNAL_STATES: SIGNAL_STATES.map(item => ({ ...item, label: copy(item.label), line: copy(item.line) })),
+    FAQ: FAQ.map(([question, answer]) => [copy(question), copy(answer)])
+  }), [copy])
+}

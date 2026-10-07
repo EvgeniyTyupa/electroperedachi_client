@@ -2,14 +2,15 @@ import axios from "axios"
 import moment from "moment"
 
 // export const baseURL = "http://localhost:3002/api"
-export const baseURL = "https://api.electroperedachi.com/api"
+export const baseURL = process.env.NEXT_PUBLIC_API_URL || "https://api.electroperedachi.com/api"
 
 const tgToken = "5778874040:AAG1rLGahhRsFoQc7iondvqYbMzUZUBFTiY"
 const chatId = "-880574164"
 const tgUrl = "https://api.telegram.org/bot" + tgToken + "/sendMessage"
 
 const instance = axios.create({
-    baseURL: baseURL
+    baseURL: baseURL,
+    withCredentials: true
 })
 
 export const eventApi = {
@@ -166,8 +167,16 @@ export const bookingApi = {
     }
 }
 
+const checkoutRequests = new Map()
 export const userApi = {
     add(data) {
+        const key = JSON.stringify([data.email, data.phone, data.eventId, data.ticketCart, data.promocode, data.points])
+        let request = checkoutRequests.get(key)
+        if (!request || Date.now() - request.time > 300000) {
+            request = { id: crypto.randomUUID(), time: Date.now() }
+            checkoutRequests.set(key, request)
+        }
+        data = { ...data, requestId: request.id }
         return instance
             .post("/user", data)
             .then((response) => response.data)

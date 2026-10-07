@@ -80,3 +80,29 @@
         padding: 0 1rem;
     }
 }
+.container{gap:18px}.links{gap:clamp(12px,1.4vw,24px)}.link{font-size:15px;white-space:nowrap}.accountLink{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;border:1px solid transparent;border-radius:50%;color:inherit;transition:background .2s,border-color .2s}.accountLink:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}.accountLink:focus-visible{outline:2px solid #ff5500;outline-offset:3px}.accountActive{color:#ff5500;border-color:rgba(255,85,0,.4)}@media(max-width:1000px){.container{gap:6px}.accountLink{margin-left:auto}.logo{width:clamp(140px,45vw,200px)}}
+
+/* Language and account are separate from the main navigation. */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+.accountActions {
+    margin-left: 14px;
+    padding-left: 24px;
+    border-left: 1px solid rgba(255, 255, 255, .14);
+}
+.language { display: flex; align-items: center; }
+.accountLink {
+    border-color: rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .03);
+}
+.accountActive { border-color: rgba(255, 85, 0, .4); }
+@media (max-width: 1000px) {
+    .actions { margin-left: auto; }
+    .accountActions { padding-left: 0; border-left: 0; }
+    .language { display: none; }
+    .accountLink { margin-left: 0; }
+}

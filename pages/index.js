@@ -79,10 +79,10 @@ export async function getStaticProps() {
 
     return {
         props: {
-            upcomingEvent: upcomingEvents[0] ? upcomingEvents[0] : null,
-            news: news,
-            events: events.filter(el => el.title_code !== "spectrum"),
-            partners: partners,
+            upcomingEvent: Array.isArray(upcomingEvents) ? upcomingEvents[0] || null : null,
+            news: Array.isArray(news) ? news : [],
+            events: Array.isArray(events) ? events.filter(el => el.title_code !== "spectrum") : [],
+            partners: Array.isArray(partners) ? partners : [],
             listeningsCount: listeningsCount,
             script: script
         },

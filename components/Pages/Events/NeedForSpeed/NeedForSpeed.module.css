@@ -955,3 +955,10 @@ a.rail__card--video { text-decoration: none; cursor: pointer; }
   align-self: start;
   height: fit-content;
 }
+.partners .marquee__run { height: 52px; gap: 24px; padding-right: 24px; }
+.partnerLogo { width: 112px; height: 44px; display: flex; align-items: center; justify-content: center; flex: none; }
+.partnerLogo img { width: 100%; height: 100%; object-fit: contain; }
+.partnerLogo img.partnerLogoCompact { width: 44px; }
+.partners--d .marquee__run { height: 80px; gap: 56px; padding-right: 56px; }
+.partners--d .partnerLogo { width: 180px; height: 64px; }
+.partners--d .partnerLogo img.partnerLogoCompact { width: 64px; }
