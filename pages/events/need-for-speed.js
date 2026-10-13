@@ -1,15 +1,32 @@
 import Head from "next/head"
+import { useEffect } from "react"
 import { useRouter } from "next/router"
 import { eventApi } from "../../api/api"
 import Preloader from "../../components/Common/Preloader/Preloader"
 import moment from "moment"
 import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 import NeedForSpeed from "../../components/Pages/Events/NeedForSpeed/NeedForSpeed"
+import { CLARITY_PROJECT_ID } from "../../utils/constants"
 
 const NeedForSpeedPage = (props) => {
     const { event, script, lang } = props
 
     const { isFallback } = useRouter()
+
+    useEffect(() => {
+        if (!CLARITY_PROJECT_ID) return
+
+        let active = true
+        import('@microsoft/clarity')
+            .then(({ default: Clarity }) => {
+                if (active) Clarity.init(CLARITY_PROJECT_ID)
+            })
+            .catch((error) => {
+                console.error('Clarity init failed', error)
+            })
+
+        return () => { active = false }
+    }, [])
 
     if (isFallback) {
         return <Preloader/>
