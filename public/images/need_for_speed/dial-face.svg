@@ -8,7 +8,7 @@
 <path id="Vector_6" d="M150 32V40" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
 <path id="Vector_7" d="M230.98 64.17L225.49 69.99" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
 <path id="Vector_8" d="M262.01 187.12L254.42 184.6" stroke="#77828F" stroke-width="2" stroke-linecap="square"/>
-<path id="Vector_9" d="M91.6375 85.3818L70.4131 64.178" stroke="white" stroke-width="4" stroke-linecap="square"/>
+<path transform="rotate(45 150 150)" id="Vector_9" d="M91.6375 85.3818L70.4131 64.178" stroke="white" stroke-width="4" stroke-linecap="square"/>
 </g>
 <defs>
 <linearGradient id="paint0_linear_0_176" x1="21.8398" y1="232.28" x2="44.0228" y2="56.6604" gradientUnits="userSpaceOnUse">

@@ -1,3 +1,4 @@
+import LoyaltyCheckout from "../../../../../../components/Common/LoyaltyCheckout"
 import classes from "./MasqueradeBuyForm.module.css"
 import { useForm, Controller } from "react-hook-form"
 import { useIntl } from "react-intl"
@@ -30,6 +31,8 @@ const MasqueradeBuyForm = (props) => {
 
     const { setIsFetchingContext, setServerError, setServerResponse } = useAppContext()
 
+    const [loyaltyPoints, setLoyaltyPoints] = useState(0)
+    const [loyaltyQuote, setLoyaltyQuote] = useState(null)
     const [isLoadingPromocode, setIsLoadingPromocode] = useState(false)
     const [checkPromocodeError, setCheckPromocodeError] = useState(false)
     const [isAppliedPromo, setIsAppliedPromo] = useState(false)
@@ -41,11 +44,13 @@ const MasqueradeBuyForm = (props) => {
 
     const currentURL = router.asPath;
 
-    const { control, handleSubmit, reset, getValues, setValue } = useForm()
+    const { control, handleSubmit, reset, getValues, setValue, watch } = useForm()
 
+    const payableTotal = loyaltyQuote?.payableKopecks !== undefined && !loyaltyQuote.pending ? loyaltyQuote.payableKopecks / 100 : (isAppliedPromo ? totalPriceDiscount : totalPrice)
     const intl = useIntl()
 
     const onSubmit = async (data) => {
+        if (loyaltyQuote?.pending) return
         setIsFetchingContext(true)
         try {
             const { fbp, fbc } = getFbCookies();
@@ -55,6 +60,7 @@ const MasqueradeBuyForm = (props) => {
             const submitData = {
                 ...data,
                 ticketCart,
+                points: loyaltyPoints,
                 promo: query.promo || "",
                 eventId: event._id,
                 promocode: isAppliedPromo ? data.promocode : "",
@@ -67,7 +73,7 @@ const MasqueradeBuyForm = (props) => {
             const response = await userApi.add(submitData)
 
             if (event.google_table_id) {
-                // logEvent("Purchase", "Buy Ticket", event.title, isAppliedPromo ? totalPriceDiscount : totalPrice)
+                // logEvent("Purchase", "Buy Ticket", event.title, payableTotal)
     
                 const ticketsCount = ticketCart.reduce((sum, item) => sum + item.count, 0);
 
@@ -76,7 +82,7 @@ const MasqueradeBuyForm = (props) => {
                     .then((ReactPixel) => {
                         ReactPixel.init(FB_PIXEL)
                         ReactPixel.track("InitiateCheckout", {
-                            value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                            value: payableTotal,
                             currency: "UAH",
                             eventID: eventId,
                             num_items: ticketsCount
@@ -85,7 +91,7 @@ const MasqueradeBuyForm = (props) => {
 
                 await trackApi.trackEvent("initiate_checkout", {
                     url: window.location.href,
-                    value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                    value: payableTotal,
                     currency: 'UAH',
                     email: data.email,
                     phone: data.phone,
@@ -101,7 +107,7 @@ const MasqueradeBuyForm = (props) => {
                 .then(TiktokPixel => {
                     TiktokPixel.init(TIKTOK_PIXEL)
                     TiktokPixel.track("InitiateCheckout", {
-                        value: isAppliedPromo ? totalPriceDiscount : totalPrice,
+                        value: payableTotal,
                         currency: "UAH"
                     })
                 })
@@ -402,9 +408,10 @@ const MasqueradeBuyForm = (props) => {
                     }
                 />
             </div>
+            <LoyaltyCheckout eventId={event._id} ticketCart={ticketCart} promocode={isAppliedPromo ? getValues().promocode : ""} points={loyaltyPoints} onChange={setLoyaltyPoints} email={watch("email") || ""} onEmailChange={value => setValue("email", value, { shouldValidate: true })} onQuoteChange={setLoyaltyQuote} />
             <div className={classes.form_footer}>
-                <button disabled={!totalPrice} type={"submit"} className={classes.buyBut}>
-                    BUY TICKET
+                <button disabled={!totalPrice || loyaltyQuote?.pending} type={"submit"} className={classes.buyBut}>
+                    BUY TICKET · {payableTotal.toLocaleString('uk-UA', { maximumFractionDigits: 2 })} ₴
                 </button>
                 <div className={classes.payment_sources}>
                     <img src={mastercard.src} alt="Mastercard" />

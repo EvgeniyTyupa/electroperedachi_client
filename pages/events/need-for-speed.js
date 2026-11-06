@@ -1,15 +1,32 @@
 import Head from "next/head"
+import { useEffect } from "react"
 import { useRouter } from "next/router"
 import { eventApi } from "../../api/api"
 import Preloader from "../../components/Common/Preloader/Preloader"
 import moment from "moment"
 import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 import NeedForSpeed from "../../components/Pages/Events/NeedForSpeed/NeedForSpeed"
+import { CLARITY_PROJECT_ID } from "../../utils/constants"
 
 const NeedForSpeedPage = (props) => {
     const { event, script, lang } = props
 
     const { isFallback } = useRouter()
+
+    useEffect(() => {
+        if (!CLARITY_PROJECT_ID) return
+
+        let active = true
+        import('@microsoft/clarity')
+            .then(({ default: Clarity }) => {
+                if (active) Clarity.init(CLARITY_PROJECT_ID)
+            })
+            .catch((error) => {
+                console.error('Clarity init failed', error)
+            })
+
+        return () => { active = false }
+    }, [])
 
     if (isFallback) {
         return <Preloader/>
@@ -55,6 +72,18 @@ export async function getServerSideProps(context) {
         }
     }
     
+    // Keep the rescheduled landing date consistent with server-provided event data.
+    const moveDate = value => typeof value === 'string'
+        ? value.replace(/^2026-11-14/, '2026-12-12')
+        : value
+    if (event.date) event.date = moveDate(event.date)
+    if (event.dates) event.dates = event.dates.map(day => ({ ...day, date: moveDate(day.date) }))
+    const moveCopy = value => typeof value === 'string'
+        ? value.replace(/14 листопада/g, '12 грудня').replace(/14 November/g, '12 December').replace(/14\.11(?:\.2026)?/g, '12.12.2026')
+        : value
+    event.description = moveCopy(event.description)
+    event.description_en = moveCopy(event.description_en)
+
     let nextDay
 
     if (event.date) {
@@ -112,7 +141,8 @@ export async function getServerSideProps(context) {
         "@type": "Event",
         "name": event.title,
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
+        "eventStatus": "https://schema.org/EventRescheduled",
+        "previousStartDate": "2026-11-14",
         "startDate": event.date ? event.date : event.dates[0].date,
         "endDate": nextDay.toISOString(),
         "location": {

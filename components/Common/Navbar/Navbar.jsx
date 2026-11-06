@@ -9,10 +9,14 @@ import CustomLink from '../../UI/Text/CustomLink/CustomLink';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import Burger from './Burger/Burger';
 import { routes } from '../../../utils/routes';
+import { isCustomEventLanding } from '../../../utils/navigation';
+import AccountIcon from '../AccountIcon';
 
 const Navbar = () => {
     const router = useRouter()
     const links = useNavLinks()
+    const customLanding = isCustomEventLanding(router.pathname)
+    const accountLabel = router.locale === "en" ? "My account" : "Особистий кабінет"
 
     return (
         <nav className={cx(
@@ -34,15 +38,8 @@ const Navbar = () => {
                     </Link>
                 )}
                 <nav className={classes.links}>
-                    {(router.pathname !== "/events/circus" &&
-                    router.pathname !== "/events/cyberpunk" &&
-                    router.pathname !== "/events/vampire-carnival" &&
-                    router.pathname !== "/events/cyber-christmas" &&
-                    router.pathname !== "/events/hozho" &&
-                    router.pathname !== "/events/vice-city" && 
-                    router.pathname === "/events/techno-fashion"
-                    ) && (
-                        links.map(el => (
+                    {!customLanding && (
+                        links.filter(el => !el.account).map(el => (
                             <CustomLink
                                 key={el.href}
                                 href={el.href}
@@ -51,8 +48,11 @@ const Navbar = () => {
                             />
                         ))
                     )}
-                    <LanguageSelector/>
                 </nav>
+                <div className={cx(classes.actions, !customLanding ? classes.accountActions : undefined)}>
+                    <div className={classes.language}><LanguageSelector /></div>
+                    {!customLanding && <Link href="/account" className={cx(classes.accountLink, router.pathname === "/account" ? classes.accountActive : "")} aria-label={accountLabel} title={accountLabel} aria-current={router.pathname === "/account" ? "page" : undefined}><AccountIcon /></Link>}
+                </div>
                 <div className={classes.burger}>
                     <Burger/>
                 </div>
