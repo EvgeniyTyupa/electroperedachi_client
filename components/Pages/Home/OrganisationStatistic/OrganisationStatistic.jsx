@@ -56,7 +56,7 @@ const OrganisationStatistic = (props) => {
                         <a href="https://soundcloud.com/electroperedachi" target="_blank" rel="noopener noreferrer">SoundCloud</a>
                     </p>
                     <p className={classes.number}>
-                        {listeningsCount + 20000 > 100000 ? (
+                        {listeningsCount == null ? "—" : listeningsCount + 20000 > 100000 ? (
                             nFormatter(listeningsCount + 20000)
                         ) : (
                             parseNumber(listeningsCount + 20000)

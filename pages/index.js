@@ -67,15 +67,23 @@ export async function getStaticProps() {
 
     const client = new SoundCloud.Client()
 
-    const playlist = await client.getPlaylist(
-        "https://soundcloud.com/electroperedachi/sets/electroperedachi-podcasts"
-    )
+    let listeningsCount = null
 
-    let listeningsCount = 0
+    try {
+        const client = new SoundCloud.Client()
+        const playlist = await client.getPlaylist(
+            "https://soundcloud.com/electroperedachi/sets/electroperedachi-podcasts"
+        )
 
-    playlist.tracks.forEach((el) => {
-        listeningsCount += Number(el.playCount)
-    })
+        if (Array.isArray(playlist?.tracks)) {
+            listeningsCount = playlist.tracks.reduce(
+                (sum, track) => sum + (Number(track?.playCount) || 0),
+                0
+            )
+        }
+    } catch (error) {
+        console.warn("SoundCloud stats unavailable:", error.message)
+    }
 
     return {
         props: {
