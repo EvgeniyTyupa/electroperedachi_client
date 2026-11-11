@@ -2,6 +2,9 @@ name: Deploy client
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - deploy/client
 
 concurrency:
   group: deploy-client
@@ -9,7 +12,7 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy/client'
     runs-on: ubuntu-latest
     steps:
       - name: Build and restart client on VPS
