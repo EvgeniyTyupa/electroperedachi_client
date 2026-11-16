@@ -1,5 +1,5 @@
 // export const FB_PIXEL = "1667954890675870"
-export const USD_EQ = 42
+export const USD_EQ = 45
 export const FB_PIXEL = "1707112844264905"
 export const TIKTOK_PIXEL = "D08U1CRC77U9CBHGPIKG"
 export const CLARITY_PROJECT_ID = "rkwkczhc44"
