@@ -1,0 +1,11 @@
+[Unit]
+Description=Build and deploy electroperedachi Next.js client from cabinet
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/electroperedachi/client
+ExecStart=/usr/local/sbin/electroperedachi-client-deploy
+TimeoutStartSec=30min

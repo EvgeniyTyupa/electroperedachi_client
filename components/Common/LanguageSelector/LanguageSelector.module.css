@@ -41,3 +41,26 @@
         color: #FC99CC !important
     }
 }
+
+.drawerLanguages {
+    display: flex;
+    align-self: flex-start;
+    gap: 8px;
+}
+
+.drawerLanguages a {
+    min-width: 48px;
+    padding: 12px;
+    text-align: center;
+    background: var(--ep-bg);
+    color: var(--ep-text);
+    border: 1px solid var(--ep-line);
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.drawerLanguages a[aria-current="true"] {
+    background: var(--ep-accent);
+    border-color: var(--ep-accent);
+    color: var(--ep-on-accent);
+}

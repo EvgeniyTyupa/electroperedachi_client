@@ -106,3 +106,54 @@
     .language { display: none; }
     .accountLink { margin-left: 0; }
 }
+
+.themed {
+    background: var(--ep-bg);
+    border-bottom: 1px solid var(--ep-line);
+    padding: 18px 0;
+}
+
+.wordmark {
+    color: var(--ep-text);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: clamp(19px, 4.7vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+}
+
+.themed .accountActions {
+    margin-left: auto;
+    padding-left: 0;
+    border: 0;
+}
+
+.themed .accountLink {
+    width: 44px;
+    height: 44px;
+    background: var(--ep-surface);
+    border-color: var(--ep-line);
+}
+
+.themed .accountActive,
+.themed .accountLink:hover {
+    color: var(--ep-accent-text);
+    border-color: var(--ep-accent);
+}
+
+.themed .burger {
+    display: block;
+}
+
+@media (min-width: 1151px) {
+    .themed .accountActions { margin-left: 0; }
+}
+
+@media (max-width: 1150px) {
+    .themed .links { display: none; }
+}
+
+@media (max-width: 468px) {
+    .themed .container { padding-inline: 16px; gap: 6px; }
+    .themed { padding-block: 10px; }
+}

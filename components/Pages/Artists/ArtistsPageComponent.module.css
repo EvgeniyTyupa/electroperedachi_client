@@ -19,7 +19,7 @@
 }
 .invited {
     width: 100%;
-    background-color: white;
+    background-color: var(--ep-surface);
     margin-top: 128px;
     padding-top: 2rem;
     padding-bottom: 110px;

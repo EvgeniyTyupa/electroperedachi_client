@@ -1,4 +1,5 @@
 import "../styles/globals.css"
+import "../styles/site-theme.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import en from "../lang/en.json"
@@ -133,7 +134,7 @@ export default function App({ Component, pageProps }) {
                     })(window,document,'script','dataLayer','${GTM_ID}');
                 `}
             </Script>
-            <IntlProvider locale={locale} messages={messages[locale]}>
+            <IntlProvider locale={locale === "ua" ? "uk" : locale} messages={messages[locale]}>
                 <AppContextProvider>
                     <Layout>
                         <Head>
@@ -161,7 +162,7 @@ export default function App({ Component, pageProps }) {
                         <LocalizationProvider dateAdapter={AdapterMoment}>
                             <AnimatePresence
                                 initial={false}
-                                exitBeforeEnter={true}
+                                mode="wait"
                             >
                                 <ErrorBoundary>
                                     <div id="body">

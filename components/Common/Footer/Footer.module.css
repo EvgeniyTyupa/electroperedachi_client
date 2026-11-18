@@ -83,3 +83,24 @@
         text-align: center;
     }
 }
+
+:global(.site-theme) .main {
+    padding-top: 36px;
+    border-top: 1px solid var(--ep-line);
+    background: var(--ep-surface);
+}
+
+:global(.site-theme) .social a {
+    background: var(--ep-surface-2);
+    color: var(--ep-text);
+    border: 1px solid var(--ep-line);
+}
+
+:global(.site-theme) .social a:hover {
+    background: var(--ep-accent);
+    color: var(--ep-on-accent);
+}
+
+:global(.site-theme) .mini {
+    color: var(--ep-text-2);
+}

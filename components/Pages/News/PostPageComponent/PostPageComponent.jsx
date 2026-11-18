@@ -42,7 +42,7 @@ const PostPageComponent = (props) => {
                         disableGFM={true}
                         style={{
                             background: 'transparent', 
-                            color: "black", 
+                            color: "var(--ep-text)",
                             fontFamily: "Helvetica",
                             whiteSpace: 'pre-wrap'
                         }}
@@ -59,7 +59,7 @@ const PostPageComponent = (props) => {
                             }}
                             style={{
                                 background: 'transparent', 
-                                color: "black", 
+                                color: "var(--ep-text)",
                                 fontFamily: "Helvetica",
                             }}
                         />

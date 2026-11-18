@@ -13,12 +13,12 @@
     gap: 1rem;
 }
 .viewBut {
-    background-color: white !important;
+    background-color: var(--ep-surface-2) !important;
     color: var(--main-orange) !important;
     opacity: 0.7;
 }
 .selected {
-    color: white !important;
+    color: var(--ep-on-accent) !important;
     background-color: var(--main-orange) !important;
     opacity: 1;
 }

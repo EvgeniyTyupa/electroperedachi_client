@@ -9,3 +9,8 @@
         transform: scale(1);
     }
 }
+
+:global(.site-theme) .main :global(#blob1) { fill: var(--ep-accent); }
+:global(.site-theme) .main :global(#blob2) { fill: #b83a20; }
+:global(.site-theme) .main :global(#blob3) { fill: #752b1d; }
+:global(.site-theme) .main :global(#blob4) { fill: var(--ep-line); }

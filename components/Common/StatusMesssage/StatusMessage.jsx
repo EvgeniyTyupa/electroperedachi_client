@@ -1,12 +1,12 @@
 import { Alert } from "@mui/material"
 import { useEffect, useState } from "react"
-import AppContext, { useAppContext } from "../../../context/AppContext"
+import { useAppContext } from "../../../context/AppContext"
 import classes from './StatusMessage.module.css'
 
 const TYPES = ["error", "success"]
 
 const StatusMessage = () => {
-    const context = useAppContext(AppContext)
+    const context = useAppContext()
 
     const { serverError, setServerError, serverResponse, setServerResponse } = context
 

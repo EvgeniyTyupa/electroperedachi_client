@@ -40,7 +40,7 @@ const languageSelectorStyles = {
 }
 
 const LanguageSelector = (props) => {
-    const { handleOpen } = props
+    const { handleOpen, drawerOnly } = props
 
     const { locales, locale } = useRouter()
     const router = useRouter()
@@ -48,6 +48,24 @@ const LanguageSelector = (props) => {
     useEffect(() => {
         moment().locale(router.locale)
     }, [router.locale])
+
+    if (drawerOnly) {
+        return (
+            <div className={classes.drawerLanguages} aria-label={locale === "en" ? "Language" : "Мова"}>
+                {locales.map(language => (
+                    <Link
+                        key={language}
+                        href={{ pathname: router.pathname, query: router.query }}
+                        locale={language}
+                        onClick={handleOpen}
+                        aria-current={locale === language ? "true" : undefined}
+                    >
+                        {language.toUpperCase()}
+                    </Link>
+                ))}
+            </div>
+        )
+    }
 
     return (
         <>

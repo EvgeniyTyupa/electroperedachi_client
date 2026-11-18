@@ -1,0 +1,22 @@
+.site-theme {
+    --ep-bg: #0a0505;
+    --ep-surface: #150b09;
+    --ep-surface-2: #201110;
+    --ep-line: #3b1d16;
+    --ep-text: #f6eee8;
+    --ep-text-2: #c2aba1;
+    --ep-text-3: #9a847b;
+    --ep-accent: #ff4d1f;
+    --ep-accent-text: #ff784e;
+    --ep-volt: #ffa43a;
+    --ep-on-accent: #150706;
+    --main-orange: var(--ep-accent);
+    --main-orange-hover: var(--ep-accent-text);
+    color: var(--ep-text);
+    background: var(--ep-bg);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#__next > .site-theme {
+    min-height: 100dvh;
+}

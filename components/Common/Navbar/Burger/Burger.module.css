@@ -76,3 +76,33 @@
         gap: 1rem;
     }
 }
+
+.themedTrigger button {
+    width: 44px;
+    height: 44px;
+    color: var(--ep-text) !important;
+}
+
+.themedPaper {
+    width: min(100%, 400px) !important;
+    background: var(--ep-surface) !important;
+    border-left: 1px solid var(--ep-line);
+    padding: 16px 24px 28px;
+}
+
+.themedPaper .links {
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    height: auto;
+    gap: 0;
+    margin: 18px 0 24px;
+}
+
+.themedPaper .links a {
+    color: var(--ep-text);
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ep-line);
+    font-size: 20px;
+}

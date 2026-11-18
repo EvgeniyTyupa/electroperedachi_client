@@ -76,3 +76,12 @@
         width: 95%;
     }
 }
+
+:global(.site-theme) .shareBut {
+    color: var(--ep-text) !important;
+    border-radius: 12px !important;
+}
+
+:global(.site-theme) .shareBut:hover {
+    color: var(--ep-on-accent) !important;
+}

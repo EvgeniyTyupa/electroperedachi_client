@@ -12,7 +12,7 @@ import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 import Link from "next/link";
 import palm from "/public/images/vice-city/palm4.svg"
 
-const Burger = () => {
+const Burger = ({ themed }) => {
     const [isOpenBurger, setIsOpenBurger] = useState(false)
 
     const router = useRouter()
@@ -23,26 +23,29 @@ const Burger = () => {
         setIsOpenBurger(!isOpenBurger)
     }
 
-    const anchor = "right"
+    const inEnglish = router.locale === "en"
+    const openLabel = inEnglish ? "Open menu" : "Відкрити меню"
+    const closeLabel = inEnglish ? "Close menu" : "Закрити меню"
 
     return (
         <div className={classes.main}>
-            <div className={classes.burger}>
-                <IconButton onClick={handleOpen}>
+            <div className={cx(classes.burger, themed && classes.themedTrigger)}>
+                <IconButton onClick={handleOpen} aria-label={openLabel} aria-expanded={isOpenBurger}>
                     <HiMenu />
                 </IconButton>
             </div>
             <Drawer
-                anchor={anchor}
+                anchor="right"
                 open={isOpenBurger}
-                onClose={handleOpen}
-                classes={{ root: classes.root, paper: router.pathname.includes("vice-city") ? classes.viceCity : classes.paper }}
+                onClose={() => setIsOpenBurger(false)}
+                classes={{ root: classes.root, paper: router.pathname.includes("vice-city") ? classes.viceCity : cx(classes.paper, themed && "site-theme", themed && classes.themedPaper) }}
                 sx={{ zIndex: 199999999 }}
             >
                 <div className={classes.header}>
                     <IconButton
                         onClick={handleOpen}
                         className={classes.closeBut}
+                        aria-label={closeLabel}
                     >
                         <AiOutlineClose />
                     </IconButton>
@@ -75,7 +78,7 @@ const Burger = () => {
                         </>
                     )}
                 </div>
-                <LanguageSelector handleOpen={handleOpen}/>
+                <LanguageSelector handleOpen={() => setIsOpenBurger(false)} drawerOnly={themed} />
             </Drawer>
         </div>
     )

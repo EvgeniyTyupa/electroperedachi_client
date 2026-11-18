@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { passportApi } from '../../api/passport'
 import styles from './LoyaltyCheckout.module.css'
 
 export default function LoyaltyCheckout({ eventId, ticketCart, promocode = '', points, onChange, email = '', onEmailChange, onQuoteChange }) {
-    const { locale } = useRouter(), en = locale === 'en'
+    const { locale, query } = useRouter(), en = locale === 'en'
+    const requestedPercent = [10, 20, 30].includes(Number(query.energyPercent)) ? Number(query.energyPercent) : null
+    const requestedApplied = useRef(false)
     const [account, setAccount] = useState(null), [quote, setQuote] = useState(null), [loading, setLoading] = useState(false)
     const [checked, setChecked] = useState(false)
     const [applied, setApplied] = useState(false), [error, setError] = useState('')
@@ -16,6 +18,12 @@ export default function LoyaltyCheckout({ eventId, ticketCart, promocode = '', p
         return () => { active = false }
     }, [])
     useEffect(() => {
+        if (!account || !requestedPercent || requestedApplied.current) return
+        requestedApplied.current = true
+        onEmailChange?.(account.user.email.trim())
+        setApplied(true)
+    }, [account, requestedPercent])
+    useEffect(() => {
         let active = true
         if (!account?.rules.enabled || (!account.wallet.available && !points) || !ticketCart?.length) { setQuote(null); setLoading(false); onChange(0); onQuoteChange?.(null); return }
         if (applied && differentEmail) { setApplied(false); onChange(0); onQuoteChange?.(null); return }
@@ -25,7 +33,10 @@ export default function LoyaltyCheckout({ eventId, ticketCart, promocode = '', p
             try {
                 const baseline = await passportApi.quote(order)
                 if (!active) return
-                const selected = applied ? baseline.maxPoints : 0
+                const requested = requestedPercent ? Math.floor(baseline.totalKopecks * requestedPercent / 100 / account.rules.pointValueKopecks) : baseline.maxPoints
+                const eligible = requested <= baseline.maxPoints && (!requestedPercent || requestedPercent <= account.rules.maxRedemptionPercent)
+                const selected = applied && eligible ? requested : 0
+                if (applied && !eligible) setError(en ? 'Your balance or ticket price changed. Choose your discount again.' : 'Баланс або ціна квитка змінились. Обери знижку ще раз.')
                 const result = selected ? await passportApi.quote({ ...order, points: selected }) : baseline
                 if (!active) return
                 setQuote(result); onChange(selected); onQuoteChange?.({ ...result, pending: false })
@@ -39,7 +50,7 @@ export default function LoyaltyCheckout({ eventId, ticketCart, promocode = '', p
         }
         calculate()
         return () => { active = false }
-    }, [account, eventId, cartKey, promocode, applied, differentEmail])
+    }, [account, eventId, cartKey, promocode, applied, differentEmail, requestedPercent])
     const apply = () => { onQuoteChange?.({ pending: true }); onEmailChange?.(account.user.email.trim()); setApplied(true) }
     if (!checked || !account) return null
     if (!account.rules.enabled || (!account.wallet.available && !points) || !ticketCart?.length || (quote && !loading && !quote.maxPoints && !points)) return null

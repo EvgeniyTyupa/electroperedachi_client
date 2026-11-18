@@ -9,14 +9,14 @@
     align-items: center;
 }
 .opnBut {
-    color: #441ABD !important;
+    color: var(--ep-accent-text) !important;
     font-family: "Helvetica" !important;
     font-size: 20px !important;
     background-color: transparent !important;
     margin-left: 30px !important;
 }
 .open {
-    color: #A5A5A5 !important;
+    color: var(--ep-text-2) !important;
 }
 .opnBut svg {
     font-size: 24px !important;
@@ -35,14 +35,14 @@
     position: absolute;   
 }
 .circle {
-    background-color: #3B12AF;
+    background-color: var(--ep-accent);
     width: 27px;
     height: 27px;
-    box-shadow: 0 0 20px -3px #5124D2;
+    box-shadow: 0 0 20px -3px #ff4d1f4d;
     border-radius: 50%;
 }
 .line {
-    background: #FFFFFF;
+    background: var(--ep-line);
     z-index: -1;
     width: 1px;
     position: absolute;
@@ -92,6 +92,6 @@
         color: var(--main-orange) !important;
     }
     .open {
-        color: #A5A5A5 !important;
+        color: var(--ep-text-2) !important;
     }
 }

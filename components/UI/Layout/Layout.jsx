@@ -16,13 +16,18 @@ const Layout = (props) => {
 
     const router = useRouter()
 
+    const account = router.pathname === "/account" || router.pathname.startsWith("/account/")
+    const eventLanding = router.pathname.startsWith("/events/")
+    const themed = !eventLanding && !router.pathname.startsWith(routes.thankyou) && !router.pathname.startsWith("/qrReader")
+    const Wrapper = themed ? "div" : Fragment
+
     return (
-        <Fragment>
-            <Navbar />
-            {isFetchingContext && <Preloader />}
+        <Wrapper {...(themed ? { className: "site-theme" } : {})}>
+            <Navbar themed={themed} />
+            {!account && isFetchingContext && <Preloader />}
             <main
                 className={cx(
-                    (router.pathname === "/404" || router.pathname.includes(routes.thankyou))
+                    (account || router.pathname === "/404" || router.pathname.includes(routes.thankyou))
                         ? classes.fitContentHeight
                         : classes.main,
                     
@@ -30,11 +35,11 @@ const Layout = (props) => {
             >
                 {children}
             </main>
-            <StatusMessage />
-            {(router.pathname !== "/events/circus" && router.pathname !== "/events/cyberpunk") && (
+            {!account && <StatusMessage />}
+            {(!account && router.pathname !== "/events/circus" && router.pathname !== "/events/cyberpunk") && (
                 <Footer />
             )}
-        </Fragment>
+        </Wrapper>
     )
 }
 

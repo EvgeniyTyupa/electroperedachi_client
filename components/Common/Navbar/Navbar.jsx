@@ -1,7 +1,7 @@
 import classes from './Navbar.module.css'
 import Link from 'next/link';
 import logo from "/public/images/logo.svg"
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import useNavLinks from '../../../hooks/useNavLinks';
 import { cx } from '../../../utils/classnames';
 import Container from '../../UI/Container/Container';
@@ -12,17 +12,19 @@ import { routes } from '../../../utils/routes';
 import { isCustomEventLanding } from '../../../utils/navigation';
 import AccountIcon from '../AccountIcon';
 
-const Navbar = () => {
+const Navbar = ({ themed }) => {
     const router = useRouter()
     const links = useNavLinks()
     const customLanding = isCustomEventLanding(router.pathname)
+    const inAccount = router.pathname === "/account" || router.pathname.startsWith("/account/")
     const accountLabel = router.locale === "en" ? "My account" : "Особистий кабінет"
 
     return (
         <nav className={cx(
             classes.main,
             router.pathname.includes("/events/") ? classes.absoluteDef : undefined,
-            router.pathname === "/events" ? classes.transparent : undefined,
+            themed && classes.themed,
+            !themed && router.pathname === "/events" ? classes.transparent : undefined,
             router.pathname === "/events/hozho" ? classes.absolute : undefined,
             router.pathname === "/events/vampire-carnival" ? classes.absolute : undefined,
             router.pathname === "/events/cyber-christmas" ? classes.absolute : undefined,
@@ -34,10 +36,12 @@ const Navbar = () => {
             <Container className={classes.container}>
                 {(!router.pathname.includes("/events/vice-city") && router.pathname != "/events/techno-fashion" && router.pathname != "/events/need-for-speed") && (
                     <Link href={routes.home}>
-                        <img src={logo.src} alt="logo" className={classes.logo}/>
+                        {themed
+                            ? <span className={classes.wordmark}>electroperedachi</span>
+                            : <img src={logo.src} alt="electroperedachi" className={classes.logo} />}
                     </Link>
                 )}
-                <nav className={classes.links}>
+                <div className={classes.links}>
                     {!customLanding && (
                         links.filter(el => !el.account).map(el => (
                             <CustomLink
@@ -48,13 +52,13 @@ const Navbar = () => {
                             />
                         ))
                     )}
-                </nav>
+                </div>
                 <div className={cx(classes.actions, !customLanding ? classes.accountActions : undefined)}>
-                    <div className={classes.language}><LanguageSelector /></div>
-                    {!customLanding && <Link href="/account" className={cx(classes.accountLink, router.pathname === "/account" ? classes.accountActive : "")} aria-label={accountLabel} title={accountLabel} aria-current={router.pathname === "/account" ? "page" : undefined}><AccountIcon /></Link>}
+                    {!themed && <div className={classes.language}><LanguageSelector /></div>}
+                    {!customLanding && <Link href="/account" className={cx(classes.accountLink, inAccount ? classes.accountActive : "")} aria-label={accountLabel} title={accountLabel} aria-current={inAccount ? "page" : undefined}><AccountIcon /></Link>}
                 </div>
                 <div className={classes.burger}>
-                    <Burger/>
+                    <Burger themed={themed} />
                 </div>
             </Container>
         </nav>
