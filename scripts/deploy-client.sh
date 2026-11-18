@@ -18,6 +18,13 @@ if [[ "$target" = "$deployed" ]]; then
     exit 0
 fi
 release="$release_root/$target"
+if [[ -n "$deployed" && -f "$state_dir/release" ]] &&
+   git diff --quiet "$deployed" "$target" -- . ':!scripts/deploy-client.sh' ':!deploy/systemd'; then
+    built_release=$(cat "$state_dir/release")
+    if [[ -f "$built_release/.deploy-build-complete" ]]; then
+        release="$built_release"
+    fi
+fi
 mkdir -p "$release"
 if [[ ! -f "$release/.deploy-build-complete" ]]; then
     printf 'Building client %s\n' "$target"
@@ -65,7 +72,8 @@ process.stdin.on("end", () => {
 })
 '
 
-pm2 startOrReload "$state_dir/ecosystem.config.json" --only client --update-env
+pm2 delete client
+pm2 start "$state_dir/ecosystem.config.json" --only client
 healthy=false
 for attempt in {1..30}; do
     if curl --fail --silent --max-time 10 http://127.0.0.1:3000/account > "$state_dir/health.html"; then
@@ -80,10 +88,12 @@ done
 
 if [[ "$healthy" != true ]]; then
     printf 'Client health check failed. Restoring previous release.\n' >&2
-    pm2 startOrReload "$state_dir/previous.config.json" --only client --update-env
+    pm2 delete client || true
+    pm2 start "$state_dir/previous.config.json" --only client
     exit 1
 fi
 pm2 save
+printf '%s\n' "$release" > "$state_dir/release"
 printf '%s\n' "$target" > "$state_dir/deployed.tmp"
 mv "$state_dir/deployed.tmp" "$state_dir/deployed"
 printf 'Client deployed successfully: %s\n' "$target"
