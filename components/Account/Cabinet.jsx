@@ -56,10 +56,11 @@ export default function Cabinet() {
         return () => { active = false }
     }, [refreshKey])
     useEffect(() => {
+        if (!account) { setNext(null); return }
         let active = true
         api.nextEvent().then(value => { if (active) setNext(value.event) }).catch(() => {})
         return () => { active = false }
-    }, [refreshKey])
+    }, [refreshKey, account?.user.id])
     useEffect(() => { setSummary(null); setSelected([]); selectionStarted.current = false; setStory(null) }, [account?.user.id])
     useEffect(() => {
         if (!account) return
@@ -127,7 +128,7 @@ export default function Cabinet() {
     const activeTickets = tickets.filter(ticket => !ticket.isChecked && !isPast(ticket))
     const otherTickets = tickets.filter(ticket => ticket.isChecked || isPast(ticket))
 
-    return <div className={s.shell}><Head><title>{`${t[screen] || t.passport} | electroperedachi`}</title><meta name="robots" content="noindex,nofollow" /></Head><div className={s.main}>
+    return <div className={s.shell}><Head><title>{`${account ? t[screen] || t.passport : t.login} | electroperedachi`}</title><meta name="robots" content="noindex,nofollow" /></Head><div className={s.main}>
         {account && screen !== 'login' && (
             <nav className={s.sections} aria-label={en ? 'Account sections' : 'Розділи кабінету'}>
                 {['home', 'passport', 'exchange', 'content', 'profile'].map(name => (
@@ -139,11 +140,9 @@ export default function Cabinet() {
             </nav>
         )}
         {error && <div className={s.notice} role="alert">{error}<button onClick={() => setRefreshKey(value => value + 1)}>{t.retry}</button></div>}{notice && <div className={s.notice} role="status">{notice}</div>}
-        {checking ? <div className={s.skeleton} role="status">{t.loading}</div> : !account ? screen === 'login' ? <>
-            <Link href={href('home')} className={s.back}><Icon name="back" />{t.back}</Link><div className={s.loginArt}><div className={s.eyebrow}>ENERGY PASSPORT</div><h1>{t.login}</h1><p>{t.guestBody}</p></div>
+        {checking ? <div className={s.skeleton} role="status">{t.loading}</div> : !account ? <>
+            <h1>{t.login}</h1>
             <Card><form onSubmit={e => { e.preventDefault(); run(async () => { if (!sent) return requestCode(); await api.verifyCode(email.trim(), code); setCode(''); setSent(false); setRefreshKey(value => value + 1); await router.push(href('home')) }) }}><label htmlFor="ep-email">{t.email}</label><input id="ep-email" type="email" autoComplete="email" required value={email} onChange={e => setEmail(e.target.value)} disabled={sent || busy} />{sent && <><label htmlFor="ep-code">{t.code}</label><input className={s.codeInput} id="ep-code" autoComplete="one-time-code" inputMode="numeric" pattern="[0-9]{6}" maxLength={6} required value={code} onChange={e => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></>}<button className={s.primary} disabled={busy}>{busy ? t.loading : sent ? t.verify : t.request}</button></form>{sent && <div className={s.loginExtras}><button disabled={busy || seconds > 0} onClick={() => run(requestCode)}>{seconds ? `${t.waitCode} ${seconds} с` : t.resend}</button><button disabled={busy} onClick={() => { setSent(false); setCode(''); setNotice('') }}>{t.change}</button><small>{t.cooldownHint}</small></div>}<p className={s.caption}>{t.recover} <Link href="/contacts">{t.contact}</Link></p></Card>
-        </> : <>
-            <div className={s.eyebrow}>ENERGY PASSPORT</div><h1>{t.guestTitle}</h1><p className={s.intro}>{t.guestBody}</p>{energyHero(true)}{statTiles(true)}<Card><h2>{t.exchangeRules}</h2><div className={s.featureRow}><Icon name="exchange" /><div><b>{t.ticketDiscount}</b><p>{t.earnedByPurchase}</p></div></div><div className={s.featureRow}><Icon name="passport" /><div><b>{t.stamps}</b><p>{t.firstVisit}</p></div></div><div className={s.featureRow}><Icon name="content" /><div><b>{t.contentTitle}</b><p>{t.contentBody}</p></div></div></Card>{eventCard()}<div className={s.guestCta}><Link className={s.primary} href={href('login')}>{t.login}<Icon name="arrow" /></Link></div>
         </> : <>
         {screen === 'home' && <>
             <h1>{t.welcome}</h1><div className={s.badges}>{SHOW_PASSPORT_LEVEL && <span className={s.levelBadge}>{level ? `${t.level} ${level.number} ${t.of} 5 · ${levelName}` : 'ENERGY PASSPORT'}</span>}<span>{summary?.sinceYear ? `${t.since} ${summary.sinceYear}` : t.newRaver}</span></div>{energyHero()}{!rules.enabled && <p className={s.notice}>{t.rulesOff}</p>}{statTiles()}
