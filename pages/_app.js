@@ -149,6 +149,7 @@ export default function App({ Component, pageProps }) {
                             />
                             <meta
                                 property="og:image"
+                                key="og:image"
                                 content={poster_img.src}
                             />
                             {/* <script

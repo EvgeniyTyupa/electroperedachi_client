@@ -1,7 +1,7 @@
 import { useNfsCopy } from "../useNfsCopy";
 import classes from "../NeedForSpeed.module.css";
 import { cx } from "../needForSpeedClasses";
-const heroBg = "/images/need_for_speed/hero-bg.webp";
+const heroBg = "/images/need_for_speed/hero-crowd-20261119.webp";
 const heroFade = "/images/need_for_speed/hero-fade.svg";
 import { useStartLights } from "../motion/hooks";
 import { TrafficLight } from "../components/TrafficLight";

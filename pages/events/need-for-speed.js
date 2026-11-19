@@ -8,6 +8,8 @@ import { removeHtmlAndMarkdown } from "../../utils/removeHtmlAdnMarkdown"
 import NeedForSpeed from "../../components/Pages/Events/NeedForSpeed/NeedForSpeed"
 import { CLARITY_PROJECT_ID } from "../../utils/constants"
 
+const heroImage = "https://electroperedachi.com/images/need_for_speed/hero-crowd-20261119.webp"
+
 const NeedForSpeedPage = (props) => {
     const { event, script, lang } = props
 
@@ -42,7 +44,9 @@ const NeedForSpeedPage = (props) => {
                     <meta name="description" lang="en" content={removeHtmlAndMarkdown(event.description_en)}/>
                 )}
                 <meta name="keywords" content={`electroperedachi, events, події, вечірка, party, rave, ${event.keywords}`}/>
-                <meta property="og:image" content={event.poster.image}/>
+                <meta property="og:image" content={heroImage} key="og:image"/>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content={heroImage} />
                 <link
                     rel="canonical"
                     href={`https://electroperedachi.com/events/${event.title_code}`}
@@ -155,7 +159,7 @@ export async function getServerSideProps(context) {
                 "addressCountry": "UA"
             }
         },
-        "image": event.poster.image,
+        "image": heroImage,
         "description": locale === "ua" ? removeHtmlAndMarkdown(event.description) : removeHtmlAndMarkdown(event.description_en),
         "offers": {
             "@type": "Offer",
