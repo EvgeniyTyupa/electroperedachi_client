@@ -61,6 +61,26 @@ export default function Cabinet() {
         api.nextEvent().then(value => { if (active) setNext(value.event) }).catch(() => {})
         return () => { active = false }
     }, [refreshKey, account?.user.id])
+    const historyPending = ['queued', 'running', 'retry'].includes(account?.historySync?.status)
+    useEffect(() => {
+        if (!historyPending) return
+        let active = true
+        let timer
+        const poll = async () => {
+            try {
+                const value = await api.me()
+                if (!active) return
+                setAccount(value)
+                if (['queued', 'running', 'retry'].includes(value.historySync?.status)) timer = setTimeout(poll, 5000)
+            } catch (error) {
+                if (!active) return
+                if (error.response?.status === 401) expired()
+                else timer = setTimeout(poll, 5000)
+            }
+        }
+        timer = setTimeout(poll, 2000)
+        return () => { active = false; clearTimeout(timer) }
+    }, [account?.user.id, historyPending])
     useEffect(() => { setSummary(null); setSelected([]); selectionStarted.current = false; setStory(null) }, [account?.user.id])
     useEffect(() => {
         if (!account) return
@@ -139,6 +159,7 @@ export default function Cabinet() {
                 ))}
             </nav>
         )}
+        {historyPending && <p className={s.notice} role="status">{account.historySync.status === 'retry' ? t.historyRetry : t.historyChecking}</p>}
         {error && <div className={s.notice} role="alert">{error}<button onClick={() => setRefreshKey(value => value + 1)}>{t.retry}</button></div>}{notice && <div className={s.notice} role="status">{notice}</div>}
         {checking ? <div className={s.skeleton} role="status">{t.loading}</div> : !account ? <>
             <h1>{t.login}</h1>
