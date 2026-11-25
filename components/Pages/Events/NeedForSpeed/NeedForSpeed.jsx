@@ -55,7 +55,7 @@ const NeedForSpeed = ({ event, sales }) => {
                     {!desktop && <FaqSection />}
                     <RunningLine variant="b" />
                 </main>
-                {!desktop && <Footer />}
+                <Footer />
                 <StickyBar desktop={desktop} />
             </div>
         </NeedForSpeedProvider>
