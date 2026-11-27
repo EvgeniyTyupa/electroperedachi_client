@@ -11,7 +11,12 @@ export function FaqSection() {
   const {
     event
   } = useNeedForSpeed();
-  const existingItems = event.faq?.length ? event.faq : FAQ.map(([title, text]) => ({
+  const updateEndTime = value => typeof value === 'string' ? value.replace(/00:30/g, '23:00') : value;
+  const existingItems = event.faq?.length ? event.faq.map(item => ({
+    ...item,
+    text: updateEndTime(item.text),
+    text_en: updateEndTime(item.text_en)
+  })) : FAQ.map(([title, text]) => ({
     title,
     text,
     plain: true

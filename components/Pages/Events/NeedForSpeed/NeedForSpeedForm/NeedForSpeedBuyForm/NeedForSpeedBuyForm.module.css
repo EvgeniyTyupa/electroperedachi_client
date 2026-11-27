@@ -47,3 +47,26 @@
     opacity: 0.55;
     cursor: wait;
 }
+.passportReward { min-width: 0; }
+.passportHeading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.passportHeading p { color: var(--ink-muted); font-size: 14px; line-height: 1.5; }
+.passportHeading strong { color: var(--acid); font-weight: 600; }
+.passportHelp {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--edge);
+  border-radius: 50%;
+  color: var(--ink-dim);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.passportHelp:hover { color: var(--acid); border-color: var(--acid); }
+.passportHelp:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.passportExplanation { margin-top: 10px; padding: 12px; border-radius: 8px; background: var(--panel); color: var(--ink-muted); font-size: 13px; line-height: 1.5; }
+.passportEmail { margin-top: -12px; color: var(--ink-dim); font-size: 12px; line-height: 1.5; }

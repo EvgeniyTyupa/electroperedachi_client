@@ -21,7 +21,7 @@ const getFRAMES = nfsCopy => [{
 }];
 const getFACTS = nfsCopy => [{
   mark: nfsCopy("Дата та час"),
-  value: nfsCopy("12 грудня, субота 16:00 до 00:30")
+  value: nfsCopy("12 грудня, субота 16:00 до 23:00")
 }, {
   mark: nfsCopy("Лайнап"),
   value: "TBA"

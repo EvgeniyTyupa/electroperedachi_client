@@ -85,17 +85,12 @@ export async function getServerSideProps(context) {
     const moveCopy = value => typeof value === 'string'
         ? value.replace(/14 листопада/g, '12 грудня').replace(/14 November/g, '12 December').replace(/14\.11(?:\.2026)?/g, '12.12.2026')
         : value
-    event.description = moveCopy(event.description)
-    event.description_en = moveCopy(event.description_en)
+    event.description = moveCopy(event.description)?.replace(/00:30/g, '23:00')
+    event.description_en = moveCopy(event.description_en)?.replace(/00:30/g, '23:00')
 
-    let nextDay
-
-    if (event.date) {
-        nextDay = new Date(event.date);
-    } else {
-        nextDay = new Date(event.dates[event.dates.length - 1].date)
-    }
-    nextDay.setDate(nextDay.getDate() + 1);
+    // The event ends at 23:00 Kyiv time on the same day (December is UTC+02:00).
+    const eventDay = (event.date || event.dates[event.dates.length - 1].date).slice(0, 10)
+    const eventEnd = new Date(`${eventDay}T23:00:00+02:00`);
 
     let now = moment()
 
@@ -148,7 +143,7 @@ export async function getServerSideProps(context) {
         "eventStatus": "https://schema.org/EventRescheduled",
         "previousStartDate": "2026-11-14",
         "startDate": event.date ? event.date : event.dates[0].date,
-        "endDate": nextDay.toISOString(),
+        "endDate": eventEnd.toISOString(),
         "location": {
             "@type": "Place",
             "name": event.venue,

@@ -3,6 +3,7 @@ import { baseURL } from './api'
 const http = axios.create({ baseURL, withCredentials: true })
 const data = promise => promise.then(r => r.data)
 export const passportApi = {
+    purchaseRules: () => data(http.get('/passport/purchase-rules', { timeout: 5000 })),
     nextEvent: () => data(http.get('/passport/next-event', { timeout: 8000 })),
     summary: () => data(http.get('/passport/summary', { timeout: 15000 })),
     story: (events, form, locale) => http.get('/passport/share-card', { params: { events: events.join(','), form, locale }, responseType: 'blob', timeout: 30000 }).then(r => r.data),

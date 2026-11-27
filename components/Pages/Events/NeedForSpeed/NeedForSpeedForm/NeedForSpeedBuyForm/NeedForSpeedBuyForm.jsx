@@ -1,4 +1,5 @@
 import { useNfsCopy } from "../../useNfsCopy";
+import PassportReward from './PassportReward';
 import LoyaltyCheckout from "../../../../../../components/Common/LoyaltyCheckout";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -143,6 +144,7 @@ const NeedForSpeedBuyForm = ({
                 <p className={cx(desktop ? "body-d dim" : "body-sm dim")}>{" " + nfsCopy("Після оплати квиток буде висланий на Ваш email, вказаний при заповненні форми.") + " "}<br /><br />
                     <span className={cx("buy__note")}>{" " + nfsCopy("Зверніть увагу:") + " "}</span>{" " + nfsCopy("для особи, яка не досягла повнолітнього віку, квиток втрачає свою важливість. Якщо у вас є якісь питання чи проблеми з придбанням/отриманням квитка/грошей — будь ласка, зв’яжіться з нами. Ми не повертаємо кошти внаслідок зміни рішення відвідувача, лише за умови змін від організатора.") + " "}</p>
                 {typeof controls === "function" ? controls(payableTotal) : controls}
+                <PassportReward payableTotal={payableTotal} quote={loyaltyQuote} />
                 <label className={cx("field")}>
                     <span className={cx("field__label hud-label")}>{" " + nfsCopy("Телефон") + " "}</span>
                     <input className={cx("field__input")} type="tel" autoComplete="tel" placeholder="+380" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "nfs-phone-error" : undefined} {...register("phone", {
@@ -163,6 +165,7 @@ const NeedForSpeedBuyForm = ({
         })} />
                     {errors.email && <span className={classes.error} id="nfs-email-error">{errors.email.message}</span>}
                 </label>
+                <p className={classes.passportEmail}>{router.locale === 'en' ? 'Your ticket and energy will be saved in the passport linked to this email.' : 'Квиток та енергія збережуться у паспорті на цю пошту.'}</p>
                 {hasPromo && <div className={cx("stack stack--16")}>
                         <div className={cx("field")}>
                             <label htmlFor="nfs-promocode" className={cx("field__label hud-label")}>{" " + nfsCopy("Промокод") + " "}</label>

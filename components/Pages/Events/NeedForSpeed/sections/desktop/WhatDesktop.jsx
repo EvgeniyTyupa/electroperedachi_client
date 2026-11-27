@@ -22,7 +22,7 @@ const getFRAMES = nfsCopy => [{
 /* Desktop list (Figma 1246:951): lineup is still TBA, no dress-code row. */
 const getFACTS = nfsCopy => [{
   mark: nfsCopy("Дата та час"),
-  value: nfsCopy("12 грудня, субота 16:00 до 00:30")
+  value: nfsCopy("12 грудня, субота 16:00 до 23:00")
 }, {
   mark: nfsCopy("Лайнап"),
   value: "TBA"
